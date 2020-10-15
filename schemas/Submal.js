@@ -11,7 +11,8 @@ export default {
         },
         {
             name: "submal_block",
-            type: "markdown",
+            type: 'array',
+            of: [{ type: 'block' }],
             title: "Innhold",
             validation: Rule => Rule.required()
         }
