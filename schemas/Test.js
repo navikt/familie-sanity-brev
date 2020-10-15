@@ -1,9 +1,9 @@
-import CaesarCipher from "../../sanitybrev/components/CaesarCipher";
+import CaesarCipher from "../components/CaesarCipher";
 
 export default {
-  name: "submal",
+  name: "test",
   type: "document",
-  title: "Submal",
+  title: "Test",
   fields: [
     {
       name: "tittel",
@@ -27,10 +27,9 @@ export default {
                 },
                 fields: [
                   {
-                    name: "Shift",
-                    type: "number",
+                    name: "url",
+                    type: "url",
                   },
-                  { name: "hmm", type: "string" },
                 ],
               },
             ],
