@@ -1,4 +1,10 @@
+import React from "react";
 import CaesarCipher from "../components/CaesarCipher";
+
+const highlightIcon = () => <span style={{ fontWeight: "bold" }}>H</span>;
+const highlightRender = (props) => (
+  <span style={{ backgroundColor: "yellow" }}>{props.children}</span>
+);
 
 export default {
   name: "test",
@@ -18,19 +24,17 @@ export default {
         {
           type: "block",
           marks: {
-            annotations: [
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Code", value: "code" },
               {
-                type: "object",
-                title: "Caesar",
+                title: "Variable",
+                value: "variable",
                 blockEditor: {
-                  render: CaesarCipher,
+                  icon: highlightIcon,
+                  render: highlightRender,
                 },
-                fields: [
-                  {
-                    name: "url",
-                    type: "url",
-                  },
-                ],
               },
             ],
           },

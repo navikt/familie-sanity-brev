@@ -6,10 +6,8 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 
 import BrevMal from "./Mal";
-import Submal from "./Submal";
 import Begrunnelse from "./Begrunnelse";
 import Test from "./Test";
-import ExternalLink from "../../sanitybrev/schemas/ExternalLink";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,10 +19,8 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     BrevMal,
-    Submal,
     Begrunnelse,
     Test,
-    ExternalLink,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
