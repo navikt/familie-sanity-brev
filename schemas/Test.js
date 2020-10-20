@@ -1,10 +1,15 @@
 import React from "react";
-import CaesarCipher from "../components/CaesarCipher";
 
 const highlightIcon = () => <span style={{ fontWeight: "bold" }}>H</span>;
 const highlightRender = (props) => (
   <span style={{ backgroundColor: "yellow" }}>{props.children}</span>
 );
+
+const flettefeltIcon = () => <span style={{ fontWeight: "bold" }}>F</span>;
+const flettefeltRenderer = (props) => {
+  console.log(props);
+  return <span>FLETTEFELT</span>;
+};
 
 export default {
   name: "test",
@@ -18,6 +23,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "flettefelter",
+      title: "Flettefelter",
+      type: "reference",
+      to: [{ type: "flettefelter" }],
+    },
+    {
       name: "submal_block",
       type: "array",
       of: [
@@ -25,9 +36,6 @@ export default {
           type: "block",
           marks: {
             decorators: [
-              { title: "Strong", value: "strong" },
-              { title: "Emphasis", value: "em" },
-              { title: "Code", value: "code" },
               {
                 title: "Variable",
                 value: "variable",
@@ -35,6 +43,36 @@ export default {
                   icon: highlightIcon,
                   render: highlightRender,
                 },
+              },
+            ],
+            annotations: [
+              {
+                title: "Flettefelt",
+                type: "object",
+                value: "flettefelt",
+                blockEditor: {
+                  icon: flettefeltIcon,
+                  render: flettefeltRenderer,
+                },
+                fields: [
+                  {
+                    title: "Flettefelt",
+                    name: "flettefeltListe",
+                    type: "reference",
+                    to: [{ type: "flettefelt" }],
+                    options: {
+                      filter: ({ document }) => {
+                        console.log(
+                          "Relevante flettefelter",
+                          document.flettefelter
+                        );
+                        ('*[_type=="flettefelter"][0]{felter[]->}');
+                      },
+
+                      filterParams: { ff: document.flettefelter },
+                    },
+                  },
+                ],
               },
             ],
           },

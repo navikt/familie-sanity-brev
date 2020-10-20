@@ -8,6 +8,8 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import BrevMal from "./Mal";
 import Begrunnelse from "./Begrunnelse";
 import Test from "./Test";
+import Flettefelter from "./Flettefelter";
+import Flettefelt from "./Flettefelt";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,6 +23,8 @@ export default createSchema({
     BrevMal,
     Begrunnelse,
     Test,
+    Flettefelt,
+    Flettefelter,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
