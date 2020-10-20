@@ -10,6 +10,7 @@ import Begrunnelse from "./Begrunnelse";
 import Test from "./Test";
 import Flettefelter from "./Flettefelter";
 import Flettefelt from "./Flettefelt";
+import FlettefeltEksempel from "./FlettefeltEksempel";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,6 +26,7 @@ export default createSchema({
     Test,
     Flettefelt,
     Flettefelter,
+    FlettefeltEksempel,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

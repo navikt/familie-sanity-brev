@@ -66,7 +66,7 @@ export default {
                           "Relevante flettefelter",
                           document.flettefelter
                         );
-                        ('*[_type=="flettefelter"][0]{felter[]->}');
+                        ("in $ff");
                       },
 
                       filterParams: { ff: document.flettefelter },
