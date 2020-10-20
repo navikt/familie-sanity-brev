@@ -11,6 +11,7 @@ import Test from "./Test";
 import Flettefelter from "./Flettefelter";
 import Flettefelt from "./Flettefelt";
 import FlettefeltEksempel from "./FlettefeltEksempel";
+sessionStorage.clear()
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
