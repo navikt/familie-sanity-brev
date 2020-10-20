@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
 import { client } from "../utils/sanity";
 
-const setResult = (result, key) => {
-  sessionStorage.setItem(key, JSON.stringify(result.hits));
-};
-
 const ExternalLinkRenderer = (props) => {
-  const feltId = props.felt._ref;
+  const feltId = props.felt?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
-  console.log(cachedHits);
   const [felt, setFelt] = useState(
     cachedHits ? cachedHits : "LASTER FLETTEFELT"
   );
+  const hentFeltFraRemote = async (feltId) => {
+    if (cachedHits) {
+      return cachedHits;
+    } else {
+      return client.fetch(`*[_id == "${feltId}"][0]`).then((res) => {
+        sessionStorage.setItem(feltId, res.felt);
+        return res.felt;
+      });
+    }
+  };
 
   useEffect(() => {
     if (props.felt) {
-      if (cachedHits && cachedHits !== "undefined") {
-        console.log(typeof cachedHits);
-        //setFelt(JSON.parse(cachedHits));
-      } else {
-        client.fetch(`*[_id == "${feltId}"][0]`).then((res) => {
-          res.felt && setFelt(res.felt);
-          setResult(JSON.stringify(res.felt), feltId);
-        });
-      }
+      hentFeltFraRemote(feltId).then((felt) => setFelt(felt));
     } else {
       setFelt("TOMT FLETTEFELT");
     }
   }, []);
 
-  return <span style={{ backgroundColor: "yellow" }}>{felt}</span>;
+  return (
+    <span>
+      {props.children}({felt})
+    </span>
+  );
 };
 
 export default {
