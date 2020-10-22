@@ -56,6 +56,12 @@ export default {
           to: [{ type: "dokumentmal" }],
         },
         {
+          title: "Liste",
+          name: "dokumentliste",
+          type: "reference",
+          to: [{ type: "dokumentmal" }],
+        },
+        {
           type: "block",
           marks: {
             annotations: [
