@@ -37,6 +37,11 @@ export default {
   title: "Dokumentmal",
   name: "dokumentmal",
   type: "document",
+  preview: {
+    select: {
+      title: "tittel",
+    },
+  },
   fields: [
     { type: "string", title: "Tittel", name: "tittel" },
     {
@@ -44,6 +49,12 @@ export default {
       title: "Innhold",
       type: "array",
       of: [
+        {
+          title: "Submal",
+          name: "submal",
+          type: "reference",
+          to: [{ type: "dokumentmal" }],
+        },
         {
           type: "block",
           marks: {

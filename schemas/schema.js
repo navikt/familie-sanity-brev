@@ -9,6 +9,7 @@ import Begrunnelse from "./Begrunnelse";
 import Flettefelter from "./Flettefelter";
 import Flettefelt from "./Flettefelt";
 import Dokumentmal from "./Dokumentmal";
+import SkalMedDersomFelt from "./SkalMedDersomFelt";
 sessionStorage.clear();
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -25,6 +26,7 @@ export default createSchema({
     Dokumentmal,
     Flettefelt,
     Flettefelter,
+    SkalMedDersomFelt,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
