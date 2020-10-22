@@ -34,13 +34,14 @@ const ExternalLinkRenderer = (props) => {
 };
 
 export default {
-  title: "Test flettefelt",
-  name: "exlink",
+  title: "Dokumentmal",
+  name: "dokumentmal",
   type: "document",
   fields: [
+    { type: "string", title: "Tittel", name: "tittel" },
     {
-      name: "content",
-      title: "Content",
+      name: "innhold",
+      title: "Innhold",
       type: "array",
       of: [
         {
@@ -48,10 +49,11 @@ export default {
           marks: {
             annotations: [
               {
-                name: "link",
+                name: "flettefelt",
                 type: "object",
-                title: "link",
+                title: "Flettefelt",
                 blockEditor: {
+                  icon: () => <span style={{ fontWeight: "bold" }}>F</span>,
                   render: ExternalLinkRenderer,
                 },
                 fields: [
@@ -59,6 +61,21 @@ export default {
                     name: "felt",
                     type: "reference",
                     to: [{ type: "flettefelt" }],
+                  },
+                ],
+              },
+              {
+                name: "skalMedDersom",
+                type: "object",
+                title: "SkalMedDersom",
+                blockEditor: {
+                  icon: () => <span style={{ fontWeight: "bold" }}>S</span>,
+                },
+                fields: [
+                  {
+                    name: "skalMedFelt",
+                    type: "reference",
+                    to: [{ type: "skalMedDersomFelt" }],
                   },
                 ],
               },
