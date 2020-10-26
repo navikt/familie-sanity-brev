@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../utils/sanity";
+import styles from "../styles/myStyling.css";
 
-const ExternalLinkRenderer = (props) => {
+const hentFeltFraRemote = async (feltId, relevantFelt = "felt") => {
+  const cachedHits = sessionStorage.getItem(feltId);
+  if (cachedHits) {
+    return cachedHits;
+  } else {
+    return client.fetch(`*[_id == "${feltId}"][0]`).then((res) => {
+      sessionStorage.setItem(feltId, res[relevantFelt]);
+      return res[relevantFelt];
+    });
+  }
+};
+
+const FlettefeltRenderer = (props) => {
   const feltId = props.felt?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
   const [felt, setFelt] = useState(
     cachedHits ? cachedHits : "LASTER FLETTEFELT"
   );
-  const hentFeltFraRemote = async (feltId) => {
-    if (cachedHits) {
-      return cachedHits;
-    } else {
-      return client.fetch(`*[_id == "${feltId}"][0]`).then((res) => {
-        sessionStorage.setItem(feltId, res.felt);
-        return res.felt;
-      });
-    }
-  };
 
   useEffect(() => {
     if (props.felt) {
@@ -27,8 +30,28 @@ const ExternalLinkRenderer = (props) => {
   }, []);
 
   return (
-    <span>
+    <span className={styles.flettefelt}>
       {props.children}({felt})
+    </span>
+  );
+};
+
+const SubmalRenderer = (props) => {
+  const feltId = props.submal?._ref;
+  const cachedHits = sessionStorage.getItem(feltId);
+  const [submal, setFelt] = useState(cachedHits ? cachedHits : "LASTER SUBMAL");
+
+  useEffect(() => {
+    if (props.submal) {
+      hentFeltFraRemote(feltId, "tittel").then((submal) => setFelt(submal));
+    } else {
+      setFelt("TOMT SUBMALFELT");
+    }
+  }, []);
+
+  return (
+    <span className={styles.submal}>
+      {props.children}({submal})
     </span>
   );
 };
@@ -50,12 +73,6 @@ export default {
       type: "array",
       of: [
         {
-          title: "Submal",
-          name: "submal",
-          type: "reference",
-          to: [{ type: "dokumentmal" }],
-        },
-        {
           title: "Liste",
           name: "dokumentliste",
           type: "reference",
@@ -70,8 +87,8 @@ export default {
                 type: "object",
                 title: "Flettefelt",
                 blockEditor: {
-                  icon: () => <span style={{ fontWeight: "bold" }}>F</span>,
-                  render: ExternalLinkRenderer,
+                  icon: () => <span className={styles.flettefeltIcon}>F</span>,
+                  render: FlettefeltRenderer,
                 },
                 fields: [
                   {
@@ -82,16 +99,25 @@ export default {
                 ],
               },
               {
-                name: "skalMedDersom",
+                name: "submal",
                 type: "object",
-                title: "SkalMedDersom",
+                title: "submal",
                 blockEditor: {
-                  icon: () => <span style={{ fontWeight: "bold" }}>S</span>,
+                  icon: () => <span className={styles.submalIcon}>S</span>,
+                  render: SubmalRenderer,
                 },
                 fields: [
                   {
+                    name: "submal",
+                    type: "reference",
+                    to: [{ type: "dokumentmal" }],
+                  },
+                  {
+                    title: "Skal med dersom:",
                     name: "skalMedFelt",
                     type: "reference",
+                    description:
+                      "Submalen kommer alltid med dersom dette feltet er tomt",
                     to: [{ type: "skalMedDersomFelt" }],
                   },
                 ],

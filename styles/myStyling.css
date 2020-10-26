@@ -1,0 +1,27 @@
+.flettefelt {
+  background-color: #3385d1;
+  color: #fff;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.flettefeltIcon {
+  composes: flettefelt;
+  padding: 0 5px;
+}
+
+.submal {
+  background-color: #ffa733;
+  color: #000;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.submalIcon {
+  composes: submal;
+  padding: 0 5px;
+}
