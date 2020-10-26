@@ -5,11 +5,11 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 
-import Begrunnelse from "./Begrunnelse";
 import Flettefelter from "./Flettefelter";
 import Flettefelt from "./Flettefelt";
 import Dokumentmal from "./Dokumentmal";
 import SkalMedDersomFelt from "./SkalMedDersomFelt";
+import Valgfelt from "./Valgfelt";
 sessionStorage.clear();
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -22,11 +22,10 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
 
-    Begrunnelse,
     Dokumentmal,
     Flettefelt,
-    Flettefelter,
     SkalMedDersomFelt,
+    Valgfelt,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

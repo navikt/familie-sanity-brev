@@ -13,7 +13,7 @@
 }
 
 .submal {
-  background-color: #ffa733;
+  background-color: #b7b1a9;
   color: #000;
 
   @nest &:hover {
@@ -23,5 +23,19 @@
 
 .submalIcon {
   composes: submal;
+  padding: 0 5px;
+}
+
+.valgfelt {
+  background-color: #826ba1;
+  color: #fff;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.valgfeltIcon {
+  composes: valgfelt;
   padding: 0 5px;
 }
