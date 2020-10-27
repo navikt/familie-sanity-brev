@@ -25,7 +25,7 @@ const SubmalRenderer = (props) => {
 export default {
   name: "valgfelt",
   type: "object",
-  title: "valgfelt",
+  title: "Valgfelt",
   blockEditor: {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
     render: SubmalRenderer,
