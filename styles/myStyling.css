@@ -1,0 +1,56 @@
+.flettefelt {
+  background-color: #3385d1;
+  color: #fff;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.flettefeltIcon {
+  composes: flettefelt;
+  padding: 0 5px;
+}
+
+.submal {
+  background-color: #b7b1a9;
+  color: #000;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.submalIcon {
+  composes: submal;
+  padding: 0 5px;
+}
+
+.valgfelt {
+  background-color: #826ba1;
+  color: #fff;
+
+  @nest &:hover {
+    cursor: pointer;
+  }
+}
+
+.valgfeltIcon {
+  composes: valgfelt;
+  padding: 0 5px;
+}
+
+.tittel {
+  border: 1px dotted black;
+  display: inline;
+  padding: 5px;
+}
+
+.tittel::after {
+  content: "tittel";
+  font-size: 14px;
+  background-color: #ccb8e7;
+  border-radius: 2px;
+  padding: 2px;
+  margin-left: 1rem;
+}

@@ -1,37 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { client } from "../utils/sanity";
+import FlettefeltAnnontering from "./annonteringer/FlettefeltAnnontering";
+import SubmalAnnontering from "./annonteringer/SubmalAnnontering";
+import ValgfeltAnnontering from "./annonteringer/ValgfeltAnnontering";
+import styles from "../styles/myStyling.css";
 
-const ExternalLinkRenderer = (props) => {
-  const feltId = props.felt?._ref;
-  const cachedHits = sessionStorage.getItem(feltId);
-  const [felt, setFelt] = useState(
-    cachedHits ? cachedHits : "LASTER FLETTEFELT"
-  );
-  const hentFeltFraRemote = async (feltId) => {
-    if (cachedHits) {
-      return cachedHits;
-    } else {
-      return client.fetch(`*[_id == "${feltId}"][0]`).then((res) => {
-        sessionStorage.setItem(feltId, res.felt);
-        return res.felt;
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (props.felt) {
-      hentFeltFraRemote(feltId).then((felt) => setFelt(felt));
-    } else {
-      setFelt("TOMT FLETTEFELT");
-    }
-  }, []);
-
-  return (
-    <span>
-      {props.children}({felt})
-    </span>
-  );
-};
+const TittelStyle = props => (
+  <h3 className={styles.tittel}>{props.children}</h3>
+)
 
 export default {
   title: "Dokumentmal",
@@ -50,8 +25,8 @@ export default {
       type: "array",
       of: [
         {
-          title: "Submal",
-          name: "submal",
+          title: "Liste",
+          name: "dokumentliste",
           type: "reference",
           to: [{ type: "dokumentmal" }],
         },
@@ -59,39 +34,25 @@ export default {
           type: "block",
           marks: {
             annotations: [
-              {
-                name: "flettefelt",
-                type: "object",
-                title: "Flettefelt",
-                blockEditor: {
-                  icon: () => <span style={{ fontWeight: "bold" }}>F</span>,
-                  render: ExternalLinkRenderer,
-                },
-                fields: [
-                  {
-                    name: "felt",
-                    type: "reference",
-                    to: [{ type: "flettefelt" }],
-                  },
-                ],
-              },
-              {
-                name: "skalMedDersom",
-                type: "object",
-                title: "SkalMedDersom",
-                blockEditor: {
-                  icon: () => <span style={{ fontWeight: "bold" }}>S</span>,
-                },
-                fields: [
-                  {
-                    name: "skalMedFelt",
-                    type: "reference",
-                    to: [{ type: "skalMedDersomFelt" }],
-                  },
-                ],
-              },
+              FlettefeltAnnontering,
+              SubmalAnnontering,
+              ValgfeltAnnontering,
             ],
           },
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            {
+              title: 'Tittel', value: 'tittel', blockEditor: {
+                render: TittelStyle
+              }
+            },
+            { title: 'H1', value: 'h1' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
+            { title: 'H6', value: 'h6' },
+          ]
         },
       ],
     },
