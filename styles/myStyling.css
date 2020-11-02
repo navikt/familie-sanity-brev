@@ -39,18 +39,3 @@
   composes: valgfelt;
   padding: 0 5px;
 }
-
-.tittel {
-  border: 1px dotted black;
-  display: inline;
-  padding: 5px;
-}
-
-.tittel::after {
-  content: "tittel";
-  font-size: 14px;
-  background-color: #ccb8e7;
-  border-radius: 2px;
-  padding: 2px;
-  margin-left: 1rem;
-}

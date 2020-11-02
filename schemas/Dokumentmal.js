@@ -14,10 +14,11 @@ export default {
   type: "document",
   preview: {
     select: {
-      title: "tittel",
+      title: "id",
     },
   },
   fields: [
+    { type: "string", title: "ID", name: "id" },
     { type: "string", title: "Tittel", name: "tittel" },
     {
       name: "innhold",
@@ -40,19 +41,21 @@ export default {
             ],
           },
           styles: [
-            { title: 'Normal', value: 'normal' },
+            { title: "Normal", value: "normal" },
             {
-              title: 'Tittel', value: 'tittel', blockEditor: {
-                render: TittelStyle
-              }
+              title: "Tittel",
+              value: "tittel",
+              blockEditor: {
+                render: TittelStyle,
+              },
             },
-            { title: 'H1', value: 'h1' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
-            { title: 'H5', value: 'h5' },
-            { title: 'H6', value: 'h6' },
-          ]
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+          ],
         },
       ],
     },
