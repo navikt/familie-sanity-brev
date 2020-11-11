@@ -17,7 +17,7 @@ const SubmalRenderer = (props) => {
 
   return (
     <span className={styles.valgfelt}>
-      {props.children}(valg basert på {felt})
+      {props.children}(Valg basert på {felt})
     </span>
   );
 };
