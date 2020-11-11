@@ -9,7 +9,7 @@ const SubmalRenderer = (props) => {
 
   useEffect(() => {
     if (props.submal) {
-      hentFeltFraRemote(feltId, "tittel").then((submal) => setFelt(submal));
+      hentFeltFraRemote(feltId, "id").then((submal) => setFelt(submal));
     } else {
       setFelt("TOMT SUBMALFELT");
     }

@@ -14,10 +14,43 @@ export default {
   },
   fields: [
     { type: "string", title: "ID", name: "id" },
-    { type: "string", title: "Tittel", name: "tittel" },
+    { type: "string", title: "Tittel bokmål", name: "tittelBokmaal" },
+    { type: "string", title: "Tittel nynorsk", name: "tittelNynorsk" },
     {
-      name: "innhold",
-      title: "Innhold",
+      name: "bokmaal",
+      title: "Bokmål",
+      type: "array",
+      of: [
+        {
+          title: "Liste",
+          name: "dokumentliste",
+          type: "reference",
+          to: [{ type: "dokumentmal" }],
+        },
+        {
+          type: "block",
+          marks: {
+            annotations: [
+              FlettefeltAnnontering,
+              SubmalAnnontering,
+              ValgfeltAnnontering,
+            ],
+          },
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "nynorsk",
+      title: "Nynorsk",
       type: "array",
       of: [
         {
