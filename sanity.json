@@ -34,11 +34,14 @@
     "@sanity/desk-tool",
     "barcode-input",
     "markdown",
-    "@sanity/dashboard"
+    "@sanity/dashboard",
+    "@sanity/production-preview"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [
@@ -49,6 +52,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./config/dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./resolveProductionUrl.js"
     }
   ]
 }
