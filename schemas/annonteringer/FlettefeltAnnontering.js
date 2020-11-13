@@ -37,6 +37,7 @@ export default {
       name: "felt",
       type: "reference",
       to: [{ type: "flettefelt" }],
+      validation: (Rule) => [Rule.required().error("Tomt flettefelt")],
     },
   ],
 };

@@ -35,6 +35,7 @@ export default {
       name: "valgfelt",
       type: "reference",
       to: [{ type: "valgfelt" }],
+      validation: (Rule) => [Rule.required().error("Tomt valgfelt")],
     },
   ],
 };

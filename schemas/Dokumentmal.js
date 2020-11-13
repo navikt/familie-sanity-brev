@@ -13,7 +13,12 @@ export default {
     },
   },
   fields: [
-    { type: "string", title: "ID", name: "id" },
+    {
+      type: "string",
+      title: "ID",
+      name: "id",
+      validation: (Rule) => [Rule.required().error("Dokumentet må ha en Id")],
+    },
     { type: "string", title: "Tittel bokmål", name: "tittelBokmaal" },
     { type: "string", title: "Tittel nynorsk", name: "tittelNynorsk" },
     {
@@ -26,6 +31,7 @@ export default {
           name: "dokumentliste",
           type: "reference",
           to: [{ type: "dokumentmal" }],
+          validation: (Rule) => [Rule.required().error("Tom Liste")],
         },
         {
           type: "block",
@@ -58,6 +64,7 @@ export default {
           name: "dokumentliste",
           type: "reference",
           to: [{ type: "dokumentmal" }],
+          validation: (Rule) => [Rule.required().error("Tomt valgfelt")],
         },
         {
           type: "block",
