@@ -35,6 +35,7 @@ export default {
       name: "submal",
       type: "reference",
       to: [{ type: "dokumentmal" }],
+      validation: (Rule) => [Rule.required().error("Tom submal")],
     },
     {
       title: "Skal med dersom:",

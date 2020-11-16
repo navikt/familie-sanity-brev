@@ -12,12 +12,22 @@ export default {
         {
           type: "object",
           fields: [
-            { type: "string", name: "valgmulighet", title: "Valgmulighet" },
+            {
+              type: "string",
+              name: "valgmulighet",
+              title: "Valgmulighet",
+              validation: (Rule) => [
+                Rule.required().error("Valgmuligheten må ha et navnt"),
+              ],
+            },
             {
               type: "reference",
               to: [{ type: "dokumentmal" }],
               name: "dokumentmal",
               title: "Dokumentmal",
+              validation: (Rule) => [
+                Rule.required().error("Valgfeltet må ha en dokumentmal"),
+              ],
             },
           ],
           preview: {
