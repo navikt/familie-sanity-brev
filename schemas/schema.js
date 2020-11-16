@@ -5,10 +5,10 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 
-import Flettefelter from "./Flettefelter";
 import Flettefelt from "./Flettefelt";
 import Dokumentmal from "./Dokumentmal";
 import SkalMedDersomFelt from "./SkalMedDersomFelt";
+import Delmal from "./Delmal";
 import Valgfelt from "./Valgfelt";
 sessionStorage.clear();
 
@@ -23,6 +23,7 @@ export default createSchema({
     // in the studio.
 
     Dokumentmal,
+    Delmal,
     Flettefelt,
     SkalMedDersomFelt,
     Valgfelt,

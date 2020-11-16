@@ -22,26 +22,24 @@ export default {
             },
             {
               type: "reference",
-              to: [{ type: "dokumentmal" }],
-              name: "dokumentmal",
-              title: "Dokumentmal",
+              to: [{ type: "delmal" }],
+              name: "delmal",
+              title: "Delmal",
               validation: (Rule) => [
-                Rule.required().error("Valgfeltet må ha en dokumentmal"),
+                Rule.required().error("Valgfeltet må ha en delmal"),
               ],
             },
           ],
           preview: {
             select: {
               title: "valgmulighet",
-              dokumentmal: "dokumentmal.tittel",
+              delmal: "delmal.id",
             },
             prepare(selection) {
-              const { title, dokumentmal } = selection;
+              const { title, delmal } = selection;
               return {
                 title: title,
-                subtitle: `Peker på dokumentmal: ${
-                  dokumentmal ? dokumentmal : "ukjent"
-                }`,
+                subtitle: `Peker på delmal: ${delmal ? delmal : "ukjent"}`,
               };
             },
           },

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
 import FlettefeltAnnontering from "./annonteringer/FlettefeltAnnontering";
 import SubmalAnnontering from "./annonteringer/SubmalAnnontering";
 import ValgfeltAnnontering from "./annonteringer/ValgfeltAnnontering";
 
 export default {
-  title: "Dokumentmal",
-  name: "dokumentmal",
+  title: "Delmal",
+  name: "delmal",
   type: "document",
   preview: {
     select: {
@@ -17,10 +16,8 @@ export default {
       type: "string",
       title: "ID",
       name: "id",
-      validation: (Rule) => [Rule.required().error("Dokumentet må ha en Id")],
+      validation: (Rule) => [Rule.required().error("Delmalen må ha en Id")],
     },
-    { type: "string", title: "Tittel bokmål", name: "tittelBokmaal" },
-    { type: "string", title: "Tittel nynorsk", name: "tittelNynorsk" },
     {
       name: "bokmaal",
       title: "Bokmål",
