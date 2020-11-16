@@ -1,6 +1,6 @@
 import { client } from "../../utils/sanity";
 
-export default async (feltId, relevantFelt = "felt") => {
+export default async (feltId, relevantFelt) => {
   const cachedHits = sessionStorage.getItem(feltId);
   if (cachedHits) {
     return JSON.parse(cachedHits)[relevantFelt];

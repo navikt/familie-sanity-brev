@@ -6,12 +6,12 @@ const FlettefeltRenderer = (props) => {
   const feltId = props.felt?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
   const [felt, setFelt] = useState(
-    cachedHits ? cachedHits : "LASTER FLETTEFELT"
+    cachedHits ? JSON.parse(cachedHits)["felt"] : "LASTER FLETTEFELT"
   );
 
   useEffect(() => {
     if (props.felt) {
-      hentFeltFraRemote(feltId).then((felt) => setFelt(felt));
+      hentFeltFraRemote(feltId, "felt").then((felt) => setFelt(felt));
     } else {
       setFelt("TOMT FLETTEFELT");
     }

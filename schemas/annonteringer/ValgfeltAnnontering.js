@@ -5,13 +5,15 @@ import hentFeltFraRemote from "./hentFeltFraRemote";
 const SubmalRenderer = (props) => {
   const feltId = props.valgfelt?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
-  const [felt, setFelt] = useState(cachedHits ? cachedHits : "LASTER SUBMAL");
+  const [felt, settFelt] = useState(
+    cachedHits ? JSON.parse(cachedHits)["tittel"] : "LASTER VALGFELT"
+  );
 
   useEffect(() => {
     if (props.valgfelt) {
-      hentFeltFraRemote(feltId, "tittel").then((felt) => setFelt(felt));
+      hentFeltFraRemote(feltId, "tittel").then((felt) => settFelt(felt));
     } else {
-      setFelt("TOMT VALGFELT");
+      settFelt("TOMT VALGFELT");
     }
   }, []);
 

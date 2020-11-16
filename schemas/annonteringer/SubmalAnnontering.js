@@ -5,7 +5,9 @@ import hentFeltFraRemote from "./hentFeltFraRemote";
 const SubmalRenderer = (props) => {
   const feltId = props.submal?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
-  const [submal, setFelt] = useState(cachedHits ? cachedHits : "LASTER SUBMAL");
+  const [submal, setFelt] = useState(
+    cachedHits ? JSON.parse(cachedHits)["id"] : "LASTER DELMAL"
+  );
 
   useEffect(() => {
     if (props.submal) {
@@ -25,23 +27,23 @@ const SubmalRenderer = (props) => {
 export default {
   name: "submal",
   type: "object",
-  title: "Submal",
+  title: "Delmal",
   blockEditor: {
-    icon: () => <span className={styles.submalIcon}>S</span>,
+    icon: () => <span className={styles.submalIcon}>D</span>,
     render: SubmalRenderer,
   },
   fields: [
     {
       name: "submal",
       type: "reference",
-      to: [{ type: "dokumentmal" }],
-      validation: (Rule) => [Rule.required().error("Tom submal")],
+      to: [{ type: "delmal" }],
+      validation: (Rule) => [Rule.required().error("Tom delmal")],
     },
     {
       title: "Skal med dersom:",
       name: "skalMedFelt",
       type: "reference",
-      description: "Submalen kommer alltid med dersom dette feltet er tomt",
+      description: "Delmalen kommer alltid med dersom dette feltet er tomt",
       to: [{ type: "skalMedDersomFelt" }],
     },
   ],
