@@ -2,7 +2,7 @@ import styles from "../../styles/myStyling.css";
 import React, { useEffect, useState } from "react";
 import hentFeltFraRemote from "./hentFeltFraRemote";
 
-const SubmalRenderer = (props) => {
+const ValgfeltRenderer = (props) => {
   const feltId = props.valgfelt?._ref;
   const cachedHits = sessionStorage.getItem(feltId);
   const [felt, settFelt] = useState(
@@ -30,7 +30,7 @@ export default {
   title: "Valgfelt",
   blockEditor: {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
-    render: SubmalRenderer,
+    render: () => <span className={styles.valgfelt}>{props.children}</span>,
   },
   fields: [
     {

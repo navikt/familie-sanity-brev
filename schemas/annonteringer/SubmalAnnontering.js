@@ -30,10 +30,11 @@ export default {
   title: "Delmal",
   blockEditor: {
     icon: () => <span className={styles.submalIcon}>D</span>,
-    render: SubmalRenderer,
+    render: (props) => <span className={styles.submal}>{props.children}</span>,
   },
   fields: [
     {
+      title: "Delmal",
       name: "submal",
       type: "reference",
       to: [{ type: "delmal" }],
