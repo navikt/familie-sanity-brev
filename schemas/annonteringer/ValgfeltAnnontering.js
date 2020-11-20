@@ -30,7 +30,9 @@ export default {
   title: "Valgfelt",
   blockEditor: {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
-    render: () => <span className={styles.valgfelt}>{props.children}</span>,
+    render: (props) => (
+      <span className={styles.valgfelt}>{props.children}</span>
+    ),
   },
   fields: [
     {
