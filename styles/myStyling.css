@@ -1,6 +1,6 @@
 .flettefelt {
-  background-color: #3385d1;
-  color: #fff;
+  background-color: rgba(30, 133, 209, 0.2);
+  color: #000;
 
   @nest &:hover {
     cursor: pointer;
@@ -13,7 +13,7 @@
 }
 
 .submal {
-  background-color: #b7b1a9;
+  background-color: rgba(183, 177, 100, 0.2);
   color: #000;
 
   @nest &:hover {
@@ -27,8 +27,8 @@
 }
 
 .valgfelt {
-  background-color: #826ba1;
-  color: #fff;
+  background-color: rgba(180, 106, 161, 0.5);
+  color: #000;
 
   @nest &:hover {
     cursor: pointer;

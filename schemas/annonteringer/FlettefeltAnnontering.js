@@ -30,7 +30,11 @@ export default {
   title: "Flettefelt",
   blockEditor: {
     icon: () => <span className={styles.flettefeltIcon}>F</span>,
-    render: FlettefeltRenderer,
+    render: (props) => (
+      <span contentEditable={true} className={styles.flettefelt}>
+        {props.children}
+      </span>
+    ),
   },
   fields: [
     {
