@@ -6,7 +6,7 @@ export default {
         data: [
           {
             title: "Brevgenerator",
-            value: "https://navikt.github.io/familie-brev/",
+            value: "https://familie-brev.intern.nav.no/",
             category: "apps",
           },
         ],
