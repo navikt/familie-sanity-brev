@@ -10,6 +10,7 @@ import Dokumentmal from "./Dokumentmal";
 import SkalMedDersomFelt from "./SkalMedDersomFelt";
 import Delmal from "./Delmal";
 import Valgfelt from "./Valgfelt";
+
 sessionStorage.clear();
 
 // Then we give our schema to the builder and provide the result to Sanity
