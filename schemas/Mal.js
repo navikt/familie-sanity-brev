@@ -8,12 +8,15 @@ export default (maalform, tittel) => ({
   type: "array",
   of: [
     {
-      title: "Liste",
+      title: "Gjentagende delmal",
       name: "dokumentliste",
       type: "reference",
-      description: "En liste med fler av samme delmal eller valgfelt.",
+      description:
+        "En delmal eller valgfelt som skal repiteres et vilkårlig antal ganger.",
       to: [{ type: "delmal" }, { type: "valgfelt" }],
-      validation: (Rule) => [Rule.required().error("Tom Liste")],
+      validation: (Rule) => [
+        Rule.required().error("Gjentagende delmal er tom"),
+      ],
     },
     {
       type: "block",
