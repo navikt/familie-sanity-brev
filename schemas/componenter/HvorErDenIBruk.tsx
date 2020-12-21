@@ -55,13 +55,18 @@ function HvorErDenIBruk(props: any) {
     <div {...props}>
       <div>Denne delmalen er brukt {data.length} steder:</div>
       <ul>
-        {data.map((ref) => (
-          <li>
-            <a href={`${referenceBaseUrl}/${ref._type};${ref._id}`}>
-              {ref?.id || ref?.tittel}
-            </a>
-          </li>
-        ))}
+        {data.map((ref) => {
+          const stikkord = ref.stikkord ? ref.stikkord.join(";") + ";" : "";
+          return (
+            <li key={ref._id}>
+              <a
+                href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}
+              >
+                {ref?.id || ref?.tittel}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

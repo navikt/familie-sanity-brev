@@ -6,7 +6,8 @@ const DOKUMENTER = "Dokumenter";
 
 export default async () => {
   const delmalerMedStikkord = await hentFraSanity(
-    '*[_type == "delmal" ]{stikkord, id, _id}'
+    '*[_type == "delmal" ]{stikkord, id, _id}',
+    false
   );
 
   const dokumentHierarki = hentStier(delmalerMedStikkord);
@@ -17,7 +18,7 @@ export default async () => {
       ...S.documentTypeListItems().filter(
         (listItem) => !["delmal"].includes(listItem.getId())
       ),
-      hentDelmalMappe(dokumentHierarki, "Delmaler"),
+      hentDelmalMappe(dokumentHierarki, "Delmal"),
     ]);
 };
 
@@ -25,6 +26,7 @@ const hentDelmalMappe = (sti, stiNavn) => {
   const dokumenter = sti[DOKUMENTER].map((dokument) =>
     S.listItem()
       .title(dokument.id)
+      .id(dokument._id)
       .icon(GrDocumentText)
       .child(S.document().schemaType("delmal").documentId(dokument._id))
   );
