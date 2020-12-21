@@ -3,7 +3,12 @@ export default {
   name: "valgfelt",
   type: "document",
   fields: [
-    { title: "Navn", name: "tittel", type: "string" },
+    {
+      title: "Navn",
+      name: "id",
+      type: "string",
+      validation: (Rule) => [Rule.required().error("Valgfeltet må ha et navn")],
+    },
     {
       title: "Muligheter",
       name: "valg",
@@ -17,7 +22,7 @@ export default {
               name: "valgmulighet",
               title: "Valgmulighet",
               validation: (Rule) => [
-                Rule.required().error("Valgmuligheten må ha et navnt"),
+                Rule.required().error("Valgmuligheten må ha et navn"),
               ],
             },
             {
