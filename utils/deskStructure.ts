@@ -15,7 +15,7 @@ type ISti = {
     id: string;
     _id: string;
   }[];
-  stier?: { [sti: string]: ISti };
+  stier: { [sti: string]: ISti } | {};
 };
 
 export default async () => {
