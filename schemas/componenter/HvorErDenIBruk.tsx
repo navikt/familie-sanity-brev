@@ -14,8 +14,9 @@ const Emoji = styled.span`
   font-size: 1.5em;
 `;
 
-type Referrer = {
-  title?: { _type: "localeString"; no: string };
+type IReferrer = {
+  stikkord?: string[];
+  id: string;
   _id: string;
   _type: string;
 };
@@ -55,14 +56,14 @@ function HvorErDenIBruk(props: any) {
     <div {...props}>
       <div>Denne delmalen er brukt {data.length} steder:</div>
       <ul>
-        {data.map((ref) => {
+        {data.map((ref: IReferrer) => {
           const stikkord = ref.stikkord ? ref.stikkord.join(";") + ";" : "";
           return (
             <li key={ref._id}>
               <a
                 href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}
               >
-                {ref?.id || ref?.tittel}
+                {ref.id}
               </a>
             </li>
           );
