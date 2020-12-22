@@ -21,6 +21,7 @@ type ISti = {
 export default async () => {
   const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
     '*[_type == "delmal" ]{stikkord, id, _id}',
+    false,
     false
   );
 
@@ -44,6 +45,8 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string) => {
       .icon(GrDocumentText)
       .child(S.document().schemaType("delmal").documentId(dokument._id))
   );
+  if (sti.stier) {
+  }
 
   const underMapper = sti.stier
     ? Object.keys(sti.stier).map((navn) =>
@@ -71,14 +74,15 @@ const capitalize = (tekst: string) => {
   return tekst.toLowerCase().replace(/^./, (str) => str.toUpperCase());
 };
 
-const leggTilSti = (delmal: IDelmal, stier: ISti) => {
+const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
   let parent = stier;
   for (let index = 0; index < delmal.stikkord.length; index++) {
     let stiNavn = capitalize(trimStreng(delmal.stikkord[index]));
-    if (!parent.stier) {
-      parent.stier = { [stiNavn]: { [DOKUMENTER]: [] } };
-    } else if (!parent.stier[stiNavn]) {
-      parent.stier[stiNavn] = { [DOKUMENTER]: [] };
+    if (!parent.stier[stiNavn]) {
+      parent.stier[stiNavn] = {
+        [DOKUMENTER]: [],
+        stier: {},
+      };
     }
     parent = parent.stier[stiNavn];
   }
@@ -87,7 +91,7 @@ const leggTilSti = (delmal: IDelmal, stier: ISti) => {
 };
 
 const hentStier = (delmaler: IDelmal[]): ISti => {
-  let stier = { [DOKUMENTER]: [] };
+  let stier: ISti = { [DOKUMENTER]: [], stier: {} };
   delmaler.forEach((delmal) => {
     if (delmal.stikkord) {
       stier = leggTilSti(delmal, stier);
