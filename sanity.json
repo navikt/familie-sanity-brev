@@ -58,7 +58,7 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./utils/deskStructure.js"
+      "path": "./utils/deskStructure.ts"
     },
     {
       "implements": "part:@sanity/dashboard/config",
