@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
-
-const sanityClient = require("@sanity/client");
+import { useEffect, useState } from 'react';
+import sanityClient from '@sanity/client';
 
 export const client = (datasett, brukCache) => {
   return sanityClient({
-    projectId: "xsrv1mh6",
+    projectId: 'xsrv1mh6',
     dataset: datasett,
     useCdn: brukCache,
   });
 };
 
-export async function hentFraSanity(
-  query,
-  brukCache = true,
-  brukSessionStorage = true
-) {
-  const datasett = window.location.pathname.split("/")[1];
-  const key = datasett + ";" + query;
+export async function hentFraSanity(query, brukCache = true, brukSessionStorage = true) {
+  const datasett = window.location.pathname.split('/')[1];
+  const key = datasett + ';' + query;
   const cachedHits = sessionStorage.getItem(key);
 
   if (cachedHits && brukSessionStorage) {
@@ -28,18 +23,14 @@ export async function hentFraSanity(
   }
 }
 
-export function useSanityQuery(
-  query,
-  brukCache = true,
-  brukSessionStorage = true
-) {
+export function useSanityQuery(query, brukCache = true, brukSessionStorage = true) {
   const [data, setData] = useState(undefined);
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
     hentFraSanity(query, brukCache, brukSessionStorage)
-      .then((response) => setData(response))
-      .catch((error) => setError(error));
+      .then(response => setData(response))
+      .catch(error => setError(error));
   }, []);
 
   return { data, error };

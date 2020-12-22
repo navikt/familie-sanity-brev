@@ -1,25 +1,25 @@
-import Mal from "./Mal";
+import Mal from './Mal';
 
 export default {
-  title: "Dokumentmal",
-  name: "dokumentmal",
-  type: "document",
+  title: 'Dokumentmal',
+  name: 'dokumentmal',
+  type: 'document',
   preview: {
     select: {
-      title: "id",
+      title: 'id',
     },
   },
   fields: [
     {
-      type: "string",
-      title: "ID",
-      name: "id",
-      validation: (Rule) => [Rule.required().error("Dokumentet må ha en Id")],
+      type: 'string',
+      title: 'ID',
+      name: 'id',
+      validation: Rule => [Rule.required().error('Dokumentet må ha en Id')],
     },
-    { type: "string", title: "Tittel bokmål", name: "tittelBokmaal" },
-    { type: "string", title: "Tittel nynorsk", name: "tittelNynorsk" },
+    { type: 'string', title: 'Tittel bokmål', name: 'tittelBokmaal' },
+    { type: 'string', title: 'Tittel nynorsk', name: 'tittelNynorsk' },
 
-    Mal("bokmaal", "Bokmål"),
-    Mal("nynorsk", "Nynorsk"),
+    Mal('bokmaal', 'Bokmål'),
+    Mal('nynorsk', 'Nynorsk'),
   ],
 };

@@ -1,36 +1,13 @@
-import styles from "../../styles/myStyling.css";
-import React, { useEffect, useState } from "react";
-import hentFeltFraRemote from "./hentFeltFraRemote";
-
-const FlettefeltRenderer = (props) => {
-  const feltId = props.felt?._ref;
-  const cachedHits = sessionStorage.getItem(feltId);
-  const [felt, setFelt] = useState(
-    cachedHits ? JSON.parse(cachedHits)["felt"] : "LASTER FLETTEFELT"
-  );
-
-  useEffect(() => {
-    if (props.felt) {
-      hentFeltFraRemote(feltId, "felt").then((felt) => setFelt(felt));
-    } else {
-      setFelt("TOMT FLETTEFELT");
-    }
-  }, []);
-
-  return (
-    <span className={styles.flettefelt}>
-      {props.children}({felt})
-    </span>
-  );
-};
+import styles from '../../styles/myStyling.css';
+import React from 'react';
 
 export default {
-  name: "flettefelt",
-  type: "object",
-  title: "Flettefelt",
+  name: 'flettefelt',
+  type: 'object',
+  title: 'Flettefelt',
   blockEditor: {
     icon: () => <span className={styles.flettefeltIcon}>F</span>,
-    render: (props) => (
+    render: props => (
       <span contentEditable={true} className={styles.flettefelt}>
         {props.children}
       </span>
@@ -38,10 +15,10 @@ export default {
   },
   fields: [
     {
-      name: "felt",
-      type: "reference",
-      to: [{ type: "flettefelt" }],
-      validation: (Rule) => [Rule.required().error("Tomt flettefelt")],
+      name: 'felt',
+      type: 'reference',
+      to: [{ type: 'flettefelt' }],
+      validation: Rule => [Rule.required().error('Tomt flettefelt')],
     },
   ],
 };

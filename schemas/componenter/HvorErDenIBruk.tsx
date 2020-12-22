@@ -1,6 +1,6 @@
-import * as React from "react";
-import styled from "styled-components";
-import { useSanityQuery } from "../../utils/sanity";
+import * as React from 'react';
+import styled from 'styled-components';
+import { useSanityQuery } from '../../utils/sanity';
 
 const Header = styled.div`
   font-size: 1.25rem;
@@ -8,10 +8,6 @@ const Header = styled.div`
 
 const ErrorStyling = styled(Header)`
   color: red;
-`;
-
-const Emoji = styled.span`
-  font-size: 1.5em;
 `;
 
 type IReferrer = {
@@ -22,10 +18,7 @@ type IReferrer = {
 };
 
 function HvorErDenIBruk(props: any) {
-  const documentId = window.location.pathname
-    .split(";")
-    .reverse()[0]
-    .slice(0, 36);
+  const documentId = window.location.pathname.split(';').reverse()[0].slice(0, 36);
 
   const query = `*[references("${documentId}")]`;
   const { data, error } = useSanityQuery(query);
@@ -42,29 +35,25 @@ function HvorErDenIBruk(props: any) {
   if (!data.length) {
     return (
       <Header {...props}>
-        Denne delmalen er ikke i bruk <Emoji>😢</Emoji>
+        Denne delmalen er ikke i bruk{' '}
+        <span role="img" aria-label="Gråteemoji">
+          😢
+        </span>
       </Header>
     );
   }
 
-  const referenceBaseUrl = window.location.pathname
-    .split("/")
-    .slice(0, -1)
-    .join("/");
+  const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
 
   return (
     <div {...props}>
       <div>Denne delmalen er brukt {data.length} steder:</div>
       <ul>
         {data.map((ref: IReferrer) => {
-          const stikkord = ref.stikkord ? ref.stikkord.join(";") + ";" : "";
+          const stikkord = ref.stikkord ? ref.stikkord.join(';') + ';' : '';
           return (
             <li key={ref._id}>
-              <a
-                href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}
-              >
-                {ref.id}
-              </a>
+              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>{ref.id}</a>
             </li>
           );
         })}

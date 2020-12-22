@@ -1,45 +1,20 @@
-import styles from "../../styles/myStyling.css";
-import React, { useEffect, useState } from "react";
-import hentFeltFraRemote from "./hentFeltFraRemote";
-
-const ValgfeltRenderer = (props) => {
-  const feltId = props.valgfelt?._ref;
-  const cachedHits = sessionStorage.getItem(feltId);
-  const [felt, settFelt] = useState(
-    cachedHits ? JSON.parse(cachedHits)["tittel"] : "LASTER VALGFELT"
-  );
-
-  useEffect(() => {
-    if (props.valgfelt) {
-      hentFeltFraRemote(feltId, "tittel").then((felt) => settFelt(felt));
-    } else {
-      settFelt("TOMT VALGFELT");
-    }
-  }, []);
-
-  return (
-    <span className={styles.valgfelt}>
-      {props.children}(Valg basert på {felt})
-    </span>
-  );
-};
+import styles from '../../styles/myStyling.css';
+import React from 'react';
 
 export default {
-  name: "valgfelt",
-  type: "object",
-  title: "Valgfelt",
+  name: 'valgfelt',
+  type: 'object',
+  title: 'Valgfelt',
   blockEditor: {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
-    render: (props) => (
-      <span className={styles.valgfelt}>{props.children}</span>
-    ),
+    render: props => <span className={styles.valgfelt}>{props.children}</span>,
   },
   fields: [
     {
-      name: "valgfelt",
-      type: "reference",
-      to: [{ type: "valgfelt" }],
-      validation: (Rule) => [Rule.required().error("Tomt valgfelt")],
+      name: 'valgfelt',
+      type: 'reference',
+      to: [{ type: 'valgfelt' }],
+      validation: Rule => [Rule.required().error('Tomt valgfelt')],
     },
   ],
 };

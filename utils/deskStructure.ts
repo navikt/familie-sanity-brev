@@ -1,8 +1,8 @@
-import S from "@sanity/desk-tool/structure-builder";
-import { hentFraSanity } from "./sanity";
-import { GrDocumentText } from "react-icons/gr";
+import S from '@sanity/desk-tool/structure-builder';
+import { hentFraSanity } from './sanity';
+import { GrDocumentText } from 'react-icons/gr';
 
-const DOKUMENTER = "dokumenter";
+const DOKUMENTER = 'dokumenter';
 
 interface IDelmal {
   stikkord: string | null;
@@ -22,36 +22,30 @@ export default async () => {
   const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
     '*[_type == "delmal" ]{stikkord, id, _id}',
     false,
-    false
+    false,
   );
 
   const dokumentHierarki: ISti = hentStier(delmalerMedStikkord);
 
   return S.list()
-    .title("Content")
+    .title('Content')
     .items([
-      ...S.documentTypeListItems().filter(
-        (listItem) => !["delmal"].includes(listItem.getId())
-      ),
-      hentDelmalMappe(dokumentHierarki, "Delmal"),
+      ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
+      hentDelmalMappe(dokumentHierarki, 'Delmal'),
     ]);
 };
 
 const hentDelmalMappe = (sti: ISti, stiNavn: string) => {
-  const dokumenter = sti[DOKUMENTER].map((dokument) =>
+  const dokumenter = sti[DOKUMENTER].map(dokument =>
     S.listItem()
       .title(dokument.id)
       .id(dokument._id)
       .icon(GrDocumentText)
-      .child(S.document().schemaType("delmal").documentId(dokument._id))
+      .child(S.document().schemaType('delmal').documentId(dokument._id)),
   );
-  if (sti.stier) {
-  }
 
   const underMapper = sti.stier
-    ? Object.keys(sti.stier).map((navn) =>
-        hentDelmalMappe(sti.stier[navn], navn)
-      )
+    ? Object.keys(sti.stier).map(navn => hentDelmalMappe(sti.stier[navn], navn))
     : [];
 
   return S.listItem()
@@ -59,25 +53,25 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string) => {
     .child(
       S.list()
         .title(stiNavn)
-        .items([...underMapper, ...dokumenter])
+        .items([...underMapper, ...dokumenter]),
     );
 };
 
 const trimStreng = (tekst: string) => {
-  return String(tekst).replace(/^\s+|\s+$/g, "");
+  return String(tekst).replace(/^\s+|\s+$/g, '');
 };
 
 const capitalize = (tekst: string) => {
   if (tekst.length === 0) {
-    return "";
+    return '';
   }
-  return tekst.toLowerCase().replace(/^./, (str) => str.toUpperCase());
+  return tekst.toLowerCase().replace(/^./, str => str.toUpperCase());
 };
 
 const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
   let parent = stier;
   for (let index = 0; index < delmal.stikkord.length; index++) {
-    let stiNavn = capitalize(trimStreng(delmal.stikkord[index]));
+    const stiNavn = capitalize(trimStreng(delmal.stikkord[index]));
     if (!parent.stier[stiNavn]) {
       parent.stier[stiNavn] = {
         [DOKUMENTER]: [],
@@ -92,7 +86,7 @@ const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
 
 const hentStier = (delmaler: IDelmal[]): ISti => {
   let stier: ISti = { [DOKUMENTER]: [], stier: {} };
-  delmaler.forEach((delmal) => {
+  delmaler.forEach(delmal => {
     if (delmal.stikkord) {
       stier = leggTilSti(delmal, stier);
     } else {

@@ -1,19 +1,19 @@
 export default {
   widgets: [
     {
-      name: "project-info",
+      name: 'project-info',
       options: {
         data: [
           {
-            title: "Brevgenerator",
-            value: "https://familie-brev.intern.nav.no/",
-            category: "apps",
+            title: 'Brevgenerator',
+            value: 'https://familie-brev.intern.nav.no/',
+            category: 'apps',
           },
         ],
       },
     },
     {
-      name: "project-users",
+      name: 'project-users',
     },
   ],
 };
