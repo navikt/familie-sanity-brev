@@ -1,5 +1,6 @@
 import styles from '../../styles/myStyling.css';
 import React from 'react';
+import NyttFelt from '../componenter/NyttFelt';
 
 export default {
   name: 'valgfelt',
@@ -10,6 +11,12 @@ export default {
     render: props => <span className={styles.valgfelt}>{props.children}</span>,
   },
   fields: [
+    {
+      name: 'lagNy',
+      type: 'string',
+      description: 'En knapp for å lage nye valgfelt',
+      inputComponent: props => NyttFelt(props, 'valgfelt'),
+    },
     {
       name: 'valgfelt',
       type: 'reference',
