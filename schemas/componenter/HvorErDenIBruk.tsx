@@ -7,7 +7,7 @@ const Header = styled.div`
 `;
 
 const ErrorStyling = styled(Header)`
-  color: red;
+  color: #f03e2f;
 `;
 
 type IReferrer = {
