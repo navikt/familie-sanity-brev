@@ -7,7 +7,7 @@ const BlockContent = require('@sanity/block-content-to-react');
 const DelmalBlock = (props: any, maalform: string) => {
   const _id = props.value?._id;
   if (!_id) {
-    return <ErrorStyling>Fyll ut delmal</ErrorStyling>;
+    return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
   }
 
   const query = `*[_id=="${_id}"]`;
@@ -23,11 +23,11 @@ const DelmalBlock = (props: any, maalform: string) => {
   }
 
   if (!data.length) {
-    return <TekstFelt>Delmalen finnes ikke</TekstFelt>;
+    return <ErrorStyling>Delmalen finnes ikke.</ErrorStyling>;
   }
 
   if (!data[0][maalform]) {
-    return <TekstFelt>Delmalen har ingen tekst for denne målformen</TekstFelt>;
+    return <ErrorStyling>Delmalen har ingen tekst for denne målformen.</ErrorStyling>;
   }
 
   return (
