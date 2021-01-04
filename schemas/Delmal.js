@@ -25,7 +25,7 @@ export default {
       inputComponent: HvorErDenIBruk,
     },
     {
-      title: 'Stikkord',
+      title: 'Mappe',
       name: 'stikkord',
       type: 'array',
       of: [{ type: 'string' }],
