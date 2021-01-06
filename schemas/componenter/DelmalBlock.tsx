@@ -4,8 +4,15 @@ import { useSanityQuery } from '../../utils/sanity';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
-const DelmalBlock = (props: any, maalform: string) => {
-  const _id = props.value?._id;
+const DelmalBlock = (props: any, maalform: string, skalHaPadding = true) => {
+  let _id;
+
+  if (props.value?._id) {
+    _id = props.value._id;
+  } else if (props.node?.submal?._ref) {
+    _id = props.node.submal._ref;
+  }
+
   if (!_id) {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
   }
@@ -31,7 +38,7 @@ const DelmalBlock = (props: any, maalform: string) => {
   }
 
   return (
-    <TekstFelt {...props}>
+    <TekstFelt {...props} skalHaPadding={skalHaPadding}>
       <BlockContent
         blocks={data[0][maalform]}
         serializers={{
@@ -43,7 +50,7 @@ const DelmalBlock = (props: any, maalform: string) => {
           types: {
             dokumentliste: (props: any) => props.children,
             block: (props: any) => <div className={`block`}>{props.children}</div>,
-            delmalBlock: (props: any) => <Delmal>{props.children}</Delmal>,
+            delmalBlock: (props: any) => DelmalBlock(props, maalform, false),
           },
         }}
       />
@@ -52,7 +59,7 @@ const DelmalBlock = (props: any, maalform: string) => {
 };
 
 const TekstFelt = styled.div`
-  padding: 0.75rem;
+  padding: ${props => (props.skalHaPadding ? '0.75rem' : 0)};
   overflow: auto;
 `;
 
