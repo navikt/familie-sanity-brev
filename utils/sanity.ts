@@ -6,6 +6,7 @@ export const client = (datasett, brukCache) => {
     projectId: 'xsrv1mh6',
     dataset: datasett,
     useCdn: brukCache,
+    withCredentials: true,
   });
 };
 
