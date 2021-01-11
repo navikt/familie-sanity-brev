@@ -2,7 +2,7 @@ import styles from '../../styles/myStyling.css';
 import React from 'react';
 import NyttFelt from '../componenter/NyttFelt';
 
-export const DelmalFeltFields = [
+export const EnkelDelmalFeltFields = [
   {
     name: 'lagNy',
     type: 'string',
@@ -13,7 +13,7 @@ export const DelmalFeltFields = [
     title: 'Delmal',
     name: 'submal',
     type: 'reference',
-    to: [{ type: 'delmal' }, { type: 'enkelDelmal' }],
+    to: [{ type: 'enkelDelmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
   },
   {
@@ -24,14 +24,3 @@ export const DelmalFeltFields = [
     to: [{ type: 'skalMedDersomFelt' }],
   },
 ];
-
-export default {
-  name: 'submal',
-  type: 'object',
-  title: 'Delmal',
-  blockEditor: {
-    icon: () => <span className={styles.submalIcon}>D</span>,
-    render: props => <span className={styles.submal}>{props.children}</span>,
-  },
-  fields: DelmalFeltFields,
-};

@@ -10,6 +10,9 @@ import Dokumentmal from './Dokumentmal';
 import SkalMedDersomFelt from './SkalMedDersomFelt';
 import Delmal from './Delmal';
 import Valgfelt from './Valgfelt';
+import AndreBrev from './andreBrev/AndreBrev';
+import EnlkelDelmal from './andreBrev/EnlkelDelmal';
+import Begrunnelse from './vedtak/begrunnelse';
 
 sessionStorage.clear();
 
@@ -24,10 +27,13 @@ export default createSchema({
     // in the studio.
 
     Dokumentmal,
+    AndreBrev,
+    EnlkelDelmal,
     Delmal,
     Flettefelt,
     SkalMedDersomFelt,
     Valgfelt,
+    Begrunnelse,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

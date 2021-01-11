@@ -31,7 +31,7 @@ export default async () => {
     .title('Content')
     .items([
       ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
-      hentDelmalMappe(dokumentHierarki, 'Delmal'),
+      hentDelmalMappe(dokumentHierarki, 'Avansert delmal'),
     ]);
 };
 
