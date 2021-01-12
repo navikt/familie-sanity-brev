@@ -1,7 +1,7 @@
 import HvorErDenIBruk from '../componenter/HvorErDenIBruk';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 
-const editorFelter = (maalform, tittel) => ({
+const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: 'array',
@@ -56,7 +56,7 @@ export default {
         layout: 'tags',
       },
     },
-    editorFelter('bokmaal', 'Bokmål'),
-    editorFelter('nynorsk', 'Nynorsk'),
+    editor('bokmaal', 'Bokmål'),
+    editor('nynorsk', 'Nynorsk'),
   ],
 };

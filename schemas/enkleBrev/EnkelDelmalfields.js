@@ -1,8 +1,7 @@
-import styles from '../../styles/myStyling.css';
 import React from 'react';
 import NyttFelt from '../componenter/NyttFelt';
 
-export const EnkelDelmalFeltFields = [
+export const EnkelDelmalReferanseFields = [
   {
     name: 'lagNy',
     type: 'string',

@@ -10,8 +10,8 @@ import Dokumentmal from './Dokumentmal';
 import SkalMedDersomFelt from './SkalMedDersomFelt';
 import Delmal from './Delmal';
 import Valgfelt from './Valgfelt';
-import AndreBrev from './andreBrev/AndreBrev';
-import EnlkelDelmal from './andreBrev/EnlkelDelmal';
+import EnkelDokumentmal from './enkleBrev/EnkelDokumentmal';
+import EnlkelDelmal from './enkleBrev/EnlkelDelmal';
 import Begrunnelse from './vedtak/begrunnelse';
 
 sessionStorage.clear();
@@ -27,7 +27,7 @@ export default createSchema({
     // in the studio.
 
     Dokumentmal,
-    AndreBrev,
+    EnkelDokumentmal,
     EnlkelDelmal,
     Delmal,
     Flettefelt,

@@ -1,8 +1,8 @@
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
-import { EnkelDelmalFeltFields } from './EnkelDelmalfields';
+import { EnkelDelmalReferanseFields } from './EnkelDelmalfields';
 import DelmalBlock from '../componenter/DelmalBlock';
+import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 
-export default (maalform, tittel) => ({
+const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: 'array',
@@ -11,7 +11,7 @@ export default (maalform, tittel) => ({
       title: 'EnkelDelmal',
       name: 'enkelDelmalBlock',
       type: 'object',
-      fields: [...EnkelDelmalFeltFields],
+      fields: [...EnkelDelmalReferanseFields],
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
       preview: {
         select: {
@@ -38,3 +38,27 @@ export default (maalform, tittel) => ({
     },
   ],
 });
+
+export default {
+  title: 'Enkel dokumentmal',
+  name: 'enkelDokumentmal',
+  type: 'document',
+  preview: {
+    select: {
+      title: 'id',
+    },
+  },
+  fields: [
+    {
+      type: 'string',
+      title: 'ID',
+      name: 'id',
+      validation: Rule => [Rule.required().error('Dokumentet må ha en Id')],
+    },
+    { type: 'string', title: 'Tittel bokmål', name: 'tittelBokmaal' },
+    { type: 'string', title: 'Tittel nynorsk', name: 'tittelNynorsk' },
+
+    editor('bokmaal', 'Bokmål'),
+    editor('nynorsk', 'Nynorsk'),
+  ],
+};
