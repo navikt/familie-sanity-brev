@@ -1,6 +1,6 @@
 import styles from '../../styles/myStyling.css';
 import React from 'react';
-import NyttFelt from '../componenter/NyttFelt';
+import NyttFelt from '../komponenter/NyttFelt';
 
 export const ValgfeltFields = [
   {

@@ -1,5 +1,5 @@
 import Mal from './Mal';
-import HvorErDenIBruk from './componenter/HvorErDenIBruk';
+import HvorErDenIBruk from './komponenter/HvorErDenIBruk';
 
 export default {
   title: 'Avansert delmal',

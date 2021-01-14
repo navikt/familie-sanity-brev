@@ -1,7 +1,7 @@
-import HvorErDenIBruk from '../componenter/HvorErDenIBruk';
+import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 
-const editor = (maalform, tittel) => ({
+const editorFelter = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: 'array',
@@ -22,11 +22,16 @@ const editor = (maalform, tittel) => ({
       ],
     },
   ],
+  validation: Rule =>
+    Rule.custom(hmm => {
+      console.log('hmm', hmm);
+      return true;
+    }),
 });
 
 export default {
-  title: 'Enkel delmal',
-  name: 'enkelDelmal',
+  title: 'Begrunnelse',
+  name: 'begrunnelse',
   type: 'document',
   preview: {
     select: {
@@ -38,7 +43,7 @@ export default {
       type: 'string',
       title: 'ID',
       name: 'id',
-      validation: Rule => [Rule.required().error('Delmalen må ha en Id')],
+      validation: Rule => [Rule.required().error('Begrunnelsen må ha en Id')],
     },
     {
       name: 'hvorDenBrukes',
@@ -47,16 +52,7 @@ export default {
         'Dette er et dummyfelt for å få vist komponenten som viser hvor den delte teksten er i bruk',
       inputComponent: HvorErDenIBruk,
     },
-    {
-      title: 'Mappe',
-      name: 'stikkord',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
-    },
-    editor('bokmaal', 'Bokmål'),
-    editor('nynorsk', 'Nynorsk'),
+    editorFelter('bokmaal', 'Bokmål'),
+    editorFelter('nynorsk', 'Nynorsk'),
   ],
 };

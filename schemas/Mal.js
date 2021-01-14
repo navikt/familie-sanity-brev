@@ -1,8 +1,7 @@
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import SubmalAnnontering, { DelmalFeltFields } from './annonteringer/SubmalAnnontering';
 import ValgfeltAnnontering, { ValgfeltFields } from './annonteringer/ValgfeltAnnontering';
-import DelmalBlock from './componenter/DelmalBlock';
-import NyttFelt from './componenter/NyttFelt';
+import DelmalBlock from './komponenter/DelmalBlock';
 
 export default (maalform, tittel) => ({
   name: maalform,

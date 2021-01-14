@@ -1,6 +1,6 @@
 import styles from '../../styles/myStyling.css';
 import React from 'react';
-import NyttFelt from '../componenter/NyttFelt';
+import NyttFelt from '../komponenter/NyttFelt';
 
 export const DelmalFeltFields = [
   {
@@ -15,6 +15,11 @@ export const DelmalFeltFields = [
     type: 'reference',
     to: [{ type: 'delmal' }, { type: 'enkelDelmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
+  },
+  {
+    title: 'Betingelse',
+    name: 'betingelse',
+    type: 'string',
   },
   {
     title: 'Skal med dersom:',
