@@ -8,22 +8,23 @@ const editor = (maalform, tittel) => ({
   type: 'array',
   of: [
     {
-      title: 'EnkelDelmal',
+      title: 'Enkel delmal',
       name: DokumentNavn.ENKEL_DELMAL_BLOCK,
       type: 'object',
       fields: [
         {
-          title: 'Enkel Delmal',
+          title: 'Referanse til en enkel delmal',
           name: DokumentNavn.ENKEL_DELMAL_REFERANSE,
           type: SanityTyper.REFERENCE,
           to: [{ type: DokumentNavn.ENKEL_DELMAL }],
-          validation: Rule => [Rule.required().error('Fyll inn en delmal')],
+          validation: Rule => [Rule.required().error('Fyll inn en enkel delmal.')],
         },
         {
-          title: 'Betingelse',
-          name: DokumentNavn.BETINGELSE,
-          type: SanityTyper.STRING,
-          description: 'Delmalen kommer alltid med dersom dette feltet er tomt',
+          title: 'Delmalen skal alltid med',
+          name: DokumentNavn.SKAL_ALLTID_MED,
+          type: SanityTyper.BOOLEAN,
+          description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
+          validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
         },
       ],
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
@@ -61,15 +62,15 @@ export default {
   type: 'document',
   fields: [
     {
-      type: SanityTyper.STRING,
       title: 'Visningsnavn',
+      type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
       validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Api navn',
       type: SanityTyper.STRING,
-      name: 'apiNavn',
+      name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
       validation: Rule => [
         Rule.required().error('Dokumentet må ha er apiNavn'),
@@ -84,7 +85,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'visningsnavn',
+      title: DokumentNavn.VISNINGSNAVN,
     },
   },
 };

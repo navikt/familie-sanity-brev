@@ -38,8 +38,8 @@ export default {
   },
   fields: [
     {
-      type: SanityTyper.STRING,
       title: 'Visningsnavn',
+      type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
       validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
     },
@@ -51,22 +51,22 @@ export default {
       validation: Rule => [
         Rule.required().error('Dokumentet må ha et apiNavn'),
         Rule.required()
-          .max(30)
-          .error(`Api-navnet kan være på maksimalt ${Konstanter.API_MAX_LENGTH} tegn.`),
+          .max(Konstanter.API_NAME_MAX_LENGTH)
+          .error(`Api-navnet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`),
       ],
     },
     {
       title: 'Api-navn-forslag',
       type: 'slug',
       description:
-        'Teknisk navn. Eksempel innhenteOpplysninger. Trykk på generate for å generere fra Visningsnavnet',
+        'Teknisk navn. Eksempel innhenteOpplysninger. Trykk på "generate" for å generere fra Visningsnavnet',
       name: DokumentNavn.API_NAVN + 'Forslag',
       options: { source: DokumentNavn.VISNINGSNAVN, slugify: formaterTilCamelCase },
       validation: Rule => [
         Rule.required().error('Dokumentet må ha et apiNavn'),
         Rule.required().custom(slug =>
-          slug?.current.length > Konstanter.API_MAX_LENGTH
-            ? `Api-navnet kan være på maksimalt ${Konstanter.API_MAX_LENGTH} tegn.`
+          slug?.current.length > Konstanter.API_NAME_MAX_LENGTH
+            ? `Api-navnet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`
             : true,
         ),
       ],

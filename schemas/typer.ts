@@ -5,7 +5,7 @@ export enum DokumentNavn {
   ENKEL_DELMAL_BLOCK = 'enkelDelmalBlock',
   ENKEL_DELMAL_REFERANSE = 'enkelDelmalReferanse',
   ENKEL_DELMAL = 'enkelDelmal',
-  BETINGELSE = 'betingelse',
+  SKAL_ALLTID_MED = 'skalAlltidMed',
   VISNINGSNAVN = 'visningsnavn',
   API_NAVN = 'apiNavn',
 }
@@ -13,4 +13,5 @@ export enum DokumentNavn {
 export enum SanityTyper {
   STRING = 'string',
   REFERENCE = 'reference',
+  BOOLEAN = 'boolean',
 }
