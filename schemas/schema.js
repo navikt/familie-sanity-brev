@@ -10,6 +10,7 @@ import Flettefelt from './Flettefelt';
 import AvansertDokument from './AvansertDokumentmal';
 import SkalMedDersomFelt from './SkalMedDersomFelt';
 import Delmal from './Delmal';
+import AvansertDelmal from './AvansertDelmal';
 import Valgfelt from './Valgfelt';
 import Dokument from './dokument/Dokument';
 import EnlkelDelmal from './enkelDelmal/EnlkelDelmal';
@@ -31,6 +32,7 @@ export default createSchema({
     Dokument,
     EnlkelDelmal,
     Delmal,
+    AvansertDelmal,
     Flettefelt,
     SkalMedDersomFelt,
     Valgfelt,

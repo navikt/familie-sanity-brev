@@ -2,8 +2,8 @@ import Mal from './Mal';
 import HvorErDenIBruk from './komponenter/HvorErDenIBruk';
 
 export default {
-  title: 'Delmal',
-  name: 'delmal',
+  title: 'Avansert delmal',
+  name: 'avansertDelmal',
   type: 'document',
   preview: {
     select: {
