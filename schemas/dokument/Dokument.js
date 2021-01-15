@@ -1,5 +1,5 @@
 import DelmalBlock from '../komponenter/DelmalBlock';
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
+import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
 
 const editor = (maalform, tittel) => ({

@@ -1,5 +1,5 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
+import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
 import formaterTilCamelCase from '../../utils/formaterTilCamelCase';
 import { DokumentNavn, SanityTyper } from '../typer';
 import { Konstanter } from '../konstanter';
