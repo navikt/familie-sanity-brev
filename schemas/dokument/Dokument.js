@@ -1,6 +1,10 @@
 import DelmalBlock from '../komponenter/DelmalBlock';
 import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
+import styles from '../../styles/myStyling.css';
+import NyttFelt from '../komponenter/NyttFelt';
+import React from 'react';
+import FlettefeltBlock from '../komponenter/FlettefeltBlock';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -35,6 +39,34 @@ const editor = (maalform, tittel) => ({
         prepare: selection => selection,
         component: props => {
           return DelmalBlock(props, maalform, props.value._id);
+        },
+      },
+    },
+    {
+      name: 'flettefelt',
+      type: 'object',
+      title: 'Flettefelt',
+      fields: [
+        {
+          name: 'lagNy',
+          type: 'string',
+          description: 'En knapp for å lage nye flettefelt',
+          inputComponent: props => NyttFelt(props, 'flettefelt'),
+        },
+        {
+          name: 'flettefeltReferanse',
+          type: 'reference',
+          to: [{ type: 'flettefelt' }],
+          validation: Rule => [Rule.required().error('Tomt flettefelt')],
+        },
+      ],
+      preview: {
+        select: {
+          _ref: 'flettefeltReferanse._ref',
+        },
+        prepare: selection => selection,
+        component: props => {
+          return FlettefeltBlock(props.value._ref);
         },
       },
     },
