@@ -8,15 +8,15 @@ const editor = (maalform, tittel) => ({
   type: 'array',
   of: [
     {
-      title: 'Enkel delmal',
-      name: DokumentNavn.ENKEL_DELMAL_BLOCK,
+      title: 'Delmal',
+      name: DokumentNavn.DELMAL,
       type: 'object',
       fields: [
         {
-          title: 'Referanse til en enkel delmal',
-          name: DokumentNavn.ENKEL_DELMAL_REFERANSE,
+          title: 'Referanse til en delmal',
+          name: DokumentNavn.DELMAL_REFERANSE,
           type: SanityTyper.REFERENCE,
-          to: [{ type: DokumentNavn.ENKEL_DELMAL }],
+          to: [{ type: DokumentNavn.DELMAL }],
           validation: Rule => [Rule.required().error('Fyll inn en enkel delmal.')],
         },
         {
@@ -30,7 +30,7 @@ const editor = (maalform, tittel) => ({
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
       preview: {
         select: {
-          _id: `${DokumentNavn.ENKEL_DELMAL_REFERANSE}._ref`,
+          _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
         },
         prepare: selection => selection,
         component: props => {
