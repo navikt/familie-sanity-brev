@@ -10,6 +10,8 @@ export enum DokumentNavn {
   SKAL_ALLTID_MED = 'skalAlltidMed',
   VISNINGSNAVN = 'visningsnavn',
   API_NAVN = 'apiNavn',
+  FLETTEFELT = 'flettefelt',
+  FLETTEFELT_REFERANSE = 'flettefeltReferanse',
 }
 
 export enum SanityTyper {

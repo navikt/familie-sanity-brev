@@ -12,7 +12,7 @@ const editor = (maalform, tittel) => ({
     {
       type: 'block',
       marks: {
-        annotations: [FlettefeltAnnontering],
+        annotations: [FlettefeltAnnontering()],
       },
       styles: [
         { title: 'Normal', value: 'normal' },
