@@ -13,7 +13,6 @@ import AvansertDelmal from './AvansertDelmal';
 import Valgfelt from './Valgfelt';
 import Dokument from './dokument/Dokument';
 import Delmal from './delmal/Delmal';
-import Begrunnelse from './vedtak/begrunnelse';
 
 sessionStorage.clear();
 
@@ -34,7 +33,6 @@ export default createSchema({
     Flettefelt,
     SkalMedDersomFelt,
     Valgfelt,
-    Begrunnelse,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

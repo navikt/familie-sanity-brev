@@ -4,16 +4,10 @@ import NyttFelt from '../komponenter/NyttFelt';
 
 export const DelmalFeltFields = [
   {
-    name: 'lagNy',
-    type: 'string',
-    description: 'En knapp for å lage nye delmaler',
-    inputComponent: props => NyttFelt(props, 'delmal'),
-  },
-  {
     title: 'Delmal',
     name: 'submal',
     type: 'reference',
-    to: [{ type: 'delmal' }],
+    to: [{ type: 'avansertDelmal' }, { type: 'delmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
   },
   {
@@ -27,6 +21,12 @@ export const DelmalFeltFields = [
     type: 'reference',
     description: 'Delmalen kommer alltid med dersom dette feltet er tomt',
     to: [{ type: 'skalMedDersomFelt' }],
+  },
+  {
+    name: 'lagNy',
+    type: 'string',
+    description: 'En knapp for å lage nye delmaler',
+    inputComponent: props => NyttFelt(props, 'delmal'),
   },
 ];
 

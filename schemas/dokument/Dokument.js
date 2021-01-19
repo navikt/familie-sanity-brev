@@ -11,7 +11,7 @@ const delmalBlock = maalform => ({
   type: 'object',
   fields: [
     {
-      title: 'Referanse til en delmal',
+      title: 'Referanse til delmal:',
       name: DokumentNavn.DELMAL_REFERANSE,
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.DELMAL }],
