@@ -4,7 +4,6 @@ import { useSanityQuery } from '../../utils/sanity';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
-
 const FlettefeltBlock = (id: string = '') => {
   let _id = id;
 
