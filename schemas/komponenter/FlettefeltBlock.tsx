@@ -4,8 +4,6 @@ import { useSanityQuery } from '../../utils/sanity';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const BlockContent = require('@sanity/block-content-to-react');
 
 const FlettefeltBlock = (id: string = '') => {
   let _id = id;
@@ -21,8 +19,6 @@ const FlettefeltBlock = (id: string = '') => {
     console.error(error);
     return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
   }
-
-  console.log(data);
 
   if (!data) {
     return <PreviewContainer>Laster Flettefelt..</PreviewContainer>;
