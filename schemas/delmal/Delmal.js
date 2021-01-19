@@ -1,18 +1,19 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
 import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
-import formaterTilCamelCase from '../../utils/formaterTilCamelCase';
 import { DokumentNavn, SanityTyper } from '../typer';
 import { Konstanter } from '../konstanter';
+import { flettefeltBlock } from '../dokument/Dokument';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: 'array',
   of: [
+    flettefeltBlock,
     {
       type: 'block',
       marks: {
-        annotations: [FlettefeltAnnontering()],
+        annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
       },
       styles: [
         { title: 'Normal', value: 'normal' },
@@ -28,8 +29,8 @@ const editor = (maalform, tittel) => ({
 });
 
 export default {
-  title: 'Enkel delmal',
-  name: 'enkelDelmal',
+  title: 'Delmal',
+  name: 'delmal',
   type: 'document',
   preview: {
     select: {
@@ -56,22 +57,6 @@ export default {
       ],
     },
     {
-      title: 'Api-navn-forslag',
-      type: 'slug',
-      description:
-        'Teknisk navn. Eksempel innhenteOpplysninger. Trykk på "generate" for å generere fra Visningsnavnet',
-      name: DokumentNavn.API_NAVN + 'Forslag',
-      options: { source: DokumentNavn.VISNINGSNAVN, slugify: formaterTilCamelCase },
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha et apiNavn'),
-        Rule.required().custom(slug =>
-          slug?.current.length > Konstanter.API_NAME_MAX_LENGTH
-            ? `Api-navnet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`
-            : true,
-        ),
-      ],
-    },
-    {
       name: 'hvorDenBrukes',
       type: 'string',
       description:
@@ -80,16 +65,7 @@ export default {
     },
     {
       title: 'Mappe',
-      name: 'mappe',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
-    },
-    {
-      title: 'Mappe-forslag',
-      name: 'mappeForslag',
+      name: DokumentNavn.MAPPE,
       type: 'array',
       of: [{ type: 'string' }],
     },

@@ -1,7 +1,7 @@
 import Mal from './Mal';
 
 export default {
-  title: 'Dokumentmal',
+  title: 'Avansert dokument',
   name: 'dokumentmal',
   type: 'document',
   preview: {

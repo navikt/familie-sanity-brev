@@ -13,7 +13,7 @@ export const DelmalFeltFields = [
     title: 'Delmal',
     name: 'submal',
     type: 'reference',
-    to: [{ type: 'delmal' }, { type: 'enkelDelmal' }],
+    to: [{ type: 'delmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
   },
   {

@@ -12,6 +12,7 @@ export enum DokumentNavn {
   API_NAVN = 'apiNavn',
   FLETTEFELT = 'flettefelt',
   FLETTEFELT_REFERANSE = 'flettefeltReferanse',
+  MAPPE = 'mappe',
 }
 
 export enum SanityTyper {

@@ -7,13 +7,12 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // We import object and document schemas
 
 import Flettefelt from './Flettefelt';
-import AvansertDokument from './AvansertDokumentmal';
+import AvansertDokument from './AvansertDokument';
 import SkalMedDersomFelt from './SkalMedDersomFelt';
-import Delmal from './Delmal';
 import AvansertDelmal from './AvansertDelmal';
 import Valgfelt from './Valgfelt';
 import Dokument from './dokument/Dokument';
-import EnlkelDelmal from './enkelDelmal/EnlkelDelmal';
+import Delmal from './delmal/Delmal';
 import Begrunnelse from './vedtak/begrunnelse';
 
 sessionStorage.clear();
@@ -30,9 +29,8 @@ export default createSchema({
 
     AvansertDokument,
     Dokument,
-    EnlkelDelmal,
-    Delmal,
     AvansertDelmal,
+    Delmal,
     Flettefelt,
     SkalMedDersomFelt,
     Valgfelt,

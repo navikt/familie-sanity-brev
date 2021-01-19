@@ -1,7 +1,6 @@
 import DelmalBlock from '../komponenter/DelmalBlock';
 import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
-import styles from '../../styles/myStyling.css';
 import NyttFelt from '../komponenter/NyttFelt';
 import React from 'react';
 import FlettefeltBlock from '../komponenter/FlettefeltBlock';
@@ -44,7 +43,7 @@ const delmalBlock = maalform => ({
   },
 });
 
-const flettefeltBlock = {
+export const flettefeltBlock = {
   name: DokumentNavn.FLETTEFELT,
   type: 'object',
   title: 'Flettefelt',
