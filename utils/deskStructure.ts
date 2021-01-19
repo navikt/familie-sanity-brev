@@ -5,14 +5,14 @@ import { GrDocumentText } from 'react-icons/gr';
 const DOKUMENTER = 'dokumenter';
 
 interface IDelmal {
-  stikkord: string | null;
-  id: string;
+  mappe: string[] | null;
+  visningsnavn: string;
   _id: string;
 }
 
 type ISti = {
   [DOKUMENTER]: {
-    id: string;
+    visningsnavn: string;
     _id: string;
   }[];
   stier: { [sti: string]: ISti } | {};
@@ -20,28 +20,32 @@ type ISti = {
 
 export default async () => {
   const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
-    '*[_type == "delmal" ]{stikkord, id, _id}',
+    '*[_type == "delmal" ]{mappe, visningsnavn, _id}',
     false,
     false,
   );
 
-  const dokumentHierarki: ISti = hentStier(delmalerMedStikkord);
+  const delmalHierarki: ISti = hentStier(delmalerMedStikkord);
 
   return S.list()
     .title('Content')
     .items([
       ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
-      hentDelmalMappe(dokumentHierarki, 'Avansert delmal2'),
+      hentDelmalMappe(delmalHierarki, 'Delmal'),
     ]);
 };
 
 const hentDelmalMappe = (sti: ISti, stiNavn: string) => {
-  const dokumenter = sti[DOKUMENTER].map(dokument =>
+  const dokumenter = sti[DOKUMENTER].filter(
+    dokument => dokument._id.split('.')[0] !== 'drafts',
+  ).map(dokument =>
     S.listItem()
-      .title(dokument.id)
+      .title(dokument.visningsnavn)
       .id(dokument._id)
       .icon(GrDocumentText)
-      .child(S.document().schemaType('delmal').documentId(dokument._id)),
+      .child(
+        S.document().schemaType('delmal').documentId(dokument._id).title(dokument.visningsnavn),
+      ),
   );
 
   const underMapper = sti.stier
@@ -70,8 +74,8 @@ const capitalize = (tekst: string) => {
 
 const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
   let parent = stier;
-  for (let index = 0; index < delmal.stikkord.length; index++) {
-    const stiNavn = capitalize(trimStreng(delmal.stikkord[index]));
+  for (let index = 0; index < delmal.mappe.length; index++) {
+    const stiNavn = capitalize(trimStreng(delmal.mappe[index]));
     if (!parent.stier[stiNavn]) {
       parent.stier[stiNavn] = {
         [DOKUMENTER]: [],
@@ -80,17 +84,17 @@ const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
     }
     parent = parent.stier[stiNavn];
   }
-  parent[DOKUMENTER].push({ id: delmal.id, _id: delmal._id });
+  parent[DOKUMENTER].push({ visningsnavn: delmal.visningsnavn, _id: delmal._id });
   return stier;
 };
 
 const hentStier = (delmaler: IDelmal[]): ISti => {
   let stier: ISti = { [DOKUMENTER]: [], stier: {} };
   delmaler.forEach(delmal => {
-    if (delmal.stikkord) {
+    if (delmal.mappe) {
       stier = leggTilSti(delmal, stier);
     } else {
-      stier[DOKUMENTER].push({ id: delmal.id, _id: delmal._id });
+      stier[DOKUMENTER].push({ visningsnavn: delmal.visningsnavn, _id: delmal._id });
     }
   });
 
