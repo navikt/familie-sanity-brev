@@ -53,7 +53,7 @@ export default (maalform, tittel) => ({
     {
       type: 'block',
       marks: {
-        annotations: [FlettefeltAnnontering, SubmalAnnontering, ValgfeltAnnontering],
+        annotations: [FlettefeltAnnontering(), SubmalAnnontering, ValgfeltAnnontering],
       },
       styles: [
         { title: 'Normal', value: 'normal' },

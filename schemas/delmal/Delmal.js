@@ -1,5 +1,5 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
-import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
+import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
 import { Konstanter } from '../konstanter';
 import { flettefeltBlock } from '../dokument/Dokument';

@@ -1,5 +1,5 @@
 import DelmalBlock from '../komponenter/DelmalBlock';
-import FlettefeltAnnontering from '../annonteringer/enkelFlettefeltAnnontering';
+import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
 import NyttFelt from '../komponenter/NyttFelt';
 import React from 'react';
