@@ -1,5 +1,6 @@
 import Mal from './Mal';
 import HvorErDenIBruk from './komponenter/HvorErDenIBruk';
+import { DokumentNavn, SanityTyper } from './typer';
 
 export default {
   title: 'Avansert delmal',
@@ -12,10 +13,20 @@ export default {
   },
   fields: [
     {
-      type: 'string',
-      title: 'ID',
-      name: 'id',
-      validation: Rule => [Rule.required().error('Delmalen må ha en Id')],
+      title: 'Visningsnavn',
+      type: SanityTyper.STRING,
+      name: DokumentNavn.VISNINGSNAVN,
+      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+    },
+    {
+      title: 'Api navn',
+      type: SanityTyper.STRING,
+      name: DokumentNavn.API_NAVN,
+      description: 'Teknisk navn. Eksempel innhenteOpplysninger',
+      validation: Rule => [
+        Rule.required().error('Dokumentet må ha er apiNavn'),
+        Rule.required().max(30),
+      ],
     },
     {
       name: 'hvorDenBrukes',

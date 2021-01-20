@@ -21,7 +21,7 @@ import client from 'part:@sanity/base/client';
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 const fetchDocuments = () =>
-  client.fetch(`*[_type == 'delmal' && defined(id)][0..100] {_id, _rev, id}`);
+  client.fetch(`*[_type == 'dokumentmal' && defined(id)][0..100] {_id, _rev, id}`);
 
 const buildPatches = docs =>
   docs.map(doc => ({
