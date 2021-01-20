@@ -2,7 +2,7 @@ import styles from '../../styles/myStyling.css';
 import React from 'react';
 import NyttFelt from '../komponenter/NyttFelt';
 
-export const ValgfeltFields = [
+export const ValgFelter = [
   {
     name: 'lagNy',
     type: 'string',
@@ -25,5 +25,5 @@ export default {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
     render: props => <span className={styles.valgfelt}>{props.children}</span>,
   },
-  fields: ValgfeltFields,
+  fields: ValgFelter,
 };

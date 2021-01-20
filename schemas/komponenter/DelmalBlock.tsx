@@ -38,14 +38,14 @@ const DelmalBlock = (props: any, maalform: string, id: string = '', skalHaPaddin
         serializers={{
           marks: {
             flettefelt: (props: any) => <Felttelfelt>{props.children}</Felttelfelt>,
-            submal: (props: any) => <Delmal>{props.children}</Delmal>,
+            delmal: (props: any) => <Delmal>{props.children}</Delmal>,
             valgfelt: (props: any) => <Valgfelt>{props.children}</Valgfelt>,
           },
           types: {
             dokumentliste: (props: any) => props.children,
             block: (props: any) => <div className={`block`}>{props.children}</div>,
             delmalBlock: (props: any) =>
-              DelmalBlock(props, maalform, props.node.submal._ref, false),
+              DelmalBlock(props, maalform, props.node.delmal._ref, false),
           },
         }}
       />

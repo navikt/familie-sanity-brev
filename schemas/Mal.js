@@ -1,6 +1,6 @@
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
-import SubmalAnnontering, { DelmalFeltFields } from './annonteringer/SubmalAnnontering';
-import ValgfeltAnnontering, { ValgfeltFields } from './annonteringer/ValgfeltAnnontering';
+import DelmalAnnontering, { DelmalFelter } from './annonteringer/DelmalAnnontering';
+import ValgAnnontering, { ValgFelter } from './annonteringer/ValgAnnontering';
 import DelmalBlock from './komponenter/DelmalBlock';
 
 export default (maalform, tittel) => ({
@@ -12,22 +12,14 @@ export default (maalform, tittel) => ({
       title: 'Delmal',
       name: 'delmalBlock',
       type: 'object',
-      fields: [
-        ...DelmalFeltFields,
-        {
-          title: 'Er gjentagende',
-          name: 'erGjentagende',
-          type: 'boolean',
-          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
-        },
-      ],
+      fields: [...DelmalFelter],
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
       preview: {
         select: {
-          _id: 'submal._ref',
+          _id: 'delmal._ref',
         },
         prepare: selection => selection,
-        component: props => DelmalBlock(props, maalform),
+        component: props => DelmalBlock(props, maalform, props.value._id),
       },
     },
     {
@@ -35,7 +27,7 @@ export default (maalform, tittel) => ({
       name: 'valgfeltBlock',
       type: 'object',
       fields: [
-        ...ValgfeltFields,
+        ...ValgFelter,
         {
           title: 'Er gjentagende',
           name: 'erGjentagende',
@@ -53,7 +45,7 @@ export default (maalform, tittel) => ({
     {
       type: 'block',
       marks: {
-        annotations: [FlettefeltAnnontering(), SubmalAnnontering, ValgfeltAnnontering],
+        annotations: [FlettefeltAnnontering(), DelmalAnnontering, ValgAnnontering],
       },
       styles: [
         { title: 'Normal', value: 'normal' },
