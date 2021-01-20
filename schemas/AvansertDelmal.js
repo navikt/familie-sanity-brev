@@ -1,6 +1,7 @@
 import Mal from './Mal';
 import HvorErDenIBruk from './komponenter/HvorErDenIBruk';
 import { DokumentNavn, SanityTyper } from './typer';
+import { Konstanter } from './konstanter';
 
 export default {
   title: 'Avansert delmal',
@@ -25,7 +26,7 @@ export default {
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
       validation: Rule => [
         Rule.required().error('Dokumentet må ha er apiNavn'),
-        Rule.required().max(30),
+        Rule.required().max(Konstanter.API_NAME_MAX_LENGTH),
       ],
     },
     {
@@ -37,12 +38,9 @@ export default {
     },
     {
       title: 'Mappe',
-      name: 'stikkord',
+      name: 'mappe',
       type: 'array',
       of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
     },
     Mal('bokmaal', 'Bokmål'),
     Mal('nynorsk', 'Nynorsk'),

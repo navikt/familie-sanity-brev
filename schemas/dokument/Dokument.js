@@ -4,6 +4,7 @@ import { DokumentNavn, SanityTyper } from '../typer';
 import NyttFelt from '../komponenter/NyttFelt';
 import React from 'react';
 import FlettefeltBlock from '../komponenter/FlettefeltBlock';
+import { Konstanter } from '../konstanter';
 
 const delmalBlock = maalform => ({
   title: 'Delmal',
@@ -116,7 +117,7 @@ export default {
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
       validation: Rule => [
         Rule.required().error('Dokumentet må ha er apiNavn'),
-        Rule.required().max(30),
+        Rule.required().max(Konstanter.API_NAME_MAX_LENGTH),
       ],
     },
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
