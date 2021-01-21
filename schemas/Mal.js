@@ -3,6 +3,7 @@ import SubmalAnnontering, { DelmalFeltFields } from './annonteringer/SubmalAnnon
 import ValgfeltAnnontering, { ValgfeltFields } from './annonteringer/ValgfeltAnnontering';
 import DelmalBlock from './componenter/DelmalBlock';
 import NyttFelt from './componenter/NyttFelt';
+import TekstStyles from "./tekststyles/TekstStyles";
 
 export default (maalform, tittel) => ({
   name: maalform,
@@ -56,15 +57,7 @@ export default (maalform, tittel) => ({
       marks: {
         annotations: [FlettefeltAnnontering, SubmalAnnontering, ValgfeltAnnontering],
       },
-      styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-      ],
+      styles: TekstStyles,
     },
   ],
 });
