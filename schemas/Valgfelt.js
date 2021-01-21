@@ -1,32 +1,34 @@
+import { DokumentNavn, SanityTyper } from './typer';
+
 export default {
   title: 'Valgfelt',
-  name: 'valgfelt',
-  type: 'document',
+  name: DokumentNavn.VALGFELT,
+  type: SanityTyper.DOCUMENT,
   fields: [
     {
       title: 'Navn',
-      name: 'id',
-      type: 'string',
+      name: DokumentNavn.ID,
+      type: SanityTyper.STRING,
       validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
     },
     {
       title: 'Muligheter',
-      name: 'valg',
-      type: 'array',
+      name: DokumentNavn.VALG,
+      type: SanityTyper.ARRAY,
       of: [
         {
           type: 'object',
           fields: [
             {
-              type: 'string',
-              name: 'valgmulighet',
+              type: SanityTyper.STRING,
+              name: DokumentNavn.VALGMULIGHET,
               title: 'Valgmulighet',
               validation: Rule => [Rule.required().error('Valgmuligheten må ha et navn')],
             },
             {
-              type: 'reference',
-              to: [{ type: 'delmal' }],
-              name: 'delmal',
+              type: SanityTyper.REFERENCE,
+              to: [{ type: DokumentNavn.DELMAL }, { type: DokumentNavn.AVANSERT_DELMAL }],
+              name: DokumentNavn.DELMAL,
               title: 'Delmal',
               validation: Rule => [Rule.required().error('Valgfeltet må ha en delmal')],
             },

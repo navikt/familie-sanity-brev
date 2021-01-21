@@ -6,8 +6,8 @@ import { DokumentNavn, SanityTyper } from '../typer';
 export const DelmalFelter = [
   {
     title: 'Delmal',
-    name: 'delmal',
-    type: 'reference',
+    name: DokumentNavn.DELMAL,
+    type: SanityTyper.REFERENCE,
     to: [{ type: 'avansertDelmal' }, { type: 'delmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
   },
@@ -27,8 +27,8 @@ export const DelmalFelter = [
 ];
 
 export default {
-  name: 'delmal',
-  type: 'object',
+  name: DokumentNavn.DELMAL,
+  type: SanityTyper.OBJECT,
   title: 'Delmal',
   blockEditor: {
     icon: () => <span className={styles.delmalIcon}>D</span>,

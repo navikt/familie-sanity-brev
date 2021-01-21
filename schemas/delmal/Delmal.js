@@ -3,35 +3,28 @@ import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../typer';
 import { Konstanter } from '../konstanter';
 import { flettefeltBlock } from '../dokument/Dokument';
+import TekstStyles from '../tekststyles/TekstStyles';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
-  type: 'array',
+  type: SanityTyper.ARRAY,
   of: [
     flettefeltBlock,
     {
-      type: 'block',
+      type: SanityTyper.BLOCK,
       marks: {
         annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
       },
-      styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-      ],
+      styles: TekstStyles,
     },
   ],
 });
 
 export default {
   title: 'Delmal',
-  name: 'delmal',
-  type: 'document',
+  name: DokumentNavn.DELMAL,
+  type: SanityTyper.DOCUMENT,
   preview: {
     select: {
       title: DokumentNavn.VISNINGSNAVN,
@@ -58,7 +51,7 @@ export default {
     },
     {
       name: 'hvorDenBrukes',
-      type: 'string',
+      type: SanityTyper.STRING,
       description:
         'Dette er et dummyfelt for å få vist komponenten som viser hvor den delte teksten er i bruk.',
       inputComponent: HvorErDenIBruk,
@@ -66,10 +59,10 @@ export default {
     {
       title: 'Mappe',
       name: DokumentNavn.MAPPE,
-      type: 'array',
+      type: SanityTyper.ARRAY,
       of: [{ type: 'string' }],
     },
-    editor('bokmaal', 'Bokmål'),
-    editor('nynorsk', 'Nynorsk'),
+    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
 };

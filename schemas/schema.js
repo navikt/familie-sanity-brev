@@ -8,7 +8,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 import Flettefelt from './Flettefelt';
 import AvansertDokument from './AvansertDokument';
-import SkalMedDersomFelt from './SkalMedDersomFelt';
 import AvansertDelmal from './AvansertDelmal';
 import Valgfelt from './Valgfelt';
 import Dokument from './dokument/Dokument';
@@ -31,7 +30,6 @@ export default createSchema({
     AvansertDelmal,
     Delmal,
     Flettefelt,
-    SkalMedDersomFelt,
     Valgfelt,
 
     // When added to this list, object types can be used as

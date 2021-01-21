@@ -4,8 +4,8 @@ import { Konstanter } from './konstanter';
 
 export default {
   title: 'Avansert dokument',
-  name: 'dokumentmal',
-  type: 'document',
+  name: DokumentNavn.DOKUMENTMAL,
+  type: SanityTyper.DOCUMENT,
   preview: {
     select: {
       title: DokumentNavn.VISNINGSNAVN,
@@ -28,10 +28,10 @@ export default {
         Rule.required().max(Konstanter.API_NAME_MAX_LENGTH),
       ],
     },
-    { type: 'string', title: 'Tittel bokmål', name: 'tittelBokmaal' },
-    { type: 'string', title: 'Tittel nynorsk', name: 'tittelNynorsk' },
+    { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
+    { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
 
-    Mal('bokmaal', 'Bokmål'),
-    Mal('nynorsk', 'Nynorsk'),
+    Mal(DokumentNavn.BOKMAAL, 'Bokmål'),
+    Mal(DokumentNavn.BOKMAAL, 'Nynorsk'),
   ],
 };

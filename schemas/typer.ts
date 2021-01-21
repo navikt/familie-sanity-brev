@@ -13,10 +13,27 @@ export enum DokumentNavn {
   FLETTEFELT = 'flettefelt',
   FLETTEFELT_REFERANSE = 'flettefeltReferanse',
   MAPPE = 'mappe',
+  AVANSERT_DELMAL = 'avansertDelmal',
+  BOKMAAL = 'bokmaal',
+  NYNORSK = 'nynorsk',
+  DELMAL_BLOCK = 'delmalBlock',
+  VALFELT_BLOCK = 'valgfeltBlock',
+  ER_GJENTAGENDE = 'erGjentagende',
+  DOKUMENTMAL = 'dokumentmal',
+  VALGFELT = 'valgfelt',
+  ER_LISTE = 'erListe',
+  FELT = 'felt',
+  ID = 'id',
+  VALG = 'valg',
+  VALGMULIGHET = 'valgmulighet',
 }
 
 export enum SanityTyper {
   STRING = 'string',
   REFERENCE = 'reference',
   BOOLEAN = 'boolean',
+  OBJECT = 'object',
+  ARRAY = 'array',
+  BLOCK = 'block',
+  DOCUMENT = 'document',
 }

@@ -1,9 +1,11 @@
+import { DokumentNavn, SanityTyper } from './typer';
+
 export default {
   title: 'Flettefelt',
-  name: 'flettefelt',
-  type: 'document',
+  name: DokumentNavn.FLETTEFELT,
+  type: SanityTyper.DOCUMENT,
   fields: [
-    { title: 'Navn', name: 'felt', type: 'string' },
-    { title: 'Er liste', name: 'erListe', type: 'boolean' },
+    { title: 'Navn', name: DokumentNavn.FELT, type: SanityTyper.STRING },
+    { title: 'Er liste', name: DokumentNavn.ER_LISTE, type: SanityTyper.BOOLEAN },
   ],
 };

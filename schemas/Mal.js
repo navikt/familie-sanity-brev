@@ -2,18 +2,27 @@ import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import DelmalAnnontering, { DelmalFelter } from './annonteringer/DelmalAnnontering';
 import ValgAnnontering, { ValgFelter } from './annonteringer/ValgAnnontering';
 import DelmalBlock from './komponenter/DelmalBlock';
-import TekstStyles from "./tekststyles/TekstStyles";
+import TekstStyles from './tekststyles/TekstStyles';
+import { DokumentNavn, SanityTyper } from './typer';
 
 export default (maalform, tittel) => ({
   name: maalform,
   title: tittel,
-  type: 'array',
+  type: SanityTyper.ARRAY,
   of: [
     {
       title: 'Delmal',
-      name: 'delmalBlock',
-      type: 'object',
-      fields: [...DelmalFelter],
+      name: DokumentNavn.DELMAL_BLOCK,
+      type: SanityTyper.OBJECT,
+      fields: [
+        ...DelmalFelter,
+        {
+          title: 'Er gjentagende',
+          name: DokumentNavn.ER_GJENTAGENDE,
+          type: SanityTyper.BOOLEAN,
+          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
+        },
+      ],
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
       preview: {
         select: {
@@ -25,15 +34,15 @@ export default (maalform, tittel) => ({
     },
     {
       title: 'Valgfelt',
-      name: 'valgfeltBlock',
-      type: 'object',
+      name: DokumentNavn.VALFELT_BLOCK,
+      type: SanityTyper.OBJECT,
       fields: [
         ...ValgFelter,
         {
           title: 'Er gjentagende',
-          name: 'erGjentagende',
-          type: 'boolean',
-          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
+          name: DokumentNavn.ER_GJENTAGENDE,
+          type: SanityTyper.BOOLEAN,
+          validation: Rule => [Rule.required().error('Må sette om valgfeltet er gjentagende')],
         },
       ],
       validation: Rule => [Rule.required().error('Du må velge et valgfelt')],

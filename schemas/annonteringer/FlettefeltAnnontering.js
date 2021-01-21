@@ -1,10 +1,11 @@
 import styles from '../../styles/myStyling.css';
 import React from 'react';
 import NyttFelt from '../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../typer';
 
 export default (filter = undefined) => ({
-  name: 'flettefelt',
-  type: 'object',
+  name: DokumentNavn.FLETTEFELT,
+  type: SanityTyper.OBJECT,
   title: 'Flettefelt',
   blockEditor: {
     icon: () => <span className={styles.flettefeltIcon}>F</span>,
@@ -17,8 +18,8 @@ export default (filter = undefined) => ({
   fields: [
     {
       name: 'flettefeltReferanse',
-      type: 'reference',
-      to: [{ type: 'flettefelt' }],
+      type: SanityTyper.REFERENCE,
+      to: [{ type: DokumentNavn.FLETTEFELT }],
       validation: Rule => [Rule.required().error('Tomt flettefelt')],
       options: { filter: filter },
     },

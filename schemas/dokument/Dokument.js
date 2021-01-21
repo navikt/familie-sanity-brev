@@ -5,11 +5,12 @@ import NyttFelt from '../komponenter/NyttFelt';
 import React from 'react';
 import FlettefeltBlock from '../komponenter/FlettefeltBlock';
 import { Konstanter } from '../konstanter';
+import TekstStyles from '../tekststyles/TekstStyles';
 
 const delmalBlock = maalform => ({
   title: 'Delmal',
   name: DokumentNavn.DELMAL,
-  type: 'object',
+  type: SanityTyper.OBJECT,
   fields: [
     {
       title: 'Referanse til delmal:',
@@ -27,7 +28,7 @@ const delmalBlock = maalform => ({
     },
     {
       name: 'lagNy',
-      type: 'string',
+      type: SanityTyper.STRING,
       description: 'En knapp for å lage ny delmal',
       inputComponent: props => NyttFelt(props, DokumentNavn.DELMAL),
     },
@@ -46,19 +47,19 @@ const delmalBlock = maalform => ({
 
 export const flettefeltBlock = {
   name: DokumentNavn.FLETTEFELT,
-  type: 'object',
+  type: SanityTyper.OBJECT,
   title: 'Flettefelt',
   fields: [
     {
       name: DokumentNavn.FLETTEFELT_REFERANSE,
-      type: 'reference',
+      type: SanityTyper.REFERENCE,
       to: [{ type: 'flettefelt' }],
       validation: Rule => [Rule.required().error('Tomt flettefelt')],
       options: { filter: 'erListe == true' },
     },
     {
       name: 'lagNy',
-      type: 'string',
+      type: SanityTyper.STRING,
       description: 'En knapp for å lage nye flettefelt',
       inputComponent: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
     },
@@ -77,24 +78,16 @@ export const flettefeltBlock = {
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
-  type: 'array',
+  type: SanityTyper.ARRAY,
   of: [
     delmalBlock(maalform),
     flettefeltBlock,
     {
-      type: 'block',
+      type: SanityTyper.BLOCK,
       marks: {
         annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
       },
-      styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-      ],
+      styles: TekstStyles,
     },
   ],
 });
@@ -102,7 +95,7 @@ const editor = (maalform, tittel) => ({
 export default {
   title: 'Dokument',
   name: DokumentNavn.DOKUMENT,
-  type: 'document',
+  type: SanityTyper.DOCUMENT,
   fields: [
     {
       title: 'Visningsnavn',
@@ -123,8 +116,8 @@ export default {
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
 
-    editor('bokmaal', 'Bokmål'),
-    editor('nynorsk', 'Nynorsk'),
+    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
   preview: {
     select: {
