@@ -32,6 +32,6 @@ export default {
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
 
     Mal(DokumentNavn.BOKMAAL, 'Bokmål'),
-    Mal(DokumentNavn.BOKMAAL, 'Nynorsk'),
+    Mal(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
 };
