@@ -1,5 +1,6 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
+import TekstStyles from "../tekststyles/TekstStyles";
 
 const editorFelter = (maalform, tittel) => ({
   name: maalform,
@@ -11,15 +12,7 @@ const editorFelter = (maalform, tittel) => ({
       marks: {
         annotations: [FlettefeltAnnontering],
       },
-      styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-      ],
+      styles: TekstStyles,
     },
   ],
   validation: Rule =>
