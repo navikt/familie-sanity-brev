@@ -18,7 +18,10 @@ type IReferrer = {
 };
 
 function HvorErDenIBruk(props: any) {
-  const documentId = window.location.pathname.split(';').reverse()[0].slice(0, 36);
+  const url = window.location.pathname;
+  const documentId = url.includes(';')
+    ? url.split(';').reverse()[0].slice(0, 36)
+    : url.split('__edit__').reverse()[0].slice(0, 36);
 
   const query = `*[references("${documentId}")]`;
   const { data, error } = useSanityQuery(query);
@@ -36,7 +39,7 @@ function HvorErDenIBruk(props: any) {
     return (
       <Header {...props}>
         Denne delmalen er ikke i bruk{' '}
-        <span role="img" aria-label="Gråteemoji">
+        <span role="img" aria-label="Gråte-emoji">
           😢
         </span>
       </Header>

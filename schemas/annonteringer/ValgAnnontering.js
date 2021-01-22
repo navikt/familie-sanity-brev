@@ -1,29 +1,30 @@
 import styles from '../../styles/myStyling.css';
 import React from 'react';
-import NyttFelt from '../componenter/NyttFelt';
+import NyttFelt from '../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../typer';
 
-export const ValgfeltFields = [
+export const ValgFelter = [
   {
     name: 'lagNy',
-    type: 'string',
+    type: SanityTyper.STRING,
     description: 'En knapp for å lage nye valgfelt',
     inputComponent: props => NyttFelt(props, 'valgfelt'),
   },
   {
-    name: 'valgfelt',
-    type: 'reference',
+    name: DokumentNavn.VALGFELT,
+    type: SanityTyper.REFERENCE,
     to: [{ type: 'valgfelt' }],
     validation: Rule => [Rule.required().error('Tomt valgfelt')],
   },
 ];
 
 export default {
-  name: 'valgfelt',
-  type: 'object',
+  name: DokumentNavn.VALGFELT,
+  type: SanityTyper.OBJECT,
   title: 'Valgfelt',
   blockEditor: {
     icon: () => <span className={styles.valgfeltIcon}>V</span>,
     render: props => <span className={styles.valgfelt}>{props.children}</span>,
   },
-  fields: ValgfeltFields,
+  fields: ValgFelter,
 };

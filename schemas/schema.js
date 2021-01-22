@@ -1,4 +1,5 @@
 // First, we must import the schema creator
+// Then import schema types from any plugins that might expose them
 import createSchema from 'part:@sanity/base/schema-creator';
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
@@ -6,10 +7,11 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // We import object and document schemas
 
 import Flettefelt from './Flettefelt';
-import Dokumentmal from './Dokumentmal';
-import SkalMedDersomFelt from './SkalMedDersomFelt';
-import Delmal from './Delmal';
+import AvansertDokument from './AvansertDokument';
+import AvansertDelmal from './AvansertDelmal';
 import Valgfelt from './Valgfelt';
+import Dokument from './dokument/Dokument';
+import Delmal from './delmal/Delmal';
 
 sessionStorage.clear();
 
@@ -23,10 +25,11 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
 
-    Dokumentmal,
+    AvansertDokument,
+    Dokument,
+    AvansertDelmal,
     Delmal,
     Flettefelt,
-    SkalMedDersomFelt,
     Valgfelt,
 
     // When added to this list, object types can be used as

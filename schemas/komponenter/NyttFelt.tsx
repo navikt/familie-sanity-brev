@@ -6,6 +6,9 @@ const NyttFelt = (props: any, felttype: string) => {
   const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
   return (
     <div {...props}>
+      <StyledTittel>
+        {`Finnes ikke ${felttype}${felttype === 'delmal' ? 'en' : 'et'} du ønsker å ta med?`}
+      </StyledTittel>
       <StyledButton
         onClick={() =>
           (location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
@@ -17,6 +20,13 @@ const NyttFelt = (props: any, felttype: string) => {
     </div>
   );
 };
+const StyledTittel = styled.div`
+  font-size: 0.8125rem;
+  line-height: 1.23077;
+  font-weight: 600;
+  color: #262f3d;
+  padding-bottom: 0.75rem;
+`;
 
 const StyledButton = styled.button`
   -webkit-font-smoothing: inherit;
