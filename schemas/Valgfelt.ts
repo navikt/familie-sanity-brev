@@ -1,4 +1,5 @@
 import { DokumentNavn, SanityTyper } from './typer';
+import { erCamelCase } from './valideringer';
 
 export default {
   title: 'Valgfelt',
@@ -9,7 +10,10 @@ export default {
       title: 'Navn',
       name: DokumentNavn.ID,
       type: SanityTyper.STRING,
-      validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
+      validation: Rule => [
+        Rule.required().error('Valgfeltet må ha et navn'),
+        Rule.required().custom(erCamelCase),
+      ],
     },
     {
       title: 'Muligheter',
@@ -23,7 +27,10 @@ export default {
               type: SanityTyper.STRING,
               name: DokumentNavn.VALGMULIGHET,
               title: 'Valgmulighet',
-              validation: Rule => [Rule.required().error('Valgmuligheten må ha et navn')],
+              validation: Rule => [
+                Rule.required().error('Valgmuligheten må ha et navn'),
+                Rule.required().custom(erCamelCase),
+              ],
             },
             {
               type: SanityTyper.REFERENCE,
