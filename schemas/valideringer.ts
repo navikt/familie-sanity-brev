@@ -1,11 +1,11 @@
 export const erCamelCase = (tekst: string): true | string => {
-  const erAlphaNummerisk = tekst.match(/^[a-zA-Z0-9]+$/i);
+  const erAlphaNummerisk = RegExp(/^[a-z0-9æøå]+$/i).test(tekst);
   if (!erAlphaNummerisk) {
     return 'Dette feltet kan kun bestå av tall eller boksaver.';
   }
 
-  const førsteTegnErLitenBokstav = tekst.length > 0 && tekst[0].match(/^[0-9A-Z]+$/i);
-  if (førsteTegnErLitenBokstav) {
+  const førsteTegnErLitenBokstav = RegExp(/^[a-zæøå].*/).test(tekst);
+  if (!førsteTegnErLitenBokstav) {
     return 'Første tegn i dette feltet kan ikke være tall eller stor bokstav.';
   }
 
