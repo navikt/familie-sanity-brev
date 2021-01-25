@@ -14,19 +14,11 @@ export default (maalform, tittel) => ({
       title: 'Delmal',
       name: DokumentNavn.DELMAL_BLOCK,
       type: SanityTyper.OBJECT,
-      fields: [
-        ...DelmalFelter,
-        {
-          title: 'Er gjentagende',
-          name: DokumentNavn.ER_GJENTAGENDE,
-          type: SanityTyper.BOOLEAN,
-          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
-        },
-      ],
+      fields: [...DelmalFelter(true)],
       validation: Rule => [Rule.required().error('Ingen delmal valgt')],
       preview: {
         select: {
-          _id: 'delmal._ref',
+          _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
         },
         prepare: selection => selection,
         component: props => DelmalBlock(props, maalform, props.value._id),
@@ -34,21 +26,13 @@ export default (maalform, tittel) => ({
     },
     {
       title: 'Valgfelt',
-      name: DokumentNavn.VALFELT_BLOCK,
+      name: DokumentNavn.VALG_BLOCK,
       type: SanityTyper.OBJECT,
-      fields: [
-        ...ValgFelter,
-        {
-          title: 'Er gjentagende',
-          name: DokumentNavn.ER_GJENTAGENDE,
-          type: SanityTyper.BOOLEAN,
-          validation: Rule => [Rule.required().error('Må sette om valgfeltet er gjentagende')],
-        },
-      ],
+      fields: [...ValgFelter(true)],
       validation: Rule => [Rule.required().error('Du må velge et valgfelt')],
       preview: {
         select: {
-          title: 'valgfelt.id',
+          title: `${DokumentNavn.VALG_BLOCK}.${DokumentNavn.VISNINGSNAVN}`,
         },
       },
     },

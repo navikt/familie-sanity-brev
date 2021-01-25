@@ -6,8 +6,14 @@ export default {
   type: SanityTyper.DOCUMENT,
   fields: [
     {
-      title: 'Navn',
+      title: 'Visningsnavn',
       name: DokumentNavn.ID,
+      type: SanityTyper.STRING,
+      validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
+    },
+    {
+      title: 'Api-navn',
+      name: DokumentNavn.API_NAVN,
       type: SanityTyper.STRING,
       validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
     },

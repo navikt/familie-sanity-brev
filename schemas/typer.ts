@@ -2,10 +2,7 @@ export enum DokumentNavn {
   DOKUMENT = 'dokument',
   TITTEL_BOKMAAL = 'tittelBokmaal',
   TITTEL_NYNORSK = 'tittelNynorsk',
-  ENKEL_DELMAL_BLOCK = 'enkelDelmalBlock',
-  ENKEL_DELMAL_REFERANSE = 'enkelDelmalReferanse',
   DELMAL_REFERANSE = 'delmalReferanse',
-  ENKEL_DELMAL = 'enkelDelmal',
   DELMAL = 'delmal',
   SKAL_ALLTID_MED = 'skalAlltidMed',
   VISNINGSNAVN = 'visningsnavn',
@@ -17,7 +14,7 @@ export enum DokumentNavn {
   BOKMAAL = 'bokmaal',
   NYNORSK = 'nynorsk',
   DELMAL_BLOCK = 'delmalBlock',
-  VALFELT_BLOCK = 'valgfeltBlock',
+  VALG_BLOCK = 'valgBlock',
   ER_GJENTAGENDE = 'erGjentagende',
   DOKUMENTMAL = 'dokumentmal',
   VALGFELT = 'valgfelt',
@@ -25,6 +22,7 @@ export enum DokumentNavn {
   FELT = 'felt',
   ID = 'id',
   VALG = 'valg',
+  VALG_REFERANSE = 'valgReferanse',
   VALGMULIGHET = 'valgmulighet',
 }
 
