@@ -1,7 +1,7 @@
-import Mal from './Mal';
-import HvorErDenIBruk from './komponenter/HvorErDenIBruk';
-import { DokumentNavn, SanityTyper } from './typer';
-import { Konstanter } from './konstanter';
+import editor from './avansertMalEditor';
+import HvorErDenIBruk from '../../komponenter/HvorErDenIBruk';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { Konstanter } from '../../util/konstanter';
 
 export default {
   title: 'Avansert delmal',
@@ -42,7 +42,7 @@ export default {
       type: SanityTyper.ARRAY,
       of: [{ type: 'string' }],
     },
-    Mal(DokumentNavn.BOKMAAL, 'Bokmål'),
-    Mal(DokumentNavn.NYNORSK, 'Nynorsk'),
+    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
 };

@@ -1,7 +1,7 @@
-import styles from '../../styles/myStyling.css';
+import styles from '../../../styles/myStyling.css';
 import React from 'react';
-import NyttFelt from '../komponenter/NyttFelt';
-import { DokumentNavn, SanityTyper } from '../typer';
+import NyttFelt from '../../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const DelmalFelter = (erGjentagende = false) => [
   {

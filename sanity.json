@@ -54,11 +54,11 @@
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema.ts"
+      "path": "./src/schema.ts"
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./utils/deskStructure.ts"
+      "path": "./config/deskStructure.ts"
     },
     {
       "implements": "part:@sanity/dashboard/config",
@@ -66,7 +66,7 @@
     },
     {
       "implements": "part:@sanity/production-preview/resolve-production-url",
-      "path": "./utils/resolveProductionUrl.js"
+      "path": "./config/resolveProductionUrl.js"
     }
   ]
 }

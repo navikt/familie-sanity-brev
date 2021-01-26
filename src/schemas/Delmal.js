@@ -1,9 +1,9 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
-import { DokumentNavn, SanityTyper } from '../typer';
-import { Konstanter } from '../konstanter';
-import { flettefeltBlock } from '../dokument/Dokument';
-import TekstStyles from '../tekststyles/TekstStyles';
+import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
+import { DokumentNavn, SanityTyper } from '../util/typer';
+import { Konstanter } from '../util/konstanter';
+import { flettefeltBlock } from './Dokument';
+import TekstStyles from '../util/TekstStyles';
 
 const editor = (maalform, tittel) => ({
   name: maalform,

@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { hentFraSanity } from './sanity';
+import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 
 const DOKUMENTER = 'dokumenter';
@@ -30,8 +30,8 @@ export default async () => {
   return S.list()
     .title('Content')
     .items([
-      ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
       hentDelmalMappe(delmalHierarki, 'Delmal'),
+      ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
     ]);
 };
 

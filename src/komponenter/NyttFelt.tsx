@@ -11,7 +11,7 @@ const NyttFelt = (props: any, felttype: string) => {
       </StyledTittel>
       <StyledButton
         onClick={() =>
-          (location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
+          (window.location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
         }
       >
         <GoPlusSmall size={35} style={{ paddingTop: '2px' }} /> Lag{' '}
