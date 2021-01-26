@@ -45,7 +45,7 @@ const DelmalBlock = (props: any, maalform: string, id: string = '', skalHaPaddin
             dokumentliste: (props: any) => props.children,
             block: (props: any) => <div className={`block`}>{props.children}</div>,
             delmalBlock: (props: any) =>
-              DelmalBlock(props, maalform, props.node.delmal._ref, false),
+              DelmalBlock(props, maalform, props.node.delmalReferanse._ref, false),
           },
         }}
       />

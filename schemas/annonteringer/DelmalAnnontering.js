@@ -3,10 +3,10 @@ import React from 'react';
 import NyttFelt from '../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../typer';
 
-export const DelmalFelter = [
+export const DelmalFelter = (erGjentagende = false) => [
   {
     title: 'Delmal',
-    name: DokumentNavn.DELMAL,
+    name: DokumentNavn.DELMAL_REFERANSE,
     type: SanityTyper.REFERENCE,
     to: [{ type: 'avansertDelmal' }, { type: 'delmal' }],
     validation: Rule => [Rule.required().error('Tom delmal')],
@@ -18,6 +18,16 @@ export const DelmalFelter = [
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
     validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
   },
+  ...(erGjentagende
+    ? [
+        {
+          title: 'Er gjentagende',
+          name: DokumentNavn.ER_GJENTAGENDE,
+          type: SanityTyper.BOOLEAN,
+          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
+        },
+      ]
+    : []),
   {
     name: 'lagNy',
     type: 'string',
@@ -34,5 +44,5 @@ export default {
     icon: () => <span className={styles.delmalIcon}>D</span>,
     render: props => <span className={styles.delmal}>{props.children}</span>,
   },
-  fields: DelmalFelter,
+  fields: DelmalFelter(),
 };
