@@ -28,7 +28,7 @@ const endreSubmalTilDelmal = (doc, maalform, patches) => {
     doc[maalform].forEach((sanityBlock, blockIndex) => {
       if (sanityBlock._type === 'delmalBlock') {
         if (sanityBlock.submal) {
-          let sanityPatch = {
+          const sanityPatch = {
             set: {},
           };
           sanityPatch.set[`${maalform}[${blockIndex}].delmal`] = sanityBlock.submal;

@@ -29,7 +29,7 @@ const endreFlettefeltnavn = (doc, maalform, patches) => {
         if (sanityBlock.markDefs) {
           sanityBlock.markDefs.forEach((markDef, markDefIndex) => {
             if (markDef.felt) {
-              let sanityPatch = {
+              const sanityPatch = {
                 set: {},
               };
               sanityPatch.set[
