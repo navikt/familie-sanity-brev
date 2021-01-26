@@ -3,7 +3,7 @@ import React from 'react';
 import NyttFelt from '../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../typer';
 
-export const DelmalFelter = (kanVæreGjentagende = false) => [
+export const DelmalFelter = (erGjentagende = false) => [
   {
     title: 'Delmal',
     name: DokumentNavn.DELMAL_REFERANSE,
@@ -18,7 +18,7 @@ export const DelmalFelter = (kanVæreGjentagende = false) => [
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
     validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
   },
-  ...(kanVæreGjentagende
+  ...(erGjentagende
     ? [
         {
           title: 'Er gjentagende',

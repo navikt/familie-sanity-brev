@@ -3,7 +3,7 @@ import React from 'react';
 import NyttFelt from '../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../typer';
 
-export const ValgFelter = (kanVæreGjentagende = false) => [
+export const ValgFelter = (erGjentagende = false) => [
   {
     name: DokumentNavn.VALG_REFERANSE,
     type: SanityTyper.REFERENCE,
@@ -17,7 +17,7 @@ export const ValgFelter = (kanVæreGjentagende = false) => [
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
     validation: Rule => [Rule.required().error('Velg om Valgfeltet alltid skal med.')],
   },
-  ...(kanVæreGjentagende
+  ...(erGjentagende
     ? [
         {
           title: 'Er gjentagende',
