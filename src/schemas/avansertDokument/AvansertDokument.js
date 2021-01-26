@@ -1,6 +1,6 @@
-import Mal from './Mal';
-import { DokumentNavn, SanityTyper } from './typer';
-import { Konstanter } from './konstanter';
+import editor from './avansertMalEditor';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { Konstanter } from '../../util/konstanter';
 
 export default {
   title: 'Avansert dokument',
@@ -31,7 +31,7 @@ export default {
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
 
-    Mal(DokumentNavn.BOKMAAL, 'Bokmål'),
-    Mal(DokumentNavn.NYNORSK, 'Nynorsk'),
+    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
 };

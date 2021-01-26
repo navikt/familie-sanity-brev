@@ -1,5 +1,5 @@
-import { DokumentNavn, SanityTyper } from './typer';
-import { erCamelCase } from './valideringer';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { erCamelCase } from '../../util/valideringer';
 
 export default {
   title: 'Valgfelt',
@@ -10,16 +10,16 @@ export default {
       title: 'Visningsnavn',
       name: DokumentNavn.ID,
       type: SanityTyper.STRING,
-      validation: Rule => [
-        Rule.required().error('Valgfeltet må ha et navn'),
-        Rule.required().custom(erCamelCase),
-      ],
+      validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
     },
     {
       title: 'Api-navn',
       name: DokumentNavn.API_NAVN,
       type: SanityTyper.STRING,
-      validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
+      validation: Rule => [
+        Rule.required().error('Valgfeltet må ha et navn'),
+        Rule.required().custom(erCamelCase),
+      ],
     },
     {
       title: 'Muligheter',

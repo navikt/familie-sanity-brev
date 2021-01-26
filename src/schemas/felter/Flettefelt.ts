@@ -1,5 +1,5 @@
-import { DokumentNavn, SanityTyper } from './typer';
-import { erCamelCase } from './valideringer';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { erCamelCase } from '../../util/valideringer';
 
 export default {
   title: 'Flettefelt',

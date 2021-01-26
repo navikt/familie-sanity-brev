@@ -1,6 +1,6 @@
 import client from 'part:@sanity/base/client';
 import formaterTilCamelCase from '../utils/formaterTilCamelCase';
-import { Konstanter } from '../schemas/konstanter';
+import { Konstanter } from '../src/util/konstanter';
 
 // Run this script with:
 // `SANITY_STUDIO_API_DATASET=<Dataset you want to change> sanity exec --with-user-token migreringer/idTilVisningsnavn.js`

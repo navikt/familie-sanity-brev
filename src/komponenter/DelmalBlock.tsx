@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import * as React from 'react';
-import { useSanityQuery } from '../../utils/sanity';
+import { useSanityQuery } from '../util/sanity';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
-const DelmalBlock = (props: any, maalform: string, id: string = '', skalHaPadding = true) => {
-  let _id = id;
+const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true) => {
+  const _id = id;
 
   if (!_id) {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;

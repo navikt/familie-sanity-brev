@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import * as React from 'react';
-import { useSanityQuery } from '../../utils/sanity';
+import { useSanityQuery } from '../util/sanity';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
-const FlettefeltBlock = (id: string = '') => {
-  let _id = id;
+const FlettefeltBlock = (id = '') => {
+  const _id = id;
 
   if (!_id) {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;

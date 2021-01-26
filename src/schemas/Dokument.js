@@ -1,11 +1,10 @@
 import DelmalBlock from '../komponenter/DelmalBlock';
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
-import { DokumentNavn, SanityTyper } from '../typer';
+import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
+import { DokumentNavn, SanityTyper } from '../util/typer';
 import NyttFelt from '../komponenter/NyttFelt';
-import React from 'react';
 import FlettefeltBlock from '../komponenter/FlettefeltBlock';
-import { Konstanter } from '../konstanter';
-import TekstStyles from '../tekststyles/TekstStyles';
+import { Konstanter } from '../util/konstanter';
+import TekstStyles from '../util/TekstStyles';
 
 const delmalBlock = maalform => ({
   title: 'Delmal',
