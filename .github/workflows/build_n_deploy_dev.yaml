@@ -21,4 +21,4 @@ jobs:
       - name: Deploy Sanity
         run: |
           set -e
-          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" yarn sanity deploy
+          SANITY_AUTH_TOKEN="${{ secrets.SANITY_DEPLOY_TOKEN }}" yarn sanity deploy
