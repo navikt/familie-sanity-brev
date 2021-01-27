@@ -1,10 +1,10 @@
-import styles from '../../styles/myStyling.css';
+import styles from '../../../styles/myStyling.css';
 import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { Konstanter } from '../../util/konstanter';
 import TekstStyles from '../../util/TekstStyles';
 
-const flettefelterPeriode = ['fom', 'tom', 'type', 'belop', 'antallBarn', 'barnasFødselsdager'];
+const flettefelterPeriode = ['fom', 'tom', 'type', 'beløp', 'antallBarn', 'barnasFødselsdager'];
 const blockflettefelterPeriode = ['begrunnelser'];
 
 const perodeFlettefeltAnnotering = {
@@ -60,7 +60,7 @@ const editor = (maalform, tittel) => ({
 });
 
 export default {
-  title: 'Periodemal',
+  title: 'Periode',
   name: DokumentNavn.PERIODE,
   type: SanityTyper.DOCUMENT,
   preview: {
