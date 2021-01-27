@@ -4,7 +4,7 @@ import { useSanityQuery } from '../util/sanity';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
-const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true) => {
+const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPadding = true) => {
   const _id = id;
 
   if (!_id) {
@@ -45,7 +45,7 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
             dokumentliste: (props: any) => props.children,
             block: (props: any) => <div className={`block`}>{props.children}</div>,
             delmalBlock: (props: any) =>
-              DelmalBlock(props, maalform, props.node.delmalReferanse._ref, false),
+              DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
           },
         }}
       />
@@ -73,4 +73,4 @@ const Valgfelt = styled.span`
 const ErrorStyling = styled(TekstFelt)`
   color: #f03e2f;
 `;
-export default DelmalBlock;
+export default DelmalBlockComponent;

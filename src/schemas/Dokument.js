@@ -1,86 +1,19 @@
-import DelmalBlock from '../komponenter/DelmalBlock';
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
-import NyttFelt from '../komponenter/NyttFelt';
-import FlettefeltBlock from '../komponenter/FlettefeltBlock';
 import { Konstanter } from '../util/konstanter';
 import TekstStyles from '../util/TekstStyles';
-
-const delmalBlock = maalform => ({
-  title: 'Delmal',
-  name: DokumentNavn.DELMAL,
-  type: SanityTyper.OBJECT,
-  fields: [
-    {
-      title: 'Referanse til delmal:',
-      name: DokumentNavn.DELMAL_REFERANSE,
-      type: SanityTyper.REFERENCE,
-      to: [{ type: DokumentNavn.DELMAL }],
-      validation: Rule => [Rule.required().error('Fyll inn en enkel delmal.')],
-    },
-    {
-      title: 'Delmalen skal alltid med',
-      name: DokumentNavn.SKAL_ALLTID_MED,
-      type: SanityTyper.BOOLEAN,
-      description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-      validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
-    },
-    {
-      name: 'lagNy',
-      type: SanityTyper.STRING,
-      description: 'En knapp for å lage ny delmal',
-      inputComponent: props => NyttFelt(props, DokumentNavn.DELMAL),
-    },
-  ],
-  validation: Rule => [Rule.required().error('Ingen delmal valgt')],
-  preview: {
-    select: {
-      _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
-    },
-    prepare: selection => selection,
-    component: props => {
-      return DelmalBlock(props, maalform, props.value._id);
-    },
-  },
-});
-
-export const flettefeltBlock = {
-  name: DokumentNavn.FLETTEFELT,
-  type: SanityTyper.OBJECT,
-  title: 'Flettefelt',
-  fields: [
-    {
-      name: DokumentNavn.FLETTEFELT_REFERANSE,
-      type: SanityTyper.REFERENCE,
-      to: [{ type: 'flettefelt' }],
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
-      options: { filter: 'erListe == true' },
-    },
-    {
-      name: 'lagNy',
-      type: SanityTyper.STRING,
-      description: 'En knapp for å lage nye flettefelt',
-      inputComponent: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
-    },
-  ],
-  preview: {
-    select: {
-      _ref: `${DokumentNavn.FLETTEFELT_REFERANSE}._ref`,
-    },
-    prepare: selection => selection,
-    component: props => {
-      return FlettefeltBlock(props.value._ref);
-    },
-  },
-};
+import { delmalAvsnitt } from './avsnitt/delmalAvsnitt';
+import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
+import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    delmalBlock(maalform),
-    flettefeltBlock,
+    delmalAvsnitt(maalform),
+    flettefeltAvsnitt,
+    peroideAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {
