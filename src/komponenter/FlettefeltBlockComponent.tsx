@@ -4,7 +4,7 @@ import { useSanityQuery } from '../util/sanity';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
-const FlettefeltBlock = (id = '') => {
+const FlettefeltBlockComponent = (id = '') => {
   const _id = id;
 
   if (!_id) {
@@ -83,4 +83,4 @@ const Tittel = styled.span`
 const ErrorStyling = styled(PreviewContainer)`
   color: #f03e2f;
 `;
-export default FlettefeltBlock;
+export default FlettefeltBlockComponent;

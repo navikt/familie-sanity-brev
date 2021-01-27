@@ -3,7 +3,7 @@ import React from 'react';
 import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 
-export const DelmalFelter = (erGjentagende = false) => [
+export const AvansertDelmalFelter = (erGjentagende = false) => [
   {
     title: 'Delmal',
     name: DokumentNavn.DELMAL_REFERANSE,
@@ -44,5 +44,5 @@ export default {
     icon: () => <span className={styles.delmalIcon}>D</span>,
     render: props => <span className={styles.delmal}>{props.children}</span>,
   },
-  fields: DelmalFelter(),
+  fields: AvansertDelmalFelter(),
 };
