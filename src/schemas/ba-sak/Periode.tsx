@@ -5,9 +5,9 @@ import { Konstanter } from '../../util/konstanter';
 import TekstStyles from '../../util/TekstStyles';
 
 const flettefelterPeriode = ['fom', 'tom', 'type', 'beløp', 'antallBarn', 'barnasFødselsdager'];
-const blockflettefelterPeriode = ['begrunnelser'];
+const avsnittflettefelterPeriode = ['begrunnelser'];
 
-const perodeFlettefeltAnnotering = {
+const periodeFlettefeltAnnotering = {
   name: DokumentNavn.FLETTEFELT,
   type: SanityTyper.OBJECT,
   blockEditor: {
@@ -29,7 +29,7 @@ const perodeFlettefeltAnnotering = {
   ],
 };
 
-const periodeFlettefeltBlock = {
+const periodeFlettefeltAvsnitt = {
   name: DokumentNavn.FLETTEFELT,
   type: SanityTyper.OBJECT,
   fields: [
@@ -37,7 +37,7 @@ const periodeFlettefeltBlock = {
       name: DokumentNavn.FLETTEFELT,
       type: SanityTyper.STRING,
       options: {
-        list: blockflettefelterPeriode,
+        list: avsnittflettefelterPeriode,
       },
     },
   ],
@@ -48,11 +48,11 @@ const editor = (maalform, tittel) => ({
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    periodeFlettefeltBlock,
+    periodeFlettefeltAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {
-        annotations: [perodeFlettefeltAnnotering],
+        annotations: [periodeFlettefeltAnnotering],
       },
       styles: TekstStyles,
     },
