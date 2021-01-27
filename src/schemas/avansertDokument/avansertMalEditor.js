@@ -3,16 +3,16 @@ import DelmalAnnontering from '../annonteringer/AvansertDelmalAnnontering';
 import ValgAnnontering from '../annonteringer/ValgAnnontering';
 import TekstStyles from '../../util/TekstStyles';
 import { SanityTyper } from '../../util/typer';
-import { avansertDelmalBlock } from '../blocks/avansertDelmalBlock';
-import { valgBlock } from '../blocks/valgBlock';
+import { avansertDelmalAvsnitt } from '../avsnitt/avansertDelmalAvsnitt';
+import { valgAvsnitt } from '../avsnitt/valgAvsnitt';
 
 export default (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    avansertDelmalBlock(maalform),
-    valgBlock,
+    avansertDelmalAvsnitt(maalform),
+    valgAvsnitt,
     {
       type: 'block',
       marks: {

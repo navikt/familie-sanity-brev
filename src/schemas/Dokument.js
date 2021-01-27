@@ -2,18 +2,18 @@ import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
 import { Konstanter } from '../util/konstanter';
 import TekstStyles from '../util/TekstStyles';
-import { delmalBlock } from './blocks/delmalBlock';
-import { flettefeltBlock } from './blocks/flettefeltBlock';
-import { peroideBlock } from './blocks/periodeBlock';
+import { delmalAvsnitt } from './avsnitt/delmalAvsnitt';
+import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
+import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    delmalBlock(maalform),
-    flettefeltBlock,
-    peroideBlock,
+    delmalAvsnitt(maalform),
+    flettefeltAvsnitt,
+    peroideAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {

@@ -1,7 +1,7 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { ValgFelter } from '../annonteringer/ValgAnnontering';
 
-export const valgBlock = {
+export const valgAvsnitt = {
   title: 'Valgfelt',
   name: DokumentNavn.VALG_BLOCK,
   type: SanityTyper.OBJECT,

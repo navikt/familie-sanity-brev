@@ -2,7 +2,7 @@ import { DokumentNavn, SanityTyper } from '../../util/typer';
 import NyttFelt from '../../komponenter/NyttFelt';
 import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
 
-export const delmalBlock = maalform => ({
+export const delmalAvsnitt = maalform => ({
   title: 'Delmal',
   name: DokumentNavn.DELMAL,
   type: SanityTyper.OBJECT,

@@ -3,14 +3,14 @@ import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
 import { Konstanter } from '../util/konstanter';
 import TekstStyles from '../util/TekstStyles';
-import { flettefeltBlock } from './blocks/flettefeltBlock';
+import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    flettefeltBlock,
+    flettefeltAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {
