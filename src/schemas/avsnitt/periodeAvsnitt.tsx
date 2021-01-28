@@ -3,7 +3,7 @@ import { PeriodeBeskrivelse } from '../../komponenter/PeriodeBeskrivelse';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 
 export const peroideAvsnitt = {
-  name: DokumentNavn.PERIODE,
+  name: DokumentNavn.PERIODER,
   type: SanityTyper.OBJECT,
   title: 'Perioder',
   fields: [
