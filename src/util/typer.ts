@@ -25,6 +25,7 @@ export enum DokumentNavn {
   VALG_REFERANSE = 'valgReferanse',
   VALGMULIGHET = 'valgmulighet',
   PERIODE = 'periode',
+  PERIODER = 'perioder',
 }
 
 export enum SanityTyper {
