@@ -33,7 +33,6 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
 
   return (
     <TekstFelt {...props} skalHaPadding={skalHaPadding}>
-      {console.log(data[0][maalform])}
       <BlockContent
         blocks={data[0][maalform]}
         serializers={{
