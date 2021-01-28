@@ -19,7 +19,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       marks: {
         annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
-        decorators: decorators,
+        decorators,
       },
       styles: TekstStyles,
     },

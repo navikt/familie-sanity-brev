@@ -18,7 +18,7 @@ export default (maalform, tittel) => ({
       type: 'block',
       marks: {
         annotations: [FlettefeltAnnontering(), DelmalAnnontering, ValgAnnontering],
-        decorators: decorators,
+        decorators,
       },
       styles: TekstStyles,
     },
