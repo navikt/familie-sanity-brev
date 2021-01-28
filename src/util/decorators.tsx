@@ -9,7 +9,7 @@ export default [
     title: 'Lenke',
     value: 'lenke',
     blockEditor: {
-      icon: MdLink,
+      icon: () => <MdLink className={styles.lenkeIcon} />,
       render: props => (
         <span contentEditable={true} className={styles.lenke}>
           {props.children}

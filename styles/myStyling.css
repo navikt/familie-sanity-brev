@@ -16,16 +16,15 @@
   background-color: rgba(97, 78, 116, 0.3);
   color: #000;
 
-@nest &:hover {
-  cursor: pointer;
-}
+  @nest &:hover {
+    cursor: pointer;
+  }
 }
 
 .lenkeIcon {
   composes: lenke;
-  padding: 0 5px;
+  padding: 1px;
 }
-
 
 .delmal {
   background-color: rgba(183, 177, 100, 0.2);
