@@ -4,6 +4,8 @@ import { DokumentNavn, SanityTyper } from '../util/typer';
 import { Konstanter } from '../util/konstanter';
 import TekstStyles from '../util/TekstStyles';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
+import decorators from '../util/decorators';
+import React from 'react';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -15,6 +17,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       marks: {
         annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
+        decorators,
       },
       styles: TekstStyles,
     },
