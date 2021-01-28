@@ -5,6 +5,7 @@ import TekstStyles from '../util/TekstStyles';
 import { delmalAvsnitt } from './avsnitt/delmalAvsnitt';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
+import decorators from '../util/decorators';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -18,6 +19,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       marks: {
         annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
+        decorators: decorators,
       },
       styles: TekstStyles,
     },

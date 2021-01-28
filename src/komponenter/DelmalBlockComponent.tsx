@@ -33,6 +33,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
 
   return (
     <TekstFelt {...props} skalHaPadding={skalHaPadding}>
+      {console.log(data[0][maalform])}
       <BlockContent
         blocks={data[0][maalform]}
         serializers={{
@@ -40,6 +41,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
             flettefelt: (props: any) => <Felttelfelt>{props.children}</Felttelfelt>,
             delmal: (props: any) => <Delmal>{props.children}</Delmal>,
             valgfelt: (props: any) => <Valgfelt>{props.children}</Valgfelt>,
+            lenke: (props: any) => <Lenke>{props.children}</Lenke>,
           },
           types: {
             dokumentliste: (props: any) => props.children,
@@ -72,5 +74,9 @@ const Valgfelt = styled.span`
 
 const ErrorStyling = styled(TekstFelt)`
   color: #f03e2f;
+`;
+
+const Lenke = styled.span`
+  background-color: rgba(97, 78, 116, 0.3);
 `;
 export default DelmalBlockComponent;
