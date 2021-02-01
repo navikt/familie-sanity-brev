@@ -3,6 +3,7 @@ import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { Konstanter } from '../../util/konstanter';
 import TekstStyles from '../../util/TekstStyles';
+import { AiOutlineUnorderedList } from 'react-icons/ai';
 
 const flettefelterPeriode = ['fom', 'tom', 'type', 'beløp', 'antallBarn', 'barnasFødselsdager'];
 const avsnittflettefelterPeriode = ['begrunnelser'];
@@ -20,11 +21,12 @@ const periodeFlettefeltAnnotering = {
   },
   fields: [
     {
-      name: DokumentNavn.FLETTEFELT,
+      name: DokumentNavn.FELT,
       type: SanityTyper.STRING,
       options: {
         list: flettefelterPeriode,
       },
+      validation: Rule => [Rule.required().error('Tomt flettefelt')],
     },
   ],
 };
@@ -34,13 +36,23 @@ const periodeFlettefeltAvsnitt = {
   type: SanityTyper.OBJECT,
   fields: [
     {
-      name: DokumentNavn.FLETTEFELT,
+      name: DokumentNavn.FELT,
       type: SanityTyper.STRING,
       options: {
         list: avsnittflettefelterPeriode,
       },
+      validation: Rule => [Rule.required().error('Tomt flettefelt')],
     },
   ],
+  preview: {
+    select: {
+      title: DokumentNavn.FELT,
+    },
+    prepare: selection => ({
+      title: selection.title,
+      media: AiOutlineUnorderedList,
+    }),
+  },
 };
 
 const editor = (maalform, tittel) => ({

@@ -12,7 +12,7 @@ import AvansertDelmal from './schemas/avansertDokument/AvansertDelmal';
 import Valgfelt from './schemas/felter/Valgfelt';
 import Dokument from './schemas/Dokument';
 import Delmal from './schemas/Delmal';
-import Periode from './schemas/ba-sak/Periode';
+import Periode from './schemas/ba-sak/periode';
 
 sessionStorage.clear();
 
