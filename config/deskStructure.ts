@@ -1,6 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
+import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
 
 const DOKUMENTER = 'dokumenter';
 
@@ -35,21 +36,40 @@ export default async () => {
     ]);
 };
 
-const hentDelmalMappe = (sti: ISti, stiNavn: string) => {
-  const dokumenter = sti[DOKUMENTER].filter(
-    dokument => dokument._id.split('.')[0] !== 'drafts',
-  ).map(dokument =>
-    S.listItem()
-      .title(dokument.visningsnavn)
-      .id(dokument._id)
-      .icon(GrDocumentText)
-      .child(
-        S.document().schemaType('delmal').documentId(dokument._id).title(dokument.visningsnavn),
-      ),
-  );
+const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = []) => {
+  const fjernDraftsFraId = dokumenter =>
+    dokumenter.map(dokument =>
+      dokument._id.split('.')[0] === 'drafts'
+        ? { ...dokument, _id: dokument._id.split('.')[1] }
+        : dokument,
+    );
+
+  sti[DOKUMENTER] = fjernDraftsFraId(sti[DOKUMENTER]);
+
+  const ider = tidligereIder;
+
+  const dokumenter: ListItemBuilder[] = [];
+  sti[DOKUMENTER].forEach(dokument => {
+    if (!tidligereIder.includes(dokument._id)) {
+      dokumenter.push(
+        S.listItem()
+          .title(dokument.visningsnavn)
+          .id(dokument._id)
+          .icon(GrDocumentText)
+          .child(
+            S.document().schemaType('delmal').documentId(dokument._id).title(dokument.visningsnavn),
+          ),
+      );
+      ider.push(dokument._id);
+    }
+  });
 
   const underMapper = sti.stier
-    ? Object.keys(sti.stier).map(navn => hentDelmalMappe(sti.stier[navn], navn))
+    ? Object.keys(sti.stier).map(navn =>
+        navn.length > 0
+          ? hentDelmalMappe(sti.stier[navn], navn, ider)
+          : hentDelmalMappe(sti.stier[navn], 'Mappe uten navn', ider),
+      )
     : [];
 
   return S.listItem()
