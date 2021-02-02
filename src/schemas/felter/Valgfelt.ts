@@ -1,9 +1,5 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import {
-  apiNavnValideringer,
-  førsteTegnErLitenBokstav,
-  kunBokstaverOgTall,
-} from '../../util/valideringer';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 export default {
   title: 'Valgfelt',
@@ -34,11 +30,7 @@ export default {
               type: SanityTyper.STRING,
               name: DokumentNavn.VALGMULIGHET,
               title: 'Valgmulighet',
-              validation: Rule => [
-                Rule.required().error('Valgmulighet må ha et navn'),
-                Rule.required().custom(førsteTegnErLitenBokstav),
-                Rule.required().custom(kunBokstaverOgTall),
-              ],
+              validation: apiNavnValideringer,
             },
             {
               type: SanityTyper.REFERENCE,
