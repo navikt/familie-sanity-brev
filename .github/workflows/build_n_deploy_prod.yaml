@@ -1,4 +1,4 @@
-name: CI
+name: Buld and deploy prod
 on:
   push:
     branches:
