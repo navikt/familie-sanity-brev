@@ -1,6 +1,6 @@
 import editor from './avansertMalEditor';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { Konstanter } from '../../util/konstanter';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 export default {
   title: 'Avansert dokument',
@@ -23,10 +23,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha er apiNavn'),
-        Rule.required().max(Konstanter.API_NAME_MAX_LENGTH),
-      ],
+      validation: apiNavnValideringer,
     },
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
