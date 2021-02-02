@@ -1,7 +1,7 @@
 import editor from './avansertMalEditor';
 import HvorErDenIBruk from '../../komponenter/HvorErDenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { Konstanter } from '../../util/konstanter';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 export default {
   title: 'Avansert delmal',
@@ -24,10 +24,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha et apiNavn'),
-        Rule.required().max(Konstanter.API_NAME_MAX_LENGTH),
-      ],
+      validation: apiNavnValideringer,
     },
     {
       name: 'hvorDenBrukes',

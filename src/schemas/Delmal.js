@@ -1,11 +1,11 @@
 import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
-import { Konstanter } from '../util/konstanter';
 import TekstStyles from '../util/TekstStyles';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import decorators from '../util/decorators';
 import React from 'react';
+import { apiNavnValideringer } from '../util/valideringer';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -45,12 +45,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha et apiNavn'),
-        Rule.required()
-          .max(Konstanter.API_NAME_MAX_LENGTH)
-          .error(`Api-navnet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`),
-      ],
+      validation: apiNavnValideringer,
     },
     {
       name: 'hvorDenBrukes',

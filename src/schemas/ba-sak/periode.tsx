@@ -1,9 +1,9 @@
 import styles from '../../../styles/myStyling.css';
 import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { Konstanter } from '../../util/konstanter';
 import TekstStyles from '../../util/TekstStyles';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 const flettefelterPeriode = ['fom', 'tom', 'type', 'beløp', 'antallBarn', 'barnasFødselsdager'];
 const avsnittflettefelterPeriode = ['begrunnelser'];
@@ -92,12 +92,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha et apiNavn'),
-        Rule.required()
-          .max(Konstanter.API_NAME_MAX_LENGTH)
-          .error(`Api-navnet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`),
-      ],
+      validation: apiNavnValideringer,
     },
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),

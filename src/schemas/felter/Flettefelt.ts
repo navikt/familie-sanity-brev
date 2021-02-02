@@ -1,5 +1,5 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { erCamelCase } from '../../util/valideringer';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 export default {
   title: 'Flettefelt',
@@ -12,10 +12,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Navnet på flettefeltet. Kan kun bestå av tall eller bokstaver. Eksempel: fødselsdatoBarn.',
-      validation: Rule => [
-        Rule.required().error('Dokumentet må ha et navn'),
-        Rule.required().custom(erCamelCase),
-      ],
+      validation: apiNavnValideringer,
     },
     { title: 'Er liste', name: DokumentNavn.ER_LISTE, type: SanityTyper.BOOLEAN },
   ],
