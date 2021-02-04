@@ -5,7 +5,7 @@ import TekstStyles from '../../util/TekstStyles';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { apiNavnValideringer } from '../../util/valideringer';
 
-const flettefelterPeriode = ['fom', 'tom', 'type', 'beløp', 'antallBarn', 'barnasFødselsdager'];
+const flettefelterPeriode = ['fom', 'tom', 'type', 'belop', 'antallBarn', 'barnasFodselsdager'];
 const avsnittflettefelterPeriode = ['begrunnelser'];
 
 const periodeFlettefeltAnnotering = {
