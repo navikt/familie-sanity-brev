@@ -53,11 +53,14 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = [
     if (!tidligereIder.includes(dokument._id)) {
       dokumenter.push(
         S.listItem()
-          .title(dokument.visningsnavn)
+          .title(dokument.visningsnavn ? dokument.visningsnavn : 'Dokument uten navn')
           .id(dokument._id)
           .icon(GrDocumentText)
           .child(
-            S.document().schemaType('delmal').documentId(dokument._id).title(dokument.visningsnavn),
+            S.document()
+              .schemaType('delmal')
+              .documentId(dokument._id)
+              .title(dokument.visningsnavn ? dokument.visningsnavn : 'Dokument uten navn'),
           ),
       );
       ider.push(dokument._id);
