@@ -12,7 +12,7 @@ const ErrorStyling = styled(Header)`
 
 type IReferrer = {
   stikkord?: string[];
-  id: string;
+  visningsnavn: string;
   _id: string;
   _type: string;
 };
@@ -56,7 +56,9 @@ function HvorErDenIBruk(props: any) {
           const stikkord = ref.stikkord ? ref.stikkord.join(';') + ';' : '';
           return (
             <li key={ref._id}>
-              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>{ref.id}</a>
+              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
+                {ref.visningsnavn}
+              </a>
             </li>
           );
         })}
