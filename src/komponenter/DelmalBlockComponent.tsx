@@ -44,13 +44,33 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
           },
           types: {
             dokumentliste: (props: any) => props.children,
-            block: (props: any) => <div className={`block`}>{props.children}</div>,
+            block: BlockSerializer,
             delmalBlock: (props: any) =>
               DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
           },
         }}
       />
     </TekstFelt>
+  );
+};
+
+const settTag = (node: any) => {
+  const style = node.style;
+
+  if (RegExp('/?h[1-6]').test(style)) {
+    return style;
+  }
+
+  return 'div';
+};
+
+const BlockSerializer = (props: any) => {
+  const Tag = settTag(props.node);
+
+  return (
+    <Tag style={{ minHeight: '1rem' }} className={`block`}>
+      {props.children}
+    </Tag>
   );
 };
 
