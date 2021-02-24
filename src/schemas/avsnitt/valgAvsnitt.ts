@@ -1,3 +1,4 @@
+import ValgfeltBlockComponent from '../../komponenter/ValgfeltBlockComponent';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { ValgFelter } from '../annonteringer/ValgAnnontering';
 
@@ -9,7 +10,9 @@ export const valgAvsnitt = {
   validation: Rule => [Rule.required().error('Du må velge et valgfelt')],
   preview: {
     select: {
-      title: `${DokumentNavn.VALG_BLOCK}.${DokumentNavn.VISNINGSNAVN}`,
+      _id: `${DokumentNavn.VALG_REFERANSE}._ref`,
     },
+    prepare: selection => selection,
+    component: ValgfeltBlockComponent,
   },
 };
