@@ -41,6 +41,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
             delmal: (props: any) => <Delmal>{props.children}</Delmal>,
             valgfelt: (props: any) => <Valgfelt>{props.children}</Valgfelt>,
             lenke: (props: any) => <Lenke>{props.children}</Lenke>,
+            hoyrestill: (props: any) => <Høyrestill>{props.children}</Høyrestill>,
           },
           types: {
             dokumentliste: (props: any) => props.children,
@@ -98,4 +99,9 @@ const ErrorStyling = styled(TekstFelt)`
 const Lenke = styled.span`
   background-color: rgba(97, 78, 116, 0.3);
 `;
+
+const Høyrestill = styled.span`
+  float: right;
+`;
+
 export default DelmalBlockComponent;
