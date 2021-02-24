@@ -53,3 +53,9 @@
   composes: valgfelt;
   padding: 0 5px;
 }
+
+.høyrestill {
+  float: right;
+}
+
+span { background-color: inherit; }
