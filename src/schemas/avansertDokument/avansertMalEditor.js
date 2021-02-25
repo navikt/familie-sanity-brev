@@ -13,7 +13,7 @@ export default (maalform, tittel) => ({
   type: SanityTyper.ARRAY,
   of: [
     avansertDelmalAvsnitt(maalform),
-    valgAvsnitt,
+    valgAvsnitt(maalform),
     {
       type: 'block',
       marks: {
