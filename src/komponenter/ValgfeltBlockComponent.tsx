@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
+import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
 const ValgfeltBlockComponent = (props: any, maalform: string) => {
   const id = props.value._id;
 
-  const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->["${maalform}"]}`;
+  const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
   const { data, error } = useSanityQuery(query);
 
@@ -16,7 +17,7 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
     return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
   }
 
-  if (!(data && data.delmaler)) {
+  if (!data) {
     return <TekstFelt>Laster delmalen..</TekstFelt>;
   }
 
@@ -24,18 +25,18 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 
-  return <Valgblokker {...data} />;
+  return <Valgblokker {...data} maalform={maalform} />;
 };
 
 const Valgblokker = (props: any) => {
-  const { delmaler, valgmuligheter } = props;
+  const { delmaler, maalform } = props;
 
   return (
     <PreviewValg>
-      {delmaler?.map((delmal, index) => (
+      {delmaler?.map(delmal => (
         <Valg>
-          <Valgmulighet>{valgmuligheter[index]}:</Valgmulighet>
-          <BlockContent blocks={delmal} />
+          <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
+          {DelmalBlockComponent(props, maalform, delmal._id, false)}
         </Valg>
       ))}
     </PreviewValg>
