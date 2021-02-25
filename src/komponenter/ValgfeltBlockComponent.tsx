@@ -33,14 +33,23 @@ const Valgblokker = (props: any) => {
   return (
     <PreviewValg>
       {delmaler?.map((delmal, index) => (
-        <>
-          <h1>{valgmulighet[index]}</h1>
+        <Valg>
+          <Valgmulighet>{valgmulighet[index]}:</Valgmulighet>
           <BlockContent blocks={delmal} />
-        </>
+        </Valg>
       ))}
     </PreviewValg>
   );
 };
+
+const Valg = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Valgmulighet = styled.h2`
+  font-size: 22px;
+`;
 
 const TekstFelt = styled.div`
   padding: ${props => (props.skalHaPadding ? '0.75rem' : 0)};
