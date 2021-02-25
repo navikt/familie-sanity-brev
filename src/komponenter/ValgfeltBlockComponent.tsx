@@ -24,11 +24,11 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 
-  return <Valgblokker props={data} />;
+  return <Valgblokker {...data} />;
 };
 
 const Valgblokker = (props: any) => {
-  const { valgmuligheter, delmaler } = props.props;
+  const { delmaler, valgmuligheter } = props;
 
   return (
     <PreviewValg>
