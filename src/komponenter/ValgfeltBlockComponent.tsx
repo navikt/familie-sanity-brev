@@ -7,7 +7,7 @@ const BlockContent = require('@sanity/block-content-to-react');
 const ValgfeltBlockComponent = (props: any, maalform: string) => {
   const id = props.value._id;
 
-  const query = `*[_id=="${id}"][0]{"valgmulighet": valg[].valgmulighet,"delmaler": valg[].delmal->["${maalform}"]}`;
+  const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->["${maalform}"]}`;
 
   const { data, error } = useSanityQuery(query);
 
@@ -20,7 +20,7 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
     return <TekstFelt>Laster delmalen..</TekstFelt>;
   }
 
-  if (!data.delmaler.length || data.delmaler.length !== data.valgmulighet.length) {
+  if (!data.delmaler.length || data.delmaler.length !== data.valgmuligheter.length) {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 
@@ -28,13 +28,13 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
 };
 
 const Valgblokker = (props: any) => {
-  const { valgmulighet, delmaler } = props.props;
+  const { valgmuligheter, delmaler } = props.props;
 
   return (
     <PreviewValg>
       {delmaler?.map((delmal, index) => (
         <Valg>
-          <Valgmulighet>{valgmulighet[index]}:</Valgmulighet>
+          <Valgmulighet>{valgmuligheter[index]}:</Valgmulighet>
           <BlockContent blocks={delmal} />
         </Valg>
       ))}
