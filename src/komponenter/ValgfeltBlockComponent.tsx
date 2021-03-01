@@ -21,7 +21,7 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
     return <TekstFelt>Laster delmalen..</TekstFelt>;
   }
 
-  if (!data.delmaler.length || data.delmaler.length !== data.valgmuligheter.length) {
+  if (!data.delmaler?.length || data.delmaler.length !== data.valgmuligheter.length) {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 
