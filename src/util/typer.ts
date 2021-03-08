@@ -21,7 +21,6 @@ export enum DokumentNavn {
   VALGFELT = 'valgfelt',
   ER_LISTE = 'erListe',
   FELT = 'felt',
-  ID = 'id',
   VALG = 'valg',
   VALG_REFERANSE = 'valgReferanse',
   VALGMULIGHET = 'valgmulighet',
