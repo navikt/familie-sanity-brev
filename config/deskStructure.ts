@@ -9,34 +9,38 @@ interface IDelmal {
   mappe: string[] | null;
   visningsnavn: string;
   _id: string;
+  _type: string;
 }
 
 type ISti = {
   [DOKUMENTER]: {
     visningsnavn: string;
     _id: string;
+    _type: string;
   }[];
   stier: { [sti: string]: ISti } | {};
 };
 
 export default async () => {
   const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
-    '*[_type == "delmal" ]{mappe, visningsnavn, _id}',
+    '*[_type == "delmal" || _type == "avansertDelmal" ]{_type, mappe, visningsnavn, _id}',
     false,
     false,
   );
 
-  const delmalHierarki: ISti = hentStier(delmalerMedStikkord);
+  const delmalHierarki: ISti = hentStier("delmal", delmalerMedStikkord);
+  const avansertDelmalHierarki: ISti = hentStier("avansertDelmal", delmalerMedStikkord);
 
   return S.list()
     .title('Content')
     .items([
-      hentDelmalMappe(delmalHierarki, 'Delmal'),
-      ...S.documentTypeListItems().filter(listItem => !['delmal'].includes(listItem.getId())),
+      hentDelmalMappe("delmal", delmalHierarki, 'Delmal'),
+      ...S.documentTypeListItems().filter(listItem => !['delmal', 'avansertDelmal'].includes(listItem.getId())),
+      hentDelmalMappe("avansertDelmal", avansertDelmalHierarki, 'Avansert delmal'),
     ]);
 };
 
-const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = []) => {
+const hentDelmalMappe = (type, sti: ISti, stiNavn: string, tidligereIder: string[] = []) => {
   const fjernDraftsFraId = dokumenter =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
@@ -50,6 +54,8 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = [
 
   const dokumenter: ListItemBuilder[] = [];
   sti[DOKUMENTER].forEach(dokument => {
+    if (dokument._type !== type) return;
+
     if (!tidligereIder.includes(dokument._id)) {
       dokumenter.push(
         S.listItem()
@@ -58,11 +64,12 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = [
           .icon(GrDocumentText)
           .child(
             S.document()
-              .schemaType('delmal')
+              .schemaType(type)
               .documentId(dokument._id)
               .title(dokument.visningsnavn ? dokument.visningsnavn : 'Dokument uten navn'),
-          ),
+          ),  
       );
+
       ider.push(dokument._id);
     }
   });
@@ -70,8 +77,8 @@ const hentDelmalMappe = (sti: ISti, stiNavn: string, tidligereIder: string[] = [
   const underMapper = sti.stier
     ? Object.keys(sti.stier).map(navn =>
         navn.length > 0
-          ? hentDelmalMappe(sti.stier[navn], navn, ider)
-          : hentDelmalMappe(sti.stier[navn], 'Mappe uten navn', ider),
+          ? hentDelmalMappe(type, sti.stier[navn], navn, ider)
+          : hentDelmalMappe(type, sti.stier[navn], 'Mappe uten navn', ider),
       )
     : [];
 
@@ -107,17 +114,19 @@ const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
     }
     parent = parent.stier[stiNavn];
   }
-  parent[DOKUMENTER].push({ visningsnavn: delmal.visningsnavn, _id: delmal._id });
+  parent[DOKUMENTER].push({ _type: delmal._type, visningsnavn: delmal.visningsnavn, _id: delmal._id });
   return stier;
 };
 
-const hentStier = (delmaler: IDelmal[]): ISti => {
+const hentStier = (type, delmaler: IDelmal[]): ISti => {
   let stier: ISti = { [DOKUMENTER]: [], stier: {} };
   delmaler.forEach(delmal => {
+    if (delmal._type !== type) return;
+
     if (delmal.mappe) {
       stier = leggTilSti(delmal, stier);
     } else {
-      stier[DOKUMENTER].push({ visningsnavn: delmal.visningsnavn, _id: delmal._id });
+      stier[DOKUMENTER].push({ _type: delmal._type, visningsnavn: delmal.visningsnavn, _id: delmal._id });
     }
   });
 
