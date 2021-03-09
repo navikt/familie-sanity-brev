@@ -37,4 +37,5 @@ export enum SanityTyper {
   ARRAY = 'array',
   BLOCK = 'block',
   DOCUMENT = 'document',
+  TABLE = 'table',
 }
