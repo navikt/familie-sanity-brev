@@ -15,6 +15,10 @@ export default (maalform, tittel) => ({
     avansertDelmalAvsnitt(maalform),
     valgAvsnitt(maalform),
     {
+      title: 'Tabell',
+      type: SanityTyper.TABLE,
+    },
+    {
       type: 'block',
       marks: {
         annotations: [FlettefeltAnnontering(), DelmalAnnontering, ValgAnnontering],

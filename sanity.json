@@ -29,7 +29,7 @@
       }
     }
   ],
-    "api": {
+  "api": {
     "projectId": "xsrv1mh6",
     "dataset": "testdata"
   },
@@ -42,7 +42,8 @@
     "barcode-input",
     "markdown",
     "@sanity/dashboard",
-    "@sanity/production-preview"
+    "@sanity/production-preview",
+    "datatable"
   ],
   "env": {
     "development": {
