@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       title: 'Visningsnavn',
-      name: DokumentNavn.ID,
+      name: DokumentNavn.VISNINGSNAVN,
       type: SanityTyper.STRING,
       validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
     },
@@ -43,7 +43,7 @@ export default {
           preview: {
             select: {
               title: 'valgmulighet',
-              delmal: 'delmal.id',
+              delmal: 'delmal.visningsnavn',
             },
             prepare(selection) {
               const { title, delmal } = selection;

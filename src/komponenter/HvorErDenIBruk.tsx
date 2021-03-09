@@ -54,12 +54,16 @@ function HvorErDenIBruk(props: any) {
       <ul>
         {data.map((ref: IReferrer) => {
           const stikkord = ref.stikkord ? ref.stikkord.join(';') + ';' : '';
+          const erRefDraft = ref._id.includes('drafts');
+
           return (
-            <li key={ref._id}>
-              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
-                {ref.visningsnavn}
-              </a>
-            </li>
+            !erRefDraft && (
+              <li key={ref._id}>
+                <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
+                  {ref.visningsnavn}
+                </a>
+              </li>
+            )
           );
         })}
       </ul>
