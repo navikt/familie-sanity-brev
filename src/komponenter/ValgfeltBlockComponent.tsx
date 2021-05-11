@@ -28,7 +28,7 @@ const ValgfeltBlockComponent = (props: any, maalform: string) => {
   return <Valgblokker {...data} maalform={maalform} />;
 };
 
-const Valgblokker = (props: any) => {
+export const Valgblokker = (props: any) => {
   const { delmaler, maalform } = props;
 
   return (

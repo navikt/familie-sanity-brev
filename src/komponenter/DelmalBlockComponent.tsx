@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
+import { Valgblokker } from './ValgfeltBlockComponent';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
@@ -48,6 +49,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
             block: BlockSerializer,
             delmalBlock: (props: any) =>
               DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
+            valgBlock: (props: any) => <h1>{'Valgfelt'}</h1>,
           },
         }}
       />
