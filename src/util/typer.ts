@@ -9,6 +9,8 @@ export enum DokumentNavn {
   API_NAVN = 'apiNavn',
   FLETTEFELT = 'flettefelt',
   FLETTEFELT_REFERANSE = 'flettefeltReferanse',
+  HTMLFELT = 'htmlfelt',
+  HTMLFELT_REFERANSE = 'htmlfeltReferanse',
   LENKE = 'lenke',
   MAPPE = 'mappe',
   AVANSERT_DELMAL = 'avansertDelmal',

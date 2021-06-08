@@ -50,6 +50,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
             delmalBlock: (props: any) =>
               DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
             valgBlock: (props: any) => <h1>{'Valgfelt'}</h1>,
+            htmlfelt: (props: any) => <h3>Html</h3>,
           },
         }}
       />
