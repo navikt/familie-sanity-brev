@@ -13,6 +13,7 @@ import Valgfelt from './schemas/felter/Valgfelt';
 import Dokument from './schemas/Dokument';
 import Delmal from './schemas/Delmal';
 import Periode from './schemas/ba-sak/periode';
+import Htmlfelt from './schemas/felter/Htmlfelt';
 
 sessionStorage.clear();
 
@@ -29,6 +30,7 @@ export default createSchema({
     Delmal,
     Dokument,
     Flettefelt,
+    Htmlfelt,
     Valgfelt,
     Periode,
     AvansertDelmal,

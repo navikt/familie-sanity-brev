@@ -6,6 +6,7 @@ import { SanityTyper } from '../../util/typer';
 import { avansertDelmalAvsnitt } from '../avsnitt/avansertDelmalAvsnitt';
 import { valgAvsnitt } from '../avsnitt/valgAvsnitt';
 import decorators from '../../util/decorators';
+import { htmlAvsnitt } from '../avsnitt/htmlAvsnitt';
 
 export default (maalform, tittel) => ({
   name: maalform,
@@ -26,5 +27,6 @@ export default (maalform, tittel) => ({
       },
       styles: TekstStyles,
     },
+    htmlAvsnitt,
   ],
 });
