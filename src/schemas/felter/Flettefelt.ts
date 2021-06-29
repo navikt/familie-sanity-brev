@@ -1,5 +1,6 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
+import hvorErFlettefeltetIBruk from '../../komponenter/hvorErFlettefeltetIBruk';
 
 export default {
   title: 'Flettefelt',
@@ -15,5 +16,12 @@ export default {
       validation: apiNavnValideringer,
     },
     { title: 'Er liste', name: DokumentNavn.ER_LISTE, type: SanityTyper.BOOLEAN },
+    {
+      name: 'hvorBrukesFlettefeltet',
+      type: SanityTyper.STRING,
+      description:
+        'Dette er et dummyfelt for å få vist komponenten som viser hvor flettefeltet er i bruk.',
+      inputComponent: hvorErFlettefeltetIBruk,
+    },
   ],
 };
