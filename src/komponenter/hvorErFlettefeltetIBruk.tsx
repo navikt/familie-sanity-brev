@@ -41,25 +41,21 @@ function hvorErFlettefeltetIBruk(props: any) {
 
   const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
 
-  const antallUnike = data.length - data.filter(ref => ref._id.includes('drafts')).length;
+  const unike = data.filter(ref => !ref._id.includes('drafts'));
 
   return (
     <div {...props}>
-      <div>Dette flettefeltet er i bruk {antallUnike} steder:</div>
+      <div>Dette flettefeltet er i bruk {unike.length} steder:</div>
       <ul>
-        {data.map((ref: IReferrer) => {
+        {unike.map((ref: IReferrer) => {
           const stikkord = ref.stikkord ? ref.stikkord.join(';') + ';' : '';
-          const erRefDraft = ref._id.includes('drafts');
 
-          console.log('ref', ref);
           return (
-            !erRefDraft && (
-              <li key={ref._id}>
-                <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
-                  {ref.visningsnavn}
-                </a>
-              </li>
-            )
+            <li key={ref._id}>
+              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
+                {ref.visningsnavn}
+              </a>
+            </li>
           );
         })}
       </ul>
