@@ -1,14 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { useSanityQuery } from '../util/sanity';
-
-const Header = styled.div`
-  font-size: 1.25rem;
-`;
-
-const ErrorStyling = styled(Header)`
-  color: #f03e2f;
-`;
+import { useSanityQuery } from '../../util/sanity';
+import { Header, ErrorStyling } from './Elementer';
 
 type IReferrer = {
   stikkord?: string[];
@@ -17,7 +9,7 @@ type IReferrer = {
   _type: string;
 };
 
-function hvorErFlettefeltetIBruk(props: any) {
+function HvorErDelmalenIBruk(props: any) {
   const url = window.location.pathname;
   const documentId = url.includes(';')
     ? url.split(';').reverse()[0].slice(0, 36)
@@ -36,26 +28,34 @@ function hvorErFlettefeltetIBruk(props: any) {
   }
 
   if (!data.length) {
-    return <Header {...props}>Dette flettefeltet er ikke i bruk.</Header>;
+    return (
+      <Header {...props}>
+        Denne delmalen er ikke i bruk{' '}
+        <span role="img" aria-label="Gråte-emoji">
+          😢
+        </span>
+      </Header>
+    );
   }
 
   const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
 
-  const unike = data.filter(ref => !ref._id.includes('drafts'));
-
   return (
     <div {...props}>
-      <div>Dette flettefeltet er i bruk {unike.length} steder:</div>
+      <div>Denne delmalen er brukt {data.length} steder:</div>
       <ul>
-        {unike.map((ref: IReferrer) => {
+        {data.map((ref: IReferrer) => {
           const stikkord = ref.stikkord ? ref.stikkord.join(';') + ';' : '';
+          const erRefDraft = ref._id.includes('drafts');
 
           return (
-            <li key={ref._id}>
-              <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
-                {ref.visningsnavn}
-              </a>
-            </li>
+            !erRefDraft && (
+              <li key={ref._id}>
+                <a href={`${referenceBaseUrl}/${ref._type};${stikkord}${ref._id}`}>
+                  {ref.visningsnavn}
+                </a>
+              </li>
+            )
           );
         })}
       </ul>
@@ -63,4 +63,4 @@ function hvorErFlettefeltetIBruk(props: any) {
   );
 }
 
-export default hvorErFlettefeltetIBruk;
+export default HvorErDelmalenIBruk;

@@ -1,5 +1,5 @@
 import editor from './avansertMalEditor';
-import HvorErDenIBruk from '../../komponenter/HvorErDenIBruk';
+import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 
@@ -31,7 +31,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Dette er et dummyfelt for å få vist komponenten som viser hvor den delte teksten er i bruk',
-      inputComponent: HvorErDenIBruk,
+      inputComponent: HvorErDelmalenIBruk,
     },
     {
       title: 'Mappe',
