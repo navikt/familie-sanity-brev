@@ -23,6 +23,7 @@ export enum DokumentNavn {
   VALGFELT = 'valgfelt',
   ER_LISTE = 'erListe',
   FELT = 'felt',
+  FELT_VISNINGSNAVN = 'feltVisningsnavn',
   VALG = 'valg',
   VALG_REFERANSE = 'valgReferanse',
   VALGMULIGHET = 'valgmulighet',
