@@ -1,10 +1,9 @@
-import HvorErDenIBruk from '../komponenter/HvorErDenIBruk';
+import HvorErDelmalenIBruk from '../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
 import TekstStyles from '../util/TekstStyles';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import decorators from '../util/decorators';
-import React from 'react';
 import { apiNavnValideringer } from '../util/valideringer';
 
 const editor = (maalform, tittel) => ({
@@ -52,7 +51,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Dette er et dummyfelt for å få vist komponenten som viser hvor den delte teksten er i bruk.',
-      inputComponent: HvorErDenIBruk,
+      inputComponent: HvorErDelmalenIBruk,
     },
     {
       title: 'Mappe',
