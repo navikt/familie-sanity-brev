@@ -29,6 +29,13 @@ export enum DokumentNavn {
   VALGMULIGHET = 'valgmulighet',
   PERIODE = 'periode',
   PERIODER = 'perioder',
+  BEGRUNNELSE = 'begrunnelse',
+  BEGRUNNELSE_TYPE = 'Begrunnelsetype',
+  HJEMLER = 'hjemler',
+  VILKÅR = 'vilkaar',
+  FORMULERING = 'formulering',
+  FORMULERINGSTYPE = 'formuleringstype',
+  NAVN_I_SYSTEM = 'navnISystem',
 }
 
 export enum SanityTyper {
