@@ -30,7 +30,7 @@ export enum DokumentNavn {
   PERIODE = 'periode',
   PERIODER = 'perioder',
   BEGRUNNELSE = 'begrunnelse',
-  BEGRUNNELSE_TYPE = 'Begrunnelsetype',
+  BEGRUNNELSE_TYPE = 'begrunnelsetype',
   HJEMLER = 'hjemler',
   VILKÅR = 'vilkaar',
   FORMULERING = 'formulering',

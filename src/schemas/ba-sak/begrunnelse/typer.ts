@@ -1,9 +1,9 @@
 export const begrunnelsestyper = [
-  { title: 'Innvilgelse', value: 'innvilgelse' },
-  { title: 'Reduksjon', value: 'reduksjon' },
-  { title: 'Avslag', value: 'avslag' },
-  { title: 'Opphør', value: 'opphør' },
-  { title: 'Fortsatt innvilget', value: 'fortsattInnvilget' },
+  { title: 'Innvilgelse', value: 'INNVILGELSE' },
+  { title: 'Reduksjon', value: 'REDUKSJON' },
+  { title: 'Avslag', value: 'AVSLAG' },
+  { title: 'Opphør', value: 'OPPHØR' },
+  { title: 'Fortsatt innvilget', value: 'FORTSATT_INNVILGET' },
 ];
 
 export const hjemler = ['2', '4', '10', '11', '12', '17', '18'];
