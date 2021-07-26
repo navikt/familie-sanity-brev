@@ -64,7 +64,7 @@ const editor = (maalform, tittel) => ({
   type: SanityTyper.ARRAY,
   of: [
     {
-      name: DokumentNavn.BEGRUNNELSE,
+      name: DokumentNavn.BLOCK,
       type: SanityTyper.BLOCK,
       of: [begrunnelseFormulering, begrunnelseFlettefelt],
     },

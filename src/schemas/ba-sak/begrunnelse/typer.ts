@@ -18,7 +18,7 @@ export const vilkår = [
 
 export enum Formuleringstype {
   FOR_BARN_FØDT = 'forBarnFødt',
-  DU_ELLER_DU_OG_BARNA = 'duEllerDuOgBarna',
+  DU_OG_ELLER_BARNET_BARNA = 'duOgEllerBarnetBarna',
   BARNET_ELLER_BARNA = 'barnetEllerBarna',
 }
 
@@ -26,7 +26,9 @@ export type Formuleringsvalg = { title: string; value: Formuleringstype };
 
 export const formuleringer: Formuleringsvalg[] = [
   { title: 'For barn født', value: Formuleringstype.FOR_BARN_FØDT },
-  { title: 'Du eller Du og barna', value: Formuleringstype.DU_ELLER_DU_OG_BARNA },
+  { title: 'Du eller Du og barna', value: Formuleringstype.DU_OG_ELLER_BARNET_BARNA },
 ];
 
-export const flettefelter = [{ title: 'Dato', value: 'dato' }];
+export const flettefelter = [
+  { title: 'Måned og år for begrunnelse', value: 'månedOgÅrBegrunnelsenGjelderFor' },
+];

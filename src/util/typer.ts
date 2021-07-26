@@ -34,8 +34,8 @@ export enum DokumentNavn {
   HJEMLER = 'hjemler',
   VILKÅR = 'vilkaar',
   FORMULERING = 'formulering',
-  FORMULERINGSTYPE = 'formuleringstype',
   NAVN_I_SYSTEM = 'navnISystem',
+  BLOCK = 'block',
 }
 
 export enum SanityTyper {

@@ -7,7 +7,7 @@ export const Formuleringer = () => {
     <>
       <Hovedoverskrift>Forklaring av formuleringer</Hovedoverskrift>
       <Formulering formulering={Formuleringstype.FOR_BARN_FØDT} />
-      <Formulering formulering={Formuleringstype.DU_ELLER_DU_OG_BARNA} />
+      <Formulering formulering={Formuleringstype.DU_OG_ELLER_BARNET_BARNA} />
     </>
   );
 };
@@ -33,7 +33,7 @@ const hentFormulering = (formuleringstype: Formuleringstype) => {
           <div>"for barn født [barn1 fødselsdato, ..., og barnN fødselsdato]"</div>
         </>
       );
-    case Formuleringstype.DU_ELLER_DU_OG_BARNA:
+    case Formuleringstype.DU_OG_ELLER_BARNET_BARNA:
       return (
         <>
           <div>"du"</div>
