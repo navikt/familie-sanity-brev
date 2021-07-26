@@ -126,7 +126,7 @@ export default {
       options: {
         list: vilkår,
       },
-      validation: Rule => Rule.required().error('Vilkår ikke valgt'),
+      validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
     },
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
