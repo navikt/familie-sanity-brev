@@ -22,6 +22,7 @@ export default {
       description: 'Valgfritt visningsnavn.',
     },
     { title: 'Er liste', name: DokumentNavn.ER_LISTE, type: SanityTyper.BOOLEAN },
+    { title: 'Er fritektsfelt', name: DokumentNavn.ER_FRITEKSTFELT, type: SanityTyper.BOOLEAN },
     {
       name: 'hvorBrukesFlettefeltet',
       type: SanityTyper.STRING,
