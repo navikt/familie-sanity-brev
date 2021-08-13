@@ -1,6 +1,7 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import hvorErFlettefeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErFlettefeltetIBruk';
+import { useSanityQuery } from '../../util/sanity';
 
 export default {
   title: 'Flettefelt',
