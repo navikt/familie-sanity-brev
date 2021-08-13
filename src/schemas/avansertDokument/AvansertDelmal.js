@@ -1,7 +1,13 @@
+import React from 'react';
 import editor from './avansertMalEditor';
 import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
+import { Badge } from '@sanity/ui';
+
+const TittelBadge = () => {
+  return <Badge tone="primary">Avansert delmal</Badge>;
+};
 
 export default {
   title: 'Avansert delmal',
@@ -13,6 +19,11 @@ export default {
     },
   },
   fields: [
+    {
+      name: 'badgeTittel',
+      inputComponent: TittelBadge,
+      type: 'string',
+    },
     {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
