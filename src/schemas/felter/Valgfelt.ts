@@ -1,5 +1,6 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
+import hvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 
 export default {
   title: 'Valgfelt',
@@ -17,6 +18,13 @@ export default {
       name: DokumentNavn.API_NAVN,
       type: SanityTyper.STRING,
       validation: apiNavnValideringer,
+    },
+    {
+      name: 'hvorBrukesValgfeltet',
+      type: SanityTyper.STRING,
+      description:
+        'Dette er et dummyfelt for å få vist komponenten som viser hvor valgfeltet er i bruk.',
+      inputComponent: hvorErValgfeltetIBruk,
     },
     {
       title: 'Muligheter',
