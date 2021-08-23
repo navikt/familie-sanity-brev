@@ -2,37 +2,7 @@ import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import { apiNavnValideringer } from '../../../util/valideringer';
-import { Formuleringer } from './Formulering';
 import { begrunnelsestyper, flettefelter, formuleringer, hjemler, vilkår } from './typer';
-
-const begrunnelseFormulering = {
-  name: DokumentNavn.FORMULERING,
-  type: SanityTyper.OBJECT,
-  fields: [
-    {
-      name: DokumentNavn.FORMULERING,
-      type: SanityTyper.STRING,
-      options: {
-        list: formuleringer,
-      },
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
-    },
-    {
-      name: 'formuleringsbeskrivelse',
-      type: SanityTyper.STRING,
-      inputComponent: Formuleringer,
-    },
-  ],
-  preview: {
-    select: {
-      formulering: DokumentNavn.FORMULERING,
-    },
-    prepare: selection => selection,
-    component: props => (
-      <span>{props.value.formulering ? props.value.formulering : 'Tom formulering'}</span>
-    ),
-  },
-};
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -66,7 +36,14 @@ const editor = (maalform, tittel) => ({
     {
       name: DokumentNavn.BLOCK,
       type: SanityTyper.BLOCK,
-      of: [begrunnelseFormulering, begrunnelseFlettefelt],
+      of: [
+        begrunnelseFlettefelt,
+        {
+          type: SanityTyper.REFERENCE,
+          to: [{ type: DokumentNavn.VALGFELT }],
+          name: DokumentNavn.VALG_REFERANSE,
+        },
+      ],
     },
   ],
 });
