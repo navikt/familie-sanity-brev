@@ -13,6 +13,7 @@ export enum DokumentNavn {
   HTMLFELT_REFERANSE = 'htmlfeltReferanse',
   LENKE = 'lenke',
   MAPPE = 'mappe',
+  GRUPPE_VISNINGSNAVN = 'gruppeVisningsnavn',
   AVANSERT_DELMAL = 'avansertDelmal',
   BOKMAAL = 'bokmaal',
   NYNORSK = 'nynorsk',
