@@ -51,7 +51,7 @@ export default {
       of: [{ type: 'string' }],
     },
     {
-      title: 'gruppeVisningsnavn',
+      title: 'Mappe i saksbehandlingsløsning',
       description: 'Hvilket visningsnavn denne delmalen skal grupperes under i brevmenyen.',
       name: DokumentNavn.GRUPPE_VISNINGSNAVN,
       type: SanityTyper.STRING,
