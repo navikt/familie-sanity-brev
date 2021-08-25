@@ -30,5 +30,5 @@ export const formuleringer: Formuleringsvalg[] = [
 ];
 
 export const flettefelter = [
-  { title: 'Måned og år for begrunnelse', value: 'månedOgÅrBegrunnelsenGjelderFor' },
+  { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
 ];
