@@ -2,6 +2,7 @@ import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
+import client from 'part:@sanity/base/client';
 
 const DOKUMENTER = 'dokumenter';
 
@@ -32,15 +33,24 @@ export default async () => {
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
 
+  const { dataset } = client.config();
+
+  const erEf = dataset === 'ef-brev';
+
+  const ekskluderesForEf = ['dokument', 'periode'];
+
   return S.list()
     .title('Content')
     .items([
       hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(
-        listItem => !['delmal', 'avansertDelmal', 'begrunnelse'].includes(listItem.getId()),
+        listItem =>
+          !['delmal', 'avansertDelmal', 'begrunnelse', ...(erEf ? ekskluderesForEf : [])].includes(
+            listItem.getId(),
+          ),
       ),
       hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
-      hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse'),
+      ...(!erEf ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
     ]);
 };
 
