@@ -5,42 +5,51 @@ import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
 
 const DOKUMENTER = 'dokumenter';
 
-interface IDelmal {
+interface IDokument {
   mappe: string[] | null;
   visningsnavn: string;
   _id: string;
   _type: string;
 }
 
-type ISti = {
+type IMappe = {
   [DOKUMENTER]: {
     visningsnavn: string;
     _id: string;
     _type: string;
   }[];
-  stier: { [sti: string]: ISti } | {};
+  mapper: { [mappe: string]: IMappe } | {};
 };
 
 export default async () => {
-  const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
-    '*[_type == "delmal" || _type == "avansertDelmal" ]{_type, mappe, visningsnavn, _id}',
+  const mappestrukturDokumenter: IDokument[] = await hentFraSanity(
+    '*[_type == "delmal" || _type == "avansertDelmal" || _type == "begrunnelse" ]{_type, mappe, visningsnavn, _id}',
     false,
     false,
   );
 
-  const delmalHierarki: ISti = hentStier("delmal", delmalerMedStikkord);
-  const avansertDelmalHierarki: ISti = hentStier("avansertDelmal", delmalerMedStikkord);
+  const delmalHierarki: IMappe = hentMapper('delmal', mappestrukturDokumenter);
+  const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
+  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
 
   return S.list()
     .title('Content')
     .items([
-      hentDelmalMappe("delmal", delmalHierarki, 'Delmal'),
-      ...S.documentTypeListItems().filter(listItem => !['delmal', 'avansertDelmal'].includes(listItem.getId())),
-      hentDelmalMappe("avansertDelmal", avansertDelmalHierarki, 'Avansert delmal'),
+      hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
+      ...S.documentTypeListItems().filter(
+        listItem => !['delmal', 'avansertDelmal', 'begrunnelse'].includes(listItem.getId()),
+      ),
+      hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
+      hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse'),
     ]);
 };
 
-const hentDelmalMappe = (type, sti: ISti, stiNavn: string, tidligereIder: string[] = []) => {
+const hentDokumentMappe = (
+  type,
+  mappe: IMappe,
+  mappeNavn: string,
+  tidligereIder: string[] = [],
+) => {
   const fjernDraftsFraId = dokumenter =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
@@ -48,12 +57,12 @@ const hentDelmalMappe = (type, sti: ISti, stiNavn: string, tidligereIder: string
         : dokument,
     );
 
-  sti[DOKUMENTER] = fjernDraftsFraId(sti[DOKUMENTER]);
+  mappe[DOKUMENTER] = fjernDraftsFraId(mappe[DOKUMENTER]);
 
   const ider = tidligereIder;
 
   const dokumenter: ListItemBuilder[] = [];
-  sti[DOKUMENTER].forEach(dokument => {
+  mappe[DOKUMENTER].forEach(dokument => {
     if (dokument._type !== type) return;
 
     if (!tidligereIder.includes(dokument._id)) {
@@ -67,26 +76,26 @@ const hentDelmalMappe = (type, sti: ISti, stiNavn: string, tidligereIder: string
               .schemaType(type)
               .documentId(dokument._id)
               .title(dokument.visningsnavn ? dokument.visningsnavn : 'Dokument uten navn'),
-          ),  
+          ),
       );
 
       ider.push(dokument._id);
     }
   });
 
-  const underMapper = sti.stier
-    ? Object.keys(sti.stier).map(navn =>
+  const underMapper = mappe.mapper
+    ? Object.keys(mappe.mapper).map(navn =>
         navn.length > 0
-          ? hentDelmalMappe(type, sti.stier[navn], navn, ider)
-          : hentDelmalMappe(type, sti.stier[navn], 'Mappe uten navn', ider),
+          ? hentDokumentMappe(type, mappe.mapper[navn], navn, ider)
+          : hentDokumentMappe(type, mappe.mapper[navn], 'Mappe uten navn', ider),
       )
     : [];
 
   return S.listItem()
-    .title(stiNavn)
+    .title(mappeNavn)
     .child(
       S.list()
-        .title(stiNavn)
+        .title(mappeNavn)
         .items([...underMapper, ...dokumenter]),
     );
 };
@@ -102,33 +111,41 @@ const capitalize = (tekst: string) => {
   return tekst.toLowerCase().replace(/^./, str => str.toUpperCase());
 };
 
-const leggTilSti = (delmal: IDelmal, stier: ISti): ISti => {
-  let parent = stier;
+const leggTilMappe = (delmal: IDokument, mapper: IMappe): IMappe => {
+  let parent = mapper;
   for (let index = 0; index < delmal.mappe.length; index++) {
-    const stiNavn = capitalize(trimStreng(delmal.mappe[index]));
-    if (!parent.stier[stiNavn]) {
-      parent.stier[stiNavn] = {
+    const mappeNavn = capitalize(trimStreng(delmal.mappe[index]));
+    if (!parent.mapper[mappeNavn]) {
+      parent.mapper[mappeNavn] = {
         [DOKUMENTER]: [],
-        stier: {},
+        mapper: {},
       };
     }
-    parent = parent.stier[stiNavn];
+    parent = parent.mapper[mappeNavn];
   }
-  parent[DOKUMENTER].push({ _type: delmal._type, visningsnavn: delmal.visningsnavn, _id: delmal._id });
-  return stier;
+  parent[DOKUMENTER].push({
+    _type: delmal._type,
+    visningsnavn: delmal.visningsnavn,
+    _id: delmal._id,
+  });
+  return mapper;
 };
 
-const hentStier = (type, delmaler: IDelmal[]): ISti => {
-  let stier: ISti = { [DOKUMENTER]: [], stier: {} };
+const hentMapper = (type, delmaler: IDokument[]): IMappe => {
+  let mapper: IMappe = { [DOKUMENTER]: [], mapper: {} };
   delmaler.forEach(delmal => {
     if (delmal._type !== type) return;
 
     if (delmal.mappe) {
-      stier = leggTilSti(delmal, stier);
+      mapper = leggTilMappe(delmal, mapper);
     } else {
-      stier[DOKUMENTER].push({ _type: delmal._type, visningsnavn: delmal.visningsnavn, _id: delmal._id });
+      mapper[DOKUMENTER].push({
+        _type: delmal._type,
+        visningsnavn: delmal.visningsnavn,
+        _id: delmal._id,
+      });
     }
   });
 
-  return stier;
+  return mapper;
 };
