@@ -72,6 +72,19 @@ export default {
       validation: apiNavnValideringer,
     },
     {
+      title: 'Mappe',
+      name: DokumentNavn.MAPPE,
+      type: SanityTyper.ARRAY,
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: begrunnelsestyper,
+          },
+        },
+      ],
+    },
+    {
       title: 'Navn i ba-sak',
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,

@@ -5,7 +5,7 @@ import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
 
 const DOKUMENTER = 'dokumenter';
 
-interface IDelmal {
+interface IDokument {
   mappe: string[] | null;
   visningsnavn: string;
   _id: string;
@@ -22,27 +22,29 @@ type IMappe = {
 };
 
 export default async () => {
-  const delmalerMedStikkord: IDelmal[] = await hentFraSanity(
-    '*[_type == "delmal" || _type == "avansertDelmal" ]{_type, mappe, visningsnavn, _id}',
+  const mappestrukturDokumenter: IDokument[] = await hentFraSanity(
+    '*[_type == "delmal" || _type == "avansertDelmal" || _type == "begrunnelse" ]{_type, mappe, visningsnavn, _id}',
     false,
     false,
   );
 
-  const delmalHierarki: IMappe = hentMapper('delmal', delmalerMedStikkord);
-  const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', delmalerMedStikkord);
+  const delmalHierarki: IMappe = hentMapper('delmal', mappestrukturDokumenter);
+  const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
+  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter)
 
   return S.list()
     .title('Content')
     .items([
-      hentDelmalMappe('delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(
-        listItem => !['delmal', 'avansertDelmal'].includes(listItem.getId()),
+        listItem => !['delmal', 'avansertDelmal', 'begrunnelse'].includes(listItem.getId()),
       ),
-      hentDelmalMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
+      hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
+      hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
+      hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')
     ]);
 };
 
-const hentDelmalMappe = (type, mappe: IMappe, mappeNavn: string, tidligereIder: string[] = []) => {
+const hentDokumentMappe = (type, mappe: IMappe, mappeNavn: string, tidligereIder: string[] = []) => {
   const fjernDraftsFraId = dokumenter =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
@@ -79,8 +81,8 @@ const hentDelmalMappe = (type, mappe: IMappe, mappeNavn: string, tidligereIder: 
   const underMapper = mappe.mapper
     ? Object.keys(mappe.mapper).map(navn =>
         navn.length > 0
-          ? hentDelmalMappe(type, mappe.mapper[navn], navn, ider)
-          : hentDelmalMappe(type, mappe.mapper[navn], 'Mappe uten navn', ider),
+          ? hentDokumentMappe(type, mappe.mapper[navn], navn, ider)
+          : hentDokumentMappe(type, mappe.mapper[navn], 'Mappe uten navn', ider),
       )
     : [];
 
@@ -104,7 +106,7 @@ const capitalize = (tekst: string) => {
   return tekst.toLowerCase().replace(/^./, str => str.toUpperCase());
 };
 
-const leggTilMappe = (delmal: IDelmal, mapper: IMappe): IMappe => {
+const leggTilMappe = (delmal: IDokument, mapper: IMappe): IMappe => {
   let parent = mapper;
   for (let index = 0; index < delmal.mappe.length; index++) {
     const mappeNavn = capitalize(trimStreng(delmal.mappe[index]));
@@ -124,7 +126,7 @@ const leggTilMappe = (delmal: IDelmal, mapper: IMappe): IMappe => {
   return mapper;
 };
 
-const hentMapper = (type, delmaler: IDelmal[]): IMappe => {
+const hentMapper = (type, delmaler: IDokument[]): IMappe => {
   let mapper: IMappe = { [DOKUMENTER]: [], mapper: {} };
   delmaler.forEach(delmal => {
     if (delmal._type !== type) return;
