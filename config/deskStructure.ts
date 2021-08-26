@@ -35,10 +35,10 @@ export default async () => {
   return S.list()
     .title('Content')
     .items([
+      hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(
         listItem => !['delmal', 'avansertDelmal', 'begrunnelse'].includes(listItem.getId()),
       ),
-      hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
       hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse'),
     ]);
