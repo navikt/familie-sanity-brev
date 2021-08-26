@@ -30,7 +30,7 @@ export default async () => {
 
   const delmalHierarki: IMappe = hentMapper('delmal', mappestrukturDokumenter);
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
-  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter)
+  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
 
   return S.list()
     .title('Content')
@@ -40,11 +40,16 @@ export default async () => {
       ),
       hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
-      hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')
+      hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse'),
     ]);
 };
 
-const hentDokumentMappe = (type, mappe: IMappe, mappeNavn: string, tidligereIder: string[] = []) => {
+const hentDokumentMappe = (
+  type,
+  mappe: IMappe,
+  mappeNavn: string,
+  tidligereIder: string[] = [],
+) => {
   const fjernDraftsFraId = dokumenter =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
