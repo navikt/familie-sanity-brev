@@ -6,7 +6,7 @@ export const begrunnelsestyper = [
   { title: 'Fortsatt innvilget', value: 'FORTSATT_INNVILGET' },
 ];
 
-export const hjemler = ['2', '4', '10', '11', '12', '17', '18'];
+export const hjemler = ['2', '4', '10', '11', '12', '14', '17', '18'];
 
 export const vilkår = [
   { title: 'Under 18 år', value: 'UNDER_18_ÅR' },
