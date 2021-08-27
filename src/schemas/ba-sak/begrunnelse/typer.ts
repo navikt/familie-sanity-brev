@@ -14,6 +14,7 @@ export const vilkår = [
   { title: 'Gift partnerskap', value: 'GIFT_PARTNERSKAP' },
   { title: 'Bosatt i riket', value: 'BOSATT_I_RIKET' },
   { title: 'Lovlig opphold', value: 'LOVLIG_OPPHOLD' },
+  { title: 'Vurdering annet grunnlag', value: 'VURDERING_ANNET_GRUNNLAG' },
 ];
 
 export enum Formuleringstype {
