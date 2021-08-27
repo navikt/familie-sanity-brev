@@ -58,7 +58,11 @@ export default async () => {
       S.listItem()
         .title(avansertDokumentTittel)
         .child(S.documentTypeList('dokumentmal').title(avansertDokumentTittel).child()),
-      hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
+      hentDokumentMappe(
+        'avansertDelmal',
+        avansertDelmalHierarki,
+        erEf ? 'Innhold' : 'Avansert delmal',
+      ),
       ...(!erEf ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
     ]);
 };
