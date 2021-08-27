@@ -111,8 +111,9 @@ export default {
     },
     {
       title: 'Vilkår',
-      type: SanityTyper.STRING,
+      type: SanityTyper.ARRAY,
       name: DokumentNavn.VILKÅR,
+      of: [{ type: SanityTyper.STRING }],
       options: {
         list: vilkår,
       },
