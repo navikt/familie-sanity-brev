@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import { apiNavnValideringer } from '../../../util/valideringer';
-import { begrunnelsestyper, flettefelter, hjemler, vilkår } from './typer';
+import { begrunnelsestyper, flettefelter, formuleringer, hjemler, vilkår } from './typer';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -22,13 +22,9 @@ const begrunnelseFlettefelt = {
       flettefelt: DokumentNavn.FLETTEFELT,
     },
     prepare: selection => selection,
-    component: props => {
-      return (
-        <Flettefelt>
-          {props.value.flettefelt ? props.value.flettefelt : 'Tomt flettefelt'}
-        </Flettefelt>
-      );
-    },
+    component: props => (
+      <Flettefelt>{props.value.flettefelt ? props.value.flettefelt : 'Tomt flettefelt'}</Flettefelt>
+    ),
   },
 };
 
