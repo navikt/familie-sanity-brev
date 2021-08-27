@@ -5,7 +5,7 @@ import { apiNavnValideringer } from '../../util/valideringer';
 import { Badge } from '@sanity/ui';
 
 const TittelBadge = () => {
-  return <Badge tone="primary">Avansert dokument</Badge>;
+  return <Badge tone="primary">Brevmal</Badge>;
 };
 
 export default {

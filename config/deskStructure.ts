@@ -39,16 +39,25 @@ export default async () => {
 
   const ekskluderesForEf = ['dokument', 'periode'];
 
+  const avansertDokumentTittel = erEf ? 'Brevmaler' : 'Avansert dokument';
+
   return S.list()
     .title('Content')
     .items([
       hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['delmal', 'avansertDelmal', 'begrunnelse', ...(erEf ? ekskluderesForEf : [])].includes(
-            listItem.getId(),
-          ),
+          ![
+            'delmal',
+            'avansertDelmal',
+            'begrunnelse',
+            'dokumentmal',
+            ...(erEf ? ekskluderesForEf : []),
+          ].includes(listItem.getId()),
       ),
+      S.listItem()
+        .title(avansertDokumentTittel)
+        .child(S.documentTypeList('dokumentmal').title(avansertDokumentTittel).child()),
       hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Avansert delmal'),
       ...(!erEf ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
     ]);
