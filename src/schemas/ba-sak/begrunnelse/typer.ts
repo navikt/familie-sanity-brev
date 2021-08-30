@@ -15,6 +15,9 @@ export const vilkår = [
   { title: 'Bosatt i riket', value: 'BOSATT_I_RIKET' },
   { title: 'Lovlig opphold', value: 'LOVLIG_OPPHOLD' },
   { title: 'Vurdering annet grunnlag', value: 'VURDERING_ANNET_GRUNNLAG' },
+  { title: 'Opplysningsplikt', value: 'OPPLYSNINGSPLIKT' },
+  { title: 'Delt bosted', value: 'DELT_BOSTED' },
+  { title: 'Satsendring', value: 'SATSENDRING' },
 ];
 
 export enum Formuleringstype {
