@@ -1,3 +1,3 @@
 export enum Konstanter {
-  API_NAME_MAX_LENGTH = 60,
+  API_NAME_MAX_LENGTH = 70,
 }
