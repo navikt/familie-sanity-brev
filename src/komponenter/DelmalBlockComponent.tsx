@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
-import { Valgblokker } from './ValgfeltBlockComponent';
+import { Badge, Inline } from '@sanity/ui';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
@@ -12,7 +12,7 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
   }
 
-  const query = `*[_id=="${_id}"]`;
+  const query = `*[_id=="${_id}"]{..., ${maalform}[]{..., valgReferanse->}}`;
   const { data, error } = useSanityQuery(query);
 
   if (error) {
@@ -32,8 +32,22 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
     return <ErrorStyling>Delmalen har ingen tekst for denne målformen.</ErrorStyling>;
   }
 
+  const ValgfeltBadgeWrapper = styled(Inline)`
+    margin-top: 1rem;
+  `;
+
+  const ValgfeltBadge = styled(Badge)`
+    background-color: #dab5cf;
+    color: black;
+  `;
+
+  const DelmalTittelBadge = styled(Badge)`
+    margin-bottom: 1rem;
+  `;
+
   return (
     <TekstFelt {...props} skalHaPadding={skalHaPadding}>
+      <DelmalTittelBadge tone="primary">Delmal: {data[0].visningsnavn}</DelmalTittelBadge>
       <BlockContent
         blocks={data[0][maalform]}
         serializers={{
@@ -49,7 +63,13 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
             block: BlockSerializer,
             delmalBlock: (props: any) =>
               DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
-            valgBlock: (props: any) => <h1>{'Valgfelt'}</h1>,
+            valgBlock: (props: any) => (
+              <ValgfeltBadgeWrapper>
+                <ValgfeltBadge>
+                  {'Valgfelt: '} {props.node.valgReferanse.visningsnavn}
+                </ValgfeltBadge>
+              </ValgfeltBadgeWrapper>
+            ),
             htmlfelt: (props: any) => <h3>Html</h3>,
           },
         }}
