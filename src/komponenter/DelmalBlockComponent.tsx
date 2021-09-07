@@ -42,8 +42,13 @@ const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPaddi
     color: black;
   `;
 
+  const DelmalTittelBadge = styled(Badge)`
+    margin-bottom: 1rem;
+  `;
+
   return (
     <TekstFelt {...props} skalHaPadding={skalHaPadding}>
+      <DelmalTittelBadge tone="primary">Delmal: {data[0].visningsnavn}</DelmalTittelBadge>
       <BlockContent
         blocks={data[0][maalform]}
         serializers={{
