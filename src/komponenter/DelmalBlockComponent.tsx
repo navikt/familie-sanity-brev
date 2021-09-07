@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
-import { Valgblokker } from './ValgfeltBlockComponent';
-import { Badge, Stack, Inline } from '@sanity/ui';
+import { Badge, Inline } from '@sanity/ui';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const BlockContent = require('@sanity/block-content-to-react');
 
