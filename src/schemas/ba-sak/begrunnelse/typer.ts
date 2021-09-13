@@ -8,16 +8,20 @@ export const begrunnelsestyper = [
 
 export const hjemler = ['2', '4', '10', '11', '12', '14', '17', '18'];
 
+export enum Vilkår {
+  UNDER_18_ÅR = 'UNDER_18_ÅR',
+  BOR_MED_SØKER = 'BOR_MED_SØKER',
+  GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
+  BOSATT_I_RIKET = 'BOSATT_I_RIKET',
+  LOVLIG_OPPHOLD = 'LOVLIG_OPPHOLD',
+}
+
 export const vilkår = [
-  { title: 'Under 18 år', value: 'UNDER_18_ÅR' },
-  { title: 'Bor Med søker', value: 'BOR_MED_SØKER' },
-  { title: 'Gift partnerskap', value: 'GIFT_PARTNERSKAP' },
-  { title: 'Bosatt i riket', value: 'BOSATT_I_RIKET' },
-  { title: 'Lovlig opphold', value: 'LOVLIG_OPPHOLD' },
-  { title: 'Vurdering annet grunnlag', value: 'VURDERING_ANNET_GRUNNLAG' },
-  { title: 'Opplysningsplikt', value: 'OPPLYSNINGSPLIKT' },
-  { title: 'Delt bosted', value: 'DELT_BOSTED' },
-  { title: 'Satsendring', value: 'SATSENDRING' },
+  { title: 'Under 18 år', value: Vilkår.UNDER_18_ÅR },
+  { title: 'Bor med søker', value: Vilkår.BOR_MED_SØKER },
+  { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
+  { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
+  { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
 ];
 
 export enum Formuleringstype {
@@ -37,3 +41,53 @@ export const flettefelter = [
   { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
 ];
+
+export enum VilkårTriggere {
+  VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
+  MEDLEMSKAP = 'MEDLEMSKAP',
+  DELT_BOSTED = 'DELT_BOSTED',
+  MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
+  SATSENDRING = 'SATSENDRING',
+  BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
+}
+
+export const lovligOppholdTriggere = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];
+export const bosattIRiketTriggere = [
+  VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
+  VilkårTriggere.MEDLEMSKAP,
+];
+export const giftPartnerskapTriggere = [
+  VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
+  VilkårTriggere.MEDLEMSKAP,
+];
+export const borMedSøkerTriggere = [
+  VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
+  VilkårTriggere.DELT_BOSTED,
+];
+export const øvrigeTriggere = [
+  VilkårTriggere.BARN_MED_6_ÅRS_DAG,
+  VilkårTriggere.SATSENDRING,
+  VilkårTriggere.MANGLER_OPPLYSNINGER,
+];
+
+export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
+  VURDERING_ANNET_GRUNNLAG: {
+    title: 'Vurdering annet grunnlag',
+    value: VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
+  },
+  MEDLEMSKAP: {
+    title: 'Medlemskap',
+    value: VilkårTriggere.MEDLEMSKAP,
+  },
+  DELT_BOSTED: {
+    title: 'Delt bosted',
+    value: VilkårTriggere.DELT_BOSTED,
+  },
+
+  BARN_MED_6_ÅRS_DAG: { title: 'Barn med 6 års dag', value: VilkårTriggere.BARN_MED_6_ÅRS_DAG },
+  MANGLER_OPPLYSNINGER: {
+    title: 'Mangler opplysninger',
+    value: VilkårTriggere.MANGLER_OPPLYSNINGER,
+  },
+  SATSENDRING: { title: 'Satsendring', value: VilkårTriggere.SATSENDRING },
+};
