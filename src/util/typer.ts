@@ -52,7 +52,7 @@ export enum BegrunnelseDokumentNavn {
   HJEMLER = 'hjemler',
   VILKÅR = 'vilkaar',
   ROLLE = 'rolle',
-  TRIGGES_AV_LOVLIG_OPPHOLD = 'LovligOppholdTriggere',
+  TRIGGES_AV_LOVLIG_OPPHOLD = 'lovligOppholdTriggere',
   BOSATT_I_RIKET_TRIGGERE = 'bosattIRiketTriggere',
   GIFT_PARTNERSKAP_TRIGGERE = 'giftPartnerskapTriggere',
   BOR_MED_SØKER_TRIGGERE = 'borMedSokerTriggere',
