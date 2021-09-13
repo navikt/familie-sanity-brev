@@ -10,7 +10,7 @@ export const hjemler = ['2', '4', '10', '11', '12', '14', '17', '18'];
 
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
-  BOR_MED_SØKER = 'BOR_MED_SØKER',
+  BOR_MED_SOKER = 'BOR_MED_SOKER',
   GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
   BOSATT_I_RIKET = 'BOSATT_I_RIKET',
   LOVLIG_OPPHOLD = 'LOVLIG_OPPHOLD',
@@ -18,7 +18,7 @@ export enum Vilkår {
 
 export const vilkår = [
   { title: 'Under 18 år', value: Vilkår.UNDER_18_ÅR },
-  { title: 'Bor med søker', value: Vilkår.BOR_MED_SØKER },
+  { title: 'Bor med søker', value: Vilkår.BOR_MED_SOKER },
   { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
   { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
   { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
@@ -49,6 +49,11 @@ export enum VilkårTriggere {
   MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
+}
+
+export enum VilkårRolle {
+  SOKER = 'SOKER',
+  BARN = 'BARN',
 }
 
 export const lovligOppholdTriggere = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];

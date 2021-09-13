@@ -52,7 +52,7 @@ export const triggesAv = [
       list: borMedSøkerTriggere.map(trigger => vilkårTriggerTilMenynavn[trigger]),
     },
     hidden: ({ document }) =>
-      !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SØKER)),
+      !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)),
   },
   {
     title: 'Øvrige triggere',

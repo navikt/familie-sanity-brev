@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import { apiNavnValideringer } from '../../../util/valideringer';
-import { begrunnelsestyper, flettefelter, hjemler, Vilkår, vilkår } from './typer';
+import { begrunnelsestyper, flettefelter, hjemler, Vilkår, vilkår, VilkårRolle } from './typer';
 import { triggesAv } from './triggesAv';
 
 const begrunnelseFlettefelt = {
@@ -130,11 +130,11 @@ const begrunnelse = {
         list: [
           {
             title: 'Søker',
-            value: 'soker,',
+            value: VilkårRolle.SOKER,
           },
           {
             title: 'Barn',
-            value: 'barn,',
+            value: VilkårRolle.BARN,
           },
         ],
       },
