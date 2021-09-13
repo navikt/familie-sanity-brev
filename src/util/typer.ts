@@ -31,11 +31,6 @@ export enum DokumentNavn {
   VALGMULIGHET = 'valgmulighet',
   PERIODE = 'periode',
   PERIODER = 'perioder',
-  BEGRUNNELSE = 'begrunnelse',
-  BEGRUNNELSE_TYPE = 'begrunnelsetype',
-  HJEMLER = 'hjemler',
-  VILKÅR = 'vilkaar',
-  FORMULERING = 'formulering',
   NAVN_I_SYSTEM = 'navnISystem',
   BLOCK = 'block',
 }
@@ -49,4 +44,17 @@ export enum SanityTyper {
   BLOCK = 'block',
   DOCUMENT = 'document',
   TABLE = 'table',
+}
+
+export enum BegrunnelseDokumentNavn {
+  BEGRUNNELSE = 'begrunnelse',
+  BEGRUNNELSE_TYPE = 'begrunnelsetype',
+  HJEMLER = 'hjemler',
+  VILKÅR = 'vilkaar',
+  ROLLE = 'rolle',
+  TRIGGES_AV_LOVLIG_OPPHOLD = 'lovligOppholdTriggere',
+  BOSATT_I_RIKET_TRIGGERE = 'bosattIRiketTriggere',
+  GIFT_PARTNERSKAP_TRIGGERE = 'giftPartnerskapTriggere',
+  BOR_MED_SØKER_TRIGGERE = 'borMedSokerTriggere',
+  ØVRIGE_TRIGGERE = 'ovrigeTriggere',
 }

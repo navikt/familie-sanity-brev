@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { DokumentNavn, SanityTyper } from '../../../util/typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import { apiNavnValideringer } from '../../../util/valideringer';
-import { begrunnelsestyper, flettefelter, formuleringer, hjemler, vilkår } from './typer';
+import { begrunnelsestyper, flettefelter, hjemler, Vilkår, vilkår, VilkårRolle } from './typer';
+import { triggesAv } from './triggesAv';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -48,9 +49,9 @@ const editor = (maalform, tittel) => ({
   ],
 });
 
-export default {
+const begrunnelse = {
   title: 'Begrunnelse',
-  name: DokumentNavn.BEGRUNNELSE,
+  name: BegrunnelseDokumentNavn.BEGRUNNELSE,
   type: SanityTyper.DOCUMENT,
   preview: {
     select: {
@@ -93,7 +94,7 @@ export default {
     {
       title: 'Begrunnelsetype',
       type: SanityTyper.STRING,
-      name: DokumentNavn.BEGRUNNELSE_TYPE,
+      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
       options: {
         list: begrunnelsestyper,
       },
@@ -102,7 +103,7 @@ export default {
     {
       title: 'Hjemler',
       type: SanityTyper.ARRAY,
-      name: DokumentNavn.HJEMLER,
+      name: BegrunnelseDokumentNavn.HJEMLER,
       of: [{ type: SanityTyper.STRING }],
       options: {
         layout: 'grid',
@@ -112,13 +113,39 @@ export default {
     {
       title: 'Vilkår',
       type: SanityTyper.ARRAY,
-      name: DokumentNavn.VILKÅR,
+      name: BegrunnelseDokumentNavn.VILKÅR,
       of: [{ type: SanityTyper.STRING }],
       options: {
         list: vilkår,
       },
       validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
     },
+
+    {
+      title: 'Rolle',
+      type: SanityTyper.ARRAY,
+      name: BegrunnelseDokumentNavn.ROLLE,
+      of: [{ type: SanityTyper.STRING }],
+      options: {
+        list: [
+          {
+            title: 'Søker',
+            value: VilkårRolle.SOKER,
+          },
+          {
+            title: 'Barn',
+            value: VilkårRolle.BARN,
+          },
+        ],
+      },
+      hidden: ({ document }) =>
+        !(
+          document.vilkaar &&
+          (document.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
+            document.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD))
+        ),
+    },
+    ...triggesAv,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
@@ -127,3 +154,5 @@ export default {
 const Flettefelt = styled.span`
   background-color: rgba(30, 133, 209, 0.2);
 `;
+
+export default begrunnelse;
