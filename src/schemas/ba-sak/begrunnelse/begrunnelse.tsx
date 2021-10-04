@@ -2,7 +2,15 @@ import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import { apiNavnValideringer } from '../../../util/valideringer';
-import { begrunnelsestyper, flettefelter, hjemler, Vilkår, vilkår, VilkårRolle } from './typer';
+import {
+  begrunnelsestyper,
+  flettefelter,
+  hjemler,
+  hjemlerFolketrygdloven,
+  Vilkår,
+  vilkår,
+  VilkårRolle,
+} from './typer';
 import { triggesAv } from './triggesAv';
 
 const begrunnelseFlettefelt = {
@@ -108,6 +116,16 @@ const begrunnelse = {
       options: {
         layout: 'grid',
         list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+      },
+    },
+    {
+      title: 'Hjemler fra folketrygdloven',
+      type: SanityTyper.ARRAY,
+      name: BegrunnelseDokumentNavn.HJEMLER_FOLKETRYGDLOVEN,
+      of: [{ type: SanityTyper.STRING }],
+      options: {
+        layout: 'radio',
+        list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
     },
     {
