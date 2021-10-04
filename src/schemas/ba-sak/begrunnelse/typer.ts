@@ -101,6 +101,6 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   SATSENDRING: { title: 'Satsendring', value: VilkårTriggere.SATSENDRING },
   ALLTID_AUTOMATISK: {
     title: 'Skal kun settes automatisk og ikke manuelt',
-    value: VilkårTriggere.SATSENDRING,
+    value: VilkårTriggere.ALLTID_AUTOMATISK,
   },
 };
