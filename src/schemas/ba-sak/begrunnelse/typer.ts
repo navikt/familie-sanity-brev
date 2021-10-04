@@ -6,7 +6,9 @@ export const begrunnelsestyper = [
   { title: 'Fortsatt innvilget', value: 'FORTSATT_INNVILGET' },
 ];
 
-export const hjemler = ['2', '4', '10', '11', '12', '14', '17', '18'];
+export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
+
+export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
@@ -49,6 +51,7 @@ export enum VilkårTriggere {
   MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
+  ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
 }
 
 export enum VilkårRolle {
@@ -73,6 +76,7 @@ export const øvrigeTriggere = [
   VilkårTriggere.BARN_MED_6_ÅRS_DAG,
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
+  VilkårTriggere.ALLTID_AUTOMATISK,
 ];
 
 export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
@@ -95,4 +99,8 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     value: VilkårTriggere.MANGLER_OPPLYSNINGER,
   },
   SATSENDRING: { title: 'Satsendring', value: VilkårTriggere.SATSENDRING },
+  ALLTID_AUTOMATISK: {
+    title: 'Skal kun settes automatisk og ikke manuelt',
+    value: VilkårTriggere.SATSENDRING,
+  },
 };

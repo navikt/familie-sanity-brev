@@ -50,6 +50,7 @@ export enum BegrunnelseDokumentNavn {
   BEGRUNNELSE = 'begrunnelse',
   BEGRUNNELSE_TYPE = 'begrunnelsetype',
   HJEMLER = 'hjemler',
+  HJEMLER_FOLKETRYGDLOVEN = 'hjemlerFolketrygdloven',
   VILKÅR = 'vilkaar',
   ROLLE = 'rolle',
   TRIGGES_AV_LOVLIG_OPPHOLD = 'lovligOppholdTriggere',
