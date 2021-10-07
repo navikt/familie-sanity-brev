@@ -12,7 +12,7 @@ const kunBokstaverOgTallUtenÆØÅ = (tekst: string): true | string =>
     ? true
     : 'Feltet kan kun bestå av tall eller boksaver (ikke æ, ø, å).';
 
-export const maskinNavnValideringer = Rule => [
+export const maskinnavnValideringer = Rule => [
   Rule.required().error('Feltet må settes'),
   Rule.required().custom(kunBokstaverOgTallUtenÆØÅ),
   Rule.required().custom(førsteTegnErLitenBokstav),
@@ -22,7 +22,7 @@ export const maskinNavnValideringer = Rule => [
 ];
 
 export const apiNavnValideringer = (Rule, type) => [
-  ...maskinNavnValideringer(Rule),
+  ...maskinnavnValideringer(Rule),
   Rule.custom(async (value, context) => {
     const erUnik = await erUniktApiNavn(type, value, context);
     if (!erUnik) return 'Apinavnet er ikke unikt.';
