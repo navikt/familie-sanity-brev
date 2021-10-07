@@ -16,6 +16,7 @@ export enum Vilkår {
   GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
   BOSATT_I_RIKET = 'BOSATT_I_RIKET',
   LOVLIG_OPPHOLD = 'LOVLIG_OPPHOLD',
+  UTVIDET_BARNETRYGD = 'UTVIDET_BARNETRYGD',
 }
 
 export const vilkår = [
@@ -24,6 +25,7 @@ export const vilkår = [
   { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
   { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
   { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
+  { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
 ];
 
 export enum Formuleringstype {
