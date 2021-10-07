@@ -78,7 +78,7 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, BegrunnelseDokumentNavn.BEGRUNNELSE),
     },
     {
       title: 'Mappe',

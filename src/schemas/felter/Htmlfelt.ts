@@ -12,7 +12,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Navnet på htmlfeltet. Kan kun bestå av tall eller bokstaver. Eksempel: fødselsdatoBarn.',
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.HTMLFELT),
     },
   ],
 };
