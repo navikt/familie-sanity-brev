@@ -1,5 +1,5 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { apiNavnValideringer, maskinNavnValideringer } from '../../util/valideringer';
+import { apiNavnValideringer, maskinnavnValideringer } from '../../util/valideringer';
 import hvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 
 export default {
@@ -38,7 +38,7 @@ export default {
               type: SanityTyper.STRING,
               name: DokumentNavn.VALGMULIGHET,
               title: 'Valgmulighet',
-              validation: maskinNavnValideringer,
+              validation: maskinnavnValideringer,
             },
             {
               type: SanityTyper.REFERENCE,
