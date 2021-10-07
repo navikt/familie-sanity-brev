@@ -1,7 +1,6 @@
 import { Konstanter } from './konstanter';
 import client from 'part:@sanity/base/client';
-
-const groq = require('groq');
+import groq from 'groq';
 
 const førsteTegnErLitenBokstav = (tekst: string): true | string =>
   RegExp(/^[a-zæøå].*/).test(tekst)
@@ -50,5 +49,5 @@ const erUniktApiNavn = (type, apiNavn, context) => {
     apiNavn == $apiNavn
   ][0]._id)`;
 
-  return client.fetch(query, params);
+  return client.withConfig({ apiVersion: '2021-06-07' }).fetch(query, params);
 };
