@@ -37,6 +37,40 @@ const begrunnelseFlettefelt = {
   },
 };
 
+const begrunnelseFormuleringsfelt = {
+  name: BegrunnelseDokumentNavn.VALGFELT_V2,
+  type: SanityTyper.OBJECT,
+  title: 'Formulering',
+  fields: [
+    {
+      type: SanityTyper.REFERENCE,
+      to: [{ type: DokumentNavn.VALGFELT }],
+      name: DokumentNavn.VALG_REFERANSE,
+    },
+    {
+      name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
+      type: SanityTyper.BOOLEAN,
+      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+    },
+  ],
+  initialValue: {
+    [BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV]: false,
+  },
+  preview: {
+    select: {
+      valgVisningsnavn: `${DokumentNavn.VALG_REFERANSE}.${DokumentNavn.VISNINGSNAVN}`,
+    },
+    prepare: selection => selection,
+    component: props => {
+      return (
+        <Flettefelt>
+          {props.value?.valgVisningsnavn ? props.value.valgVisningsnavn : 'Tom formulering'}
+        </Flettefelt>
+      );
+    },
+  },
+};
+
 const editor = (maalform, tittel) => ({
   name: maalform,
   title: tittel,
@@ -47,10 +81,18 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       of: [
         begrunnelseFlettefelt,
+        begrunnelseFormuleringsfelt,
         {
+          /*
+           * Gammel versjon av formuleringsfelt.
+           * Beholdes for å ikke miste det som er lagt inn i sanity.
+           * begrunnelseFormuleringsfelt skal brukes.
+           * Vises ikke i sanity.
+           */
           type: SanityTyper.REFERENCE,
           to: [{ type: DokumentNavn.VALGFELT }],
           name: DokumentNavn.VALG_REFERANSE,
+          hidden: true,
         },
       ],
     },
