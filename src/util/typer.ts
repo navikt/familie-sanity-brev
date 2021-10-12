@@ -58,4 +58,6 @@ export enum BegrunnelseDokumentNavn {
   GIFT_PARTNERSKAP_TRIGGERE = 'giftPartnerskapTriggere',
   BOR_MED_SØKER_TRIGGERE = 'borMedSokerTriggere',
   ØVRIGE_TRIGGERE = 'ovrigeTriggere',
+  SKAL_HA_STOR_FORBOSKTAV = 'skalHaStorForbokstav',
+  VALGFELT_V2 = 'valgfeltV2',
 }
