@@ -37,20 +37,21 @@ const begrunnelseFlettefelt = {
   },
 };
 
-const begrunnelseFormuleringsfelt = {
+const begrunnelseValgfelt = {
   name: BegrunnelseDokumentNavn.VALGFELT_V2,
   type: SanityTyper.OBJECT,
-  title: 'Formulering',
+  title: 'Referanse til valgfelt',
   fields: [
     {
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.VALGFELT }],
       name: DokumentNavn.VALG_REFERANSE,
+      validation: Rule => [Rule.required().error('Tomt valgfelt')],
     },
     {
       name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
       type: SanityTyper.BOOLEAN,
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+      validation: Rule => [Rule.required().error('Du må velge om det skal være stor bokstav')],
     },
   ],
   initialValue: {
@@ -64,7 +65,7 @@ const begrunnelseFormuleringsfelt = {
     component: props => {
       return (
         <Flettefelt>
-          {props.value?.valgVisningsnavn ? props.value.valgVisningsnavn : 'Tom formulering'}
+          {props.value?.valgVisningsnavn ? props.value.valgVisningsnavn : 'Tomt valgfelt'}
         </Flettefelt>
       );
     },
@@ -81,7 +82,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       of: [
         begrunnelseFlettefelt,
-        begrunnelseFormuleringsfelt,
+        begrunnelseValgfelt,
         {
           /*
            * Gammel versjon av formuleringsfelt.
