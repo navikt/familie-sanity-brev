@@ -1,5 +1,5 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { apiNavnValideringer } from '../../util/valideringer';
+import { apiNavnValideringer, maskinnavnValideringer } from '../../util/valideringer';
 import hvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 
 export default {
@@ -17,7 +17,7 @@ export default {
       title: 'Api-navn',
       name: DokumentNavn.API_NAVN,
       type: SanityTyper.STRING,
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.VALGFELT),
     },
     {
       name: 'hvorBrukesValgfeltet',
@@ -38,7 +38,7 @@ export default {
               type: SanityTyper.STRING,
               name: DokumentNavn.VALGMULIGHET,
               title: 'Valgmulighet',
-              validation: apiNavnValideringer,
+              validation: maskinnavnValideringer,
             },
             {
               type: SanityTyper.REFERENCE,

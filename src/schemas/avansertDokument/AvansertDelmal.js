@@ -35,7 +35,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DELMAL),
     },
     {
       name: 'hvorDenBrukes',

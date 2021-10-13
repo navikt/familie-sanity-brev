@@ -1,7 +1,6 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import hvorErFlettefeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErFlettefeltetIBruk';
-import { useSanityQuery } from '../../util/sanity';
 
 export default {
   title: 'Flettefelt',
@@ -14,7 +13,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Navnet på flettefeltet. Kan kun bestå av tall eller bokstaver. Eksempel: fødselsdatoBarn.',
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.FLETTEFELT),
     },
     {
       title: 'Visningsnavn',

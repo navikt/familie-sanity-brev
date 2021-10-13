@@ -92,7 +92,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: apiNavnValideringer,
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.PERIODE),
     },
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
