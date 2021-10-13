@@ -11,7 +11,7 @@ const endretUtbetalingEllerEtterEndretUtbetalingErValgt = document =>
 export const endringsårsakTrigger = {
   title: 'Endringsårsaker',
   type: SanityTyper.ARRAY,
-  name: BegrunnelseDokumentNavn.ENDRINGSÅRSAKER,
+  name: BegrunnelseDokumentNavn.ENDRINGSAARSAKER,
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: endringsårsaker,
