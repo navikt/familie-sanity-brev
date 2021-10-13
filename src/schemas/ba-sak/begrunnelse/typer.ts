@@ -10,6 +10,7 @@ export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
+//NB: Endrer du på disse bør du endre i ba-sak først
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
   BOR_MED_SOKER = 'BOR_MED_SOKER',
@@ -62,6 +63,7 @@ export enum VilkårRolle {
   BARN = 'BARN',
 }
 
+//NB: Endrer du på disse bør du endre i ba-sak først
 export const lovligOppholdTriggere = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];
 export const bosattIRiketTriggere = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
