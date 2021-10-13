@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { endringstyper, VilkårTriggere } from '../typer';
+import { endringsårsaker, VilkårTriggere } from '../typer';
 
 const endretUtbetalingEllerEtterEndretUtbetalingErValgt = document =>
   document[BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE] &&
@@ -8,13 +8,13 @@ const endretUtbetalingEllerEtterEndretUtbetalingErValgt = document =>
       VilkårTriggere.ETTER_ENDRET_UTBETALING,
     ));
 
-export const endringstypeTrigger = {
-  title: 'Endringstype',
+export const endringsårsakTrigger = {
+  title: 'Endringsårsaker',
   type: SanityTyper.ARRAY,
-  name: BegrunnelseDokumentNavn.ENDRINGSTYPER,
+  name: BegrunnelseDokumentNavn.ENDRINGSÅRSAKER,
   of: [{ type: SanityTyper.STRING }],
   options: {
-    list: endringstyper,
+    list: endringsårsaker,
   },
   hidden: ({ document }) => !endretUtbetalingEllerEtterEndretUtbetalingErValgt(document),
 };

@@ -123,8 +123,9 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
 };
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
-export enum Endringstype {
+export enum Endringsårsak {
   DELT_BOSTED = 'DELT_BOSTED',
+  EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
 }
 
-export const endringstyper = [{ title: 'Delt bosted', value: Endringstype.DELT_BOSTED }];
+export const endringsårsaker = [{ title: 'Delt bosted', value: Endringsårsak.DELT_BOSTED }];
