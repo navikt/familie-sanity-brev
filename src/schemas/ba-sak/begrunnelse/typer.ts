@@ -128,4 +128,7 @@ export enum Endringsårsak {
   EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
 }
 
-export const endringsårsaker = [{ title: 'Delt bosted', value: Endringsårsak.DELT_BOSTED }];
+export const endringsårsaker = [
+  { title: 'Delt bosted', value: Endringsårsak.DELT_BOSTED },
+  { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
+];
