@@ -54,6 +54,7 @@ export enum VilkårTriggere {
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
+  ETTER_ENDRET_UTBETALING = 'ETTER_ENDRET_UTBETALING',
 }
 
 export enum VilkårRolle {
@@ -79,6 +80,7 @@ export const øvrigeTriggere = [
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
+  VilkårTriggere.ETTER_ENDRET_UTBETALING,
 ];
 
 export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
@@ -104,5 +106,9 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   ALLTID_AUTOMATISK: {
     title: 'Skal kun settes automatisk og ikke manuelt',
     value: VilkårTriggere.ALLTID_AUTOMATISK,
+  },
+  ETTER_ENDRET_UTBETALING: {
+    title: 'Etter endret utbetaling',
+    value: VilkårTriggere.ETTER_ENDRET_UTBETALING,
   },
 };
