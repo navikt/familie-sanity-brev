@@ -47,6 +47,7 @@ export const flettefelter = [
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
 ];
 
+//NB: Endrer du på disse bør du endre i ba-sak først
 export enum VilkårTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   MEDLEMSKAP = 'MEDLEMSKAP',
@@ -55,6 +56,7 @@ export enum VilkårTriggere {
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
+  ENDRET_UTBETALING = 'ENDRET_UTBETALING',
   ETTER_ENDRET_UTBETALING = 'ETTER_ENDRET_UTBETALING',
 }
 
@@ -82,6 +84,7 @@ export const øvrigeTriggere = [
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
+  VilkårTriggere.ENDRET_UTBETALING,
   VilkårTriggere.ETTER_ENDRET_UTBETALING,
 ];
 
@@ -109,8 +112,19 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     title: 'Skal kun settes automatisk og ikke manuelt',
     value: VilkårTriggere.ALLTID_AUTOMATISK,
   },
+  ENDRET_UTBETALING: {
+    title: 'Endret utbetaling',
+    value: VilkårTriggere.ENDRET_UTBETALING,
+  },
   ETTER_ENDRET_UTBETALING: {
     title: 'Etter endret utbetaling',
     value: VilkårTriggere.ETTER_ENDRET_UTBETALING,
   },
 };
+
+//NB: Endrer du på disse bør du endre i ba-sak først
+export enum Endringstype {
+  DELT_BOSTED = 'DELT_BOSTED',
+}
+
+export const endringstyper = [{ title: 'Delt bosted', value: Endringstype.DELT_BOSTED }];
