@@ -1,7 +1,7 @@
 # Familie sanity brev
 
 ### Instalere Sanity
-* Skriv `npm install -g @sanity/cli` i terminalen.
+* Kjør `npm install -g @sanity/cli` i terminalen.
 
 ### Kjøre lokalt
 * Kjør `yarn` for å installere alle npm-pakkene. 
