@@ -60,4 +60,5 @@ export enum BegrunnelseDokumentNavn {
   ØVRIGE_TRIGGERE = 'ovrigeTriggere',
   SKAL_HA_STOR_FORBOSKTAV = 'skalHaStorForbokstav',
   VALGFELT_V2 = 'valgfeltV2',
+  ENDRINGSAARSAKER = 'endringsaarsaker',
 }

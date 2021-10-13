@@ -12,6 +12,7 @@ import {
   VilkårRolle,
 } from './typer';
 import { triggesAv } from './triggesAv';
+import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -207,6 +208,7 @@ const begrunnelse = {
         ),
     },
     ...triggesAv,
+    endringsårsakTrigger,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
