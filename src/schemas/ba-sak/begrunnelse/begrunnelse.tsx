@@ -13,6 +13,8 @@ import {
 } from './typer';
 import { triggesAv } from './triggesAv';
 import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
+import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
+import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -209,6 +211,8 @@ const begrunnelse = {
     },
     ...triggesAv,
     endringsårsakTrigger,
+    endretUtbetalingsperiodeTriggere,
+    endretUtbetalingsperiodeDeltBostedTriggere,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],

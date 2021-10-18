@@ -61,4 +61,6 @@ export enum BegrunnelseDokumentNavn {
   SKAL_HA_STOR_FORBOSKTAV = 'skalHaStorForbokstav',
   VALGFELT_V2 = 'valgfeltV2',
   ENDRINGSAARSAKER = 'endringsaarsaker',
+  ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
+  ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_TRIGGERE = 'endretUtbetalingsperiodeDeltBostedTriggere',
 }

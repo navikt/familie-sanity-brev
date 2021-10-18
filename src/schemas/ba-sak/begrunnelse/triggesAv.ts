@@ -8,6 +8,7 @@ import {
   vilkårTriggerTilMenynavn,
   øvrigeTriggere,
 } from './typer';
+import { erEndretUtbetaling } from './triggere/endringsårsakTrigger';
 
 export const triggesAv = [
   {
@@ -62,5 +63,6 @@ export const triggesAv = [
     options: {
       list: øvrigeTriggere.map(trigger => vilkårTriggerTilMenynavn[trigger]),
     },
+    hidden: ({ document }) => erEndretUtbetaling(document),
   },
 ];
