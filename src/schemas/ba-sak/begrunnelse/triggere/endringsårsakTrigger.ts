@@ -1,12 +1,9 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { endringsårsaker, VilkårTriggere } from '../typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import { Begrunnelsestype, endringsårsaker } from '../typer';
 
-const endretUtbetalingEllerEtterEndretUtbetalingErValgt = document =>
-  document[BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE] &&
-  (document[BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE].includes(VilkårTriggere.ENDRET_UTBETALING) ||
-    document[BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE].includes(
-      VilkårTriggere.ETTER_ENDRET_UTBETALING,
-    ));
+export const erEndretUtbetaling = document =>
+  document[DokumentNavn.MAPPE] &&
+  document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ENDRET_UTBETALINGSPERIODE);
 
 export const endringsårsakTrigger = {
   title: 'Endringsårsaker',
@@ -16,5 +13,5 @@ export const endringsårsakTrigger = {
   options: {
     list: endringsårsaker,
   },
-  hidden: ({ document }) => !endretUtbetalingEllerEtterEndretUtbetalingErValgt(document),
+  hidden: ({ document }) => !erEndretUtbetaling(document),
 };

@@ -1,9 +1,19 @@
+export enum Begrunnelsestype {
+  INNVILGELSE = 'INNVILGELSE',
+  REDUKSJON = 'REDUKSJON',
+  AVSLAG = 'AVSLAG',
+  OPPHØR = 'OPPHØR',
+  FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
+  ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
+}
+
 export const begrunnelsestyper = [
-  { title: 'Innvilgelse', value: 'INNVILGELSE' },
-  { title: 'Reduksjon', value: 'REDUKSJON' },
-  { title: 'Avslag', value: 'AVSLAG' },
-  { title: 'Opphør', value: 'OPPHØR' },
-  { title: 'Fortsatt innvilget', value: 'FORTSATT_INNVILGET' },
+  { title: 'Innvilgelse', value: Begrunnelsestype.INNVILGELSE },
+  { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
+  { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
+  { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
+  { title: 'Fortsatt innvilget', value: Begrunnelsestype.FORTSATT_INNVILGET },
+  { title: 'Endret utbetalingsperiode', value: Begrunnelsestype.ENDRET_UTBETALINGSPERIODE },
 ];
 
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
@@ -56,8 +66,6 @@ export enum VilkårTriggere {
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
-  ENDRET_UTBETALING = 'ENDRET_UTBETALING',
-  ETTER_ENDRET_UTBETALING = 'ETTER_ENDRET_UTBETALING',
 }
 
 export enum VilkårRolle {
@@ -84,8 +92,6 @@ export const øvrigeTriggere = [
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
-  VilkårTriggere.ENDRET_UTBETALING,
-  VilkårTriggere.ETTER_ENDRET_UTBETALING,
 ];
 
 export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
@@ -112,14 +118,6 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     title: 'Skal kun settes automatisk og ikke manuelt',
     value: VilkårTriggere.ALLTID_AUTOMATISK,
   },
-  ENDRET_UTBETALING: {
-    title: 'Endret utbetaling',
-    value: VilkårTriggere.ENDRET_UTBETALING,
-  },
-  ETTER_ENDRET_UTBETALING: {
-    title: 'Etter endret utbetaling',
-    value: VilkårTriggere.ETTER_ENDRET_UTBETALING,
-  },
 };
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
@@ -131,4 +129,28 @@ export enum Endringsårsak {
 export const endringsårsaker = [
   { title: 'Delt bosted', value: Endringsårsak.DELT_BOSTED },
   { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
+];
+
+//NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
+export enum EndretUtbetalingsperioderTrigger {
+  ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
+}
+
+export const endretUtbetalingsperioderTriggereValg = [
+  {
+    title: 'Begrunnelse kommer etter endret utbetalings',
+    value: EndretUtbetalingsperioderTrigger.ETTER_ENDRET_UTBETALINGSPERIODE,
+  },
+];
+
+//NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
+export enum EndretUtbetalingsperioderDeltBostedTrigger {
+  SKAL_UTBETALES = 'SKAL_UTBETALES',
+}
+
+export const endretUtbetalingsperioderDeltBostedTriggereValg = [
+  {
+    title: 'Skal utbetales til søker',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_UTBETALES,
+  },
 ];
