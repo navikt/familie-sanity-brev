@@ -183,7 +183,7 @@ const begrunnelse = {
         list: vilkår,
       },
       validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
-      hidden: ({ document }) => !erEndretUtbetaling(document),
+      hidden: ({ document }) => erEndretUtbetaling(document),
     },
 
     {
