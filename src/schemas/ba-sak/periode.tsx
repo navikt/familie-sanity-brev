@@ -5,7 +5,15 @@ import TekstStyles from '../../util/TekstStyles';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { apiNavnValideringer } from '../../util/valideringer';
 
-const flettefelterForPeriode = ['fom', 'tom', 'type', 'belop', 'antallBarn', 'barnasFodselsdager'];
+const flettefelterForPeriode = [
+  { title: 'Fom', value: 'fom' },
+  { title: 'Tom', value: 'tom' },
+  { title: 'Beløp', value: 'belop' },
+  { title: 'Antall barn', value: 'antallBarn' },
+  { title: 'Barnas fødselsdager', value: 'barnasFodselsdager' },
+  { title: 'Type Barnetrygd', value: 'typeBarnetrygd' },
+];
+
 const avsnittflettefelterPeriode = ['begrunnelser'];
 
 const periodeFlettefeltAnnotering = {
