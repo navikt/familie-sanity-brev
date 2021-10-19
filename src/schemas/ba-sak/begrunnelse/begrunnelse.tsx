@@ -12,7 +12,7 @@ import {
   VilkårRolle,
 } from './typer';
 import { triggesAv } from './triggesAv';
-import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
+import { endringsårsakTrigger, erEndretUtbetaling } from './triggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
 import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 
@@ -183,6 +183,7 @@ const begrunnelse = {
         list: vilkår,
       },
       validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
+      hidden: ({ document }) => !erEndretUtbetaling(document),
     },
 
     {
