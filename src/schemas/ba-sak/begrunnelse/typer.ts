@@ -1,14 +1,15 @@
 export enum Begrunnelsestype {
-  INNVILGELSE = 'INNVILGELSE',
+  INNVILGET = 'INNVILGET',
   REDUKSJON = 'REDUKSJON',
   AVSLAG = 'AVSLAG',
   OPPHØR = 'OPPHØR',
   FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
   ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
+  ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
 }
 
 export const begrunnelsestyper = [
-  { title: 'Innvilgelse', value: Begrunnelsestype.INNVILGELSE },
+  { title: 'Innvilget', value: Begrunnelsestype.INNVILGET },
   { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
   { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
   { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
