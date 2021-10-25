@@ -3,7 +3,8 @@ import { Begrunnelsestype, endringsårsaker } from '../typer';
 
 export const erEndretUtbetaling: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&
-  document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ENDRET_UTBETALINGSPERIODE);
+  (document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ENDRET_UTBETALINGSPERIODE) ||
+    document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ETTER_ENDRET_UTBETALINGSPERIODE));
 
 export const endringsårsakTrigger = {
   title: 'Endringsårsaker',

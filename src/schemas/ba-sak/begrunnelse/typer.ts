@@ -8,14 +8,24 @@ export enum Begrunnelsestype {
   ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
 }
 
-export const begrunnelsestyper = [
-  { title: 'Innvilget', value: Begrunnelsestype.INNVILGET },
-  { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
-  { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
-  { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
-  { title: 'Fortsatt innvilget', value: Begrunnelsestype.FORTSATT_INNVILGET },
-  { title: 'Endret utbetalingsperiode', value: Begrunnelsestype.ENDRET_UTBETALINGSPERIODE },
-];
+export const begrunnelsestyperTilMenynavn: Record<
+  Begrunnelsestype,
+  { title: string; value: Begrunnelsestype }
+> = {
+  INNVILGET: { title: 'Innvilget', value: Begrunnelsestype.INNVILGET },
+  REDUKSJON: { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
+  AVSLAG: { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
+  OPPHØR: { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
+  FORTSATT_INNVILGET: { title: 'Fortsatt innvilget', value: Begrunnelsestype.FORTSATT_INNVILGET },
+  ENDRET_UTBETALINGSPERIODE: {
+    title: 'Endret utbetaling',
+    value: Begrunnelsestype.ENDRET_UTBETALINGSPERIODE,
+  },
+  ETTER_ENDRET_UTBETALINGSPERIODE: {
+    title: 'Etter endret utbetaling',
+    value: Begrunnelsestype.ETTER_ENDRET_UTBETALINGSPERIODE,
+  },
+};
 
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
 
