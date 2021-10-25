@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
 import {
-  begrunnelsestyper,
+  Begrunnelsestype,
+  begrunnelsestyperTilMenynavn,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -124,7 +125,9 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
       options: {
-        list: begrunnelsestyper,
+        list: Object.values(Begrunnelsestype).map(
+          begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
+        ),
       },
       validation: Rule => Rule.required().error('Begrunnelsestype ikke valgt'),
     },
@@ -143,7 +146,9 @@ const begrunnelse = {
         {
           type: 'string',
           options: {
-            list: begrunnelsestyper,
+            list: Object.values(Begrunnelsestype).map(
+              begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
+            ),
           },
         },
       ],
