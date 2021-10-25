@@ -4,6 +4,7 @@ import { Begrunnelsestype } from './typer';
 const apiNavnPrefiksMap: Record<Begrunnelsestype, string> = {
   AVSLAG: 'avslag',
   ENDRET_UTBETALINGSPERIODE: 'endretUtbetaling',
+  ETTER_ENDRET_UTBETALINGSPERIODE: 'etterEndretUtbetaling',
   FORTSATT_INNVILGET: 'fortsattInnvilget',
   INNVILGET: 'innvilget',
   OPPHØR: 'opphor',
