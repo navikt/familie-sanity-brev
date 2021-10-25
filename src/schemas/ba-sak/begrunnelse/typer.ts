@@ -1,5 +1,5 @@
 export enum Begrunnelsestype {
-  INNVILGELSE = 'INNVILGELSE',
+  INNVILGET = 'INNVILGET',
   REDUKSJON = 'REDUKSJON',
   AVSLAG = 'AVSLAG',
   OPPHØR = 'OPPHØR',
@@ -8,7 +8,7 @@ export enum Begrunnelsestype {
 }
 
 export const begrunnelsestyper = [
-  { title: 'Innvilgelse', value: Begrunnelsestype.INNVILGELSE },
+  { title: 'Innvilget', value: Begrunnelsestype.INNVILGET },
   { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
   { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
   { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
