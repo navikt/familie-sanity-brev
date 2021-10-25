@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
-import { apiNavnValideringer } from '../../../util/valideringer';
 import {
   begrunnelsestyper,
   flettefelter,
@@ -15,6 +14,7 @@ import { triggesAv } from './triggesAv';
 import { endringsårsakTrigger, erEndretUtbetaling } from './triggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
 import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
+import { apiNavnValideringerBegrunnelse } from './valideringer';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -120,11 +120,20 @@ const begrunnelse = {
       validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
     },
     {
+      title: 'Begrunnelsetype',
+      type: SanityTyper.STRING,
+      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
+      options: {
+        list: begrunnelsestyper,
+      },
+      validation: Rule => Rule.required().error('Begrunnelsestype ikke valgt'),
+    },
+    {
       title: 'Api-navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, BegrunnelseDokumentNavn.BEGRUNNELSE),
+      validation: rule => apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.BEGRUNNELSE),
     },
     {
       title: 'Mappe',
@@ -144,15 +153,6 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,
       validation: Rule => [Rule.required().error('Dokumentet må ha et navn i ba-sak')],
-    },
-    {
-      title: 'Begrunnelsetype',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
-      options: {
-        list: begrunnelsestyper,
-      },
-      validation: Rule => Rule.required().error('Begrunnelsestype ikke valgt'),
     },
     {
       title: 'Hjemler',
