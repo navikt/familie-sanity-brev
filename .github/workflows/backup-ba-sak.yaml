@@ -1,6 +1,6 @@
 name: Backup Routine
 on:
-  pull_request:
+  workflow_dispatch:
   schedule:
     # Runs at 04:00 UTC on the 1st and 17th of every month
     - cron: "0 4 */16 * *"
@@ -47,3 +47,9 @@ jobs:
           path: backups/ef-sak.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
+      - name: Import ef dataset til ef-test
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+        with:
+          args: dataset import backups/ef-sak.tar.gz ef-test
