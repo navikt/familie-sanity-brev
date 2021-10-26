@@ -13,7 +13,7 @@ jobs:
       - name: Export dataset
         uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
           args: dataset export ba-brev backups/backup.tar.gz
       - name: Upload backup.tar.gz
