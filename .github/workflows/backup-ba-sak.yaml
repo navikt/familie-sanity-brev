@@ -7,10 +7,10 @@ on:
 jobs:
   backup-ba-dataset:
     runs-on: ubuntu-18.04
-    name: Backup dataset
+    name: Backup ba dataset
     steps:
       - uses: actions/checkout@v2
-      - name: Export dataset
+      - name: Export ba dataset
         uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
@@ -23,9 +23,15 @@ jobs:
           path: backups/ba-sak.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
+      - name: Import ba dataset til ba-test
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+        with:
+          args: dataset import backups/ba-sak.tar.gz ba-test
   backup-ef-dataset:
     runs-on: ubuntu-18.04
-    name: Backup dataset
+    name: Backup ef dataset
     steps:
       - uses: actions/checkout@v2
       - name: Export dataset
