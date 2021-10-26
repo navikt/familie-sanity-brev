@@ -28,7 +28,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         with:
-          args: dataset import backups/ba-sak.tar.gz ba-test
+          args: dataset import backups/ba-sak.tar.gz ba-test --replace
   backup-ef-dataset:
     runs-on: ubuntu-18.04
     name: Backup ef dataset
@@ -52,4 +52,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         with:
-          args: dataset import backups/ef-sak.tar.gz ef-test
+          args: dataset import backups/ef-sak.tar.gz ef-test --replace
