@@ -15,11 +15,25 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
-          args: dataset export ba-brev backups/backup.tar.gz
-      - name: Upload backup.tar.gz
+          args: dataset export ba-brev backups/ba-sak.tar.gz
+      - name: Upload ba-sak.tar.gz
         uses: actions/upload-artifact@v2
         with:
-          name: backup-tarball
-          path: backups/backup.tar.gz
+          name: backup-ba
+          path: backups/ba-sak.tar.gz
+          # Fails the workflow if no files are found; defaults to 'warn'
+          if-no-files-found: error
+      - uses: actions/checkout@v2
+      - name: Export dataset
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
+        with:
+          args: dataset export ef-brev backups/ef-sak.tar.gz
+      - name: Upload ef-sak.tar.gz
+        uses: actions/upload-artifact@v2
+        with:
+          name: backup-ef
+          path: backups/ef-sak.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
