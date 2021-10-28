@@ -33,6 +33,7 @@ export enum DokumentNavn {
   PERIODER = 'perioder',
   NAVN_I_SYSTEM = 'navnISystem',
   BLOCK = 'block',
+  PUBLISERT = 'publisert',
 }
 
 export enum SanityTyper {

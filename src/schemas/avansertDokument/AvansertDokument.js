@@ -14,7 +14,15 @@ export default {
   type: SanityTyper.DOCUMENT,
   preview: {
     select: {
-      title: DokumentNavn.VISNINGSNAVN,
+      tittel: DokumentNavn.VISNINGSNAVN,
+      publisert: DokumentNavn.PUBLISERT,
+    },
+    prepare(selection) {
+      const { tittel, publisert } = selection;
+      return {
+        title: tittel,
+        subtitle: publisert ? 'PUBLISERT' : '',
+      };
     },
   },
   fields: [
@@ -22,6 +30,12 @@ export default {
       name: 'badgeTittel',
       inputComponent: TittelBadge,
       type: 'string',
+    },
+    {
+      title: 'Publisert',
+      name: DokumentNavn.PUBLISERT,
+      description: 'Sett denne til publisert når brevmalen skal vises i saksbehandlingsløsningen.',
+      type: 'boolean',
     },
     {
       title: 'Visningsnavn',
@@ -42,4 +56,7 @@ export default {
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
+  initialValue: {
+    publisert: false,
+  },
 };
