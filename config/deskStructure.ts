@@ -7,18 +7,14 @@ import client from 'part:@sanity/base/client';
 const DOKUMENTER = 'dokumenter';
 
 interface IDokument {
-  mappe: string[] | null;
+  mappe?: string[] | null;
   visningsnavn: string;
   _id: string;
   _type: string;
 }
 
 type IMappe = {
-  [DOKUMENTER]: {
-    visningsnavn: string;
-    _id: string;
-    _type: string;
-  }[];
+  [DOKUMENTER]: IDokument[];
   mapper: { [mappe: string]: IMappe } | {};
 };
 
@@ -80,12 +76,13 @@ const hentDokumentMappe = (
         : dokument,
     );
 
-  mappe[DOKUMENTER] = fjernDraftsFraId(mappe[DOKUMENTER]);
+  const relevanteDokumenter = fjernDraftsFraId(mappe[DOKUMENTER]);
+  const sorterteRelevanteDokumenter = sorterBegrunnelseDokumenter(relevanteDokumenter, type);
 
   const ider = tidligereIder;
 
   const dokumenter: ListItemBuilder[] = [];
-  mappe[DOKUMENTER].forEach(dokument => {
+  sorterteRelevanteDokumenter.forEach(dokument => {
     if (dokument._type !== type) return;
 
     if (!tidligereIder.includes(dokument._id)) {
@@ -121,6 +118,23 @@ const hentDokumentMappe = (
         .title(mappeNavn)
         .items([...underMapper, ...dokumenter]),
     );
+};
+
+const sorterBegrunnelseDokumenter = (dokumenter: IDokument[], type): IDokument[] => {
+  if (type === 'begrunnelse') {
+    return dokumenter.sort((a, b) =>
+      a?.visningsnavn && b?.visningsnavn
+        ? hentFørsteTallIStartAvTekst(a.visningsnavn) - hentFørsteTallIStartAvTekst(b.visningsnavn)
+        : -1,
+    );
+  } else {
+    return dokumenter;
+  }
+};
+
+const hentFørsteTallIStartAvTekst = (tekst: string): number => {
+  const tallIStartenAvTekst = parseInt(tekst.replace(/(^\d+)(.+$)/i, '$1'));
+  return isNaN(tallIStartenAvTekst) ? -1 : tallIStartenAvTekst;
 };
 
 const trimStreng = (tekst: string) => {
