@@ -59,15 +59,9 @@
     "markdown",
     "@sanity/dashboard",
     "@sanity/production-preview",
-    "datatable"
+    "datatable",
+    "@sanity/vision"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
-    }
-  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
