@@ -12,10 +12,12 @@ import {
   VilkårRolle,
 } from './typer';
 import { triggesAv } from './triggesAv';
-import { endringsårsakTrigger, erEndretUtbetaling } from './triggere/endringsårsakTrigger';
+import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
 import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
+import { øvrigeTriggere } from './triggere/øvrigeTriggere';
+import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -188,7 +190,6 @@ const begrunnelse = {
         list: vilkår,
       },
       validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
-      hidden: ({ document }) => erEndretUtbetaling(document),
     },
 
     {
@@ -216,6 +217,8 @@ const begrunnelse = {
         ),
     },
     ...triggesAv,
+    utvidetBarnetrygdTriggere,
+    øvrigeTriggere,
     endringsårsakTrigger,
     endretUtbetalingsperiodeTriggere,
     endretUtbetalingsperiodeDeltBostedTriggere,

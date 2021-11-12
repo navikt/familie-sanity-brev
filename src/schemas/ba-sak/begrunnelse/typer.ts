@@ -77,6 +77,7 @@ export enum VilkårTriggere {
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
+  SMÅBARNSTILLEGG = 'SMÅBARNSTILLEGG',
 }
 
 export enum VilkårRolle {
@@ -98,12 +99,13 @@ export const borMedSøkerTriggere = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.DELT_BOSTED,
 ];
-export const øvrigeTriggere = [
+export const øvrigeTriggertyper = [
   VilkårTriggere.BARN_MED_6_ÅRS_DAG,
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
 ];
+export const utvidetBarnetrygdTriggertyper = [VilkårTriggere.SMÅBARNSTILLEGG];
 
 export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
   VURDERING_ANNET_GRUNNLAG: {
@@ -128,6 +130,10 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   ALLTID_AUTOMATISK: {
     title: 'Skal kun settes automatisk og ikke manuelt',
     value: VilkårTriggere.ALLTID_AUTOMATISK,
+  },
+  SMÅBARNSTILLEGG: {
+    title: 'Småbarnstillegg',
+    value: VilkårTriggere.SMÅBARNSTILLEGG,
   },
 };
 
