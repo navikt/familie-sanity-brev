@@ -35,9 +35,12 @@ const begrunnelseFlettefelt = {
       flettefelt: DokumentNavn.FLETTEFELT,
     },
     prepare: selection => selection,
-    component: props => (
-      <Flettefelt>{props.value.flettefelt ? props.value.flettefelt : 'Tomt flettefelt'}</Flettefelt>
-    ),
+    component: props => {
+      const flettefelt = flettefelter.find(
+        flettefelt => flettefelt.value === props.value.flettefelt,
+      );
+      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+    },
   },
 };
 

@@ -66,6 +66,7 @@ export const formuleringer: Formuleringsvalg[] = [
 export const flettefelter = [
   { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
+  { title: 'Beløp', value: 'belop' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
