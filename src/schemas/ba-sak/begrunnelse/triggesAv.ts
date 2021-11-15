@@ -6,7 +6,6 @@ import {
   lovligOppholdTriggere,
   Vilkår,
   vilkårTriggerTilMenynavn,
-  øvrigeTriggere,
 } from './typer';
 import { erEndretUtbetaling } from './triggere/endringsårsakTrigger';
 
@@ -54,15 +53,5 @@ export const triggesAv = [
     },
     hidden: ({ document }) =>
       !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)),
-  },
-  {
-    title: 'Øvrige triggere',
-    type: SanityTyper.ARRAY,
-    name: BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE,
-    of: [{ type: SanityTyper.STRING }],
-    options: {
-      list: øvrigeTriggere.map(trigger => vilkårTriggerTilMenynavn[trigger]),
-    },
-    hidden: ({ document }) => erEndretUtbetaling(document),
   },
 ];
