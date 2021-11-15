@@ -1,0 +1,22 @@
+name: Backup Routine
+on:
+  workflow_dispatch:
+
+jobs:
+  oppdater-ba-dataset:
+    runs-on: ubuntu-18.04
+    name: Backup ba dataset
+    steps:
+      - uses: actions/checkout@v2
+      - name: Export ba dataset
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
+        with:
+          args: dataset export ba-brev backups/ba-sak.tar.gz
+      - name: Import ba dataset til ba-test
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+        with:
+          args: dataset import backups/ba-sak.tar.gz ba-test --replace
