@@ -18,6 +18,7 @@ import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtb
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { øvrigeTriggere } from './triggere/øvrigeTriggere';
 import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
+import { validerBegrunnelse } from './validerBegrunnelse';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -118,6 +119,7 @@ const begrunnelse = {
       title: DokumentNavn.VISNINGSNAVN,
     },
   },
+  validation: validerBegrunnelse(),
   fields: [
     {
       title: 'Visningsnavn',
