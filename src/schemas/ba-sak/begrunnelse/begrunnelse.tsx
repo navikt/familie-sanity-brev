@@ -7,7 +7,6 @@ import {
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
-  Vilkår,
   vilkår,
   VilkårRolle,
 } from './typer';
@@ -19,6 +18,7 @@ import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { øvrigeTriggere } from './triggere/øvrigeTriggere';
 import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
 import { validerBegrunnelse } from './validerBegrunnelse';
+import { rolleSkalVises } from './utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -214,12 +214,14 @@ const begrunnelse = {
           },
         ],
       },
-      hidden: ({ document }) =>
-        !(
-          document.vilkaar &&
-          (document.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
-            document.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD))
-        ),
+      hidden: context => !rolleSkalVises(context.document),
+      validation: Rule =>
+        Rule.custom((rolleListe, context) => {
+          if (rolleSkalVises(context.document)) {
+            return !rolleListe || rolleListe.length === 0 ? 'Må velge minst en rolle' : true;
+          }
+          return true;
+        }),
     },
     ...triggesAv,
     utvidetBarnetrygdTriggere,
