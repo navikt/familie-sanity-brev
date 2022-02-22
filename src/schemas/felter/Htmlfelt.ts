@@ -14,5 +14,11 @@ export default {
         'Navnet på htmlfeltet. Kan kun bestå av tall eller bokstaver. Eksempel: fødselsdatoBarn.',
       validation: rule => apiNavnValideringer(rule, DokumentNavn.HTMLFELT),
     },
+    {
+      title: 'Visningsnavn',
+      description: 'Hvilket visningsnavn dette htmlfeltet skal ha i brevmenyen.',
+      name: DokumentNavn.HTMLFELT_VISNINGSNAVN,
+      type: SanityTyper.STRING,
+    },
   ],
 };

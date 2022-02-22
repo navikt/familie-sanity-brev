@@ -34,6 +34,7 @@ export enum DokumentNavn {
   NAVN_I_SYSTEM = 'navnISystem',
   BLOCK = 'block',
   PUBLISERT = 'publisert',
+  HTMLFELT_VISNINGSNAVN = 'htmlfeltVisningsnavn',
 }
 
 export enum SanityTyper {
