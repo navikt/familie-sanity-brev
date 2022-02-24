@@ -188,6 +188,9 @@ const begrunnelse = {
     },
     {
       title: 'Vilkår',
+      description:
+        'Hvilke vilkår som må være utgjørende for at begrunnelsen skal vises. ' +
+        'Dersom flere er valgt må kun én være utgjørende for at begrunnelsen skal vises.',
       type: SanityTyper.ARRAY,
       name: BegrunnelseDokumentNavn.VILKÅR,
       of: [{ type: SanityTyper.STRING }],
