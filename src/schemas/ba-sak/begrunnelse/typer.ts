@@ -122,7 +122,7 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     value: VilkårTriggere.MEDLEMSKAP,
   },
   DELT_BOSTED: {
-    title: 'Delt bosted',
+    title: 'Delt bosted: skal deles',
     value: VilkårTriggere.DELT_BOSTED,
   },
   DELT_BOSTED_SKAL_IKKE_DELES: {
