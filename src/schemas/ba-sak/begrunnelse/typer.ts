@@ -74,6 +74,7 @@ export enum VilkårTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   MEDLEMSKAP = 'MEDLEMSKAP',
   DELT_BOSTED = 'DELT_BOSTED',
+  DELT_BOSTED_SKAL_IKKE_DELES = 'DELT_BOSTED_SKAL_IKKE_DELES',
   MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
@@ -100,6 +101,7 @@ export const giftPartnerskapTriggere = [
 export const borMedSøkerTriggere = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.DELT_BOSTED,
+  VilkårTriggere.DELT_BOSTED_SKAL_IKKE_DELES,
 ];
 export const øvrigeTriggertyper = [
   VilkårTriggere.BARN_MED_6_ÅRS_DAG,
@@ -120,10 +122,13 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     value: VilkårTriggere.MEDLEMSKAP,
   },
   DELT_BOSTED: {
-    title: 'Delt bosted',
+    title: 'Delt bosted: skal deles',
     value: VilkårTriggere.DELT_BOSTED,
   },
-
+  DELT_BOSTED_SKAL_IKKE_DELES: {
+    title: 'Delt bosted: skal ikke deles',
+    value: VilkårTriggere.DELT_BOSTED_SKAL_IKKE_DELES,
+  },
   BARN_MED_6_ÅRS_DAG: { title: 'Barn med 6 års dag', value: VilkårTriggere.BARN_MED_6_ÅRS_DAG },
   MANGLER_OPPLYSNINGER: {
     title: 'Mangler opplysninger',
