@@ -153,10 +153,14 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
 export enum Endringsårsak {
   DELT_BOSTED = 'DELT_BOSTED',
   EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
+  ENDRE_MOTTAKER = 'ENDRE_MOTTAKER',
+  ALLEREDE_UTBETALT = 'ALLEREDE_UTBETALT',
 }
 
 export const endringsårsaker = [
   { title: 'Delt bosted', value: Endringsårsak.DELT_BOSTED },
+  { title: 'Foreldrene bor sammen, endret mottaker', value: Endringsårsak.ENDRE_MOTTAKER },
+  { title: 'Allerede utbetalt', value: Endringsårsak.ALLEREDE_UTBETALT },
   { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
 ];
 
