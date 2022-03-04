@@ -171,7 +171,7 @@ export enum EndretUtbetalingsperioderTrigger {
 
 export const endretUtbetalingsperioderTriggereValg = [
   {
-    title: 'Begrunnelse kommer etter endret utbetalings',
+    title: 'Begrunnelse kommer etter endret utbetalingsperiode',
     value: EndretUtbetalingsperioderTrigger.ETTER_ENDRET_UTBETALINGSPERIODE,
   },
 ];
