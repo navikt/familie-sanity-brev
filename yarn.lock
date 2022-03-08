@@ -1859,10 +1859,10 @@
     date-fns "^2.16.1"
     lodash "^4.17.15"
 
-"@sanity/vision@^2.19.0":
-  version "2.27.1"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-2.27.1.tgz#55f0b9f3ed72df7dcaeed2bcd8a10d8910ee0817"
-  integrity sha512-rslPKXEFXvb88jn4OjUeN+dbwzx2SjrjRoKMxsxo7R0TQSo3oxScZs7ZE/sBn7lEBYkTzkKxu+fcfgsyD8vjQQ==
+"@sanity/vision@^2.28.0":
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-2.28.0.tgz#69a12620c6351107f6334ea41765715758aead31"
+  integrity sha512-+n2gp2TVXjJM2CLtIpo+FC8Z9HGYagbf1TFf2/jYP1FRz08SK3BJYiLKBHiXvsa444ME5UR+wP6jmeQg8sfQDQ==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@sanity/icons" "^1.2.1"
