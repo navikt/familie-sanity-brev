@@ -81,6 +81,7 @@ export enum VilkårTriggere {
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
   SMÅBARNSTILLEGG = 'SMÅBARNSTILLEGG',
   GJELDER_FØRSTE_PERIODE = 'GJELDER_FØRSTE_PERIODE',
+  GJELDER_STARTEN_AV_EN_PERIODE = 'GJELDER_STARTEN_AV_EN_PERIODE',
 }
 
 export enum VilkårRolle {
@@ -109,6 +110,7 @@ export const øvrigeTriggertyper = [
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
   VilkårTriggere.GJELDER_FØRSTE_PERIODE,
+  VilkårTriggere.GJELDER_STARTEN_AV_EN_PERIODE,
 ];
 export const utvidetBarnetrygdTriggertyper = [VilkårTriggere.SMÅBARNSTILLEGG];
 
@@ -146,6 +148,10 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   GJELDER_FØRSTE_PERIODE: {
     title: 'Gjelder første periode',
     value: VilkårTriggere.GJELDER_FØRSTE_PERIODE,
+  },
+  GJELDER_STARTEN_AV_EN_PERIODE: {
+    title: 'Gjelder starten av en periode',
+    value: VilkårTriggere.GJELDER_STARTEN_AV_EN_PERIODE,
   },
 };
 
