@@ -10,7 +10,11 @@ const flettefelterForPeriode = [
   { title: 'Tom', value: 'tom' },
   { title: 'Beløp', value: 'belop' },
   { title: 'Antall barn', value: 'antallBarn' },
+  { title: 'Antall barn med utbetaling', value: 'antallBarnMedUtbetaling' },
+  { title: 'Antall barn uten utbetaling', value: 'antallBarnUtenUtbetaling' },
   { title: 'Barnas fødselsdager', value: 'barnasFodselsdager' },
+  { title: 'Fødselsdager - Barn med utbetaling', value: 'fodselsdagerBarnMedUtbetaling' },
+  { title: 'Fødselsdager - Barn uten utbetaling', value: 'fodselsdagerBarnUtenUtbetaling' },
   { title: 'Type Barnetrygd', value: 'typeBarnetrygd' },
 ];
 
