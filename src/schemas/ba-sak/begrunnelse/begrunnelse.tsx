@@ -88,22 +88,7 @@ const editor = (maalform, tittel) => ({
     {
       name: DokumentNavn.BLOCK,
       type: SanityTyper.BLOCK,
-      of: [
-        begrunnelseFlettefelt,
-        begrunnelseValgfelt,
-        {
-          /*
-           * Gammel versjon av formuleringsfelt.
-           * Beholdes for å ikke miste det som er lagt inn i sanity.
-           * begrunnelseFormuleringsfelt skal brukes.
-           * Vises ikke i sanity.
-           */
-          type: SanityTyper.REFERENCE,
-          to: [{ type: DokumentNavn.VALGFELT }],
-          name: DokumentNavn.VALG_REFERANSE,
-          hidden: true,
-        },
-      ],
+      of: [begrunnelseFlettefelt, begrunnelseValgfelt],
     },
   ],
 });
