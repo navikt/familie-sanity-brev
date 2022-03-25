@@ -50,6 +50,19 @@ export const vilkår = [
   { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
 ];
 
+export enum Formuleringstype {
+  FOR_BARN_FØDT = 'forBarnFødt',
+  DU_OG_ELLER_BARNET_BARNA = 'duOgEllerBarnetBarna',
+  BARNET_ELLER_BARNA = 'barnetEllerBarna',
+}
+
+export type Formuleringsvalg = { title: string; value: Formuleringstype };
+
+export const formuleringer: Formuleringsvalg[] = [
+  { title: 'For barn født', value: Formuleringstype.FOR_BARN_FØDT },
+  { title: 'Du eller Du og barna', value: Formuleringstype.DU_OG_ELLER_BARNET_BARNA },
+];
+
 export const flettefelter = [
   { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
