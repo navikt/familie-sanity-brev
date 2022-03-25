@@ -93,10 +93,11 @@ const editor = (maalform, tittel) => ({
         begrunnelseValgfelt,
         {
           /*
-           * Gammel versjon av formuleringsfelt.
+           * Gammel versjon av begrunnelseValgfelt.
            * Beholdes for å ikke miste det som er lagt inn i sanity.
-           * begrunnelseFormuleringsfelt skal brukes.
+           * begrunnelseValgfelt skal brukes.
            * Vises ikke i sanity.
+           * begrunnelseValgfelt tillater at vi kobler mer data til valgfeltet (for eksempel stor forbokstav).
            */
           type: SanityTyper.REFERENCE,
           to: [{ type: DokumentNavn.VALGFELT }],
