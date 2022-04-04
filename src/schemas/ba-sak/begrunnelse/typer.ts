@@ -54,6 +54,7 @@ export const flettefelter = [
   { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
   { title: 'Beløp', value: 'belop' },
+  { title: 'Søknadstidspunkt', value: 'soknadstidspunkt' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
@@ -148,6 +149,7 @@ export enum Endringsårsak {
   EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
   ENDRE_MOTTAKER = 'ENDRE_MOTTAKER',
   ALLEREDE_UTBETALT = 'ALLEREDE_UTBETALT',
+  ETTERBETALING_3ÅR = 'ETTERBETALING_3ÅR',
 }
 
 export const endringsårsaker = [
@@ -155,6 +157,7 @@ export const endringsårsaker = [
   { title: 'Foreldrene bor sammen, endret mottaker', value: Endringsårsak.ENDRE_MOTTAKER },
   { title: 'Allerede utbetalt', value: Endringsårsak.ALLEREDE_UTBETALT },
   { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
+  { title: 'Etterbetaling 3 år', value: Endringsårsak.ETTERBETALING_3ÅR },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
