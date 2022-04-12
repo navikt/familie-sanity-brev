@@ -55,6 +55,7 @@ export const flettefelter = [
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
   { title: 'Beløp', value: 'belop' },
   { title: 'Søknadstidspunkt', value: 'soknadstidspunkt' },
+  { title: 'Avtaletidspunkt - delt bosted', value: 'avtaletidspunktDeltBosted' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
