@@ -63,6 +63,7 @@ export enum BegrunnelseDokumentNavn {
   VALGFELT_V2 = 'valgfeltV2',
   ENDRINGSAARSAKER = 'endringsaarsaker',
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
-  ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_TRIGGERE = 'endretUtbetalingsperiodeDeltBostedTriggere',
+  ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
+  ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_TRIGGERE = 'endretUbetalingsperiodeDeltBostedTriggere',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
 }
