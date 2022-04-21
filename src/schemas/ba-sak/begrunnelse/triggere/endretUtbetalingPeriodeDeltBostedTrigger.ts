@@ -19,7 +19,13 @@ export const endretUtbetalingsperiodeDeltBostedUtbetalingTrigger = {
     layout: 'radio',
   },
   hidden: ({ document }) => !erEndretUtbetalingAvTypeDeltBosted(document),
-  validation: Rule => [Rule.required().error('Du må krysse av for et alternativ.')],
+  validation: rule =>
+    rule.custom((currentValue, { document }) => {
+      if (erEndretUtbetalingAvTypeDeltBosted(document) && currentValue === undefined) {
+        return 'Du må krysse av for et alternativ';
+      }
+      return true;
+    }),
 };
 
 export const endretUtbetalingsperiodeDeltBostedTriggere = {
