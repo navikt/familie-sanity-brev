@@ -176,11 +176,28 @@ export const endretUtbetalingsperioderTriggereValg = [
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export enum EndretUtbetalingsperioderDeltBostedTrigger {
   SKAL_UTBETALES = 'SKAL_UTBETALES',
+  SKAL_IKKE_UTBETALES = 'SKAL_IKKE_UTBETALES',
+  UTBETALING_IKKE_RELEVANT = 'UTBETALING_IKKE_RELEVANT',
 }
 
 export const endretUtbetalingsperioderDeltBostedTriggereValg = [
   {
     title: 'Skal utbetales til søker',
     value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_UTBETALES,
+  },
+];
+
+export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
+  {
+    title: 'Skal utbetales til søker',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_UTBETALES,
+  },
+  {
+    title: 'Skal ikke utbetales til søker',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_IKKE_UTBETALES,
+  },
+  {
+    title: 'Utbetaling ikke relevant for begrunnelse',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.UTBETALING_IKKE_RELEVANT,
   },
 ];
