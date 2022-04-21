@@ -64,6 +64,5 @@ export enum BegrunnelseDokumentNavn {
   ENDRINGSAARSAKER = 'endringsaarsaker',
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
   ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
-  ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_TRIGGERE = 'endretUtbetalingsperiodeDeltBostedTriggere',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
 }
