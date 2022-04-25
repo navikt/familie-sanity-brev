@@ -180,13 +180,6 @@ export enum EndretUtbetalingsperioderDeltBostedTrigger {
   UTBETALING_IKKE_RELEVANT = 'UTBETALING_IKKE_RELEVANT',
 }
 
-export const endretUtbetalingsperioderDeltBostedTriggereValg = [
-  {
-    title: 'Skal utbetales til søker',
-    value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_UTBETALES,
-  },
-];
-
 export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
   {
     title: 'Skal utbetales til søker',

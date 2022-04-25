@@ -13,10 +13,7 @@ import {
 import { triggesAv } from './triggesAv';
 import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
-import {
-  endretUtbetalingsperiodeDeltBostedTriggere,
-  endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
-} from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
+import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { øvrigeTriggere } from './triggere/øvrigeTriggere';
 import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
@@ -233,7 +230,6 @@ const begrunnelse = {
     øvrigeTriggere,
     endringsårsakTrigger,
     endretUtbetalingsperiodeTriggere,
-    endretUtbetalingsperiodeDeltBostedTriggere,
     endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
