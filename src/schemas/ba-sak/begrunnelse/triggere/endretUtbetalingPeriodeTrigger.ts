@@ -1,5 +1,5 @@
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
-import { Begrunnelsestype, endretUtbetalingsperioderTriggereValg, endringsårsaker } from '../typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { endretUtbetalingsperioderTriggereValg } from '../typer';
 import { erEndretUtbetaling } from './endringsårsakTrigger';
 
 export const endretUtbetalingsperiodeTriggere = {

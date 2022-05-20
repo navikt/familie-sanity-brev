@@ -7,7 +7,6 @@ import {
   Vilkår,
   vilkårTriggerTilMenynavn,
 } from './typer';
-import { erEndretUtbetaling } from './triggere/endringsårsakTrigger';
 
 export const triggesAv = [
   {
