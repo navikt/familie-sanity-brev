@@ -1,10 +1,11 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
-import { Begrunnelsestype, endringsårsaker } from '../typer';
+import { endringsårsaker } from '../typer';
+import { Mappe } from '../mapper';
 
 export const erEndretUtbetaling: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&
-  (document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ENDRET_UTBETALINGSPERIODE) ||
-    document[DokumentNavn.MAPPE].includes(Begrunnelsestype.ETTER_ENDRET_UTBETALINGSPERIODE));
+  (document[DokumentNavn.MAPPE].includes(Mappe.ENDRET_UTBETALINGSPERIODE) ||
+    document[DokumentNavn.MAPPE].includes(Mappe.ETTER_ENDRET_UTBETALINGSPERIODE));
 
 export const endringsårsakTrigger = {
   title: 'Endringsårsaker',

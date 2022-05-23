@@ -19,6 +19,7 @@ import { øvrigeTriggere } from './triggere/øvrigeTriggere';
 import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import { rolleSkalVises } from './utils';
+import { Mappe, mapperTilMenynavn } from './mapper';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -152,9 +153,7 @@ const begrunnelse = {
         {
           type: 'string',
           options: {
-            list: Object.values(Begrunnelsestype).map(
-              begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
-            ),
+            list: Object.values(Mappe).map(mappe => mapperTilMenynavn[mappe]),
           },
         },
       ],
