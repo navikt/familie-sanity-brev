@@ -31,7 +31,7 @@ const begrunnelseFlettefelt = {
       options: {
         list: flettefelter,
       },
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+      validation: rule => [rule.required().error('Tomt flettefelt')],
     },
   ],
   preview: {
@@ -57,12 +57,12 @@ const begrunnelseValgfelt = {
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.VALGFELT }],
       name: DokumentNavn.VALG_REFERANSE,
-      validation: Rule => [Rule.required().error('Tomt valgfelt')],
+      validation: rule => [rule.required().error('Tomt valgfelt')],
     },
     {
       name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
       type: SanityTyper.BOOLEAN,
-      validation: Rule => [Rule.required().error('Du må velge om det skal være stor bokstav')],
+      validation: rule => [rule.required().error('Du må velge om det skal være stor bokstav')],
     },
   ],
   initialValue: {
@@ -125,7 +125,7 @@ const begrunnelse = {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+      validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Begrunnelsetype',
@@ -136,7 +136,7 @@ const begrunnelse = {
           begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
         ),
       },
-      validation: Rule => Rule.required().error('Begrunnelsestype ikke valgt'),
+      validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
     },
     {
       title: 'Api-navn',
@@ -162,7 +162,7 @@ const begrunnelse = {
       title: 'Navn i ba-sak',
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn i ba-sak')],
+      validation: rule => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
     },
     {
       title: 'Hjemler',
@@ -195,7 +195,7 @@ const begrunnelse = {
       options: {
         list: vilkår,
       },
-      validation: Rule => Rule.required().warning('Vilkår ikke valgt'),
+      validation: rule => rule.required().warning('Vilkår ikke valgt'),
     },
 
     {
@@ -216,8 +216,8 @@ const begrunnelse = {
         ],
       },
       hidden: context => !rolleSkalVises(context.document),
-      validation: Rule =>
-        Rule.custom((rolleListe, context) => {
+      validation: rule =>
+        rule.custom((rolleListe, context) => {
           if (rolleSkalVises(context.document)) {
             return !rolleListe || rolleListe.length === 0 ? 'Må velge minst en rolle' : true;
           }
