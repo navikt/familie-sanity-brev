@@ -14,8 +14,15 @@ export const peroideAvsnitt = {
     },
   ],
   preview: {
-    prepare: () => ({
-      media: AiOutlineUnorderedList,
-    }),
+    select: {
+      title: 'title',
+    },
+    prepare: selection => {
+      const { title } = selection;
+      return {
+        media: AiOutlineUnorderedList,
+        title: title,
+      };
+    },
   },
 };
