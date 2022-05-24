@@ -13,12 +13,13 @@ import {
 import { triggesAv } from './triggesAv';
 import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
-import { endretUtbetalingsperiodeDeltBostedTriggere } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
+import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { øvrigeTriggere } from './triggere/øvrigeTriggere';
 import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import { rolleSkalVises } from './utils';
+import { Mappe, mapperTilMenynavn } from './mapper';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -93,10 +94,11 @@ const editor = (maalform, tittel) => ({
         begrunnelseValgfelt,
         {
           /*
-           * Gammel versjon av formuleringsfelt.
+           * Gammel versjon av begrunnelseValgfelt.
            * Beholdes for å ikke miste det som er lagt inn i sanity.
-           * begrunnelseFormuleringsfelt skal brukes.
+           * begrunnelseValgfelt skal brukes.
            * Vises ikke i sanity.
+           * begrunnelseValgfelt tillater at vi kobler mer data til valgfeltet (for eksempel stor forbokstav).
            */
           type: SanityTyper.REFERENCE,
           to: [{ type: DokumentNavn.VALGFELT }],
@@ -151,9 +153,7 @@ const begrunnelse = {
         {
           type: 'string',
           options: {
-            list: Object.values(Begrunnelsestype).map(
-              begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
-            ),
+            list: Object.values(Mappe).map(mappe => mapperTilMenynavn[mappe]),
           },
         },
       ],
@@ -229,7 +229,7 @@ const begrunnelse = {
     øvrigeTriggere,
     endringsårsakTrigger,
     endretUtbetalingsperiodeTriggere,
-    endretUtbetalingsperiodeDeltBostedTriggere,
+    endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],

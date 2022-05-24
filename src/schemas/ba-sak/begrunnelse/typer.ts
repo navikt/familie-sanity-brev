@@ -50,23 +50,12 @@ export const vilkår = [
   { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
 ];
 
-export enum Formuleringstype {
-  FOR_BARN_FØDT = 'forBarnFødt',
-  DU_OG_ELLER_BARNET_BARNA = 'duOgEllerBarnetBarna',
-  BARNET_ELLER_BARNA = 'barnetEllerBarna',
-}
-
-export type Formuleringsvalg = { title: string; value: Formuleringstype };
-
-export const formuleringer: Formuleringsvalg[] = [
-  { title: 'For barn født', value: Formuleringstype.FOR_BARN_FØDT },
-  { title: 'Du eller Du og barna', value: Formuleringstype.DU_OG_ELLER_BARNET_BARNA },
-];
-
 export const flettefelter = [
   { title: 'Måned og år for begrunnelse', value: 'maanedOgAarBegrunnelsenGjelderFor' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
   { title: 'Beløp', value: 'belop' },
+  { title: 'Søknadstidspunkt', value: 'soknadstidspunkt' },
+  { title: 'Avtaletidspunkt - delt bosted', value: 'avtaletidspunktDeltBosted' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
@@ -161,6 +150,7 @@ export enum Endringsårsak {
   EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
   ENDRE_MOTTAKER = 'ENDRE_MOTTAKER',
   ALLEREDE_UTBETALT = 'ALLEREDE_UTBETALT',
+  ETTERBETALING_3ÅR = 'ETTERBETALING_3ÅR',
 }
 
 export const endringsårsaker = [
@@ -168,6 +158,7 @@ export const endringsårsaker = [
   { title: 'Foreldrene bor sammen, endret mottaker', value: Endringsårsak.ENDRE_MOTTAKER },
   { title: 'Allerede utbetalt', value: Endringsårsak.ALLEREDE_UTBETALT },
   { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
+  { title: 'Etterbetaling 3 år', value: Endringsårsak.ETTERBETALING_3ÅR },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
@@ -185,11 +176,21 @@ export const endretUtbetalingsperioderTriggereValg = [
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export enum EndretUtbetalingsperioderDeltBostedTrigger {
   SKAL_UTBETALES = 'SKAL_UTBETALES',
+  SKAL_IKKE_UTBETALES = 'SKAL_IKKE_UTBETALES',
+  UTBETALING_IKKE_RELEVANT = 'UTBETALING_IKKE_RELEVANT',
 }
 
-export const endretUtbetalingsperioderDeltBostedTriggereValg = [
+export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
   {
     title: 'Skal utbetales til søker',
     value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_UTBETALES,
+  },
+  {
+    title: 'Skal ikke utbetales til søker',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.SKAL_IKKE_UTBETALES,
+  },
+  {
+    title: 'Utbetaling ikke relevant for begrunnelse',
+    value: EndretUtbetalingsperioderDeltBostedTrigger.UTBETALING_IKKE_RELEVANT,
   },
 ];
