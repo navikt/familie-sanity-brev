@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
+  Behandlingstema,
+  behandlingstemaValg,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -121,6 +123,18 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
+    },
+    {
+      title: 'Behandlingstema',
+      type: SanityTyper.STRING,
+      name: BegrunnelseDokumentNavn.BEHANDLINGSTEMA,
+      options: {
+        list: Object.values(Behandlingstema).map(
+          behandlingstema => behandlingstemaValg[behandlingstema],
+        ),
+      },
+      validation: rule => rule.required().error('Behandlingstema ikke valgt'),
+      initialValue: Behandlingstema.NASJONAL,
     },
     {
       title: 'Begrunnelsetype',

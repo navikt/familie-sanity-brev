@@ -194,3 +194,16 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
     value: EndretUtbetalingsperioderDeltBostedTrigger.UTBETALING_IKKE_RELEVANT,
   },
 ];
+
+export enum Behandlingstema {
+  EØS = 'EØS',
+  NASJONAL = 'NASJONAL',
+}
+
+export const behandlingstemaValg: Record<
+  Behandlingstema,
+  { title: string; value: Behandlingstema }
+> = {
+  EØS: { title: 'EØS', value: Behandlingstema.EØS },
+  NASJONAL: { title: 'Nasjonal', value: Behandlingstema.NASJONAL },
+};
