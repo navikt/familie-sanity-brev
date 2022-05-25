@@ -11,12 +11,7 @@ import {
   VilkårRolle,
 } from './typer';
 import { triggesAv } from './triggesAv';
-import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
-import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
-import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
-import { øvrigeTriggere } from './triggere/øvrigeTriggere';
-import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import { rolleSkalVises } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
@@ -225,11 +220,6 @@ const begrunnelse = {
         }),
     },
     ...triggesAv,
-    utvidetBarnetrygdTriggere,
-    øvrigeTriggere,
-    endringsårsakTrigger,
-    endretUtbetalingsperiodeTriggere,
-    endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
