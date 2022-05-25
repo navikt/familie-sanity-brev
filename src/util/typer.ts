@@ -69,7 +69,7 @@ export enum BegrunnelseDokumentNavn {
 }
 
 export enum EØSBegrunnelseDokumentNavn {
-  ANNEN_FORELDERS_AKTIVITET_TRIGGER = 'eøsAnnenForeldersAktivitetTrigger',
+  ANNEN_FORELDERS_AKTIVITET_TRIGGER = 'eosAnnenForeldersAktivitetTrigger',
   BARNETS_BOSTEDSLAND_TRIGGER = 'barnetsBostedslandTrigger',
   KOMPETANSE_TRIGGER = 'kompetanseTrigger',
 }
