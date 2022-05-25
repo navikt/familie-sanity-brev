@@ -15,7 +15,7 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import { rolleSkalVises } from './utils';
+import { erNasjonalBegrunnelse, hentNasjonalHjemmelRegler, rolleSkalVises } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 
 const begrunnelseFlettefelt = {
@@ -182,6 +182,8 @@ const begrunnelse = {
         layout: 'grid',
         list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
+      validation: rule => hentNasjonalHjemmelRegler(rule),
+      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
     {
       title: 'Hjemler fra folketrygdloven',
@@ -192,6 +194,8 @@ const begrunnelse = {
         layout: 'radio',
         list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
+      validation: rule => hentNasjonalHjemmelRegler(rule),
+      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
     {
       title: 'Vilkår',
@@ -205,6 +209,7 @@ const begrunnelse = {
         list: vilkår,
       },
       validation: rule => rule.required().warning('Vilkår ikke valgt'),
+      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
 
     {
