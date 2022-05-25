@@ -65,4 +65,11 @@ export enum BegrunnelseDokumentNavn {
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
   ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
+  BEHANDLINGSTEMA = 'behanldingstema',
+}
+
+export enum EØSBegrunnelseDokumentNavn {
+  ANNEN_FORELDERS_AKTIVITET_TRIGGER = 'eøsAnnenForeldersAktivitetTrigger',
+  BARNETS_BOSTEDSLAND_TRIGGER = 'barnetsBostedslandTrigger',
+  KOMPETANSE_TRIGGER = 'kompetanseTrigger',
 }

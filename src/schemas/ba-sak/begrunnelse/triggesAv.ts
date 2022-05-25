@@ -1,14 +1,17 @@
-import { borMedSøkerTriggere } from './triggere/borMedSøkerTriggere';
-import { lovligOppholdTriggere } from './triggere/lovligOppholdTriggere';
-import { bosattIRiketTriggere } from './triggere/bosattIRiketTriggere';
-import { giftPartnerskapTriggere } from './triggere/giftPartnerskapTriggere';
-import { utvidetBarnetrygdTriggere } from './triggere/utvidetBarnetrygdTriggere';
-import { øvrigeTriggere } from './triggere/øvrigeTriggere';
-import { endringsårsakTrigger } from './triggere/endringsårsakTrigger';
-import { endretUtbetalingsperiodeTriggere } from './triggere/endretUtbetalingPeriodeTrigger';
-import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './triggere/endretUtbetalingPeriodeDeltBostedTrigger';
+import { borMedSøkerTriggere } from './nasjonaleTriggere/borMedSøkerTriggere';
+import { lovligOppholdTriggere } from './nasjonaleTriggere/lovligOppholdTriggere';
+import { bosattIRiketTriggere } from './nasjonaleTriggere/bosattIRiketTriggere';
+import { giftPartnerskapTriggere } from './nasjonaleTriggere/giftPartnerskapTriggere';
+import { utvidetBarnetrygdTriggere } from './nasjonaleTriggere/utvidetBarnetrygdTriggere';
+import { øvrigeTriggere } from './nasjonaleTriggere/øvrigeTriggere';
+import { endringsårsakTrigger } from './nasjonaleTriggere/endringsårsakTrigger';
+import { endretUtbetalingsperiodeTriggere } from './nasjonaleTriggere/endretUtbetalingPeriodeTrigger';
+import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './nasjonaleTriggere/endretUtbetalingPeriodeDeltBostedTrigger';
+import { annenForeldersAktivitetTrigger } from './EØSTriggere/annenForeldersAktivitetTrigger';
+import { barnetsBosteslandTrigger } from './EØSTriggere/barnetsBostedslandTriggere';
+import { kompetentLandTrigger } from './EØSTriggere/kompetentLandTrigger';
 
-export const triggesAv = [
+const nasjonaleBegrunnelserTriggere = [
   lovligOppholdTriggere,
   bosattIRiketTriggere,
   giftPartnerskapTriggere,
@@ -19,3 +22,11 @@ export const triggesAv = [
   endretUtbetalingsperiodeTriggere,
   endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
 ];
+
+const EØSBegrunnelseTriggere = [
+  annenForeldersAktivitetTrigger,
+  barnetsBosteslandTrigger,
+  kompetentLandTrigger,
+];
+
+export const triggesAv = [...nasjonaleBegrunnelserTriggere, ...EØSBegrunnelseTriggere];

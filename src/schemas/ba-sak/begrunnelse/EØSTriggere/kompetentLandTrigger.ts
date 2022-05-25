@@ -1,0 +1,35 @@
+import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utlis';
+
+enum Kompetanse {
+  NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',
+  NORGE_ER_SEKUNDÆRLAND = 'NORGE_ER_SEKUNDÆRLAND',
+  TO_PRIMÆRLAND = 'TO_PRIMÆRLAND',
+}
+
+const KompetanseValg: Record<Kompetanse, { title: string; value: Kompetanse }> = {
+  NORGE_ER_PRIMÆRLAND: {
+    title: 'Norge er primærland',
+    value: Kompetanse.NORGE_ER_PRIMÆRLAND,
+  },
+  NORGE_ER_SEKUNDÆRLAND: {
+    title: 'Norge er sekundærland',
+    value: Kompetanse.NORGE_ER_SEKUNDÆRLAND,
+  },
+  TO_PRIMÆRLAND: {
+    title: 'To primærland',
+    value: Kompetanse.TO_PRIMÆRLAND,
+  },
+};
+
+export const kompetentLandTrigger = {
+  title: 'Kompetent land',
+  type: SanityTyper.ARRAY,
+  name: EØSBegrunnelseDokumentNavn.KOMPETANSE_TRIGGER,
+  of: [{ type: SanityTyper.STRING }],
+  options: {
+    list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),
+  },
+  hidden: ({ document }) => !erEøsBegrunnelse(document),
+  validation: rule => hentEØSTriggereRegler(rule),
+};
