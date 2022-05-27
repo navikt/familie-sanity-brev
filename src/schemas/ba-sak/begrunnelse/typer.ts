@@ -79,16 +79,16 @@ export enum VilkårRolle {
 }
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
-export const lovligOppholdTriggere = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];
-export const bosattIRiketTriggere = [
+export const lovligOppholdTriggerTyper = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];
+export const bosattIRiketTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.MEDLEMSKAP,
 ];
-export const giftPartnerskapTriggere = [
+export const giftPartnerskapTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.MEDLEMSKAP,
 ];
-export const borMedSøkerTriggere = [
+export const borMedSøkerTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.DELT_BOSTED,
   VilkårTriggere.DELT_BOSTED_SKAL_IKKE_DELES,
@@ -194,3 +194,16 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
     value: EndretUtbetalingsperioderDeltBostedTrigger.UTBETALING_IKKE_RELEVANT,
   },
 ];
+
+export enum Behandlingstema {
+  EØS = 'EØS',
+  NASJONAL = 'NASJONAL',
+}
+
+export const behandlingstemaValg: Record<
+  Behandlingstema,
+  { title: string; value: Behandlingstema }
+> = {
+  EØS: { title: 'EØS', value: Behandlingstema.EØS },
+  NASJONAL: { title: 'Nasjonal', value: Behandlingstema.NASJONAL },
+};
