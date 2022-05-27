@@ -1,6 +1,7 @@
 import { giftPartnerskapTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { hentNasjonaleTriggereRegler } from './utils';
+import { erNasjonalBegrunnelse } from '../utils';
 
 export const giftPartnerskapTriggere = {
   title: 'Triggere for "Gift partnerskap"',
@@ -11,6 +12,10 @@ export const giftPartnerskapTriggere = {
     list: giftPartnerskapTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
   hidden: ({ document }) =>
-    !(document.vilkaar && document.vilkaar.includes(Vilkår.GIFT_PARTNERSKAP)),
+    !(
+      erNasjonalBegrunnelse(document) &&
+      document.vilkaar &&
+      document.vilkaar.includes(Vilkår.GIFT_PARTNERSKAP)
+    ),
   validation: rule => hentNasjonaleTriggereRegler(rule),
 };

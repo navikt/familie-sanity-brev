@@ -1,6 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { bosattIRiketTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { hentNasjonaleTriggereRegler } from './utils';
+import { erNasjonalBegrunnelse } from '../utils';
 
 export const bosattIRiketTriggere = {
   title: 'Triggere for "Bosatt i riket"',
@@ -10,6 +11,11 @@ export const bosattIRiketTriggere = {
   options: {
     list: bosattIRiketTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) => !(document.vilkaar && document.vilkaar.includes(Vilkår.BOSATT_I_RIKET)),
+  hidden: ({ document }) =>
+    !(
+      erNasjonalBegrunnelse(document) &&
+      document.vilkaar &&
+      document.vilkaar.includes(Vilkår.BOSATT_I_RIKET)
+    ),
   validation: rule => hentNasjonaleTriggereRegler(rule),
 };

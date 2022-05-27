@@ -1,6 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { hentNasjonaleTriggereRegler } from './utils';
+import { erNasjonalBegrunnelse } from '../utils';
 
 export const borMedSøkerTriggere = {
   title: 'Triggere for "Bor med søker"',
@@ -10,6 +11,11 @@ export const borMedSøkerTriggere = {
   options: {
     list: borMedSøkerTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) => !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)),
+  hidden: ({ document }) =>
+    !(
+      erNasjonalBegrunnelse(document) &&
+      document.vilkaar &&
+      document.vilkaar.includes(Vilkår.BOR_MED_SOKER)
+    ),
   validation: rule => hentNasjonaleTriggereRegler(rule),
 };

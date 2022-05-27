@@ -1,8 +1,8 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
-import { erEøsBegrunnelse } from '../EØSTriggere/utlis';
 import { hentNasjonaleTriggereRegler } from './utils';
+import { erNasjonalBegrunnelse } from '../utils';
 
 export const erEndretUtbetaling: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&
@@ -17,7 +17,7 @@ export const endringsårsakTrigger = {
   options: {
     list: endringsårsaker,
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document) || erEøsBegrunnelse(document),
+  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
   validation: rule => [
     rule
       .custom((endringsårsaktriggere, context) => {

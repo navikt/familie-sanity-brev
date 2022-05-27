@@ -1,7 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling, Endringsårsak } from '../typer';
-import { erEøsBegrunnelse } from '../EØSTriggere/utlis';
 import { hentNasjonaleTriggereRegler } from './utils';
+import { erNasjonalBegrunnelse } from '../utils';
 
 const erEndretUtbetalingAvTypeDeltBosted = document =>
   document[BegrunnelseDokumentNavn.ENDRINGSAARSAKER] &&
@@ -17,7 +17,7 @@ export const endretUtbetalingsperiodeDeltBostedUtbetalingTrigger = {
     layout: 'radio',
   },
   hidden: ({ document }) =>
-    !erEndretUtbetalingAvTypeDeltBosted(document) || erEøsBegrunnelse(document),
+    !erEndretUtbetalingAvTypeDeltBosted(document) || !erNasjonalBegrunnelse(document),
   validation: rule => [
     rule.custom((currentValue, { document }) => {
       if (erEndretUtbetalingAvTypeDeltBosted(document) && currentValue === undefined) {
