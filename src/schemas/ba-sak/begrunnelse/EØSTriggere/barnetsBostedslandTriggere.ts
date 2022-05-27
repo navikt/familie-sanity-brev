@@ -1,5 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utlis';
+import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utils';
 
 enum BarnetsBostedsland {
   NORGE = 'NORGE',

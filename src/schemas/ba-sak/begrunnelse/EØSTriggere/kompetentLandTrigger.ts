@@ -1,5 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utlis';
+import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utils';
 
 enum Kompetanse {
   NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',
