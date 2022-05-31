@@ -15,7 +15,7 @@ const BarnetsBostedslandValg: Record<
 export const barnetsBosteslandTrigger = {
   title: 'Barnets bostedsland',
   type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND_TRIGGER,
+  name: EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND,
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: Object.values(BarnetsBostedsland).map(

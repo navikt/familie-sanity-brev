@@ -25,7 +25,7 @@ const KompetanseValg: Record<Kompetanse, { title: string; value: Kompetanse }> =
 export const kompetentLandTrigger = {
   title: 'Kompetent land',
   type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.KOMPETANSE_TRIGGER,
+  name: EØSBegrunnelseDokumentNavn.KOMPETANSE_RESULTAT,
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),

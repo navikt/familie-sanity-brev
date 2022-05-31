@@ -31,7 +31,7 @@ const annenForeldersAktivitetValg: Record<
 export const annenForeldersAktivitetTrigger = {
   title: 'Annen forelders aktivitet',
   type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.ANNEN_FORELDERS_AKTIVITET_TRIGGER,
+  name: EØSBegrunnelseDokumentNavn.ANNEN_FORELDERS_AKTIVITET,
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: Object.values(AnnenForelderAktivitet).map(
