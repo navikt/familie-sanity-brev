@@ -12,7 +12,7 @@ export const erNasjonalBegrunnelse = document =>
 
 export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
-    if (erNasjonalBegrunnelse(document) && currentValue !== undefined) {
+    if (!erNasjonalBegrunnelse(document) && currentValue !== undefined) {
       return feilmelding;
     }
     return true;
