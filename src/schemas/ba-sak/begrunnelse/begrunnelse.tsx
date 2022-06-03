@@ -6,6 +6,8 @@ import {
   begrunnelsestyperTilMenynavn,
   Behandlingstema,
   behandlingstemaValg,
+  eøsFlettefelter,
+  eøshjemler,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -15,8 +17,14 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import { erNasjonalBegrunnelse, hentNasjonalHjemmelRegler, rolleSkalVises } from './utils';
+import {
+  erNasjonalBegrunnelse,
+  hentNasjonalHjemmelRegler,
+  rolleSkalVises,
+  validerFlettefeltErGyldigForBehandlingstema,
+} from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
+import { erEøsBegrunnelse, hentEØSHjemmelRegler } from './EØSTriggere/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -26,9 +34,12 @@ const begrunnelseFlettefelt = {
       name: DokumentNavn.FLETTEFELT,
       type: SanityTyper.STRING,
       options: {
-        list: flettefelter,
+        list: [...flettefelter],
       },
-      validation: rule => [rule.required().error('Tomt flettefelt')],
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
     },
   ],
   preview: {
@@ -38,6 +49,37 @@ const begrunnelseFlettefelt = {
     prepare: selection => selection,
     component: props => {
       const flettefelt = flettefelter.find(
+        flettefelt => flettefelt.value === props.value.flettefelt,
+      );
+      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+    },
+  },
+};
+
+const begrunnelseEØSFlettefelt = {
+  title: 'EØS-flettefelt',
+  name: DokumentNavn.EØS_FLETTEFELT,
+  type: SanityTyper.OBJECT,
+  fields: [
+    {
+      name: DokumentNavn.FLETTEFELT,
+      type: SanityTyper.STRING,
+      options: {
+        list: [...eøsFlettefelter],
+      },
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      flettefelt: DokumentNavn.FLETTEFELT,
+    },
+    prepare: selection => selection,
+    component: props => {
+      const flettefelt = eøsFlettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
@@ -88,6 +130,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       of: [
         begrunnelseFlettefelt,
+        begrunnelseEØSFlettefelt,
         begrunnelseValgfelt,
         {
           /*
@@ -196,6 +239,18 @@ const begrunnelse = {
       },
       validation: rule => hentNasjonalHjemmelRegler(rule),
       hidden: context => !erNasjonalBegrunnelse(context.document),
+    },
+    {
+      title: 'EØS-hjemler',
+      type: SanityTyper.ARRAY,
+      name: BegrunnelseDokumentNavn.EØSHJEMLER,
+      of: [{ type: SanityTyper.STRING }],
+      options: {
+        layout: 'grid',
+        list: eøshjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+      },
+      validation: rule => hentEØSHjemmelRegler(rule),
+      hidden: context => !erEøsBegrunnelse(context.document),
     },
     {
       title: 'Vilkår',

@@ -31,6 +31,8 @@ export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
+export const eøshjemler = [];
+
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
@@ -56,6 +58,13 @@ export const flettefelter = [
   { title: 'Beløp', value: 'belop' },
   { title: 'Søknadstidspunkt', value: 'soknadstidspunkt' },
   { title: 'Avtaletidspunkt - delt bosted', value: 'avtaletidspunktDeltBosted' },
+];
+
+export const eøsFlettefelter = [
+  { title: 'Annen forelders aktivitet', value: 'annenForeldersAktivitet' },
+  { title: 'Annen forelders aktivitetsland', value: 'annenForeldersAktivitetsland' },
+  { title: 'Barnets bostedsland', value: 'barnetsBostedsland' },
+  { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
