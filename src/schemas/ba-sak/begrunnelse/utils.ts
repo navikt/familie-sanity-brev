@@ -22,13 +22,13 @@ export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
 export const hentNasjonalHjemmelRegler = rule =>
   hentNasjonaltFeltRegler(
     rule,
-    'En nasjonal hjemel er valgt, men behandlingstema for begrunnelsen er ikke nasjonal.',
+    'En nasjonal hjemmel er valgt, men behandlingstema for begrunnelsen er ikke nasjonal.',
   );
 
 export const hentEØSHjemmelRegler = rule =>
   hentNasjonaltFeltRegler(
     rule,
-    'En eøs-hjemel er valgt, men behandlingstema for begrunnelsen er ikke eøs.',
+    'En eøs-hjemmel er valgt, men behandlingstema for begrunnelsen er ikke eøs.',
   );
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
