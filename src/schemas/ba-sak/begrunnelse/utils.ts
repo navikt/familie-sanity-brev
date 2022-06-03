@@ -32,11 +32,10 @@ export const hentEØSHjemmelRegler = rule =>
   );
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
-  const lovligeFlettefelterEØS = [
-    ...eøsFlettefelter.map(flettefelt => flettefelt.value),
-    'barnasFodselsdatoer',
-  ];
-  if (erEøsBegrunnelse(context.document) && !lovligeFlettefelterEØS.includes(flettefelt)) {
+  if (
+    erEøsBegrunnelse(context.document) &&
+    !eøsFlettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
+  ) {
     return `Flettefeltet ${flettefelt} er ikke tillatt for EØS-begrunnelser`;
   }
   if (

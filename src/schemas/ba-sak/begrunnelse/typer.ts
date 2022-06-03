@@ -64,6 +64,7 @@ export const eøsFlettefelter = [
   { title: 'Annen forelders aktivitet', value: 'annenForeldersAktivitet' },
   { title: 'Annen forelders aktivitetsland', value: 'annenForeldersAktivitetsland' },
   { title: 'Barnets bostedsland', value: 'barnetsBostedsland' },
+  { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)

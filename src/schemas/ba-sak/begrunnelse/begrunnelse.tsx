@@ -35,7 +35,7 @@ const begrunnelseFlettefelt = {
       name: DokumentNavn.FLETTEFELT,
       type: SanityTyper.STRING,
       options: {
-        list: [...flettefelter, ...eøsFlettefelter],
+        list: [...flettefelter],
       },
       validation: rule => [
         rule.required().error('Tomt flettefelt'),
@@ -50,6 +50,38 @@ const begrunnelseFlettefelt = {
     prepare: selection => selection,
     component: props => {
       const flettefelt = flettefelter.find(
+        flettefelt => flettefelt.value === props.value.flettefelt,
+      );
+      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+    },
+  },
+};
+
+const begrunnelseEØSFlettefelt = {
+  title: 'EØS-flettefelt',
+  name: DokumentNavn.EØS_FLETTEFELT,
+  type: SanityTyper.OBJECT,
+  fields: [
+    {
+      name: DokumentNavn.FLETTEFELT,
+      type: SanityTyper.STRING,
+      options: {
+        list: [...eøsFlettefelter],
+      },
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      flettefelt: DokumentNavn.FLETTEFELT,
+    },
+    prepare: selection => selection,
+    component: props => {
+      console.log(props);
+      const flettefelt = eøsFlettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
@@ -100,6 +132,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       of: [
         begrunnelseFlettefelt,
+        begrunnelseEØSFlettefelt,
         begrunnelseValgfelt,
         {
           /*

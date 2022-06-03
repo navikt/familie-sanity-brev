@@ -8,6 +8,7 @@ export enum DokumentNavn {
   VISNINGSNAVN = 'visningsnavn',
   API_NAVN = 'apiNavn',
   FLETTEFELT = 'flettefelt',
+  EØS_FLETTEFELT = 'eosFlettefelt',
   FLETTEFELT_REFERANSE = 'flettefeltReferanse',
   HTMLFELT = 'htmlfelt',
   HTMLFELT_REFERANSE = 'htmlfeltReferanse',
