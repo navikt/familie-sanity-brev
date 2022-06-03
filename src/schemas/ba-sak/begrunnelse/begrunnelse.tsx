@@ -6,6 +6,8 @@ import {
   begrunnelsestyperTilMenynavn,
   Behandlingstema,
   behandlingstemaValg,
+  eøsFlettefelter,
+  eøshjemler,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -15,8 +17,15 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import { erNasjonalBegrunnelse, hentNasjonalHjemmelRegler, rolleSkalVises } from './utils';
+import {
+  erNasjonalBegrunnelse,
+  hentEØSHjemmelRegler,
+  hentNasjonalHjemmelRegler,
+  rolleSkalVises,
+  validerFlettefeltErGyldigForBehandlingstema,
+} from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
+import { erEøsBegrunnelse } from './EØSTriggere/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -26,9 +35,12 @@ const begrunnelseFlettefelt = {
       name: DokumentNavn.FLETTEFELT,
       type: SanityTyper.STRING,
       options: {
-        list: flettefelter,
+        list: [...flettefelter, ...eøsFlettefelter],
       },
-      validation: rule => [rule.required().error('Tomt flettefelt')],
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
     },
   ],
   preview: {
@@ -196,6 +208,18 @@ const begrunnelse = {
       },
       validation: rule => hentNasjonalHjemmelRegler(rule),
       hidden: context => !erNasjonalBegrunnelse(context.document),
+    },
+    {
+      title: 'EØS-hjemler',
+      type: SanityTyper.ARRAY,
+      name: BegrunnelseDokumentNavn.EØSHJEMLER,
+      of: [{ type: SanityTyper.STRING }],
+      options: {
+        layout: 'grid',
+        list: eøshjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+      },
+      validation: rule => hentEØSHjemmelRegler(rule),
+      hidden: context => !erEøsBegrunnelse(context.document),
     },
     {
       title: 'Vilkår',
