@@ -19,13 +19,12 @@ import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalBegrunnelse,
-  hentEØSHjemmelRegler,
   hentNasjonalHjemmelRegler,
   rolleSkalVises,
   validerFlettefeltErGyldigForBehandlingstema,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
-import { erEøsBegrunnelse } from './EØSTriggere/utils';
+import { erEøsBegrunnelse, hentEØSHjemmelRegler } from './EØSTriggere/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,

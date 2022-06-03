@@ -25,12 +25,6 @@ export const hentNasjonalHjemmelRegler = rule =>
     'En nasjonal hjemmel er valgt, men behandlingstema for begrunnelsen er ikke nasjonal.',
   );
 
-export const hentEØSHjemmelRegler = rule =>
-  hentNasjonaltFeltRegler(
-    rule,
-    'En eøs-hjemmel er valgt, men behandlingstema for begrunnelsen er ikke eøs.',
-  );
-
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
   if (
     erEøsBegrunnelse(context.document) &&
