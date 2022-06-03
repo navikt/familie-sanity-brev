@@ -1,6 +1,6 @@
-import { BegrunnelseDokumentNavn } from '../../../../util/typer';
-import { Behandlingstema } from '../typer';
-import { erNasjonalBegrunnelse } from '../utils';
+import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
+import { Behandlingstema } from '../../typer';
+import { erNasjonalBegrunnelse } from '../../utils';
 
 export const erEøsBegrunnelse = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&

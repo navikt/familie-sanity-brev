@@ -7,7 +7,6 @@ import {
   Behandlingstema,
   behandlingstemaValg,
   eøsFlettefelter,
-  eøshjemler,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -24,7 +23,7 @@ import {
   validerFlettefeltErGyldigForBehandlingstema,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
-import { erEøsBegrunnelse, hentEØSHjemmelRegler } from './EØSTriggere/utils';
+import { eøsHjemler } from './eøs/hjemler';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -240,18 +239,7 @@ const begrunnelse = {
       validation: rule => hentNasjonalHjemmelRegler(rule),
       hidden: context => !erNasjonalBegrunnelse(context.document),
     },
-    {
-      title: 'EØS-hjemler',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.EØSHJEMLER,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'grid',
-        list: eøshjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-      validation: rule => hentEØSHjemmelRegler(rule),
-      hidden: context => !erEøsBegrunnelse(context.document),
-    },
+    ...eøsHjemler,
     {
       title: 'Vilkår',
       description:

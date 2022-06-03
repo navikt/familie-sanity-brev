@@ -31,8 +31,6 @@ export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
-export const eøshjemler = [];
-
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',

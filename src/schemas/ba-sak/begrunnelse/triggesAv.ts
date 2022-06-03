@@ -7,9 +7,9 @@ import { øvrigeTriggere } from './nasjonaleTriggere/øvrigeTriggere';
 import { endringsårsakTrigger } from './nasjonaleTriggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './nasjonaleTriggere/endretUtbetalingPeriodeTrigger';
 import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './nasjonaleTriggere/endretUtbetalingPeriodeDeltBostedTrigger';
-import { annenForeldersAktivitetTrigger } from './EØSTriggere/annenForeldersAktivitetTrigger';
-import { barnetsBosteslandTrigger } from './EØSTriggere/barnetsBostedslandTriggere';
-import { kompetentLandTrigger } from './EØSTriggere/kompetentLandTrigger';
+import { annenForeldersAktivitetTrigger } from './eøs/eøsTriggere/annenForeldersAktivitetTrigger';
+import { barnetsBosteslandTrigger } from './eøs/eøsTriggere/barnetsBostedslandTriggere';
+import { kompetentLandTrigger } from './eøs/eøsTriggere/kompetentLandTrigger';
 
 const nasjonaleBegrunnelserTriggere = [
   lovligOppholdTriggere,
