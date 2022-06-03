@@ -1,6 +1,6 @@
 import { Behandlingstema, eøsFlettefelter, Vilkår } from './typer';
 import { BegrunnelseDokumentNavn } from '../../../util/typer';
-import { erEøsBegrunnelse } from './EØSTriggere/utils';
+import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
   dokument?.vilkaar &&
