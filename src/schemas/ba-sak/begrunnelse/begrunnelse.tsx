@@ -80,7 +80,6 @@ const begrunnelseEØSFlettefelt = {
     },
     prepare: selection => selection,
     component: props => {
-      console.log(props);
       const flettefelt = eøsFlettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
