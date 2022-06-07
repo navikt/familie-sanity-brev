@@ -13,7 +13,7 @@ export const eøsHjemler = [
     of: [{ type: SanityTyper.STRING }],
     options: {
       layout: 'grid',
-      list: hjemlerEØSForordningen883.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+      list: hjemlerEØSForordningen883.map(hjemmel => ({ value: hjemmel, title: hjemmel })),
     },
     validation: rule => hentEØSHjemmelRegler(rule),
     hidden: context => !erEøsBegrunnelse(context.document),
@@ -25,7 +25,7 @@ export const eøsHjemler = [
     of: [{ type: SanityTyper.STRING }],
     options: {
       layout: 'grid',
-      list: hjemlerEØSForordningen987.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+      list: hjemlerEØSForordningen987.map(hjemmel => ({ value: hjemmel, title: hjemmel })),
     },
     validation: rule => hentEØSHjemmelRegler(rule),
     hidden: context => !erEøsBegrunnelse(context.document),
@@ -39,7 +39,7 @@ export const eøsHjemler = [
       layout: 'grid',
       list: hjemlerSeperasjonsavtalenStorbritannina.map(hjemmel => ({
         value: hjemmel,
-        title: `§${hjemmel}`,
+        title: hjemmel,
       })),
     },
     validation: rule => hentEØSHjemmelRegler(rule),

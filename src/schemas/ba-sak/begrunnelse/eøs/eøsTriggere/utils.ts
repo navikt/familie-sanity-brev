@@ -6,11 +6,13 @@ export const erEøsBegrunnelse = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.EØS);
 
-export const hentEØSTriggereRegler = rule =>
+export const hentEØSTriggereRegler = rule => [
   hentEØSFeltRegler(
     rule,
     'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
-  );
+  ),
+  rule => [rule.required().error('Du må velge minst ett valg for triggerene')],
+];
 
 export const hentEØSHjemmelRegler = rule =>
   hentEØSFeltRegler(
