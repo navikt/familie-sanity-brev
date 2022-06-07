@@ -18,7 +18,6 @@ import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalBegrunnelse,
-  hentNasjonalHjemmelRegler,
   rolleSkalVises,
   validerFlettefeltErGyldigForBehandlingstema,
 } from './utils';
@@ -224,8 +223,6 @@ const begrunnelse = {
         layout: 'grid',
         list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
-      validation: rule => hentNasjonalHjemmelRegler(rule),
-      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
     {
       title: 'Hjemler fra folketrygdloven',
@@ -236,8 +233,6 @@ const begrunnelse = {
         layout: 'radio',
         list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
-      validation: rule => hentNasjonalHjemmelRegler(rule),
-      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
     ...eøsHjemler,
     {
