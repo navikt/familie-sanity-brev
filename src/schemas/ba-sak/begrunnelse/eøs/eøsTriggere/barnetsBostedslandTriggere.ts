@@ -11,7 +11,7 @@ const BarnetsBostedslandValg: Record<
   { title: string; value: BarnetsBostedsland }
 > = {
   NORGE: { title: 'Norge', value: BarnetsBostedsland.NORGE },
-  IKKE_NORGE: { title: 'Ikke norge', value: BarnetsBostedsland.IKKE_NORGE },
+  IKKE_NORGE: { title: 'Ikke Norge', value: BarnetsBostedsland.IKKE_NORGE },
 };
 
 export const barnetsBosteslandTrigger = {
