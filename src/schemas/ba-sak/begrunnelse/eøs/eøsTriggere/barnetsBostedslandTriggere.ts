@@ -3,6 +3,7 @@ import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utils';
 
 enum BarnetsBostedsland {
   NORGE = 'NORGE',
+  IKKE_NORGE = 'IKKE_NORGE',
 }
 
 const BarnetsBostedslandValg: Record<
@@ -10,6 +11,7 @@ const BarnetsBostedslandValg: Record<
   { title: string; value: BarnetsBostedsland }
 > = {
   NORGE: { title: 'Norge', value: BarnetsBostedsland.NORGE },
+  IKKE_NORGE: { title: 'Ikke Norge', value: BarnetsBostedsland.IKKE_NORGE },
 };
 
 export const barnetsBosteslandTrigger = {
