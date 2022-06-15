@@ -11,7 +11,7 @@ export const hentEØSTriggereRegler = rule => [
     rule,
     'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
   ),
-  rule => [rule.required().error('Du må velge minst ett valg for triggerene')],
+  lagEØSFeltObligatoriskRegel,
 ];
 
 export const hentEØSHjemmelRegler = rule =>
@@ -24,6 +24,14 @@ export const hentEØSFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
     if (erNasjonalBegrunnelse(document) && currentValue !== undefined) {
       return feilmelding;
+    }
+    return true;
+  });
+
+const lagEØSFeltObligatoriskRegel = rule => 
+  rule.custom((currentValue, {document}) => {
+    if (erEøsBegrunnelse(document) && currentValue === undefined) {
+      return 'Du må velge minst ett valg for triggerne'
     }
     return true;
   });
