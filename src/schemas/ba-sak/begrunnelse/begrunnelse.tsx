@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
+import { lagNasjonalFeltObligatoriskRegel } from './nasjonaleTriggere/utils';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
@@ -246,7 +247,7 @@ const begrunnelse = {
       options: {
         list: vilkår,
       },
-      validation: rule => rule.required().warning('Vilkår ikke valgt'),
+      validation: rule => lagNasjonalFeltObligatoriskRegel(rule).warning('Vilkår ikke valgt'),
       hidden: context => !erNasjonalBegrunnelse(context.document),
     },
 

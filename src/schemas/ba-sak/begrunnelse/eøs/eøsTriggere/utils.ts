@@ -28,10 +28,10 @@ export const hentEØSFeltRegler = (rule, feilmelding: string) =>
     return true;
   });
 
-const lagEØSFeltObligatoriskRegel = rule => 
-  rule.custom((currentValue, {document}) => {
+const lagEØSFeltObligatoriskRegel = rule =>
+  rule.custom((currentValue, { document }) => {
     if (erEøsBegrunnelse(document) && currentValue === undefined) {
-      return 'Du må velge minst ett valg for triggerne'
+      return 'Du må velge minst ett valg for triggerne';
     }
     return true;
   });
