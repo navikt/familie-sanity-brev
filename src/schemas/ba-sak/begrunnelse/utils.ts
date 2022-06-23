@@ -20,7 +20,6 @@ export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   });
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
-  console.log('Flettefelt', flettefelt);
   if (
     erEøsBegrunnelse(context.document) &&
     !eøsFlettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
