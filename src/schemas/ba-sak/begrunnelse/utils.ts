@@ -1,4 +1,4 @@
-import { Behandlingstema, eøsFlettefelter, Vilkår } from './typer';
+import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
 import { BegrunnelseDokumentNavn } from '../../../util/typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 
@@ -28,7 +28,7 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
   }
   if (
     erNasjonalBegrunnelse(context.document) &&
-    !flettefelt.map(flettefelt => flettefelt.value).includes(flettefelt)
+    !flettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
   ) {
     return `Flettefeltet ${flettefelt} er ikke tillatt når behandlingstema er "Nasjonal"`;
   } else return true;
