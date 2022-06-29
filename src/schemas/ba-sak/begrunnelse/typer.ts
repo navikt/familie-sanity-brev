@@ -59,7 +59,6 @@ export const flettefelter = [
 ];
 
 export const eøsFlettefelter = [
-  { title: 'Annen forelders aktivitet', value: 'annenForeldersAktivitet' },
   { title: 'Annen forelders aktivitetsland', value: 'annenForeldersAktivitetsland' },
   { title: 'Barnets bostedsland', value: 'barnetsBostedsland' },
   { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
