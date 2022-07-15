@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
+import { lagNasjonalFeltObligatoriskRegel } from './nasjonaleTriggere/utils';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
   Behandlingstema,
   behandlingstemaValg,
+  eøsFlettefelter,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
@@ -15,8 +17,13 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import { erNasjonalBegrunnelse, hentNasjonalHjemmelRegler, rolleSkalVises } from './utils';
+import {
+  erNasjonalBegrunnelse,
+  rolleSkalVises,
+  validerFlettefeltErGyldigForBehandlingstema,
+} from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
+import { eøsHjemler } from './eøs/hjemler';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -26,9 +33,12 @@ const begrunnelseFlettefelt = {
       name: DokumentNavn.FLETTEFELT,
       type: SanityTyper.STRING,
       options: {
-        list: flettefelter,
+        list: [...flettefelter],
       },
-      validation: rule => [rule.required().error('Tomt flettefelt')],
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
     },
   ],
   preview: {
@@ -38,6 +48,37 @@ const begrunnelseFlettefelt = {
     prepare: selection => selection,
     component: props => {
       const flettefelt = flettefelter.find(
+        flettefelt => flettefelt.value === props.value.flettefelt,
+      );
+      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+    },
+  },
+};
+
+const begrunnelseEØSFlettefelt = {
+  title: 'EØS-flettefelt',
+  name: DokumentNavn.EØS_FLETTEFELT,
+  type: SanityTyper.OBJECT,
+  fields: [
+    {
+      name: DokumentNavn.FLETTEFELT,
+      type: SanityTyper.STRING,
+      options: {
+        list: [...eøsFlettefelter],
+      },
+      validation: rule => [
+        rule.required().error('Tomt flettefelt'),
+        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      flettefelt: DokumentNavn.FLETTEFELT,
+    },
+    prepare: selection => selection,
+    component: props => {
+      const flettefelt = eøsFlettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
@@ -88,6 +129,7 @@ const editor = (maalform, tittel) => ({
       type: SanityTyper.BLOCK,
       of: [
         begrunnelseFlettefelt,
+        begrunnelseEØSFlettefelt,
         begrunnelseValgfelt,
         {
           /*
@@ -182,8 +224,6 @@ const begrunnelse = {
         layout: 'grid',
         list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
-      validation: rule => hentNasjonalHjemmelRegler(rule),
-      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
     {
       title: 'Hjemler fra folketrygdloven',
@@ -194,9 +234,8 @@ const begrunnelse = {
         layout: 'radio',
         list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
-      validation: rule => hentNasjonalHjemmelRegler(rule),
-      hidden: context => !erNasjonalBegrunnelse(context.document),
     },
+    ...eøsHjemler,
     {
       title: 'Vilkår',
       description:
@@ -208,7 +247,7 @@ const begrunnelse = {
       options: {
         list: vilkår,
       },
-      validation: rule => rule.required().warning('Vilkår ikke valgt'),
+      validation: rule => lagNasjonalFeltObligatoriskRegel(rule).warning('Vilkår ikke valgt'),
       hidden: context => !erNasjonalBegrunnelse(context.document),
     },
 

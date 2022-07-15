@@ -58,6 +58,12 @@ export const flettefelter = [
   { title: 'Avtaletidspunkt - delt bosted', value: 'avtaletidspunktDeltBosted' },
 ];
 
+export const eøsFlettefelter = [
+  { title: 'Annen forelders aktivitetsland', value: 'annenForeldersAktivitetsland' },
+  { title: 'Barnets bostedsland', value: 'barnetsBostedsland' },
+  { title: 'Barns fødselsdato', value: 'barnasFodselsdatoer' },
+];
+
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export enum VilkårTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
