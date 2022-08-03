@@ -35,6 +35,9 @@ export enum DokumentNavn {
   NAVN_I_SYSTEM = 'navnISystem',
   BLOCK = 'block',
   PUBLISERT = 'publisert',
+  FOR_OVERGANGSSTØNAD = 'overgangsstonad',
+  FOR_BARNETILSYN = 'barnetilsyn',
+  FOR_SKOLEPENGER = 'skolepenger',
 }
 
 export enum SanityTyper {
