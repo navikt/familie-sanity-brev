@@ -77,6 +77,7 @@ export enum VilkårTriggere {
   SMÅBARNSTILLEGG = 'SMÅBARNSTILLEGG',
   GJELDER_FØRSTE_PERIODE = 'GJELDER_FØRSTE_PERIODE',
   GJELDER_FRA_INNVILGELSESTIDSPUNKT = 'GJELDER_FRA_INNVILGELSESTIDSPUNKT',
+  BARN_DØD = 'BARN_DØD',
 }
 
 export enum VilkårRolle {
@@ -106,6 +107,7 @@ export const øvrigeTriggertyper = [
   VilkårTriggere.ALLTID_AUTOMATISK,
   VilkårTriggere.GJELDER_FØRSTE_PERIODE,
   VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
+  VilkårTriggere.BARN_DØD,
 ];
 export const utvidetBarnetrygdTriggertyper = [VilkårTriggere.SMÅBARNSTILLEGG];
 
@@ -147,6 +149,10 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   GJELDER_FRA_INNVILGELSESTIDSPUNKT: {
     title: 'Gjelder fra invilgelsestidspunkt',
     value: VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
+  },
+  BARN_DØD: {
+    title: 'Barn død',
+    value: VilkårTriggere.BARN_DØD,
   },
 };
 
