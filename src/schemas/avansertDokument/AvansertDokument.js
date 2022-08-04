@@ -38,6 +38,24 @@ export default {
       type: 'boolean',
     },
     {
+      title: 'Overgangsstønad',
+      name: DokumentNavn.FOR_OVERGANGSSTØNAD,
+      description: 'Velg denne hvis relevant for overgangsstønad',
+      type: SanityTyper.BOOLEAN,
+    },
+    {
+      title: 'Barnetilsyn',
+      name: DokumentNavn.FOR_BARNETILSYN,
+      description: 'Velg denne hvis relevant for barnetilsyn',
+      type: SanityTyper.BOOLEAN,
+    },
+    {
+      title: 'Skolepenger',
+      name: DokumentNavn.FOR_SKOLEPENGER,
+      description: 'Velg denne hvis relevant for skolepenger',
+      type: SanityTyper.BOOLEAN,
+    },
+    {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
