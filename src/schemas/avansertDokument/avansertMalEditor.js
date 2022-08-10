@@ -1,6 +1,3 @@
-import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
-import DelmalAnnontering from '../annonteringer/AvansertDelmalAnnontering';
-import ValgAnnontering from '../annonteringer/ValgAnnontering';
 import TekstStyles from '../../util/TekstStyles';
 import { SanityTyper } from '../../util/typer';
 import { avansertDelmalAvsnitt } from '../avsnitt/avansertDelmalAvsnitt';
@@ -22,7 +19,6 @@ export default (maalform, tittel) => ({
     {
       type: 'block',
       marks: {
-        annotations: [FlettefeltAnnontering(), DelmalAnnontering, ValgAnnontering],
         decorators,
       },
       styles: TekstStyles,

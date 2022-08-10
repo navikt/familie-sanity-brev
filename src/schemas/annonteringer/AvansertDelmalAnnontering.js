@@ -1,14 +1,13 @@
 import styles from '../../../styles/myStyling.css';
 import React from 'react';
-import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const AvansertDelmalFelter = (erGjentagende = false) => [
   {
-    title: 'Delmal',
+    title: 'Avansert delmal',
     name: DokumentNavn.DELMAL_REFERANSE,
     type: SanityTyper.REFERENCE,
-    to: [{ type: 'avansertDelmal' }, { type: 'delmal' }],
+    to: { type: 'avansertDelmal' },
     validation: Rule => [Rule.required().error('Tom delmal')],
   },
   {
@@ -28,12 +27,6 @@ export const AvansertDelmalFelter = (erGjentagende = false) => [
         },
       ]
     : []),
-  {
-    name: 'lagNy',
-    type: 'string',
-    description: 'En knapp for å lage ny delmal',
-    inputComponent: props => NyttFelt(props, DokumentNavn.DELMAL),
-  },
 ];
 
 export default {
