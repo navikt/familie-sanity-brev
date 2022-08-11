@@ -2,7 +2,7 @@ import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
-import client from 'part:@sanity/base/client';
+import { ekskluderesForEf, erEf } from './felles';
 
 const DOKUMENTER = 'dokumenter';
 
@@ -29,13 +29,7 @@ export default async () => {
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
 
-  const { dataset } = client.config();
-
-  const erEf = dataset === 'ef-brev';
-
-  const ekskluderesForEf = ['dokument', 'periode'];
-
-  const avansertDokumentTittel = erEf ? 'Brevmaler' : 'Avansert dokument';
+  const avansertDokumentTittel = erEf() ? 'Brevmaler' : 'Avansert dokument';
 
   return S.list()
     .title('Content')

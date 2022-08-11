@@ -72,6 +72,10 @@
       "path": "./config/deskStructure.ts"
     },
     {
+      "name": "part:@sanity/base/new-document-structure",
+      "path": "./config/newDocumentStructure.ts"
+    },
+    {
       "implements": "part:@sanity/dashboard/config",
       "path": "./config/dashboardConfig.js"
     },

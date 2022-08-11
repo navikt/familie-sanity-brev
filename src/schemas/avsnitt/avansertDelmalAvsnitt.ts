@@ -3,7 +3,7 @@ import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
 import { AvansertDelmalFelter } from '../annonteringer/AvansertDelmalAnnontering';
 
 export const avansertDelmalAvsnitt = maalform => ({
-  title: 'Delmal',
+  title: 'Avansert delmal',
   name: DokumentNavn.DELMAL_BLOCK,
   type: SanityTyper.OBJECT,
   fields: [...AvansertDelmalFelter(true)],
