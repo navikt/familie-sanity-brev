@@ -2,7 +2,8 @@ import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
-import { ekskluderesForEf, erEf } from './felles';
+import { ekskluderesForBa, ekskluderesForEf, erBa, erEf } from './felles';
+import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
 
 const DOKUMENTER = 'dokumenter';
 
@@ -29,31 +30,22 @@ export default async () => {
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
 
-  const avansertDokumentTittel = erEf() ? 'Brevmaler' : 'Avansert dokument';
+  const skalBrukeSanitySinStruktur = listItem =>
+    ![
+      BegrunnelseDokumentNavn.BEGRUNNELSE,
+      DokumentNavn.DELMAL,
+      DokumentNavn.AVANSERT_DELMAL,
+      ...(erEf() ? ekskluderesForEf : []),
+      ...(erBa() ? ekskluderesForBa : []),
+    ].includes(listItem.getId());
 
   return S.list()
     .title('Content')
     .items([
       hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
-      ...S.documentTypeListItems().filter(
-        listItem =>
-          ![
-            'delmal',
-            'avansertDelmal',
-            'begrunnelse',
-            'dokumentmal',
-            ...(erEf ? ekskluderesForEf : []),
-          ].includes(listItem.getId()),
-      ),
-      S.listItem()
-        .title(avansertDokumentTittel)
-        .child(S.documentTypeList('dokumentmal').title(avansertDokumentTittel).child()),
-      hentDokumentMappe(
-        'avansertDelmal',
-        avansertDelmalHierarki,
-        erEf ? 'Innhold' : 'Avansert delmal',
-      ),
-      ...(!erEf ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
+      ...S.documentTypeListItems().filter(skalBrukeSanitySinStruktur),
+      ...(erEf() ? [hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Innhold')] : []),
+      ...(erBa() ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
     ]);
 };
 
