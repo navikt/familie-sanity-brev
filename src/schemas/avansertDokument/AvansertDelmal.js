@@ -10,7 +10,7 @@ const TittelBadge = () => {
 };
 
 export default {
-  title: 'Avansert delmal',
+  title: 'Innhold',
   name: DokumentNavn.AVANSERT_DELMAL,
   type: SanityTyper.DOCUMENT,
   preview: {

@@ -9,8 +9,8 @@ const TittelBadge = () => {
 };
 
 export default {
-  title: 'Avansert dokument',
-  name: DokumentNavn.DOKUMENTMAL,
+  title: 'Brevmaler',
+  name: DokumentNavn.AVANSERT_DOKUMENT,
   type: SanityTyper.DOCUMENT,
   preview: {
     select: {
@@ -66,7 +66,7 @@ export default {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.DOKUMENTMAL),
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DOKUMENT),
     },
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
