@@ -21,7 +21,7 @@ export enum DokumentNavn {
   DELMAL_BLOCK = 'delmalBlock',
   VALG_BLOCK = 'valgBlock',
   ER_GJENTAGENDE = 'erGjentagende',
-  DOKUMENTMAL = 'dokumentmal',
+  AVANSERT_DOKUMENT = 'dokumentmal',
   VALGFELT = 'valgfelt',
   ER_LISTE = 'erListe',
   ER_FRITEKSTFELT = 'erFritektsfelt',
