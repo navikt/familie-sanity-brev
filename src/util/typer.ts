@@ -79,4 +79,7 @@ export enum EØSBegrunnelseDokumentNavn {
   ANNEN_FORELDERS_AKTIVITET = 'annenForeldersAktivitet',
   BARNETS_BOSTEDSLAND = 'barnetsBostedsland',
   KOMPETANSE_RESULTAT = 'kompetanseResultat',
+  UTDYPENDE_VILKÅRSVURDERINGER = 'UtdypendeVilkaarsvurderinger',
+  TRIGGERE_I_BRUK = 'triggereIBruk',
+  VILKÅR = 'Vilkaar',
 }

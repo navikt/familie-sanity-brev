@@ -10,6 +10,9 @@ import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './nasjonale
 import { annenForeldersAktivitetTrigger } from './eøs/eøsTriggere/annenForeldersAktivitetTrigger';
 import { barnetsBosteslandTrigger } from './eøs/eøsTriggere/barnetsBostedslandTriggere';
 import { kompetentLandTrigger } from './eøs/eøsTriggere/kompetentLandTrigger';
+import { utdypendeVilkårsvurderingerForEØSTriggere } from './eøs/eøsTriggere/utdypendeVilkårsvurderingerTriggere';
+import { hvilkeTriggereSkalBrukes } from './eøs/eøsTriggere/hvilkeTriggereSkalBrukes';
+import { vilkårsvurderingTriggere } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 
 const nasjonaleBegrunnelserTriggere = [
   lovligOppholdTriggere,
@@ -24,9 +27,12 @@ const nasjonaleBegrunnelserTriggere = [
 ];
 
 const EØSBegrunnelseTriggere = [
+  hvilkeTriggereSkalBrukes,
   annenForeldersAktivitetTrigger,
   barnetsBosteslandTrigger,
   kompetentLandTrigger,
+  vilkårsvurderingTriggere,
+  utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
 export const triggesAv = [...nasjonaleBegrunnelserTriggere, ...EØSBegrunnelseTriggere];
