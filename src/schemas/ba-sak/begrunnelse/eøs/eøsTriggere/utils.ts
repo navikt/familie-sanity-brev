@@ -46,19 +46,16 @@ export const hentEØSFeltRegler = (rule, feilmelding: string) =>
     return true;
   });
 
-export const hentGyldigeTriggereRegel = (rule, triggerTyperforFelt: EØSTriggerType[]) => {
-  const lagFeilmelding = (avhengighet: string) =>
-    `Det er ikke valgt at ${avhengighet}-triggere kan velges, men en ${avhengighet}-trigger er valgt`;
-
-  return rule.custom((currentValue, { document }) => {
+export const hentGyldigeTriggereRegel = (rule, triggerTyperforFelt: EØSTriggerType[]) =>
+  rule.custom((currentValue, { document }) => {
     triggerTyperforFelt.forEach(triggerType => {
       if (!kanTriggereAvTypeVelges(triggerType, document) && currentValue !== undefined) {
-        return lagFeilmelding(triggerType);
+        return `Det er ikke valgt at ${triggerType}-triggere kan velges, men en ${triggerType}-trigger er valgt`;
       }
     });
+
     return true;
   });
-};
 
 const lagEØSFeltObligatoriskRegel = (rule, triggerTyperforFelt: EØSTriggerType[]) =>
   rule.custom((currentValue, { document }) => {
