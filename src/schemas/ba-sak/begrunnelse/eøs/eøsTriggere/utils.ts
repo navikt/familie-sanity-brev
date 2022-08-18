@@ -28,7 +28,6 @@ export const hentEØSTriggereRegler = (
     rule,
     'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
   ),
-  hentGyldigeTriggereRegel(rule, regelTyper),
   erObligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
 ];
 
@@ -43,17 +42,6 @@ export const hentEØSFeltRegler = (rule, feilmelding: string) =>
     if (erNasjonalBegrunnelse(document) && currentValue !== undefined) {
       return feilmelding;
     }
-    return true;
-  });
-
-export const hentGyldigeTriggereRegel = (rule, triggerTyperforFelt: EØSTriggerType[]) =>
-  rule.custom((currentValue, { document }) => {
-    triggerTyperforFelt.forEach(triggerType => {
-      if (!kanTriggereAvTypeVelges(triggerType, document) && currentValue !== undefined) {
-        return `Det er ikke valgt at ${triggerType}-triggere kan velges, men en ${triggerType}-trigger er valgt`;
-      }
-    });
-
     return true;
   });
 
