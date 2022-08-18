@@ -21,7 +21,7 @@ export const kanKompetanseTriggereVelges = document =>
 
 export const hentEØSTriggereRegler = (
   rule,
-  obligatoriskOmSynlig: boolean,
+  erObligatoriskOmSynlig: boolean,
   regelTyper: EØSTriggerType[],
 ) => [
   hentEØSFeltRegler(
@@ -29,7 +29,7 @@ export const hentEØSTriggereRegler = (
     'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
   ),
   hentGyldigeTriggereRegel(rule, regelTyper),
-  obligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
+  erObligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
 ];
 
 export const hentEØSHjemmelRegler = rule =>
