@@ -7,7 +7,7 @@ const BlockContent = require('@sanity/block-content-to-react');
 
 const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPadding = true) => {
   if (id) {
-    return DelmalBlock(props, maalform, id, false);
+    return DelmalBlock(props, maalform, id, skalHaPadding);
   } else {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
   }
