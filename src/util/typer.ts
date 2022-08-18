@@ -81,5 +81,5 @@ export enum EØSBegrunnelseDokumentNavn {
   KOMPETANSE_RESULTAT = 'kompetanseResultat',
   UTDYPENDE_VILKÅRSVURDERINGER = 'utdypendeVilkaarsvurderinger',
   TRIGGERE_I_BRUK = 'triggereIBruk',
-  VILKÅR = 'vilkaar',
+  VILKÅR = 'eosVilkaar',
 }
