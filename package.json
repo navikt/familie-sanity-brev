@@ -1,11 +1,11 @@
 {
-  "name": "test",
+  "name": "familie-sanity-brev",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "halvorbmundal <halvorbmundal@gmail.com>",
-  "license": "UNLICENSED",
+  "author": "navikt",
+  "license": "MIT",
   "scripts": {
     "start": "sanity start",
     "test": "sanity check",
