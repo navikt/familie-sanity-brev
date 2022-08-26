@@ -13,7 +13,10 @@
       "jsx": true
     },
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json"
+    ]
   },
   "plugins": [
     "@typescript-eslint",
@@ -40,7 +43,8 @@
     "@typescript-eslint/no-var-requires": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react-app/react-hooks/exhaustive-deps": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/switch-exhaustiveness-check": "error"
   },
   "settings": {
     "react": {

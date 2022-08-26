@@ -1,5 +1,6 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utils';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
+import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 enum AnnenForelderAktivitet {
   I_ARBEID = 'I_ARBEID',
@@ -38,6 +39,6 @@ export const annenForeldersAktivitetTrigger = {
       annenForelderAktivitet => annenForeldersAktivitetValg[annenForelderAktivitet],
     ),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document),
-  validation: rule => hentEØSTriggereRegler(rule),
+  hidden: ({ document }) => !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+  validation: rule => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };

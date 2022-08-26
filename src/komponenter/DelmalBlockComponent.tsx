@@ -6,13 +6,15 @@ import { Badge, Inline } from '@sanity/ui';
 const BlockContent = require('@sanity/block-content-to-react');
 
 const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPadding = true) => {
-  const _id = id;
-
-  if (!_id) {
+  if (id) {
+    return DelmalBlock(props, maalform, id, skalHaPadding);
+  } else {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
   }
+};
 
-  const query = `*[_id=="${_id}"]{..., ${maalform}[]{..., valgReferanse->}}`;
+const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true) => {
+  const query = `*[_id=="${id}"]{..., ${maalform}[]{..., valgReferanse->}}`;
   const { data, error } = useSanityQuery(query);
 
   if (error) {

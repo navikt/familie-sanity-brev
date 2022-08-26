@@ -1,5 +1,13 @@
 {
-  "include": ["./node_modules/@sanity/base/types/**/*.ts", "./**/*.ts", "./**/*.tsx"],
+  "include": [
+    "./node_modules/@sanity/base/types/**/*.ts",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./config/*.js",
+    "./logo/*.js",
+    "./logo/*.js",
+    "./migreringer/*.js"
+  ],
   "compilerOptions": {
     "jsx": "react",
     "allowSyntheticDefaultImports": true
