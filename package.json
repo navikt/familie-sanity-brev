@@ -9,12 +9,8 @@
   "scripts": {
     "start": "sanity start",
     "test": "sanity check",
-    "start:server": "node ./src/server.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "start:server": "node ./src/server.js",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
