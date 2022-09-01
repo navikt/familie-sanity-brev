@@ -1,11 +1,11 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react-app/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "react-app"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,11 +20,9 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "react-app",
     "prettier"
   ],
   "rules": {
-    "react-app/react-hooks/rules-of-hooks": 1,
     "no-case-declarations": "off",
     "import/extensions": [
       "off",
@@ -44,7 +42,8 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "react-app/react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/switch-exhaustiveness-check": "error"
+    "@typescript-eslint/switch-exhaustiveness-check": "error",
+    "import/no-anonymous-default-export": "off"
   },
   "settings": {
     "react": {
