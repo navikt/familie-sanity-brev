@@ -15,6 +15,7 @@ import Delmal from './schemas/Delmal';
 import Periode from './schemas/ba-sak/periode';
 import Begrunnelse from './schemas/ba-sak/begrunnelse/begrunnelse';
 import Htmlfelt from './schemas/felter/Htmlfelt';
+import eøsRegelsett from './schemas/ba-sak/begrunnelse/eøs/eøsTriggere/EØSRegelsett';
 
 sessionStorage.clear();
 
@@ -37,6 +38,7 @@ export default createSchema({
     Begrunnelse,
     AvansertDelmal,
     AvansertDokument,
+    eøsRegelsett,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

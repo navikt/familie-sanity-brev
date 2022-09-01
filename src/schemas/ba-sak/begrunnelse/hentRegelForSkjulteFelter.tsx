@@ -1,4 +1,4 @@
-export const validerBegrunnelse = () => rule =>
+export const hentRegelForSkjulteFelter = () => rule =>
   rule.custom((verdi: string, kontekst): true | string => {
     const feil = [];
 

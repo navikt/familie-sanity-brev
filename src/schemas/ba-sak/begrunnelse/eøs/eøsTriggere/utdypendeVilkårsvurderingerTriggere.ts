@@ -1,6 +1,6 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
-  erEøsBegrunnelse,
+  skalViseEøsTrigger,
   hentEØSTriggereRegler,
   kanVilkårsvurderingTriggereVelges,
 } from './utils';
@@ -46,6 +46,6 @@ export const utdypendeVilkårsvurderingerForEØSTriggere = {
   },
 
   hidden: ({ document }) =>
-    !erEøsBegrunnelse(document) || !kanVilkårsvurderingTriggereVelges(document),
+    !skalViseEøsTrigger(document) || !kanVilkårsvurderingTriggereVelges(document),
   validation: rule => hentEØSTriggereRegler(rule, false, [EØSTriggerType.VILKÅRSVURDERING]),
 };

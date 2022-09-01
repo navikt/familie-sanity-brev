@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  EØSRegelsettDokumentNavn,
+  SanityTyper,
+} from '../../../util/typer';
 import styled from 'styled-components';
 import { lagNasjonalFeltObligatoriskRegel } from './nasjonaleTriggere/utils';
 import {
@@ -16,7 +21,7 @@ import {
 } from './typer';
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
-import { validerBegrunnelse } from './validerBegrunnelse';
+import { hentRegelForSkjulteFelter } from './hentRegelForSkjulteFelter';
 import {
   erNasjonalBegrunnelse,
   rolleSkalVises,
@@ -24,6 +29,7 @@ import {
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
+import { erEøsBegrunnelse, skalViseEøsTrigger } from './eøs/eøsTriggere/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -158,7 +164,7 @@ const begrunnelse = {
       title: DokumentNavn.VISNINGSNAVN,
     },
   },
-  validation: validerBegrunnelse(),
+  validation: hentRegelForSkjulteFelter(),
   fields: [
     {
       title: 'Visningsnavn',
@@ -277,6 +283,20 @@ const begrunnelse = {
           return true;
         }),
     },
+
+    {
+      title: 'Regelsett',
+      type: SanityTyper.ARRAY,
+      name: EØSRegelsettDokumentNavn.EØS_REGELSETT,
+      hidden: ({ document }) => !erEøsBegrunnelse(document),
+      of: [
+        {
+          type: SanityTyper.REFERENCE,
+          to: { type: EØSRegelsettDokumentNavn.EØS_REGELSETT },
+        },
+      ],
+    },
+
     ...triggesAv,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),

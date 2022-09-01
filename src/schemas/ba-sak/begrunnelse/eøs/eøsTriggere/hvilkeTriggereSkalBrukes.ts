@@ -1,5 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler } from './utils';
+import { skalViseEøsTrigger, hentEØSTriggereRegler } from './utils';
 
 export enum EØSTriggerType {
   KOMPETANSE = 'KOMPETANSE',
@@ -25,6 +25,6 @@ export const hvilkeTriggereSkalBrukes = {
   options: {
     list: Object.values(EØSTriggerType).map(eøsTrigger => KompetanseValg[eøsTrigger]),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document),
+  hidden: ({ document }) => !skalViseEøsTrigger(document),
   validation: rule => hentEØSTriggereRegler(rule, true, []),
 };

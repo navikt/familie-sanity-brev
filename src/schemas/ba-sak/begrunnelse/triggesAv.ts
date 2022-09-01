@@ -26,7 +26,7 @@ const nasjonaleBegrunnelserTriggere = [
   endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
 ];
 
-const EØSBegrunnelseTriggere = [
+export const eøsBegrunnelseTriggere = [
   hvilkeTriggereSkalBrukes,
   annenForeldersAktivitetTrigger,
   barnetsBosteslandTrigger,
@@ -35,4 +35,4 @@ const EØSBegrunnelseTriggere = [
   utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
-export const triggesAv = [...nasjonaleBegrunnelserTriggere, ...EØSBegrunnelseTriggere];
+export const triggesAv = [...nasjonaleBegrunnelserTriggere, ...eøsBegrunnelseTriggere];

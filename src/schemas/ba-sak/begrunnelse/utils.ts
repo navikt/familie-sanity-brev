@@ -1,6 +1,6 @@
 import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
 import { BegrunnelseDokumentNavn } from '../../../util/typer';
-import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
+import { skalViseEøsTrigger } from './eøs/eøsTriggere/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
   dokument?.vilkaar &&
@@ -21,7 +21,7 @@ export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
   if (
-    erEøsBegrunnelse(context.document) &&
+    skalViseEøsTrigger(context.document) &&
     !eøsFlettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
   ) {
     return `Flettefeltet ${flettefelt} er ikke tillatt for EØS-begrunnelser`;

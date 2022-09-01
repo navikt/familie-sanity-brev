@@ -83,3 +83,7 @@ export enum EØSBegrunnelseDokumentNavn {
   TRIGGERE_I_BRUK = 'triggereIBruk',
   VILKÅR = 'eosVilkaar',
 }
+
+export enum EØSRegelsettDokumentNavn {
+  EØS_REGELSETT = 'eosRegelsett',
+}

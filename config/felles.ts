@@ -1,12 +1,13 @@
 import client from 'part:@sanity/base/client';
 
-import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, EØSRegelsettDokumentNavn } from '../src/util/typer';
 
 export const ekskluderesForEf: string[] = [
   DokumentNavn.DELMAL,
   DokumentNavn.DOKUMENT,
   DokumentNavn.PERIODE,
   BegrunnelseDokumentNavn.BEGRUNNELSE,
+  EØSRegelsettDokumentNavn.EØS_REGELSETT,
 ];
 
 export const ekskluderesForBa: string[] = [

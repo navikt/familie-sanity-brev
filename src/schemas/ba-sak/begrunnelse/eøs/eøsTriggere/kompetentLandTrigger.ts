@@ -1,5 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
+import { skalViseEøsTrigger, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 enum Kompetanse {
@@ -31,6 +31,6 @@ export const kompetentLandTrigger = {
   options: {
     list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+  hidden: ({ document }) => !skalViseEøsTrigger(document) || !kanKompetanseTriggereVelges(document),
   validation: rule => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };
