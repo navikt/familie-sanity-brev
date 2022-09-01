@@ -59,7 +59,6 @@
     "markdown",
     "@sanity/dashboard",
     "@sanity/production-preview",
-    "datatable",
     "@sanity/vision"
   ],
   "parts": [
