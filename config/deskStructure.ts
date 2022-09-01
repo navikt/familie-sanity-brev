@@ -16,7 +16,7 @@ interface IDokument {
 
 type IMappe = {
   [DOKUMENTER]: IDokument[];
-  mapper: { [mappe: string]: IMappe } | {};
+  mapper: { [mappe: string]: IMappe } | Record<string, never>;
 };
 
 export default async () => {

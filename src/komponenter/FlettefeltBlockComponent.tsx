@@ -5,13 +5,15 @@ import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
 const FlettefeltBlockComponent = (id = '') => {
-  const _id = id;
-
-  if (!_id) {
+  if (!id) {
     return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
+  } else {
+    return <FlettefeltBlock id={id} />;
   }
+};
 
-  const query = `*[_type=="flettefelt" && _id=="${_id}"]`;
+const FlettefeltBlock = ({ id = '' }) => {
+  const query = `*[_type=="flettefelt" && _id=="${id}"]`;
   const { data, error } = useSanityQuery(query);
 
   if (error) {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useSanityQuery } from '../../util/sanity';
 import { Header, ErrorStyling } from './Elementer';
 
@@ -10,7 +9,7 @@ type IReferrer = {
   _type: string;
 };
 
-function hvorErValgfeltetIBruk(props: any) {
+function HvorErValgfeltetIBruk(props: any) {
   const url = window.location.pathname;
   const documentId = url.includes(';')
     ? url.split(';').reverse()[0].slice(0, 36)
@@ -56,4 +55,4 @@ function hvorErValgfeltetIBruk(props: any) {
   );
 }
 
-export default hvorErValgfeltetIBruk;
+export default HvorErValgfeltetIBruk;

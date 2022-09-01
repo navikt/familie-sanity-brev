@@ -32,7 +32,7 @@ export function useSanityQuery(query, brukCache = true, brukSessionStorage = tru
     hentFraSanity(query, brukCache, brukSessionStorage)
       .then(response => setData(response))
       .catch(error => setError(error));
-  }, []);
+  }, [query, brukCache, brukSessionStorage]);
 
   return { data, error };
 }

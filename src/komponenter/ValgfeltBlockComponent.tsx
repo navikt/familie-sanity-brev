@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const BlockContent = require('@sanity/block-content-to-react');
 
 const ValgfeltBlockComponent = (props: any, maalform: string) => {
   const id = props.value._id;
