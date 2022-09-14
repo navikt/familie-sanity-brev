@@ -1795,10 +1795,10 @@
     lodash "^4.17.15"
     slate "0.81.1"
 
-"@sanity/production-preview@^2.29.3":
-  version "2.29.3"
-  resolved "https://registry.npmjs.org/@sanity/production-preview/-/production-preview-2.29.3.tgz#6494ba268f31d934f4cb4a7b6dc15b6d7f616ea4"
-  integrity sha512-qqCKdAGejxJ1HHElaJOan2EUx2YbHdmFp5UbvOJ1dZy1bPYl5Qrsh0ijqD800w/qo/M7MMt63dRbkftmIUozEA==
+"@sanity/production-preview@^2.33.2":
+  version "2.33.2"
+  resolved "https://registry.yarnpkg.com/@sanity/production-preview/-/production-preview-2.33.2.tgz#b8d03274fb3a65d359f9cba9351db0b980e18921"
+  integrity sha512-Tv8YAuDjITneydleGFpX06dWa3xHJeczZMI8XQvb4s2nmPoYnNurFi9XCwNT/EGKYR1jrILuI9wFzL92S5K9oQ==
 
 "@sanity/react-hooks@2.31.1":
   version "2.31.1"
