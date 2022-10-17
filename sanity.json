@@ -29,6 +29,22 @@
       }
     },
     {
+      "name": "ks-brev",
+      "title": "KS",
+      "api": {
+        "projectId": "xsrv1mh6",
+        "dataset": "ks-brev"
+      }
+    },
+    {
+      "name": "ks-test",
+      "title": "KS-test",
+      "api": {
+        "projectId": "xsrv1mh6",
+        "dataset": "ks-test"
+      }
+    },
+    {
       "name": "ef-brev",
       "title": "EF",
       "api": {
