@@ -211,6 +211,7 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
 export enum Behandlingstema {
   EØS = 'EØS',
   NASJONAL = 'NASJONAL',
+  NASJONAL_INSTITUSJON = 'NASJONAL_INSTITUSJON',
 }
 
 export const behandlingstemaValg: Record<
@@ -219,4 +220,8 @@ export const behandlingstemaValg: Record<
 > = {
   EØS: { title: 'EØS', value: Behandlingstema.EØS },
   NASJONAL: { title: 'Nasjonal', value: Behandlingstema.NASJONAL },
+  NASJONAL_INSTITUSJON: {
+    title: 'Nasjonal institusjon',
+    value: Behandlingstema.NASJONAL_INSTITUSJON,
+  },
 };
