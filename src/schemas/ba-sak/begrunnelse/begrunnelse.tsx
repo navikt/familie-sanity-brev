@@ -284,14 +284,13 @@ const begrunnelse = {
 };
 
 const Flettefelt = styled.span`
-    background-color: rgba(30,133,209,0.2);
-    text-overflow: ellipsis;
-    line-height: normal;
-    white-space: nowrap;
-    max-inline-size: 160px;
-    overflow: hidden;
-    display: inline-block;
-}
+  background-color: rgba(30, 133, 209, 0.2);
+  text-overflow: ellipsis;
+  line-height: normal;
+  white-space: nowrap;
+  max-inline-size: 160px;
+  overflow: hidden;
+  display: inline-block;
 `;
 
 export default begrunnelse;
