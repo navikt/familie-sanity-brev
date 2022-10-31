@@ -1,8 +1,10 @@
-import { eøsFlettefelter, flettefelter, Vilkår } from './typer';
+import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
+  dokument?.behandlingstema &&
+  dokument.behandlingstema !== Behandlingstema.NASJONAL_INSTITUSJON &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
