@@ -1,23 +1,11 @@
-import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
-import { BegrunnelseDokumentNavn } from '../../../util/typer';
+import { eøsFlettefelter, flettefelter, Vilkår } from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
+import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
-
-export const erNasjonalBegrunnelse = document =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.NASJONAL);
-
-export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
-  rule.custom((currentValue, { document }) => {
-    if (!erNasjonalBegrunnelse(document) && currentValue !== undefined) {
-      return feilmelding;
-    }
-    return true;
-  });
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
   if (

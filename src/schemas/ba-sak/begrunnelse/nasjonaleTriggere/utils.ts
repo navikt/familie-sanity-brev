@@ -1,4 +1,17 @@
-import { hentNasjonaltFeltRegler, erNasjonalBegrunnelse } from '../utils';
+import { Behandlingstema } from '../typer';
+import { BegrunnelseDokumentNavn } from '../../../../util/typer';
+
+export const erNasjonalBegrunnelse = document =>
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.NASJONAL);
+
+export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
+  rule.custom((currentValue, { document }) => {
+    if (!erNasjonalBegrunnelse(document) && currentValue !== undefined) {
+      return feilmelding;
+    }
+    return true;
+  });
 
 export const hentNasjonaleTriggereRegler = rule =>
   hentNasjonaltFeltRegler(

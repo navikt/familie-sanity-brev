@@ -1,6 +1,6 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { Behandlingstema } from '../../typer';
-import { erNasjonalBegrunnelse } from '../../utils';
+import { erNasjonalBegrunnelse } from '../../nasjonaleTriggere/utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = document =>

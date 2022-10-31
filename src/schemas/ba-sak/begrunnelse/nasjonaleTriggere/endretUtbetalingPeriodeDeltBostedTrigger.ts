@@ -1,7 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling, Endringsårsak } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 const erEndretUtbetalingAvTypeDeltBosted = document =>
   document[BegrunnelseDokumentNavn.ENDRINGSAARSAKER] &&

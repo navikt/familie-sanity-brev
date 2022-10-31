@@ -1,7 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { bosattIRiketTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const bosattIRiketTriggere = {
   title: 'Triggere for "Bosatt i riket"',

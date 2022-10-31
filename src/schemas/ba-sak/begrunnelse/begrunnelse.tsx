@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
-import { lagNasjonalFeltObligatoriskRegel } from './nasjonaleTriggere/utils';
+import { lagNasjonalFeltObligatoriskRegel, erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
@@ -17,11 +17,7 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import {
-  erNasjonalBegrunnelse,
-  rolleSkalVises,
-  validerFlettefeltErGyldigForBehandlingstema,
-} from './utils';
+import { rolleSkalVises, validerFlettefeltErGyldigForBehandlingstema } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
 

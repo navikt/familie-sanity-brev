@@ -1,8 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { erEndretUtbetaling } from './endringsårsakTrigger';
 import { vilkårTriggerTilMenynavn, øvrigeTriggertyper } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const øvrigeTriggere = {
   title: 'Øvrige triggere',

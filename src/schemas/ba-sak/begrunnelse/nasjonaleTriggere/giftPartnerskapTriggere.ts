@@ -1,7 +1,6 @@
 import { giftPartnerskapTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const giftPartnerskapTriggere = {
   title: 'Triggere for "Gift partnerskap"',

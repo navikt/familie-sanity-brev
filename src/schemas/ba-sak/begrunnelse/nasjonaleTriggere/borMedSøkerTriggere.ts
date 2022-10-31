@@ -1,7 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const borMedSøkerTriggere = {
   title: 'Triggere for "Bor med søker"',

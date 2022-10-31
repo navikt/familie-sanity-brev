@@ -1,7 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { lovligOppholdTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const lovligOppholdTriggere = {
   title: 'Triggere for "Lovlig opphold"',
