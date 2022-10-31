@@ -23,3 +23,6 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
     return `Flettefeltet ${flettefelt} er ikke tillatt når behandlingstema er "Nasjonal"`;
   } else return true;
 };
+
+export const erNasjonalEllerInstitusjonsBegrunnelse = (document): boolean =>
+  erNasjonalBegrunnelse(document) || erInstitusjonsBegrunnelse(document);
