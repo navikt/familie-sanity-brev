@@ -1,7 +1,10 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { erEndretUtbetaling } from './endringsårsakTrigger';
 import { vilkårTriggerTilMenynavn, øvrigeTriggertyper } from '../typer';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
+import {
+  erNasjonalEllerInstitusjonsBegrunnelse,
+  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+} from '../utils';
 
 export const øvrigeTriggere = {
   title: 'Øvrige triggere',
@@ -11,6 +14,7 @@ export const øvrigeTriggere = {
   options: {
     list: øvrigeTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) => erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
-  validation: rule => hentNasjonaleTriggereRegler(rule),
+  hidden: ({ document }) =>
+    erEndretUtbetaling(document) || !erNasjonalEllerInstitusjonsBegrunnelse(document),
+  validation: rule => lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
 };
