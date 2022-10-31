@@ -14,3 +14,14 @@ export const lagInstitusjonVilkårRegel = rule =>
     }
     return true;
   });
+
+export const lagInstitusjonBorMedSøkerRegel = rule =>
+  rule.custom((nåVerdi, context) => {
+    if (erInstitusjonsBegrunnelse(context.document) && nåVerdi !== undefined) {
+      return nåVerdi.includes(VilkårTriggere.DELT_BOSTED) ||
+        nåVerdi.includes(VilkårTriggere.DELT_BOSTED_SKAL_IKKE_DELES)
+        ? 'Delt bosted er ikke i bruk i institusjonssaker'
+        : true;
+    }
+    return true;
+  });

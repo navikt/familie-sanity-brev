@@ -1,6 +1,7 @@
 import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
+import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
   dokument?.behandlingstema &&
@@ -26,3 +27,11 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
 
 export const erNasjonalEllerInstitusjonsBegrunnelse = (document): boolean =>
   erNasjonalBegrunnelse(document) || erInstitusjonsBegrunnelse(document);
+
+export const lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel = rule =>
+  rule.custom((nåVerdi, context) => {
+    if (nåVerdi !== undefined && !erNasjonalEllerInstitusjonsBegrunnelse(context.document)) {
+      return 'Feltet er kun gyldig for behandlingstema Nasjonal eller Nasjonal institusjon.';
+    }
+    return true;
+  });
