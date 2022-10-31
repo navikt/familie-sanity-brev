@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
 import styled from 'styled-components';
-import { lagNasjonalFeltObligatoriskRegel, erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
+import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
@@ -20,6 +20,7 @@ import { validerBegrunnelse } from './validerBegrunnelse';
 import { rolleSkalVises, validerFlettefeltErGyldigForBehandlingstema } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
+import { erInstitusjonsBegrunnelse, lagInstitusjonVilkårRegel } from './institusjon/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -243,8 +244,12 @@ const begrunnelse = {
       options: {
         list: vilkår,
       },
-      validation: rule => lagNasjonalFeltObligatoriskRegel(rule).warning('Vilkår ikke valgt'),
-      hidden: context => !erNasjonalBegrunnelse(context.document),
+      validation: rule => [
+        rule.required().warning('Vilkår ikke valgt'),
+        lagInstitusjonVilkårRegel(rule),
+      ],
+      hidden: context =>
+        !erNasjonalBegrunnelse(context.document) && !erInstitusjonsBegrunnelse(context.document),
     },
 
     {
