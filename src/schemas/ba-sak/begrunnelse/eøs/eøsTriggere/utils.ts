@@ -1,6 +1,5 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { Behandlingstema } from '../../typer';
-import { erNasjonalBegrunnelse } from '../../nasjonaleTriggere/utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = document =>
@@ -39,7 +38,7 @@ export const hentEØSHjemmelRegler = rule =>
 
 export const hentEØSFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
-    if (erNasjonalBegrunnelse(document) && currentValue !== undefined) {
+    if (!erEøsBegrunnelse(document) && currentValue !== undefined) {
       return feilmelding;
     }
     return true;
