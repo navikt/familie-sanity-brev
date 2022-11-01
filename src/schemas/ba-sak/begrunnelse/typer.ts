@@ -1,3 +1,9 @@
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  EØSBegrunnelseDokumentNavn,
+} from '../../../util/typer';
+
 export enum Begrunnelsestype {
   INNVILGET = 'INNVILGET',
   REDUKSJON = 'REDUKSJON',
@@ -225,3 +231,52 @@ export const behandlingstemaValg: Record<
     value: Behandlingstema.NASJONAL_INSTITUSJON,
   },
 };
+
+interface BegrunnelseBase {
+  [DokumentNavn.VISNINGSNAVN]?: string;
+  [BegrunnelseDokumentNavn.BEHANDLINGSTEMA]?: string;
+  [BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE]?: string;
+  [DokumentNavn.API_NAVN]?: string;
+  [DokumentNavn.MAPPE]?: string[];
+  [DokumentNavn.NAVN_I_SYSTEM]?: string;
+  [BegrunnelseDokumentNavn.HJEMLER]?: string[];
+  [BegrunnelseDokumentNavn.HJEMLER_FOLKETRYGDLOVEN]?: string[];
+  [DokumentNavn.BOKMAAL]?: any[];
+  [DokumentNavn.NYNORSK]?: any[];
+}
+
+export interface NasjonalBegrunnelse extends BegrunnelseBase {
+  [BegrunnelseDokumentNavn.VILKÅR]?: string[];
+  [BegrunnelseDokumentNavn.ROLLE]?: string[];
+  [BegrunnelseDokumentNavn.TRIGGES_AV_LOVLIG_OPPHOLD]?: string[];
+  [BegrunnelseDokumentNavn.BOSATT_I_RIKET_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.GIFT_PARTNERSKAP_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.BOR_MED_SØKER_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.UTVIDET_BARNETRYGD_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.ENDRINGSAARSAKER]?: string[];
+  [BegrunnelseDokumentNavn.ENDRET_UTBETALINGSPERIODE_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER]?: string;
+}
+
+export interface InstitusjonBegrunnelse extends BegrunnelseBase {
+  [BegrunnelseDokumentNavn.VILKÅR]?: string[];
+  [BegrunnelseDokumentNavn.TRIGGES_AV_LOVLIG_OPPHOLD]?: string[];
+  [BegrunnelseDokumentNavn.BOSATT_I_RIKET_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.GIFT_PARTNERSKAP_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.BOR_MED_SØKER_TRIGGERE]?: string[];
+  [BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE]?: string[];
+}
+export interface EøsBegrunnelse extends BegrunnelseBase {
+  [BegrunnelseDokumentNavn.ROLLE]?: string[];
+  [BegrunnelseDokumentNavn.HJEMLER_EØS_FORORDNINGEN_833]?: string[];
+  [BegrunnelseDokumentNavn.HJEMLER_EØS_FORORDNINGEN_987]?: string[];
+  [BegrunnelseDokumentNavn.HJEMLER_SEPERASJONSAVTALEN_STORBRITANNINA]?: string[];
+  [EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK]?: string[];
+  [EØSBegrunnelseDokumentNavn.ANNEN_FORELDERS_AKTIVITET]?: string[];
+  [EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND]?: string[];
+  [EØSBegrunnelseDokumentNavn.KOMPETANSE_RESULTAT]?: string[];
+  [EØSBegrunnelseDokumentNavn.VILKÅR]?: string[];
+  [EØSBegrunnelseDokumentNavn.UTDYPENDE_VILKÅRSVURDERINGER]?: string[];
+}
+export type Begrunnelse = NasjonalBegrunnelse | InstitusjonBegrunnelse | EøsBegrunnelse;
