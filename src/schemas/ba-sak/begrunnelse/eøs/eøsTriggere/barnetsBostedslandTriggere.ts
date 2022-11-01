@@ -15,7 +15,7 @@ const BarnetsBostedslandValg: Record<
   IKKE_NORGE: { title: 'Ikke Norge', value: BarnetsBostedsland.IKKE_NORGE },
 };
 
-export const barnetsBosteslandTrigger = {
+export const barnetsBostedslandTrigger = {
   title: 'Barnets bostedsland',
   type: SanityTyper.ARRAY,
   name: EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND,
