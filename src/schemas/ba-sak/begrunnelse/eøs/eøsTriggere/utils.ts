@@ -1,8 +1,8 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../util/typer';
-import { Behandlingstema } from '../../typer';
+import { Begrunnelse, Behandlingstema, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
-export const erEøsBegrunnelse = document =>
+export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.EØS;
 

@@ -1,7 +1,15 @@
 import { BegrunnelseDokumentNavn } from '../../../../util/typer';
-import { Behandlingstema, Vilkår, VilkårTriggere } from '../typer';
+import {
+  Behandlingstema,
+  Begrunnelse,
+  InstitusjonBegrunnelse,
+  Vilkår,
+  VilkårTriggere,
+} from '../typer';
 
-export const erInstitusjonsBegrunnelse = document =>
+export const erInstitusjonsBegrunnelse = (
+  document: Begrunnelse,
+): document is InstitusjonBegrunnelse =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL_INSTITUSJON;
 

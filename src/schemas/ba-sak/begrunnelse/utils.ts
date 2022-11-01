@@ -1,4 +1,12 @@
-import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
+import {
+  Behandlingstema,
+  Begrunnelse,
+  eøsFlettefelter,
+  flettefelter,
+  InstitusjonBegrunnelse,
+  NasjonalBegrunnelse,
+  Vilkår,
+} from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
@@ -25,7 +33,9 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
   } else return true;
 };
 
-export const erNasjonalEllerInstitusjonsBegrunnelse = (document): boolean =>
+export const erNasjonalEllerInstitusjonsBegrunnelse = (
+  document: Begrunnelse,
+): document is NasjonalBegrunnelse | InstitusjonBegrunnelse =>
   erNasjonalBegrunnelse(document) || erInstitusjonsBegrunnelse(document);
 
 export const lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel = rule =>
