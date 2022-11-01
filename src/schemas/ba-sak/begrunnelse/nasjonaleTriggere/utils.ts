@@ -3,7 +3,7 @@ import { BegrunnelseDokumentNavn } from '../../../../util/typer';
 
 export const erNasjonalBegrunnelse = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.NASJONAL);
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL;
 
 export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {

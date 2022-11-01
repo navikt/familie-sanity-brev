@@ -3,7 +3,7 @@ import { Behandlingstema, Vilkår, VilkårTriggere } from '../typer';
 
 export const erInstitusjonsBegrunnelse = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.NASJONAL_INSTITUSJON);
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL_INSTITUSJON;
 
 export const lagInstitusjonVilkårRegel = rule =>
   rule.custom((nåVerdi, context) => {

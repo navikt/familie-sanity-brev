@@ -4,7 +4,7 @@ import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.EØS);
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
