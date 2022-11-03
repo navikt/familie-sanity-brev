@@ -23,7 +23,7 @@ import {
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
-import { lagInstitusjonVilkårRegel } from './institusjon/utils';
+import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -249,7 +249,7 @@ const begrunnelse = {
       },
       validation: rule => [
         rule.required().warning('Vilkår ikke valgt'),
-        lagInstitusjonVilkårRegel(rule),
+        lagInvaliderUtvidetForInstitusjonRegel(rule),
       ],
       hidden: context => !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
     },

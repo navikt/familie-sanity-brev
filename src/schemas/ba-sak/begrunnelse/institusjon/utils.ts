@@ -13,7 +13,7 @@ export const erInstitusjonsBegrunnelse = (
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL_INSTITUSJON;
 
-export const lagInstitusjonVilkårRegel = rule =>
+export const lagInvaliderUtvidetForInstitusjonRegel = rule =>
   rule.custom((nåVerdi, context) => {
     if (erInstitusjonsBegrunnelse(context.document) && nåVerdi !== undefined) {
       return nåVerdi.includes(Vilkår.UTVIDET_BARNETRYGD)
