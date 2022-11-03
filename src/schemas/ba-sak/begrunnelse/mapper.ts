@@ -6,6 +6,7 @@ export enum Mappe {
   FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
   ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
   ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
+  INSTITUSJON = 'INSTITUSJON',
   EØS = 'EØS',
 }
 
@@ -22,6 +23,10 @@ export const mapperTilMenynavn: Record<Mappe, { title: string; value: Mappe }> =
   ETTER_ENDRET_UTBETALINGSPERIODE: {
     title: 'Etter endret utbetaling',
     value: Mappe.ETTER_ENDRET_UTBETALINGSPERIODE,
+  },
+  INSTITUSJON: {
+    title: 'Institusjon',
+    value: Mappe.INSTITUSJON,
   },
   EØS: {
     title: 'EØS',

@@ -1,23 +1,22 @@
-import { Behandlingstema, eøsFlettefelter, flettefelter, Vilkår } from './typer';
-import { BegrunnelseDokumentNavn } from '../../../util/typer';
+import {
+  Behandlingstema,
+  Begrunnelse,
+  eøsFlettefelter,
+  flettefelter,
+  InstitusjonBegrunnelse,
+  NasjonalBegrunnelse,
+  Vilkår,
+} from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
+import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
+import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
+  dokument?.behandlingstema &&
+  dokument.behandlingstema !== Behandlingstema.NASJONAL_INSTITUSJON &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
-
-export const erNasjonalBegrunnelse = document =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.NASJONAL);
-
-export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
-  rule.custom((currentValue, { document }) => {
-    if (!erNasjonalBegrunnelse(document) && currentValue !== undefined) {
-      return feilmelding;
-    }
-    return true;
-  });
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
   if (
@@ -33,3 +32,16 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
     return `Flettefeltet ${flettefelt} er ikke tillatt når behandlingstema er "Nasjonal"`;
   } else return true;
 };
+
+export const erNasjonalEllerInstitusjonsBegrunnelse = (
+  document: Begrunnelse,
+): document is NasjonalBegrunnelse | InstitusjonBegrunnelse =>
+  erNasjonalBegrunnelse(document) || erInstitusjonsBegrunnelse(document);
+
+export const lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel = rule =>
+  rule.custom((nåVerdi, context) => {
+    if (nåVerdi !== undefined && !erNasjonalEllerInstitusjonsBegrunnelse(context.document)) {
+      return 'Feltet er kun gyldig for behandlingstema Nasjonal eller Nasjonal institusjon.';
+    }
+    return true;
+  });

@@ -1,8 +1,7 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const erEndretUtbetaling: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&

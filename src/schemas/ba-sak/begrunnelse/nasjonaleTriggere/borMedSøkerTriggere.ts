@@ -1,7 +1,10 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { hentNasjonaleTriggereRegler } from './utils';
-import { erNasjonalBegrunnelse } from '../utils';
+import {
+  erNasjonalEllerInstitusjonsBegrunnelse,
+  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+} from '../utils';
+import { lagInstitusjonBorMedSøkerRegel } from '../institusjon/utils';
 
 export const borMedSøkerTriggere = {
   title: 'Triggere for "Bor med søker"',
@@ -13,9 +16,12 @@ export const borMedSøkerTriggere = {
   },
   hidden: ({ document }) =>
     !(
-      erNasjonalBegrunnelse(document) &&
+      erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
       document.vilkaar.includes(Vilkår.BOR_MED_SOKER)
     ),
-  validation: rule => hentNasjonaleTriggereRegler(rule),
+  validation: rule => [
+    lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
+    lagInstitusjonBorMedSøkerRegel(rule),
+  ],
 };

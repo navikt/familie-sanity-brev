@@ -1,11 +1,10 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../util/typer';
-import { Behandlingstema } from '../../typer';
-import { erNasjonalBegrunnelse } from '../../utils';
+import { Begrunnelse, Behandlingstema, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
-export const erEøsBegrunnelse = document =>
+export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.EØS);
+  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
   document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
@@ -39,7 +38,7 @@ export const hentEØSHjemmelRegler = rule =>
 
 export const hentEØSFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
-    if (erNasjonalBegrunnelse(document) && currentValue !== undefined) {
+    if (!erEøsBegrunnelse(document) && currentValue !== undefined) {
       return feilmelding;
     }
     return true;
