@@ -10,12 +10,14 @@
     "start": "sanity start",
     "test": "sanity check",
     "start:server": "node ./src/server.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "eslint": "eslint './src/**/*.{js,ts,tsx}' --fix",
+    "prettier": "prettier --write"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
-      "prettier --write",
-      "eslint --fix ./"
+      "prettier --check",
+      "eslint"
     ]
   },
   "keywords": [
