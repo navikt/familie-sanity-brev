@@ -2,8 +2,10 @@ import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
-import { ekskluderesForBa, ekskluderesForEf, erBa, erEf } from './felles';
+import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs } from './felles';
 import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
+import ComposeIcon from 'part:@sanity/base/compose-icon';
+import { uuid } from '@sanity/uuid';
 
 const DOKUMENTER = 'dokumenter';
 
@@ -12,6 +14,8 @@ interface IDokument {
   visningsnavn: string;
   _id: string;
   _type: string;
+  begrunnelsetype: string | null;
+  behandlingstema: string | null;
 }
 
 type IMappe = {
@@ -21,7 +25,7 @@ type IMappe = {
 
 export default async () => {
   const mappestrukturDokumenter: IDokument[] = await hentFraSanity(
-    '*[_type == "delmal" || _type == "avansertDelmal" || _type == "begrunnelse" ]{_type, mappe, visningsnavn, _id}',
+    '*[_type == "delmal" || _type == "avansertDelmal" || _type == "begrunnelse" || _type == "ksBegrunnelse" ]',
     false,
     false,
   );
@@ -29,14 +33,20 @@ export default async () => {
   const delmalHierarki: IMappe = hentMapper('delmal', mappestrukturDokumenter);
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
+  const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse(
+    'ksBegrunnelse',
+    mappestrukturDokumenter,
+  );
 
   const skalBrukeSanitySinStruktur = listItem =>
     ![
-      BegrunnelseDokumentNavn.BEGRUNNELSE,
+      BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
+      BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
       DokumentNavn.DELMAL,
       DokumentNavn.AVANSERT_DELMAL,
       ...(erEf() ? ekskluderesForEf : []),
       ...(erBa() ? ekskluderesForBa : []),
+      ...(erKs() ? ekskluderesForKs : []),
     ].includes(listItem.getId());
 
   return S.list()
@@ -45,7 +55,10 @@ export default async () => {
       hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(skalBrukeSanitySinStruktur),
       ...(erEf() ? [hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Innhold')] : []),
-      ...(erBa() ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse')] : []),
+      ...(erBa() ? [hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse BA')] : []),
+      ...(erKs()
+        ? [hentDokumentMappe('ksBegrunnelse', ksBegrunnelseHierarki, 'Begrunnelse KS')]
+        : []),
     ]);
 };
 
@@ -54,7 +67,7 @@ const hentDokumentMappe = (
   mappe: IMappe,
   mappeNavn: string,
   tidligereIder: string[] = [],
-) => {
+): ListItemBuilder => {
   const fjernDraftsFraId = dokumenter =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
@@ -63,6 +76,8 @@ const hentDokumentMappe = (
     );
 
   const relevanteDokumenter = fjernDraftsFraId(mappe[DOKUMENTER]);
+
+  type === 'ksBegrunnelse' && console.log(relevanteDokumenter);
   const sorterteRelevanteDokumenter = sorterBegrunnelseDokumenter(relevanteDokumenter, type);
 
   const ider = tidligereIder;
@@ -101,6 +116,7 @@ const hentDokumentMappe = (
     .title(mappeNavn)
     .child(
       S.list()
+        .menuItems(lagNyMenyknapp(type))
         .title(mappeNavn)
         .items([...underMapper, ...dokumenter]),
     );
@@ -150,6 +166,8 @@ const leggTilMappe = (delmal: IDokument, mapper: IMappe): IMappe => {
     _type: delmal._type,
     visningsnavn: delmal.visningsnavn,
     _id: delmal._id,
+    behandlingstema: delmal.behandlingstema,
+    begrunnelsetype: delmal.begrunnelsetype,
   });
   return mapper;
 };
@@ -166,9 +184,51 @@ const hentMapper = (type, delmaler: IDokument[]): IMappe => {
         _type: delmal._type,
         visningsnavn: delmal.visningsnavn,
         _id: delmal._id,
+        behandlingstema: delmal.behandlingstema,
+        begrunnelsetype: delmal.begrunnelsetype,
       });
     }
   });
 
   return mapper;
+};
+
+const hentMapperKsBegrunnelse = (type, delmaler: IDokument[]): IMappe => {
+  let mapper: IMappe = { [DOKUMENTER]: [], mapper: {} };
+
+  delmaler
+    .filter(delmal => delmal._type === type)
+    .map(delmal => ({
+      ...delmal,
+      mappe: [delmal.behandlingstema, delmal.begrunnelsetype].concat(delmal.mappe).filter(x => !!x),
+    }))
+    .forEach(delmal => {
+      if (delmal.mappe) {
+        mapper = leggTilMappe(delmal, mapper);
+      } else {
+        mapper[DOKUMENTER].push({
+          _type: delmal._type,
+          visningsnavn: delmal.visningsnavn,
+          _id: delmal._id,
+          behandlingstema: delmal.behandlingstema,
+          begrunnelsetype: delmal.begrunnelsetype,
+        });
+      }
+    });
+
+  return mapper;
+};
+
+const lagNyMenyknapp = (type: string, prefix?: string) => {
+  prefix = prefix ?? type;
+  return [
+    S.menuItem()
+      .title('Lag ny')
+      .icon(ComposeIcon)
+      .intent({
+        type: 'create',
+        params: { type, id: `${prefix}.${uuid()}` },
+      })
+      .showAsAction(true),
+  ];
 };

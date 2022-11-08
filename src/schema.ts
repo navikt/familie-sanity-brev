@@ -12,8 +12,9 @@ import AvansertDelmal from './schemas/avansertDokument/AvansertDelmal';
 import Valgfelt from './schemas/felter/Valgfelt';
 import Dokument from './schemas/Dokument';
 import Delmal from './schemas/Delmal';
-import Periode from './schemas/ba-sak/periode';
-import Begrunnelse from './schemas/ba-sak/begrunnelse/begrunnelse';
+import Periode from './schemas/baks/periode';
+import BaBegrunnelse from './schemas/baks/ba-sak/begrunnelse/begrunnelse';
+import KsBegrunnelse from './schemas/baks/ks-sak/begrunnelse/begrunnelse';
 import Htmlfelt from './schemas/felter/Htmlfelt';
 
 sessionStorage.clear();
@@ -34,7 +35,8 @@ export default createSchema({
     Htmlfelt,
     Valgfelt,
     Periode,
-    Begrunnelse,
+    BaBegrunnelse,
+    KsBegrunnelse,
     AvansertDelmal,
     AvansertDokument,
 
