@@ -20,7 +20,7 @@ import {
   begrunnelseEØSFlettefelt,
   begrunnelseFlettefelt,
   begrunnelseValgfelt,
-} from '../../begrunnelseFlettefelt';
+} from '../begrunnelseFlettefelt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,

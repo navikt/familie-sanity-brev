@@ -1,10 +1,11 @@
-import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Vilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
   BOR_MED_SØKER = 'BOR_MED_SØKER',
   GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
   BOSATT_I_RIKET = 'BOSATT_I_RIKET',
+
   LOVLIG_OPPHOLD = 'LOVLIG_OPPHOLD',
   UTVIDET_BARNETRYGD = 'UTVIDET_BARNETRYGD',
 }
@@ -21,7 +22,7 @@ const vilkårValg: Record<Vilkår, { title: string; value: Vilkår }> = {
 export const vilkårsvurderingTriggere = {
   title: 'Vilkår',
   type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.VILKÅR,
+  name: BegrunnelseDokumentNavn.VILKÅR,
   of: [
     {
       type: SanityTyper.STRING,

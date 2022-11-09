@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../util/typer';
-import { eøsFlettefelter, flettefelter } from './ks-sak/begrunnelse/typer';
-import { validerFlettefeltErGyldigForBehandlingstema } from './ba-sak/begrunnelse/utils';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
+import { eøsFlettefelter, flettefelter } from './ba-sak/typer';
+import { validerFlettefeltErGyldigForBehandlingstema } from './ba-sak/utils';
 import styled from 'styled-components';
 
 export const begrunnelseFlettefelt = {

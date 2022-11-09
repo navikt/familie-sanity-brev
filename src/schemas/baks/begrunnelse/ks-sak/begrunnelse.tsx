@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import {
   Begrunnelsestype,
@@ -8,19 +7,19 @@ import {
   hjemler,
   hjemlerFolketrygdloven,
   VilkårRolle,
-} from './typer';
+} from '../ba-sak/typer';
 import { triggesAv } from './triggesAv';
-import { Mappe, mapperTilMenynavn } from './mapper';
-import { eøsHjemler } from './eøs/hjemler';
+import { Mappe, mapperTilMenynavn } from '../ba-sak/mapper';
+import { eøsHjemler } from '../ba-sak/eøs/hjemler';
 import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
-import { rolleSkalVises } from '../../ba-sak/begrunnelse/utils';
-import { validerBegrunnelse } from '../../ba-sak/begrunnelse/validerBegrunnelse';
-import { apiNavnValideringerBegrunnelse } from '../../ba-sak/begrunnelse/valideringer';
+import { rolleSkalVises } from '../ba-sak/utils';
+import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
+import { apiNavnValideringerBegrunnelse } from '../ba-sak/valideringer';
 import {
   begrunnelseEØSFlettefelt,
   begrunnelseFlettefelt,
   begrunnelseValgfelt,
-} from '../../begrunnelseFlettefelt';
+} from '../begrunnelseFlettefelt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,

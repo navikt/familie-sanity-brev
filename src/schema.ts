@@ -13,8 +13,8 @@ import Valgfelt from './schemas/felter/Valgfelt';
 import Dokument from './schemas/Dokument';
 import Delmal from './schemas/Delmal';
 import Periode from './schemas/baks/periode';
-import BaBegrunnelse from './schemas/baks/ba-sak/begrunnelse/begrunnelse';
-import KsBegrunnelse from './schemas/baks/ks-sak/begrunnelse/begrunnelse';
+import BaBegrunnelse from './schemas/baks/begrunnelse/ba-sak/begrunnelse';
+import KsBegrunnelse from './schemas/baks/begrunnelse/ks-sak/begrunnelse';
 import Htmlfelt from './schemas/felter/Htmlfelt';
 
 sessionStorage.clear();
