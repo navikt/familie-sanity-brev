@@ -6,15 +6,24 @@ export const ekskluderesForEf: string[] = [
   DokumentNavn.DELMAL,
   DokumentNavn.DOKUMENT,
   DokumentNavn.PERIODE,
-  BegrunnelseDokumentNavn.BEGRUNNELSE,
+  BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
+  BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
 
 export const ekskluderesForBa: string[] = [
   DokumentNavn.AVANSERT_DELMAL,
   DokumentNavn.AVANSERT_DOKUMENT,
+  BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+];
+
+export const ekskluderesForKs: string[] = [
+  DokumentNavn.AVANSERT_DELMAL,
+  DokumentNavn.AVANSERT_DOKUMENT,
+  BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
 ];
 
 const { dataset } = client.config();
 
 export const erEf = () => ['ef-brev', 'ef-test', 'testdata'].includes(dataset);
 export const erBa = () => ['ba-brev', 'ba-test', 'testdata'].includes(dataset);
+export const erKs = () => ['ks-brev', 'ks-test', 'testdata'].includes(dataset);
