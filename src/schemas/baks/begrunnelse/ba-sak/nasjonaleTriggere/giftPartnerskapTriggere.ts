@@ -1,5 +1,5 @@
 import { giftPartnerskapTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,

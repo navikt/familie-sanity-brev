@@ -1,4 +1,4 @@
-import { apiNavnValideringer } from '../../../util/valideringer';
+import { apiNavnValideringer } from '../../../../util/valideringer';
 import { Begrunnelsestype } from './typer';
 
 const apiNavnPrefiksMap: Record<Begrunnelsestype, string> = {

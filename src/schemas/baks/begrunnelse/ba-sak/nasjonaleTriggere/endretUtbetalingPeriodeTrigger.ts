@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { endretUtbetalingsperioderTriggereValg } from '../typer';
 import { erEndretUtbetaling } from './endringsårsakTrigger';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';

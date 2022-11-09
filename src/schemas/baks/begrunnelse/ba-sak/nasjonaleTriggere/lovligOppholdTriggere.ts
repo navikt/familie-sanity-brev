@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { lovligOppholdTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,

@@ -1,4 +1,4 @@
-import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 

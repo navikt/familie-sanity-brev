@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import {
   Behandlingstema,
   Begrunnelse,
