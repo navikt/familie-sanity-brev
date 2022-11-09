@@ -1,13 +1,9 @@
-import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
-import styled from 'styled-components';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
   Behandlingstema,
   behandlingstemaValg,
-  eøsFlettefelter,
-  flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
   vilkår,
@@ -16,11 +12,7 @@ import {
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
-import {
-  rolleSkalVises,
-  validerFlettefeltErGyldigForBehandlingstema,
-  erNasjonalEllerInstitusjonsBegrunnelse,
-} from './utils';
+import { erNasjonalEllerInstitusjonsBegrunnelse, rolleSkalVises } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
 import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
@@ -197,15 +189,5 @@ const begrunnelse = {
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
 };
-
-const Flettefelt = styled.span`
-  background-color: rgba(30, 133, 209, 0.2);
-  text-overflow: ellipsis;
-  line-height: normal;
-  white-space: nowrap;
-  max-inline-size: 160px;
-  overflow: hidden;
-  display: inline-block;
-`;
 
 export default begrunnelse;

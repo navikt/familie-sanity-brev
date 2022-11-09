@@ -7,36 +7,40 @@ import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
 import ComposeIcon from 'part:@sanity/base/compose-icon';
 import { uuid } from '@sanity/uuid';
 
-const DOKUMENTER = 'dokumenter';
-
 interface IDokument {
   mappe?: string[] | null;
   visningsnavn: string;
   _id: string;
   _type: string;
+}
+
+interface IBegrunnelse extends IDokument {
   begrunnelsetype: string | null;
   behandlingstema: string | null;
 }
 
 type IMappe = {
-  [DOKUMENTER]: IDokument[];
-  mapper: { [mappe: string]: IMappe } | Record<string, never>;
+  dokumenter: IDokument[];
+  undermapper: Record<string, IMappe> | Record<string, never>;
 };
 
 export default async () => {
-  const mappestrukturDokumenter: IDokument[] = await hentFraSanity(
-    '*[_type == "delmal" || _type == "avansertDelmal" || _type == "begrunnelse" || _type == "ksBegrunnelse" ]',
+  const delmaler: IDokument[] = await hentFraSanity(
+    '*[_type == "delmal" || _type == "avansertDelmal"]',
     false,
     false,
   );
 
-  const delmalHierarki: IMappe = hentMapper('delmal', mappestrukturDokumenter);
-  const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', mappestrukturDokumenter);
-  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', mappestrukturDokumenter);
-  const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse(
-    'ksBegrunnelse',
-    mappestrukturDokumenter,
+  const begrunnelser: IBegrunnelse[] = await hentFraSanity(
+    '*[_type == "begrunnelse" || _type == "ksBegrunnelse" ]',
+    false,
+    false,
   );
+
+  const delmalHierarki: IMappe = hentMapper('delmal', delmaler);
+  const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', delmaler);
+  const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', begrunnelser);
+  const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse('ksBegrunnelse', begrunnelser);
 
   const skalBrukeSanitySinStruktur = listItem =>
     ![
@@ -75,9 +79,8 @@ const hentDokumentMappe = (
         : dokument,
     );
 
-  const relevanteDokumenter = fjernDraftsFraId(mappe[DOKUMENTER]);
+  const relevanteDokumenter = fjernDraftsFraId(mappe.dokumenter);
 
-  type === 'ksBegrunnelse' && console.log(relevanteDokumenter);
   const sorterteRelevanteDokumenter = sorterBegrunnelseDokumenter(relevanteDokumenter, type);
 
   const ider = tidligereIder;
@@ -104,11 +107,11 @@ const hentDokumentMappe = (
     }
   });
 
-  const underMapper = mappe.mapper
-    ? Object.keys(mappe.mapper).map(navn =>
+  const undermapper = mappe.undermapper
+    ? Object.keys(mappe.undermapper).map(navn =>
         navn.length > 0
-          ? hentDokumentMappe(type, mappe.mapper[navn], navn, ider)
-          : hentDokumentMappe(type, mappe.mapper[navn], 'Mappe uten navn', ider),
+          ? hentDokumentMappe(type, mappe.undermapper[navn], navn, ider)
+          : hentDokumentMappe(type, mappe.undermapper[navn], 'Mappe uten navn', ider),
       )
     : [];
 
@@ -118,7 +121,7 @@ const hentDokumentMappe = (
       S.list()
         .menuItems(lagNyMenyknapp(type))
         .title(mappeNavn)
-        .items([...underMapper, ...dokumenter]),
+        .items([...undermapper, ...dokumenter]),
     );
 };
 
@@ -154,38 +157,34 @@ const leggTilMappe = (delmal: IDokument, mapper: IMappe): IMappe => {
   let parent = mapper;
   for (let index = 0; index < delmal.mappe.length; index++) {
     const mappeNavn = capitalize(trimStreng(delmal.mappe[index]));
-    if (!parent.mapper[mappeNavn]) {
-      parent.mapper[mappeNavn] = {
-        [DOKUMENTER]: [],
-        mapper: {},
+    if (!parent.undermapper[mappeNavn]) {
+      parent.undermapper[mappeNavn] = {
+        dokumenter: [],
+        undermapper: {},
       };
     }
-    parent = parent.mapper[mappeNavn];
+    parent = parent.undermapper[mappeNavn];
   }
-  parent[DOKUMENTER].push({
+  parent.dokumenter.push({
     _type: delmal._type,
     visningsnavn: delmal.visningsnavn,
     _id: delmal._id,
-    behandlingstema: delmal.behandlingstema,
-    begrunnelsetype: delmal.begrunnelsetype,
   });
   return mapper;
 };
 
 const hentMapper = (type, delmaler: IDokument[]): IMappe => {
-  let mapper: IMappe = { [DOKUMENTER]: [], mapper: {} };
+  let mapper: IMappe = { dokumenter: [], undermapper: {} };
   delmaler.forEach(delmal => {
     if (delmal._type !== type) return;
 
     if (delmal.mappe) {
       mapper = leggTilMappe(delmal, mapper);
     } else {
-      mapper[DOKUMENTER].push({
+      mapper.dokumenter.push({
         _type: delmal._type,
         visningsnavn: delmal.visningsnavn,
         _id: delmal._id,
-        behandlingstema: delmal.behandlingstema,
-        begrunnelsetype: delmal.begrunnelsetype,
       });
     }
   });
@@ -193,30 +192,42 @@ const hentMapper = (type, delmaler: IDokument[]): IMappe => {
   return mapper;
 };
 
-const hentMapperKsBegrunnelse = (type, delmaler: IDokument[]): IMappe => {
-  let mapper: IMappe = { [DOKUMENTER]: [], mapper: {} };
+const tomMappe: IMappe = { dokumenter: [], undermapper: {} };
 
-  delmaler
-    .filter(delmal => delmal._type === type)
-    .map(delmal => ({
-      ...delmal,
-      mappe: [delmal.behandlingstema, delmal.begrunnelsetype].concat(delmal.mappe).filter(x => !!x),
-    }))
-    .forEach(delmal => {
-      if (delmal.mappe) {
-        mapper = leggTilMappe(delmal, mapper);
-      } else {
-        mapper[DOKUMENTER].push({
-          _type: delmal._type,
-          visningsnavn: delmal.visningsnavn,
-          _id: delmal._id,
-          behandlingstema: delmal.behandlingstema,
-          begrunnelsetype: delmal.begrunnelsetype,
-        });
-      }
-    });
+const hentMapperKsBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => {
+  const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
-  return mapper;
+  const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
+    const begrunnelseHarTemaOgType = !!begrunnelse.begrunnelsetype && !!begrunnelse.behandlingstema;
+
+    const mappehierarkiForBegrunnelse =
+      begrunnelseHarTemaOgType && !erDraft(begrunnelse)
+        ? [begrunnelse.behandlingstema, begrunnelse.begrunnelsetype]
+        : [];
+
+    return {
+      ...begrunnelse,
+      mappe: mappehierarkiForBegrunnelse,
+    };
+  });
+
+  return begrunnelserMedTypeOgTemaSomMappe.reduce((acc: IMappe, begrunnelse: IDokument): IMappe => {
+    if (begrunnelse.mappe) {
+      return leggTilMappe(begrunnelse, acc);
+    } else {
+      return {
+        ...acc,
+        dokumenter: [
+          ...acc.dokumenter,
+          {
+            _type: begrunnelse._type,
+            visningsnavn: begrunnelse.visningsnavn,
+            _id: begrunnelse._id,
+          },
+        ],
+      };
+    }
+  }, tomMappe);
 };
 
 const lagNyMenyknapp = (type: string, prefix?: string) => {
@@ -232,3 +243,5 @@ const lagNyMenyknapp = (type: string, prefix?: string) => {
       .showAsAction(true),
   ];
 };
+
+const erDraft = (dokument: IDokument) => dokument._id.includes('drafts.');
