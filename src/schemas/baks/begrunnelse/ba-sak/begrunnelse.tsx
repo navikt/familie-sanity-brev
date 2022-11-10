@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../util/typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import styled from 'styled-components';
 import {
   Begrunnelsestype,
@@ -151,7 +151,7 @@ const editor = (maalform, tittel) => ({
 
 const begrunnelse = {
   title: 'Begrunnelse',
-  name: BegrunnelseDokumentNavn.BEGRUNNELSE,
+  name: BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
   type: SanityTyper.DOCUMENT,
   preview: {
     select: {
@@ -194,7 +194,8 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
-      validation: rule => apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.BEGRUNNELSE),
+      validation: rule =>
+        apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.BA_BEGRUNNELSE),
     },
     {
       title: 'Mappe',

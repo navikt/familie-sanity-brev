@@ -2,7 +2,7 @@ import {
   BegrunnelseDokumentNavn,
   DokumentNavn,
   EØSBegrunnelseDokumentNavn,
-} from '../../../util/typer';
+} from '../../../../util/typer';
 
 export enum Begrunnelsestype {
   INNVILGET = 'INNVILGET',

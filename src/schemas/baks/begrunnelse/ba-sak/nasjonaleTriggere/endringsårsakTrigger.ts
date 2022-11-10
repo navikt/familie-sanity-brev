@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';

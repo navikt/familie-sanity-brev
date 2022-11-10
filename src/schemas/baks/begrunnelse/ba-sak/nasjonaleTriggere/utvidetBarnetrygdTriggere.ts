@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { utvidetBarnetrygdTriggertyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
