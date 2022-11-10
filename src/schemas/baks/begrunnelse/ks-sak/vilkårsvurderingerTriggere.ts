@@ -1,22 +1,33 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Vilkår {
-  UNDER_18_ÅR = 'UNDER_18_ÅR',
-  BOR_MED_SØKER = 'BOR_MED_SØKER',
-  GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
   BOSATT_I_RIKET = 'BOSATT_I_RIKET',
-
-  LOVLIG_OPPHOLD = 'LOVLIG_OPPHOLD',
-  UTVIDET_BARNETRYGD = 'UTVIDET_BARNETRYGD',
+  MEDLEMSKAP = 'MEDLEMSKAP',
+  BARNEHAGEPLASS = 'BARNEHAGEPLASS',
+  MEDLEMSKAP_ANNEN_FORELDER = 'MEDLEMSKAP_ANNEN_FORELDER',
+  MELLOM_1_OG_2_ELLER_ADOPTERT = 'MELLOM_1_OG_2_ELLER_ADOPTERT',
+  BOR_MED_SØKER = 'BOR_MED_SØKER',
 }
 
 const vilkårValg: Record<Vilkår, { title: string; value: Vilkår }> = {
-  UNDER_18_ÅR: { title: 'Under 18 år', value: Vilkår.UNDER_18_ÅR },
-  BOR_MED_SØKER: { title: 'Bor med søker', value: Vilkår.BOR_MED_SØKER },
-  GIFT_PARTNERSKAP: { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
   BOSATT_I_RIKET: { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
-  LOVLIG_OPPHOLD: { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
-  UTVIDET_BARNETRYGD: { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
+  MEDLEMSKAP: {
+    title: 'Medlemskap',
+    value: Vilkår.MEDLEMSKAP,
+  },
+  BARNEHAGEPLASS: {
+    title: 'Barnehageplass',
+    value: Vilkår.BARNEHAGEPLASS,
+  },
+  MEDLEMSKAP_ANNEN_FORELDER: {
+    title: 'Medlemskap annen forelder',
+    value: Vilkår.MEDLEMSKAP_ANNEN_FORELDER,
+  },
+  BOR_MED_SØKER: { title: 'Bor med søker', value: Vilkår.BOR_MED_SØKER },
+  MELLOM_1_OG_2_ELLER_ADOPTERT: {
+    title: 'Mellom 1 og 2 eller adoptert',
+    value: Vilkår.MELLOM_1_OG_2_ELLER_ADOPTERT,
+  },
 };
 
 export const vilkårsvurderingTriggere = {
