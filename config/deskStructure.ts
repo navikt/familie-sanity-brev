@@ -21,9 +21,9 @@ interface IBegrunnelse extends IDokument {
 }
 
 interface IKSBegrunnelse extends IDokument {
-  begrunnelseresultat: string | null;
-  begrunnelsetema: string | null;
-  begrunnelsetype: string | null;
+  resultat: string | null;
+  tema: string | null;
+  type: string | null;
 }
 
 type IMappe = {
@@ -212,10 +212,10 @@ const hentMapperKsBegrunnelse = (type, begrunnelser: IKSBegrunnelse[]): IMappe =
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
-    const begrunnelseHarTemaOgType = !!begrunnelse.begrunnelseresultat && !!begrunnelse.begrunnelsetema && !!begrunnelse.begrunnelsetype;
+    const begrunnelseHarTemaOgType = !!begrunnelse.resultat && !!begrunnelse.tema && !!begrunnelse.type;
 
     const mappehierarkiForBegrunnelse = begrunnelseHarTemaOgType
-      ? [resultatValg[begrunnelse.begrunnelseresultat].title, temaValg[begrunnelse.begrunnelsetema].title, typeValg[begrunnelse.begrunnelsetype].title]
+      ? [resultatValg[begrunnelse.resultat].title, temaValg[begrunnelse.tema].title, typeValg[begrunnelse.type].title]
       : [];
 
     return {

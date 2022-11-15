@@ -13,19 +13,19 @@ export const apiNavnValideringerBegrunnelse = (rule, type) => {
   return [
     ...apiNavnValideringer(rule, type),
     rule.custom((verdi: string, kontekst): true | string => {
-      const begrunnelseresultat = kontekst.document.begrunnelseresultat;
+      const resultat = kontekst.document.resultat;
 
-      if (!Object.values(Resultat).includes(begrunnelseresultat)) {
+      if (!Object.values(Resultat).includes(resultat)) {
         return (
           'Begrunnelsesresultat er ikke satt og valideringen for Apinavnet avhenger av resultatet. ' +
           'Sett begrunnelsesresultat før du setter apiNavn.'
         );
       }
-      const harRiktigPrefix = verdi.startsWith(apiNavnPrefiksMap[begrunnelseresultat]);
+      const harRiktigPrefix = verdi.startsWith(apiNavnPrefiksMap[resultat]);
 
       return harRiktigPrefix
         ? true
-        : `Begrunnelseresultat er ${begrunnelseresultat}. Apinavnet må derfor starte med ${apiNavnPrefiksMap[begrunnelseresultat]}.`;
+        : `Begrunnelseresultat er ${resultat}. Apinavnet må derfor starte med ${apiNavnPrefiksMap[resultat]}.`;
     }),
   ];
 };
