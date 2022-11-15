@@ -1,5 +1,5 @@
 import { apiNavnValideringer } from '../../../../util/valideringer';
-import { Resultat } from './typer';
+import { Resultat } from './resultat';
 
 const apiNavnPrefiksMap: Record<Resultat, string> = {
   AVSLAG: 'avslag',

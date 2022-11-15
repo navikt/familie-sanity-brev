@@ -6,7 +6,9 @@ import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs 
 import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
 import ComposeIcon from 'part:@sanity/base/compose-icon';
 import { uuid } from '@sanity/uuid';
-import {resultatValg, temaValg, typeValg} from "../src/schemas/baks/begrunnelse/ks-sak/typer";
+import {resultatValg} from "../src/schemas/baks/begrunnelse/ks-sak/resultat";
+import {temaValg} from "../src/schemas/baks/begrunnelse/ks-sak/tema";
+import {typeValg} from "../src/schemas/baks/begrunnelse/ks-sak/type";
 
 interface IDokument {
   mappe?: string[] | null;

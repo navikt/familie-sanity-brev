@@ -10,8 +10,11 @@ import {
   begrunnelseFlettefelt,
   begrunnelseValgfelt,
 } from './begrunnelseFlettefelt';
-import { Resultat, resultatValg, Tema, temaValg, Type, typeValg, hjemler } from './typer';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
+import { resultat } from './resultat';
+import { tema } from './tema';
+import { type } from './type';
+import { hjemler } from './hjemler';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -43,34 +46,9 @@ const begrunnelse = {
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
-    {
-      title: 'Resultat',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_RESULTAT,
-      options: {
-        list: Object.values(Resultat).map(resultat => resultatValg[resultat]),
-      },
-      validation: rule => rule.required().error('Resultat ikke valgt'),
-    },
-    {
-      title: 'Tema',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TEMA,
-      options: {
-        list: Object.values(Tema).map(tema => temaValg[tema]),
-      },
-      validation: rule => rule.required().error('Tema ikke valgt'),
-      initialValue: Tema.NASJONAL,
-    },
-    {
-      title: 'Type',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
-      options: {
-        list: Object.values(Type).map(type => typeValg[type]),
-      },
-      validation: rule => rule.required().error('Type ikke valgt'),
-    },
+    resultat,
+    tema,
+    type,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
@@ -85,18 +63,8 @@ const begrunnelse = {
       name: DokumentNavn.NAVN_I_SYSTEM,
       validation: rule => [rule.required().error('Dokumentet må ha et navn i ks-sak')],
     },
-    {
-      title: 'Hjemler',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.HJEMLER,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'grid',
-        list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-    },
+    hjemler,
     ...eøsHjemler,
-
     {
       title: 'Rolle',
       type: SanityTyper.ARRAY,
