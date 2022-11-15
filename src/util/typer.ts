@@ -54,6 +54,8 @@ export enum BegrunnelseDokumentNavn {
   BA_BEGRUNNELSE = 'begrunnelse',
   KS_BEGRUNNELSE = 'ksBegrunnelse',
   BEGRUNNELSE_TYPE = 'begrunnelsetype',
+  BEGRUNNELSE_TEMA = 'begrunnelsetema',
+  BEGRUNNELSE_RESULTAT = 'begrunnelseresultat',
   HJEMLER = 'hjemler',
   HJEMLER_EØS_FORORDNINGEN_833 = 'hjemlerEOSForordningen883',
   HJEMLER_EØS_FORORDNINGEN_987 = 'hjemlerEOSForordningen987',
