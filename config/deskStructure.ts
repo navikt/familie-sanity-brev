@@ -170,7 +170,7 @@ const trimAndCapitalize = (mappenavn: string) => capitalize(trimStreng(mappenavn
 const leggTilMappe = (delmal: IDokument, mapper: IMappe, mappenavnTransformator: (mappeNavn: string) => string = trimAndCapitalize): IMappe => {
   let parent = mapper;
   for (let index = 0; index < delmal.mappe.length; index++) {
-    const mappeNavn = mappenavnTransformator(delmal.mappe[index])
+    const mappeNavn = mappenavnTransformator(delmal.mappe[index]);
     if (!parent.undermapper[mappeNavn]) {
       parent.undermapper[mappeNavn] = {
         dokumenter: [],
