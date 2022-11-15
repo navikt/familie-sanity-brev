@@ -37,7 +37,7 @@
     "@sanity/desk-tool": "^2.34.0",
     "@sanity/production-preview": "^2.33.2",
     "@sanity/ui": "^0.38.0",
-    "@sanity/vision": "^2.34.0",
+    "@sanity/vision": "^2.35.2",
     "express": "^4.18.1",
     "groq": "^2.29.3",
     "lint-staged": "^13.0.3",
