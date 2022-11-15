@@ -6,6 +6,9 @@ import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs 
 import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
 import ComposeIcon from 'part:@sanity/base/compose-icon';
 import { uuid } from '@sanity/uuid';
+import {resultatValg} from "../src/schemas/baks/begrunnelse/ks-sak/resultat";
+import {temaValg} from "../src/schemas/baks/begrunnelse/ks-sak/tema";
+import {typeValg} from "../src/schemas/baks/begrunnelse/ks-sak/type";
 
 interface IDokument {
   mappe?: string[] | null;
@@ -17,6 +20,12 @@ interface IDokument {
 interface IBegrunnelse extends IDokument {
   begrunnelsetype: string | null;
   behandlingstema: string | null;
+}
+
+interface IKSBegrunnelse extends IDokument {
+  resultat: string | null;
+  tema: string | null;
+  type: string | null;
 }
 
 type IMappe = {
@@ -32,15 +41,20 @@ export default async () => {
   );
 
   const begrunnelser: IBegrunnelse[] = await hentFraSanity(
-    '*[_type == "begrunnelse" || _type == "ksBegrunnelse" ]',
+    '*[_type == "begrunnelse"]',
     false,
     false,
   );
 
+  const ksBegrunnelser: IKSBegrunnelse[] = await hentFraSanity(
+      '*[_type == "ksBegrunnelse"]',
+      false,
+      false,)
+
   const delmalHierarki: IMappe = hentMapper('delmal', delmaler);
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', delmaler);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', begrunnelser);
-  const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse('ksBegrunnelse', begrunnelser);
+  const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse('ksBegrunnelse', ksBegrunnelser);
 
   const skalBrukeSanitySinStruktur = listItem =>
     ![
@@ -153,10 +167,12 @@ const capitalize = (tekst: string) => {
   return tekst.toLowerCase().replace(/^./, str => str.toUpperCase());
 };
 
-const leggTilMappe = (delmal: IDokument, mapper: IMappe): IMappe => {
+const trimAndCapitalize = (mappenavn: string) => capitalize(trimStreng(mappenavn))
+
+const leggTilMappe = (delmal: IDokument, mapper: IMappe, mappenavnTransformator: (mappeNavn: string) => string = trimAndCapitalize): IMappe => {
   let parent = mapper;
   for (let index = 0; index < delmal.mappe.length; index++) {
-    const mappeNavn = capitalize(trimStreng(delmal.mappe[index]));
+    const mappeNavn = mappenavnTransformator(delmal.mappe[index]);
     if (!parent.undermapper[mappeNavn]) {
       parent.undermapper[mappeNavn] = {
         dokumenter: [],
@@ -194,14 +210,14 @@ const hentMapper = (type, delmaler: IDokument[]): IMappe => {
 
 const tomMappe: IMappe = { dokumenter: [], undermapper: {} };
 
-const hentMapperKsBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => {
+const hentMapperKsBegrunnelse = (type, begrunnelser: IKSBegrunnelse[]): IMappe => {
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
-    const begrunnelseHarTemaOgType = !!begrunnelse.begrunnelsetype && !!begrunnelse.behandlingstema;
+    const begrunnelseHarTemaOgType = !!begrunnelse.resultat && !!begrunnelse.tema && !!begrunnelse.type;
 
     const mappehierarkiForBegrunnelse = begrunnelseHarTemaOgType
-      ? [begrunnelse.behandlingstema, begrunnelse.begrunnelsetype]
+      ? [resultatValg[begrunnelse.resultat].title, temaValg[begrunnelse.tema].title, typeValg[begrunnelse.type].title]
       : [];
 
     return {
@@ -212,7 +228,7 @@ const hentMapperKsBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
   return begrunnelserMedTypeOgTemaSomMappe.reduce((acc: IMappe, begrunnelse: IDokument): IMappe => {
     if (begrunnelse.mappe) {
-      return leggTilMappe(begrunnelse, acc);
+      return leggTilMappe(begrunnelse, acc, (mappenavn) => mappenavn );
     } else {
       return {
         ...acc,

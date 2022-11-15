@@ -1,24 +1,20 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
-import {
-  Begrunnelsestype,
-  begrunnelsestyperTilMenynavn,
-  Behandlingstema,
-  behandlingstemaValg,
-  hjemler,
-  hjemlerFolketrygdloven,
-  VilkårRolle,
-} from '../ba-sak/typer';
+import { VilkårRolle } from '../ba-sak/typer';
 import { triggesAv } from './triggesAv';
 import { eøsHjemler } from '../ba-sak/eøs/hjemler';
 import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
 import { rolleSkalVises } from '../ba-sak/utils';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
-import { apiNavnValideringerBegrunnelse } from '../ba-sak/valideringer';
 import {
   begrunnelseEØSFlettefelt,
   begrunnelseFlettefelt,
   begrunnelseValgfelt,
 } from './begrunnelseFlettefelt';
+import { apiNavnValideringerBegrunnelse } from './valideringer';
+import { resultat } from './resultat';
+import { tema } from './tema';
+import { type } from './type';
+import { hjemler } from './hjemler';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -50,65 +46,25 @@ const begrunnelse = {
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
-    {
-      title: 'Behandlingstema',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEHANDLINGSTEMA,
-      options: {
-        list: Object.values(Behandlingstema).map(
-          behandlingstema => behandlingstemaValg[behandlingstema],
-        ),
-      },
-      validation: rule => rule.required().error('Behandlingstema ikke valgt'),
-      initialValue: Behandlingstema.NASJONAL,
-    },
-    {
-      title: 'Begrunnelsetype',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
-      options: {
-        list: Object.values(Begrunnelsestype).map(
-          begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
-        ),
-      },
-      validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
-    },
+    resultat,
+    tema,
+    type,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
       validation: rule =>
-        apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.BA_BEGRUNNELSE),
+        apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.KS_BEGRUNNELSE),
     },
     {
-      title: 'Navn i ba-sak',
+      title: 'Navn i ks-sak',
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,
-      validation: rule => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
+      validation: rule => [rule.required().error('Dokumentet må ha et navn i ks-sak')],
     },
-    {
-      title: 'Hjemler',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.HJEMLER,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'grid',
-        list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-    },
-    {
-      title: 'Hjemler fra folketrygdloven',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.HJEMLER_FOLKETRYGDLOVEN,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'radio',
-        list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-    },
+    hjemler,
     ...eøsHjemler,
-
     {
       title: 'Rolle',
       type: SanityTyper.ARRAY,
