@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Resultat {
   INNVILGET = 'INNVILGET',
@@ -22,7 +22,7 @@ export const resultatValg: Record<Resultat, { title: string; value: Resultat }> 
 export const resultat = {
   title: 'Resultat',
   type: SanityTyper.STRING,
-  name: BegrunnelseDokumentNavn.BEGRUNNELSE_RESULTAT,
+  name: KSBegrunnelseDokumentNavn.RESULTAT,
   options: {
     list: Object.values(Resultat).map(resultat => resultatValg[resultat]),
   },
