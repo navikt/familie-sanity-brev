@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Tema {
   NASJONAL = 'NASJONAL',
@@ -20,7 +20,7 @@ export const temaValg: Record<Tema, { title: string; value: Tema }> = {
 export const tema = {
   title: 'Tema',
   type: SanityTyper.STRING,
-  name: BegrunnelseDokumentNavn.BEGRUNNELSE_TEMA,
+  name: KSBegrunnelseDokumentNavn.TEMA,
   options: {
     list: Object.values(Tema).map(tema => temaValg[tema]),
   },

@@ -1,19 +1,19 @@
 import client from 'part:@sanity/base/client';
 
-import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
+import {BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn} from '../src/util/typer';
 
 export const ekskluderesForEf: string[] = [
   DokumentNavn.DELMAL,
   DokumentNavn.DOKUMENT,
   DokumentNavn.PERIODE,
   BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
-  BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+  KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
 
 export const ekskluderesForBa: string[] = [
   DokumentNavn.AVANSERT_DELMAL,
   DokumentNavn.AVANSERT_DOKUMENT,
-  BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+  KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
 
 export const ekskluderesForKs: string[] = [

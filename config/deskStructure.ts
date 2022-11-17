@@ -3,7 +3,7 @@ import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
 import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
 import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs } from './felles';
-import { BegrunnelseDokumentNavn, DokumentNavn } from '../src/util/typer';
+import {BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn} from '../src/util/typer';
 import ComposeIcon from 'part:@sanity/base/compose-icon';
 import { uuid } from '@sanity/uuid';
 import {resultatValg} from "../src/schemas/baks/begrunnelse/ks-sak/resultat";
@@ -59,7 +59,7 @@ export default async () => {
   const skalBrukeSanitySinStruktur = listItem =>
     ![
       BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
-      BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+      KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
       DokumentNavn.DELMAL,
       DokumentNavn.AVANSERT_DELMAL,
       ...(erEf() ? ekskluderesForEf : []),
