@@ -1,4 +1,9 @@
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  KSBegrunnelseDokumentNavn,
+  SanityTyper,
+} from '../../../../util/typer';
 import { VilkårRolle } from '../ba-sak/typer';
 import { triggesAv } from './triggesAv';
 import { eøsHjemler } from '../ba-sak/eøs/hjemler';
@@ -10,11 +15,11 @@ import {
   begrunnelseFlettefelt,
   begrunnelseValgfelt,
 } from './begrunnelseFlettefelt';
-import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { resultat } from './resultat';
 import { tema } from './tema';
 import { type } from './type';
 import { hjemler } from './hjemler';
+import { apiNavnValideringerBegrunnelse } from './valideringer';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -31,7 +36,7 @@ const editor = (maalform, tittel) => ({
 
 const begrunnelse = {
   title: 'Begrunnelse',
-  name: BegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+  name: KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
   type: SanityTyper.DOCUMENT,
   preview: {
     select: {
@@ -55,7 +60,7 @@ const begrunnelse = {
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
       validation: rule =>
-        apiNavnValideringerBegrunnelse(rule, BegrunnelseDokumentNavn.KS_BEGRUNNELSE),
+        apiNavnValideringerBegrunnelse(rule, KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE),
     },
     {
       title: 'Navn i ks-sak',
