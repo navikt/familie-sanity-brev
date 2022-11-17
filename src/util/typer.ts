@@ -53,7 +53,7 @@ export enum SanityTyper {
 export enum BegrunnelseDokumentNavn {
   BA_BEGRUNNELSE = 'begrunnelse',
   KS_BEGRUNNELSE = 'ksBegrunnelse',
-  BEGRUNNELSE_TYPE = 'type',
+  BEGRUNNELSE_TYPE = 'begrunnelsetype',
   BEGRUNNELSE_TEMA = 'tema',
   BEGRUNNELSE_RESULTAT = 'resultat',
   HJEMLER = 'hjemler',
