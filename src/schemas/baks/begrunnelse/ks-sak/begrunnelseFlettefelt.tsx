@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
-import { eøsFlettefelter, flettefelter } from '../ba-sak/typer';
+import { eøsFlettefelter } from '../ba-sak/typer';
 import { validerFlettefeltErGyldigForBehandlingstema } from '../ba-sak/utils';
 import styled from 'styled-components';
+import { flettefelter } from './flettefelter';
 
 export const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
