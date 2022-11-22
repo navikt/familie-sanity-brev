@@ -20,6 +20,7 @@ import {
   rolleSkalVises,
   validerFlettefeltErGyldigForBehandlingstema,
   erNasjonalEllerInstitusjonsBegrunnelse,
+  lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
@@ -249,7 +250,7 @@ const begrunnelse = {
         list: vilkår,
       },
       validation: rule => [
-        rule.required().warning('Vilkår ikke valgt'),
+        lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse(rule).warning(),
         lagInvaliderUtvidetForInstitusjonRegel(rule),
       ],
       hidden: context => !erNasjonalEllerInstitusjonsBegrunnelse(context.document),

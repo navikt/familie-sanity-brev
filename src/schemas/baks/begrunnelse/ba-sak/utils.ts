@@ -45,3 +45,11 @@ export const lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel = rule =>
     }
     return true;
   });
+
+export const lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse = rule =>
+  rule.custom((nåVerdi, context) => {
+    if (erNasjonalEllerInstitusjonsBegrunnelse(context.document) && nåVerdi === undefined) {
+      return 'Ingen vilkår er valgt';
+    }
+    return true;
+  });
