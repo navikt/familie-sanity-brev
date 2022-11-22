@@ -5,7 +5,7 @@ import {
   SanityTyper,
 } from '../../../../util/typer';
 import { VilkårRolle } from '../ba-sak/typer';
-import { triggesAv } from './triggesAv';
+import { triggere } from './triggere';
 import { eøsHjemler } from '../ba-sak/eøs/hjemler';
 import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
 import { rolleSkalVises } from '../ba-sak/utils';
@@ -20,6 +20,7 @@ import { tema } from './tema';
 import { type } from './type';
 import { hjemler } from './hjemler';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
+import { utdypendeVilkårsvurderinger } from './utdypendeVilkårsvurderinger';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -97,7 +98,8 @@ const begrunnelse = {
         }),
     },
     vilkårsvurderingTriggere,
-    ...triggesAv,
+    utdypendeVilkårsvurderinger,
+    triggere,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
