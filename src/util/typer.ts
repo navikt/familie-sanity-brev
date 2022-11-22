@@ -88,4 +88,6 @@ export enum KSBegrunnelseDokumentNavn {
   RESULTAT = 'resultat',
   TYPE = 'type',
   TEMA = 'tema',
+  TRIGGERE = 'triggere',
+  UTDYPENDE_VILKÅRSVURDERINGER = 'utdypendeVilkaarsvurderinger',
 }
