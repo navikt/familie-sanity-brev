@@ -36,28 +36,28 @@
     "@sanity/default-login": "^2.35.2",
     "@sanity/desk-tool": "^2.35.2",
     "@sanity/production-preview": "^2.33.2",
-    "@sanity/ui": "^0.38.0",
+    "@sanity/ui": "^0.37.22",
     "@sanity/vision": "^2.35.2",
-    "express": "^4.18.1",
-    "groq": "^2.29.3",
+    "express": "^4.18.2",
+    "groq": "^2.33.2",
     "lint-staged": "^13.0.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-barcode": "^1.4.5",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.4.0",
+    "react-icons": "^4.6.0",
     "sanity-plugin-markdown": "^2.1.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "eslint": "^8.23.0",
+    "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "prettier": "^2.7.1",
-    "typescript": "^4.8.2"
+    "typescript": "^4.9.3"
   }
 }
