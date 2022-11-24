@@ -3,7 +3,7 @@ import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 export enum Trigger {
   SATSENDRING = 'SATSENDRING',
   BARN_DØD = 'BARN_DØD',
-  DELTID = 'DELTID',
+  DELTID_BARNEHAGEPLASS = 'DELTID_BARNEHAGEPLASS',
 }
 
 const triggerValg: Record<Trigger, { title: string; value: Trigger }> = {
@@ -12,9 +12,9 @@ const triggerValg: Record<Trigger, { title: string; value: Trigger }> = {
     title: 'Barn død',
     value: Trigger.BARN_DØD,
   },
-  DELTID: {
-    title: 'Deltid - mellom 0 og 33 timer',
-    value: Trigger.DELTID,
+  DELTID_BARNEHAGEPLASS: {
+    title: 'Barnehageplass - mellom 0 og 33 timer',
+    value: Trigger.DELTID_BARNEHAGEPLASS,
   },
 };
 
