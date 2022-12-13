@@ -6,6 +6,8 @@ export enum Resultat {
   AVSLAG = 'AVSLAG',
   OPPHØR = 'OPPHØR',
   FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
+  ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
+  ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
 }
 
 export const resultatValg: Record<Resultat, { title: string; value: Resultat }> = {
@@ -17,6 +19,8 @@ export const resultatValg: Record<Resultat, { title: string; value: Resultat }> 
   AVSLAG: { title: 'Avslag', value: Resultat.AVSLAG },
   OPPHØR: { title: 'Opphør', value: Resultat.OPPHØR },
   FORTSATT_INNVILGET: { title: 'Fortsatt innvilget', value: Resultat.FORTSATT_INNVILGET },
+  ENDRET_UTBETALINGSPERIODE: { title: 'Endret utbetaling', value: Resultat.ENDRET_UTBETALINGSPERIODE },
+  ETTER_ENDRET_UTBETALINGSPERIODE: { title: 'Etter endret utbetaling', value: Resultat.ETTER_ENDRET_UTBETALINGSPERIODE },
 };
 
 export const resultat = {
