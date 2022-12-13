@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export ba dataset
-        uses: sanity-io/github-action-sanity@v0.2-alpha
+        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
           args: dataset export ba-brev backups/ba-sak.tar.gz
       - name: Import ba dataset til ba-test
-        uses: sanity-io/github-action-sanity@v0.2-alpha
+        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         with:
