@@ -15,7 +15,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
-          args: dataset export ba-brev backups/ba-sak.tar.gz
+          args: . dataset export ba-brev backups/ba-sak.tar.gz
       - name: Upload ba-sak.tar.gz
         uses: actions/upload-artifact@v2
         with:
@@ -28,7 +28,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         with:
-          args: dataset import backups/ba-sak.tar.gz ba-test --replace
+          args: . dataset import backups/ba-sak.tar.gz ba-test --replace
   backup-ef-dataset:
     runs-on: ubuntu-18.04
     name: Backup ef dataset
@@ -39,7 +39,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
-          args: dataset export ef-brev backups/ef-sak.tar.gz
+          args: . dataset export ef-brev backups/ef-sak.tar.gz
       - name: Upload ef-sak.tar.gz
         uses: actions/upload-artifact@v2
         with:
@@ -52,4 +52,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         with:
-          args: dataset import backups/ef-sak.tar.gz ef-test --replace
+          args: . dataset import backups/ef-sak.tar.gz ef-test --replace
