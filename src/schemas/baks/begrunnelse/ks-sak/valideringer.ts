@@ -7,6 +7,8 @@ const apiNavnPrefiksMap: Record<Resultat, string> = {
   INNVILGET: 'innvilget',
   OPPHØR: 'opphor',
   REDUKSJON: 'reduksjon',
+  ENDRET_UTBETALINGSPERIODE: 'endretUtbetaling',
+  ETTER_ENDRET_UTBETALINGSPERIODE: 'etterEndretUtbetaling',
 };
 
 export const apiNavnValideringerBegrunnelse = (rule, type) => {
