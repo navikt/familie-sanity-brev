@@ -21,6 +21,8 @@ import { type } from './type';
 import { hjemler } from './hjemler';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { utdypendeVilkårsvurderinger } from './utdypendeVilkårsvurderinger';
+import { endringsårsakTriggere } from "./endringsårsakTriggere";
+import { endretUtbetalingsperiodeTriggere } from "./endretUtbetalingPeriodeTriggere";
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -100,6 +102,8 @@ const begrunnelse = {
     vilkårsvurderingTriggere,
     utdypendeVilkårsvurderinger,
     triggere,
+    endringsårsakTriggere,
+    endretUtbetalingsperiodeTriggere,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],

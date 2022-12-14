@@ -90,4 +90,6 @@ export enum KSBegrunnelseDokumentNavn {
   TEMA = 'tema',
   TRIGGERE = 'triggere',
   UTDYPENDE_VILKÅRSVURDERINGER = 'utdypendeVilkaarsvurderinger',
+  ENDRINGSAARSAKER = 'endringsaarsaker',
+  ENDRET_UTBETALINGSPERIODE = 'endretUtbetalingsperiode',
 }
