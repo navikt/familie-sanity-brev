@@ -92,4 +92,5 @@ export enum KSBegrunnelseDokumentNavn {
   UTDYPENDE_VILKÅRSVURDERINGER = 'utdypendeVilkaarsvurderinger',
   ENDRINGSAARSAKER = 'endringsaarsaker',
   ENDRET_UTBETALINGSPERIODE = 'endretUtbetalingsperiode',
+  STØTTER_FRITEKST = 'stotterFritekst',
 }
