@@ -21,8 +21,8 @@ import { type } from './type';
 import { hjemler } from './hjemler';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { utdypendeVilkårsvurderinger } from './utdypendeVilkårsvurderinger';
-import { endringsårsakTriggere } from "./endringsårsakTriggere";
-import { endretUtbetalingsperiodeTriggere } from "./endretUtbetalingPeriodeTriggere";
+import { endringsårsakTriggere } from './endringsårsakTriggere';
+import { endretUtbetalingsperiodeTriggere } from './endretUtbetalingPeriodeTriggere';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -98,6 +98,13 @@ const begrunnelse = {
           }
           return true;
         }),
+    },
+    {
+      title: 'Støtter fritekst',
+      type: SanityTyper.BOOLEAN,
+      name: KSBegrunnelseDokumentNavn.STØTTER_FRITEKST,
+      description:
+        'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i KS-SAK',
     },
     vilkårsvurderingTriggere,
     utdypendeVilkårsvurderinger,
