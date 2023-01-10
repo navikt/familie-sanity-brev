@@ -106,6 +106,12 @@ const begrunnelse = {
       description:
         'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i KS-SAK',
     },
+    {
+      title: 'Skal alltid vises',
+      type: SanityTyper.BOOLEAN,
+      name: KSBegrunnelseDokumentNavn.SKAL_ALLTID_VISES,
+      description: 'Huk av dersom begrunnelsen alltid skal dukke opp som et valg',
+    },
     vilkårsvurderingTriggere,
     utdypendeVilkårsvurderinger,
     triggere,
