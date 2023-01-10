@@ -93,4 +93,5 @@ export enum KSBegrunnelseDokumentNavn {
   ENDRINGSAARSAKER = 'endringsaarsaker',
   ENDRET_UTBETALINGSPERIODE = 'endretUtbetalingsperiode',
   STØTTER_FRITEKST = 'stotterFritekst',
+  SKAL_ALLTID_VISES = 'skalAlltidVises',
 }
