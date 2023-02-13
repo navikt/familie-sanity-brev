@@ -33,7 +33,7 @@ export const begrunnelsestyperTilMenynavn: Record<
   },
 };
 
-export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18'];
+export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
