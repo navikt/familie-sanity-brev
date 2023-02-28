@@ -20,6 +20,12 @@ export default {
       validation: rule => apiNavnValideringer(rule, DokumentNavn.VALGFELT),
     },
     {
+      title: 'Beskrivelse',
+      name: DokumentNavn.BESKRIVELSE,
+      type: SanityTyper.STRING,
+      description: 'Brukes av EF dersom det ønskes ekstra forklaring av feltet',
+    },
+    {
       name: 'hvorBrukesValgfeltet',
       type: SanityTyper.STRING,
       description:

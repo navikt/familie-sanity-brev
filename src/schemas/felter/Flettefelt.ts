@@ -29,6 +29,12 @@ export default {
       type: SanityTyper.BOOLEAN,
     },
     {
+      title: 'Beskrivelse',
+      name: DokumentNavn.BESKRIVELSE,
+      type: SanityTyper.STRING,
+      description: 'Brukes av EF dersom det ønskes ekstra forklaring av feltet',
+    },
+    {
       name: 'hvorBrukesFlettefeltet',
       type: SanityTyper.STRING,
       description:
