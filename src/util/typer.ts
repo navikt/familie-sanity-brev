@@ -38,6 +38,7 @@ export enum DokumentNavn {
   FOR_OVERGANGSSTØNAD = 'overgangsstonad',
   FOR_BARNETILSYN = 'barnetilsyn',
   FOR_SKOLEPENGER = 'skolepenger',
+  BESKRIVELSE = 'beskrivelse',
 }
 
 export enum SanityTyper {
