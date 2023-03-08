@@ -24,7 +24,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.34.0",
+    "@sanity/base": "^2.35.7",
     "@sanity/block-content-to-html": "^2.0.0",
     "@sanity/block-content-to-hyperscript": "^3.0.0",
     "@sanity/block-content-to-react": "^3.0.0",
