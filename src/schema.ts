@@ -16,6 +16,7 @@ import Periode from './schemas/baks/periode';
 import BaBegrunnelse from './schemas/baks/begrunnelse/ba-sak/begrunnelse';
 import KsBegrunnelse from './schemas/baks/begrunnelse/ks-sak/begrunnelse';
 import Htmlfelt from './schemas/felter/Htmlfelt';
+import { Fritekstområde } from './schemas/avansertDokument/fritekstområde';
 
 sessionStorage.clear();
 
@@ -39,6 +40,7 @@ export default createSchema({
     KsBegrunnelse,
     AvansertDelmal,
     AvansertDokument,
+    Fritekstområde,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
