@@ -4,6 +4,7 @@ export enum Trigger {
   SATSENDRING = 'SATSENDRING',
   BARN_DØD = 'BARN_DØD',
   DELTID_BARNEHAGEPLASS = 'DELTID_BARNEHAGEPLASS',
+  GJELDER_FØRSTE_PERIODE = 'GJELDER_FØRSTE_PERIODE',
 }
 
 const triggerValg: Record<Trigger, { title: string; value: Trigger }> = {
@@ -15,6 +16,10 @@ const triggerValg: Record<Trigger, { title: string; value: Trigger }> = {
   DELTID_BARNEHAGEPLASS: {
     title: 'Barnehageplass - mellom 0 og 33 timer',
     value: Trigger.DELTID_BARNEHAGEPLASS,
+  },
+  GJELDER_FØRSTE_PERIODE: {
+    title: 'Gjelder første periode',
+    value: Trigger.GJELDER_FØRSTE_PERIODE,
   },
 };
 
