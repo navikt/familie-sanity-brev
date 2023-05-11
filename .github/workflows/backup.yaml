@@ -1,21 +1,27 @@
 name: Backup Routine
+
 on:
   workflow_dispatch:
   schedule:
     # Runs at 04:00 UTC on the 1st and 17th of every month
     - cron: "0 4 */16 * *"
+
 jobs:
   backup-ba-dataset:
     runs-on: ubuntu-latest
     name: Backup ba dataset
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Export ba dataset
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        with:
-          args: . dataset export ba-brev backups/ba-sak.tar.gz
+        run: npm install -g @sanity/cli &&
+          sanity install &&
+          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
+          sanity dataset export ba-brev backups/ba-sak.tar.gz
+
       - name: Upload ba-sak.tar.gz
         uses: actions/upload-artifact@v3
         with:
@@ -23,23 +29,29 @@ jobs:
           path: backups/ba-sak.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
+
       - name: Import ba dataset til ba-test
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        with:
-          args: . dataset import backups/ba-sak.tar.gz ba-test --replace
+        run: npm install -g @sanity/cli &&
+          sanity install &&
+          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
+          sanity dataset import backups/ba-sak.tar.gz ba-test --replace
+
   backup-ef-dataset:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Backup ef dataset
     steps:
       - uses: actions/checkout@v3
+
       - name: Export dataset
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        with:
-          args: . dataset export ef-brev backups/ef-sak.tar.gz
+        run: npm install -g @sanity/cli &&
+          sanity install &&
+          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
+          sanity dataset export ef-brev backups/ef-sak.tar.gz
+
       - name: Upload ef-sak.tar.gz
         uses: actions/upload-artifact@v3
         with:
@@ -47,9 +59,11 @@ jobs:
           path: backups/ef-sak.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
+
       - name: Import ef dataset til ef-test
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        with:
-          args: . dataset import backups/ef-sak.tar.gz ef-test --replace
+        run: npm install -g @sanity/cli &&
+          sanity install &&
+          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
+          sanity dataset import backups/ef-sak.tar.gz ef-test --replace
