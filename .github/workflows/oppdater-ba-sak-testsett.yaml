@@ -4,7 +4,7 @@ on:
 
 jobs:
   oppdater-ba-testsett:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Oppdater BA-sak testsett
     steps:
       - uses: actions/checkout@v2
