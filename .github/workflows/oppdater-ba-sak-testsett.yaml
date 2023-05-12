@@ -7,16 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     name: Oppdater BA-sak testsett
     steps:
-      - uses: actions/checkout@v3
-      - name: Export ba dataset
-        uses: sanity-io/github-action-sanity@v0.4-alpha
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Bruk yarn cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: 'yarn'
+
+      - name: Installer sanity
+        run: yarn global add @sanity/cli && sanity install
+
+      - name: Export BA dataset fra Sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        with:
-          args: . dataset export ba-brev backups/ba-sak.tar.gz
-      - name: Import ba dataset til ba-test
-        uses: sanity-io/github-action-sanity@v0.4-alpha
+        run: sanity dataset export ba-brev backups/ba-sak.tar.gz
+
+      - name: Import BA dataset til ba-test i Sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        with:
-          args: . dataset import backups/ba-sak.tar.gz ba-test --replace
+        run: sanity dataset import backups/ba-sak.tar.gz ba-test --replace
