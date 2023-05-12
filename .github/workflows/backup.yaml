@@ -14,8 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Bruk yarn cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: 'yarn'
+
       - name: Installer sanity
-        run: npm install -g @sanity/cli && sanity install
+        run: yarn global add @sanity/cli && sanity install
 
       - name: Export ba dataset
         env:
@@ -39,10 +45,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Backup ef dataset
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Bruk yarn cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: 'yarn'
 
       - name: Installer sanity
-        run: npm install -g @sanity/cli && sanity install
+        run: yarn global add @sanity/cli && sanity install
 
       - name: Export dataset
         env:
