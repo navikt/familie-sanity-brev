@@ -14,13 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Installer sanity
+        run: npm install -g @sanity/cli && sanity install
+
       - name: Export ba dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        run: npm install -g @sanity/cli &&
-          sanity install &&
-          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
-          sanity dataset export ba-brev backups/ba-sak.tar.gz
+        run: sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
         uses: actions/upload-artifact@v3
@@ -33,10 +33,7 @@ jobs:
       - name: Import ba dataset til ba-test
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        run: npm install -g @sanity/cli &&
-          sanity install &&
-          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
-          sanity dataset import backups/ba-sak.tar.gz ba-test --replace
+        run: sanity dataset import backups/ba-sak.tar.gz ba-test --replace
 
   backup-ef-dataset:
     runs-on: ubuntu-latest
@@ -44,13 +41,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Installer sanity
+        run: npm install -g @sanity/cli && sanity install
+
       - name: Export dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        run: npm install -g @sanity/cli &&
-          sanity install &&
-          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
-          sanity dataset export ef-brev backups/ef-sak.tar.gz
+        run: sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
         uses: actions/upload-artifact@v3
@@ -63,7 +60,4 @@ jobs:
       - name: Import ef dataset til ef-test
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        run: npm install -g @sanity/cli &&
-          sanity install &&
-          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN &&
-          sanity dataset import backups/ef-sak.tar.gz ef-test --replace
+        run: sanity dataset import backups/ef-sak.tar.gz ef-test --replace
