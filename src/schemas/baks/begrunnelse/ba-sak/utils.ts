@@ -1,6 +1,6 @@
 import {
-  Behandlingstema,
   Begrunnelse,
+  BegrunnelseTema,
   eøsFlettefelter,
   flettefelter,
   InstitusjonBegrunnelse,
@@ -12,8 +12,8 @@ import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
-  dokument?.behandlingstema &&
-  dokument.behandlingstema !== Behandlingstema.NASJONAL_INSTITUSJON &&
+  dokument?.tema &&
+  dokument.tema !== BegrunnelseTema.INSTITUSJON &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));

@@ -15,7 +15,7 @@ import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
 import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
 import {
   begrunnelsestyperTilMenynavn,
-  behandlingstemaValg,
+  begrunnelseTemaTilMenynavn,
   valgbarhetTilMenynavn,
 } from '../src/schemas/baks/begrunnelse/ba-sak/typer';
 
@@ -28,7 +28,7 @@ interface IDokument {
 
 interface IBegrunnelse extends IDokument {
   begrunnelsetype?: string;
-  behandlingstema?: string;
+  tema?: string;
   valgbarhet?: string;
 }
 
@@ -234,12 +234,12 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
     const begrunnelseHarTemaOgType =
-      !!begrunnelse.begrunnelsetype && !!begrunnelse.behandlingstema && !!begrunnelse.valgbarhet;
+      !!begrunnelse.begrunnelsetype && !!begrunnelse.tema && !!begrunnelse.valgbarhet;
 
     const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgType
       ? [
           begrunnelsestyperTilMenynavn[begrunnelse.begrunnelsetype].title,
-          behandlingstemaValg[begrunnelse.behandlingstema].title,
+          begrunnelseTemaTilMenynavn[begrunnelse.tema].title,
           valgbarhetTilMenynavn[begrunnelse.valgbarhet].title,
         ]
       : [];

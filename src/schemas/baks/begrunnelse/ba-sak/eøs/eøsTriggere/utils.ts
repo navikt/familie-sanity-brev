@@ -1,20 +1,19 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
-import { Begrunnelse, Behandlingstema, EøsBegrunnelse } from '../../typer';
+import { Begrunnelse, BegrunnelseTema, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.EØS;
+  (document[BegrunnelseDokumentNavn.TEMA] &&
+    document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.PRIMÆRLAND) ||
+  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.SEKUNDÆRLAND;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.EØS) &&
+  erEøsBegrunnelse(document) &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK] &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK].includes(EØSTriggerType.VILKÅRSVURDERING);
 
 export const kanKompetanseTriggereVelges = document =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA].includes(Behandlingstema.EØS) &&
+  erEøsBegrunnelse(document) &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK] &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK].includes(EØSTriggerType.KOMPETANSE);
 
@@ -58,8 +57,8 @@ const lagEØSFeltObligatoriskRegel = (rule, triggerTyperforFelt: EØSTriggerType
 
 const kanTriggereAvTypeVelges = (
   triggerTyperforFelt: EØSTriggerType,
-  document: any,
-): ((document: any) => boolean) => {
+  document: Begrunnelse,
+): boolean => {
   switch (triggerTyperforFelt) {
     case EØSTriggerType.VILKÅRSVURDERING:
       return kanVilkårsvurderingTriggereVelges(document);

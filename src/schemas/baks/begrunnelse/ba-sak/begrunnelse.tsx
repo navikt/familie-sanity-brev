@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import {
   Begrunnelsestype,
   begrunnelsestyperTilMenynavn,
-  Behandlingstema,
-  behandlingstemaValg,
+  BegrunnelseTema,
+  begrunnelseTemaTilMenynavn,
   eøsFlettefelter,
   flettefelter,
   hjemler,
@@ -181,16 +181,16 @@ const begrunnelse = {
       validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
     },
     {
-      title: 'Behandlingstema',
+      title: 'Tema',
       type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEHANDLINGSTEMA,
+      name: BegrunnelseDokumentNavn.TEMA,
       options: {
-        list: Object.values(Behandlingstema).map(
-          behandlingstema => behandlingstemaValg[behandlingstema],
+        list: Object.values(BegrunnelseTema).map(
+          begrunnelseTema => begrunnelseTemaTilMenynavn[begrunnelseTema],
         ),
       },
       validation: rule => rule.required().error('Behandlingstema ikke valgt'),
-      initialValue: Behandlingstema.NASJONAL,
+      initialValue: BegrunnelseTema.NASJONAL,
     },
     {
       title: 'Valgbarhet',

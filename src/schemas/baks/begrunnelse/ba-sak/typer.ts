@@ -51,6 +51,28 @@ export const valgbarhetTilMenynavn: Record<
   TILLEGGSTEKST: { title: 'Tilleggstekst', value: Valgbarhet.TILLEGGSTEKST },
 };
 
+export enum BegrunnelseTema {
+  NASJONAL = 'NASJONAL',
+  FELLES = 'FELLES',
+  PRIMÆRLAND = 'PRIMÆRLAND',
+  SEKUNDÆRLAND = 'SEKUNDÆRLAND',
+  INSTITUSJON = 'INSTITUSJON',
+}
+
+export const begrunnelseTemaTilMenynavn: Record<
+  BegrunnelseTema,
+  {
+    title: string;
+    value: BegrunnelseTema;
+  }
+> = {
+  FELLES: { title: 'Felles', value: BegrunnelseTema.FELLES },
+  INSTITUSJON: { title: 'Institusjon', value: BegrunnelseTema.INSTITUSJON },
+  NASJONAL: { title: 'Nasjonal', value: BegrunnelseTema.NASJONAL },
+  PRIMÆRLAND: { title: 'Primærland', value: BegrunnelseTema.PRIMÆRLAND },
+  SEKUNDÆRLAND: { title: 'Sekundærland', value: BegrunnelseTema.SEKUNDÆRLAND },
+};
+
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
@@ -231,24 +253,6 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
     value: EndretUtbetalingsperioderDeltBostedTrigger.UTBETALING_IKKE_RELEVANT,
   },
 ];
-
-export enum Behandlingstema {
-  EØS = 'EØS',
-  NASJONAL = 'NASJONAL',
-  NASJONAL_INSTITUSJON = 'NASJONAL_INSTITUSJON',
-}
-
-export const behandlingstemaValg: Record<
-  Behandlingstema,
-  { title: string; value: Behandlingstema }
-> = {
-  EØS: { title: 'EØS', value: Behandlingstema.EØS },
-  NASJONAL: { title: 'Nasjonal', value: Behandlingstema.NASJONAL },
-  NASJONAL_INSTITUSJON: {
-    title: 'Nasjonal institusjon',
-    value: Behandlingstema.NASJONAL_INSTITUSJON,
-  },
-};
 
 interface BegrunnelseBase {
   [DokumentNavn.VISNINGSNAVN]?: string;
