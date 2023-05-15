@@ -88,7 +88,7 @@ export default async () => {
       ...(erBa()
         ? [
             hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse BA'),
-            hentDokumentMappe('begrunnelse', baBegrunnelseHierarki, 'Begrunnelse BA NY'),
+            hentDokumentMappe('begrunnelse', baBegrunnelseHierarki, 'Begrunnelse BA Beta'),
           ]
         : []),
       ...(erKs()
