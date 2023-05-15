@@ -32,7 +32,7 @@ interface IBegrunnelse extends IDokument {
   valgbarhet?: string;
 }
 
-interface IBegrunnelse extends IDokument {
+interface IKSBegrunnelse extends IDokument {
   resultat: string | null;
   tema: string | null;
   type: string | null;
@@ -50,13 +50,13 @@ export default async () => {
     false,
   );
 
-  const begrunnelser: IBegrunnelse[] = await hentFraSanity(
+  const begrunnelser: IKSBegrunnelse[] = await hentFraSanity(
     '*[_type == "begrunnelse"]',
     false,
     false,
   );
 
-  const ksBegrunnelser: IBegrunnelse[] = await hentFraSanity(
+  const ksBegrunnelser: IKSBegrunnelse[] = await hentFraSanity(
     '*[_type == "ksBegrunnelse"]',
     false,
     false,
@@ -65,7 +65,7 @@ export default async () => {
   const delmalHierarki: IMappe = hentMapper('delmal', delmaler);
   const avansertDelmalHierarki: IMappe = hentMapper('avansertDelmal', delmaler);
   const begrunnelseHierarki: IMappe = hentMapper('begrunnelse', begrunnelser);
-  const begrunnelseHierarkiNy: IMappe = hentMapperBaBegrunnelse('begrunnelse', begrunnelser);
+  const baBegrunnelseHierarki: IMappe = hentMapperBaBegrunnelse('begrunnelse', begrunnelser);
   const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse('ksBegrunnelse', ksBegrunnelser);
 
   const skalBrukeSanitySinStruktur = listItem =>
@@ -88,7 +88,7 @@ export default async () => {
       ...(erBa()
         ? [
             hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse BA'),
-            hentDokumentMappe('begrunnelse', begrunnelseHierarkiNy, 'Begrunnelse BA NY'),
+            hentDokumentMappe('begrunnelse', baBegrunnelseHierarki, 'Begrunnelse BA NY'),
           ]
         : []),
       ...(erKs()
@@ -271,7 +271,7 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
 const tomMappe: IMappe = { dokumenter: [], undermapper: {} };
 
-const hentMapperKsBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => {
+const hentMapperKsBegrunnelse = (type, begrunnelser: IKSBegrunnelse[]): IMappe => {
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
