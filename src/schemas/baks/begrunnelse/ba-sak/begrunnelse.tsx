@@ -10,6 +10,8 @@ import {
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
+  Valgbarhet,
+  valgbarhetTilMenynavn,
   vilkår,
   VilkårRolle,
 } from './typer';
@@ -168,6 +170,17 @@ const begrunnelse = {
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
+      title: 'Begrunnelsetype',
+      type: SanityTyper.STRING,
+      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
+      options: {
+        list: Object.values(Begrunnelsestype).map(
+          begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
+        ),
+      },
+      validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
+    },
+    {
       title: 'Behandlingstema',
       type: SanityTyper.STRING,
       name: BegrunnelseDokumentNavn.BEHANDLINGSTEMA,
@@ -180,15 +193,13 @@ const begrunnelse = {
       initialValue: Behandlingstema.NASJONAL,
     },
     {
-      title: 'Begrunnelsetype',
+      title: 'Valgbarhet',
       type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
+      name: BegrunnelseDokumentNavn.VALGBARHET,
       options: {
-        list: Object.values(Begrunnelsestype).map(
-          begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
-        ),
+        list: Object.values(Valgbarhet).map(valgbarhet => valgbarhetTilMenynavn[valgbarhet]),
       },
-      validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
+      validation: rule => rule.required().error('Valgbarhet ikke satt'),
     },
     {
       title: 'Api-navn',

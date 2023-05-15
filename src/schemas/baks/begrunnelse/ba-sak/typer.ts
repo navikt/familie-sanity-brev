@@ -33,6 +33,24 @@ export const begrunnelsestyperTilMenynavn: Record<
   },
 };
 
+export enum Valgbarhet {
+  STANDARD = 'STANDARD',
+  AUTOMATISK = 'AUTOMATISK',
+  TILLEGGSTEKST = 'TILLEGGSTEKST',
+}
+
+export const valgbarhetTilMenynavn: Record<
+  Valgbarhet,
+  {
+    title: string;
+    value: Valgbarhet;
+  }
+> = {
+  AUTOMATISK: { title: 'Automatisk', value: Valgbarhet.AUTOMATISK },
+  STANDARD: { title: 'Standard', value: Valgbarhet.STANDARD },
+  TILLEGGSTEKST: { title: 'Tilleggstekst', value: Valgbarhet.TILLEGGSTEKST },
+};
+
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
