@@ -1,5 +1,8 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 
+/**
+ * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder. 
+ */
 export enum Begrunnelsestype {
   INNVILGET = 'INNVILGET',
   REDUKSJON = 'REDUKSJON',
