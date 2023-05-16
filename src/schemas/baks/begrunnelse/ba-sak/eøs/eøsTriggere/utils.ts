@@ -1,6 +1,7 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
-import { Begrunnelse, BegrunnelseTema, EøsBegrunnelse } from '../../typer';
+import { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { BegrunnelseTema } from '../../sanityMappeFelt/begrunnelsetema';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
   (document[BegrunnelseDokumentNavn.TEMA] &&
@@ -47,7 +48,7 @@ const lagEØSFeltObligatoriskRegel = (rule, triggerTyperforFelt: EØSTriggerType
   rule.custom((currentValue, { document }) => {
     if (
       erEøsBegrunnelse(document) &&
-      kanVelgeTriggerForEØSBegrunnesle(triggerTyperforFelt, document) &&
+      kanVelgeTriggerForEØSBegrunnelse(triggerTyperforFelt, document) &&
       currentValue === undefined
     ) {
       return 'Du må velge minst ett valg for triggerne';
@@ -67,5 +68,7 @@ const kanTriggereAvTypeVelges = (
   }
 };
 
-const kanVelgeTriggerForEØSBegrunnesle = (triggerTyperForFelt: EØSTriggerType[], document: any) =>
-  triggerTyperForFelt.every(triggerType => kanTriggereAvTypeVelges(triggerType, document));
+const kanVelgeTriggerForEØSBegrunnelse = (
+  triggerTyperForFelt: EØSTriggerType[],
+  document: EøsBegrunnelse,
+) => triggerTyperForFelt.every(triggerType => kanTriggereAvTypeVelges(triggerType, document));

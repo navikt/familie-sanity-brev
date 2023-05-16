@@ -22,7 +22,7 @@ import {
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
 import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
-import { vedtakResultat } from './sanityMappeFelt/vedtakRresultat';
+import { vedtakResultat } from './sanityMappeFelt/vedtakResultat';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
 
