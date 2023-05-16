@@ -1,5 +1,5 @@
 import { apiNavnValideringer } from '../../../../util/valideringer';
-import { Begrunnelsestype } from './typer';
+import { Begrunnelsestype } from './sanityMappeFelt/begrunnelsetype';
 
 const apiNavnPrefiksMap: Record<Begrunnelsestype, string> = {
   AVSLAG: 'avslag',
