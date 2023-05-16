@@ -2,31 +2,29 @@ import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import styled from 'styled-components';
 import {
-  Begrunnelsestype,
-  begrunnelsestyperTilMenynavn,
-  BegrunnelseTema,
-  begrunnelseTemaTilMenynavn,
   eøsFlettefelter,
   flettefelter,
   hjemler,
   hjemlerFolketrygdloven,
-  Valgbarhet,
-  valgbarhetTilMenynavn,
   vilkår,
   VilkårRolle,
 } from './typer';
+import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
-  rolleSkalVises,
-  validerFlettefeltErGyldigForBehandlingstema,
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
+  rolleSkalVises,
+  validerFlettefeltErGyldigForBehandlingstema,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
 import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
+import { vedtakResultat } from './sanityMappeFelt/vedtakRresultat';
+import { valgbarhet } from './sanityMappeFelt/valgbarhet';
+import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -169,38 +167,10 @@ const begrunnelse = {
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
-    {
-      title: 'Begrunnelsetype',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE,
-      options: {
-        list: Object.values(Begrunnelsestype).map(
-          begrunnelsestype => begrunnelsestyperTilMenynavn[begrunnelsestype],
-        ),
-      },
-      validation: rule => rule.required().error('Begrunnelsestype ikke valgt'),
-    },
-    {
-      title: 'Tema',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.TEMA,
-      options: {
-        list: Object.values(BegrunnelseTema).map(
-          begrunnelseTema => begrunnelseTemaTilMenynavn[begrunnelseTema],
-        ),
-      },
-      validation: rule => rule.required().error('Behandlingstema ikke valgt'),
-      initialValue: BegrunnelseTema.NASJONAL,
-    },
-    {
-      title: 'Valgbarhet',
-      type: SanityTyper.STRING,
-      name: BegrunnelseDokumentNavn.VALGBARHET,
-      options: {
-        list: Object.values(Valgbarhet).map(valgbarhet => valgbarhetTilMenynavn[valgbarhet]),
-      },
-      validation: rule => rule.required().error('Valgbarhet ikke satt'),
-    },
+    vedtakResultat,
+    begrunnelseTema,
+    valgbarhet,
+    begunnelseType,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,

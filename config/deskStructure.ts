@@ -13,11 +13,9 @@ import { uuid } from '@sanity/uuid';
 import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
 import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
-import {
-  begrunnelsestyperTilMenynavn,
-  begrunnelseTemaTilMenynavn,
-  valgbarhetTilMenynavn,
-} from '../src/schemas/baks/begrunnelse/ba-sak/typer';
+import { begrunnelseTemaTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
+import { valgbarhetTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
+import { begrunnelsestyperTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetype';
 
 interface IDokument {
   mappe?: string[] | null;

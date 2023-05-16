@@ -1,6 +1,5 @@
 import {
   Begrunnelse,
-  BegrunnelseTema,
   eøsFlettefelter,
   flettefelter,
   InstitusjonBegrunnelse,
@@ -10,6 +9,7 @@ import {
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
+import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
   dokument?.tema &&
