@@ -32,6 +32,9 @@ export const begrunnelsestyperTilMenynavn: Record<
   },
 };
 
+/**
+ * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder. 
+ */
 export const begunnelseType = {
   title: 'Begrunnelsetype',
   type: SanityTyper.STRING,
