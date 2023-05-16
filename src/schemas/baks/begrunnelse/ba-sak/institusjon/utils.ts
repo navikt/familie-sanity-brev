@@ -1,11 +1,6 @@
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
-import {
-  Begrunnelse,
-  InstitusjonBegrunnelse,
-  Vilkår,
-  VilkårTriggere,
-  BegrunnelseTema,
-} from '../typer';
+import { Begrunnelse, InstitusjonBegrunnelse, Vilkår, VilkårTriggere } from '../typer';
+import { BegrunnelseTema } from '../sanityMappeFelt/begrunnelsetema';
 
 export const erInstitusjonsBegrunnelse = (
   document: Begrunnelse,

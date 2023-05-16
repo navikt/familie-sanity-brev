@@ -1,5 +1,6 @@
-import { NasjonalBegrunnelse, Begrunnelse, BegrunnelseTema } from '../typer';
+import { NasjonalBegrunnelse, Begrunnelse } from '../typer';
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
+import { BegrunnelseTema } from '../sanityMappeFelt/begrunnelsetema';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
   document[BegrunnelseDokumentNavn.TEMA] &&

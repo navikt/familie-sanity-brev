@@ -1,7 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 
 /**
- * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder. 
+ * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder.
  */
 export enum Begrunnelsestype {
   INNVILGET = 'INNVILGET',
@@ -33,7 +33,7 @@ export const begrunnelsestyperTilMenynavn: Record<
 };
 
 /**
- * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder. 
+ * @deprecated Skal bruke begrunnelseTema. Enn så lenge trenger vi denne for å vise riktige tiggere for endret utbetalingsperioder.
  */
 export const begunnelseType = {
   title: 'Begrunnelsetype',
