@@ -1,17 +1,17 @@
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import {
-  Behandlingstema,
   Begrunnelse,
   InstitusjonBegrunnelse,
   Vilkår,
   VilkårTriggere,
+  BegrunnelseTema,
 } from '../typer';
 
 export const erInstitusjonsBegrunnelse = (
   document: Begrunnelse,
 ): document is InstitusjonBegrunnelse =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL_INSTITUSJON;
+  document[BegrunnelseDokumentNavn.TEMA] &&
+  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.INSTITUSJON;
 
 export const lagInvaliderUtvidetForInstitusjonRegel = rule =>
   rule.custom((nåVerdi, context) => {

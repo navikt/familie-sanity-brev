@@ -1,9 +1,9 @@
-import { Behandlingstema, NasjonalBegrunnelse, Begrunnelse } from '../typer';
+import { NasjonalBegrunnelse, Begrunnelse, BegrunnelseTema } from '../typer';
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] &&
-  document[BegrunnelseDokumentNavn.BEHANDLINGSTEMA] === Behandlingstema.NASJONAL;
+  document[BegrunnelseDokumentNavn.TEMA] &&
+  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.NASJONAL;
 
 export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {

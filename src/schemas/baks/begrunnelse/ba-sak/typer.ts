@@ -3,53 +3,7 @@ import {
   DokumentNavn,
   EØSBegrunnelseDokumentNavn,
 } from '../../../../util/typer';
-
-export enum Begrunnelsestype {
-  INNVILGET = 'INNVILGET',
-  REDUKSJON = 'REDUKSJON',
-  AVSLAG = 'AVSLAG',
-  OPPHØR = 'OPPHØR',
-  FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
-  ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
-  ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
-}
-
-export const begrunnelsestyperTilMenynavn: Record<
-  Begrunnelsestype,
-  { title: string; value: Begrunnelsestype }
-> = {
-  INNVILGET: { title: 'Innvilget', value: Begrunnelsestype.INNVILGET },
-  REDUKSJON: { title: 'Reduksjon', value: Begrunnelsestype.REDUKSJON },
-  AVSLAG: { title: 'Avslag', value: Begrunnelsestype.AVSLAG },
-  OPPHØR: { title: 'Opphør', value: Begrunnelsestype.OPPHØR },
-  FORTSATT_INNVILGET: { title: 'Fortsatt innvilget', value: Begrunnelsestype.FORTSATT_INNVILGET },
-  ENDRET_UTBETALINGSPERIODE: {
-    title: 'Endret utbetaling',
-    value: Begrunnelsestype.ENDRET_UTBETALINGSPERIODE,
-  },
-  ETTER_ENDRET_UTBETALINGSPERIODE: {
-    title: 'Etter endret utbetaling',
-    value: Begrunnelsestype.ETTER_ENDRET_UTBETALINGSPERIODE,
-  },
-};
-
-export enum Valgbarhet {
-  STANDARD = 'STANDARD',
-  AUTOMATISK = 'AUTOMATISK',
-  TILLEGGSTEKST = 'TILLEGGSTEKST',
-}
-
-export const valgbarhetTilMenynavn: Record<
-  Valgbarhet,
-  {
-    title: string;
-    value: Valgbarhet;
-  }
-> = {
-  AUTOMATISK: { title: 'Automatisk', value: Valgbarhet.AUTOMATISK },
-  STANDARD: { title: 'Standard', value: Valgbarhet.STANDARD },
-  TILLEGGSTEKST: { title: 'Tilleggstekst', value: Valgbarhet.TILLEGGSTEKST },
-};
+import { VedtakResultat } from './sanityMappeFelt/vedtakResultat';
 
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
@@ -232,27 +186,11 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
   },
 ];
 
-export enum Behandlingstema {
-  EØS = 'EØS',
-  NASJONAL = 'NASJONAL',
-  NASJONAL_INSTITUSJON = 'NASJONAL_INSTITUSJON',
-}
-
-export const behandlingstemaValg: Record<
-  Behandlingstema,
-  { title: string; value: Behandlingstema }
-> = {
-  EØS: { title: 'EØS', value: Behandlingstema.EØS },
-  NASJONAL: { title: 'Nasjonal', value: Behandlingstema.NASJONAL },
-  NASJONAL_INSTITUSJON: {
-    title: 'Nasjonal institusjon',
-    value: Behandlingstema.NASJONAL_INSTITUSJON,
-  },
-};
-
 interface BegrunnelseBase {
   [DokumentNavn.VISNINGSNAVN]?: string;
-  [BegrunnelseDokumentNavn.BEHANDLINGSTEMA]?: string;
+  [BegrunnelseDokumentNavn.RESULTAT]?: string;
+  [BegrunnelseDokumentNavn.TEMA]?: string;
+  [BegrunnelseDokumentNavn.VALGBARHET]?: string;
   [BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE]?: string;
   [DokumentNavn.API_NAVN]?: string;
   [DokumentNavn.MAPPE]?: string[];

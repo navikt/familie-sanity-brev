@@ -13,11 +13,9 @@ import { uuid } from '@sanity/uuid';
 import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
 import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
-import {
-  begrunnelsestyperTilMenynavn,
-  behandlingstemaValg,
-  valgbarhetTilMenynavn,
-} from '../src/schemas/baks/begrunnelse/ba-sak/typer';
+import { begrunnelseTemaTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
+import { valgbarhetTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
+import { begrunnelsestyperTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetype';
 
 interface IDokument {
   mappe?: string[] | null;
@@ -28,7 +26,7 @@ interface IDokument {
 
 interface IBegrunnelse extends IDokument {
   begrunnelsetype?: string;
-  behandlingstema?: string;
+  tema?: string;
   valgbarhet?: string;
 }
 
@@ -234,12 +232,12 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
     const begrunnelseHarTemaOgType =
-      !!begrunnelse.begrunnelsetype && !!begrunnelse.behandlingstema && !!begrunnelse.valgbarhet;
+      !!begrunnelse.begrunnelsetype && !!begrunnelse.tema && !!begrunnelse.valgbarhet;
 
     const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgType
       ? [
           begrunnelsestyperTilMenynavn[begrunnelse.begrunnelsetype].title,
-          behandlingstemaValg[begrunnelse.behandlingstema].title,
+          begrunnelseTemaTilMenynavn[begrunnelse.tema].title,
           valgbarhetTilMenynavn[begrunnelse.valgbarhet].title,
         ]
       : [];

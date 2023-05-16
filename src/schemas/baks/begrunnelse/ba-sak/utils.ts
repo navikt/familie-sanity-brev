@@ -1,5 +1,4 @@
 import {
-  Behandlingstema,
   Begrunnelse,
   eøsFlettefelter,
   flettefelter,
@@ -10,10 +9,11 @@ import {
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
+import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
-  dokument?.behandlingstema &&
-  dokument.behandlingstema !== Behandlingstema.NASJONAL_INSTITUSJON &&
+  dokument?.tema &&
+  dokument.tema !== BegrunnelseTema.INSTITUSJON &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
