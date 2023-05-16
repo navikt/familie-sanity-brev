@@ -9,7 +9,6 @@ import {
   vilkår,
   VilkårRolle,
 } from './typer';
-import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
@@ -25,6 +24,7 @@ import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
 import { vedtakResultat } from './sanityMappeFelt/vedtakResultat';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
+import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
