@@ -1,9 +1,10 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 
 export enum VedtakResultat {
-  INNVILGELSE = 'INNVILGELSE',
+  INNVILGET_ELLER_ØKNING = 'INNVILGET_ELLER_ØKNING',
   REDUKSJON = 'REDUKSJON',
   IKKE_INNVILGET = 'IKKE_INNVILGET',
+  INGEN_ENDRING = 'INGEN_ENDRING',
 }
 
 export const vedtakResultatTilMenynavn: Record<
@@ -13,9 +14,13 @@ export const vedtakResultatTilMenynavn: Record<
     value: VedtakResultat;
   }
 > = {
-  IKKE_INNVILGET: { title: 'IkkeInnvilget', value: VedtakResultat.IKKE_INNVILGET },
-  INNVILGELSE: { title: 'Innvilgelse', value: VedtakResultat.INNVILGELSE },
+  INNVILGET_ELLER_ØKNING: {
+    title: 'Innvilget eller økning',
+    value: VedtakResultat.INNVILGET_ELLER_ØKNING,
+  },
   REDUKSJON: { title: 'Reduksjon', value: VedtakResultat.REDUKSJON },
+  IKKE_INNVILGET: { title: 'Ikke innvilget', value: VedtakResultat.IKKE_INNVILGET },
+  INGEN_ENDRING: { title: 'Ingen endring', value: VedtakResultat.INGEN_ENDRING },
 };
 
 export const vedtakResultat = {

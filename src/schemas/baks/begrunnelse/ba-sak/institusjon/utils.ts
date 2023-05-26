@@ -1,12 +1,15 @@
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { Begrunnelse, InstitusjonBegrunnelse, Vilkår, VilkårTriggere } from '../typer';
-import { BegrunnelseTema } from '../sanityMappeFelt/begrunnelsetema';
+import { Valgbarhet } from '../sanityMappeFelt/valgbarhet';
+import { FagsakType } from '../sanityMappeFelt/fagsakType';
 
 export const erInstitusjonsBegrunnelse = (
   document: Begrunnelse,
 ): document is InstitusjonBegrunnelse =>
-  document[BegrunnelseDokumentNavn.TEMA] &&
-  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.INSTITUSJON;
+  document[BegrunnelseDokumentNavn.VALGBARHET] &&
+  document[BegrunnelseDokumentNavn.VALGBARHET] === Valgbarhet.SAKSPESIFIKK &&
+  document[BegrunnelseDokumentNavn.FAGSAK_TYPE] &&
+  document[BegrunnelseDokumentNavn.FAGSAK_TYPE] === FagsakType.INSTITUSJON;
 
 export const lagInvaliderUtvidetForInstitusjonRegel = rule =>
   rule.custom((nåVerdi, context) => {

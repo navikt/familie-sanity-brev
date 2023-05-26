@@ -1,8 +1,10 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+
 export enum Valgbarhet {
   STANDARD = 'STANDARD',
   AUTOMATISK = 'AUTOMATISK',
   TILLEGGSTEKST = 'TILLEGGSTEKST',
+  SAKSPESIFIKK = 'SAKSPESIFIKK',
 }
 
 export const valgbarhetTilMenynavn: Record<
@@ -15,6 +17,7 @@ export const valgbarhetTilMenynavn: Record<
   AUTOMATISK: { title: 'Automatisk', value: Valgbarhet.AUTOMATISK },
   STANDARD: { title: 'Standard', value: Valgbarhet.STANDARD },
   TILLEGGSTEKST: { title: 'Tilleggstekst', value: Valgbarhet.TILLEGGSTEKST },
+  SAKSPESIFIKK: { title: 'Sakspesifikk', value: Valgbarhet.SAKSPESIFIKK },
 };
 
 export const valgbarhet = {

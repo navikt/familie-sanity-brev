@@ -4,9 +4,8 @@ import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 import { BegrunnelseTema } from '../../sanityMappeFelt/begrunnelsetema';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
-  (document[BegrunnelseDokumentNavn.TEMA] &&
-    document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.PRIMÆRLAND) ||
-  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.SEKUNDÆRLAND;
+  document[BegrunnelseDokumentNavn.TEMA] &&
+  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
   erEøsBegrunnelse(document) &&

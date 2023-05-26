@@ -3,9 +3,7 @@ import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer'
 export enum BegrunnelseTema {
   NASJONAL = 'NASJONAL',
   FELLES = 'FELLES',
-  PRIMÆRLAND = 'PRIMÆRLAND',
-  SEKUNDÆRLAND = 'SEKUNDÆRLAND',
-  INSTITUSJON = 'INSTITUSJON',
+  EØS = 'EØS',
 }
 
 export const begrunnelseTemaTilMenynavn: Record<
@@ -16,10 +14,8 @@ export const begrunnelseTemaTilMenynavn: Record<
   }
 > = {
   FELLES: { title: 'Felles', value: BegrunnelseTema.FELLES },
-  INSTITUSJON: { title: 'Institusjon', value: BegrunnelseTema.INSTITUSJON },
   NASJONAL: { title: 'Nasjonal', value: BegrunnelseTema.NASJONAL },
-  PRIMÆRLAND: { title: 'Primærland', value: BegrunnelseTema.PRIMÆRLAND },
-  SEKUNDÆRLAND: { title: 'Sekundærland', value: BegrunnelseTema.SEKUNDÆRLAND },
+  EØS: { title: 'EØS', value: BegrunnelseTema.EØS },
 };
 
 export const begrunnelseTema = {
