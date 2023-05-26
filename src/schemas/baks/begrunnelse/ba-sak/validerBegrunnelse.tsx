@@ -1,14 +1,21 @@
+import { isArray } from 'rxjs/internal-compatibility';
+
+function tilTekst(feltverdi) {
+  return isArray(feltverdi) ? feltverdi.join(', ') : feltverdi;
+}
+
 export const validerBegrunnelse = () => rule =>
   rule.custom((verdi: string, kontekst): true | string => {
     const feil = [];
 
     kontekst.type.fields.forEach(field => {
       const erHidden = field?.type?.hidden ? field.type.hidden(kontekst) : false;
-      if (erHidden && kontekst.document[field.name] !== undefined) {
+      const feltverdi = kontekst.document[field.name];
+      if (erHidden && feltverdi !== undefined) {
         feil.push(
-          `${field.type.title} er skjult, men har verdiene ${kontekst.document[field.name].join(
-            ', ',
-          )} satt. Fjern disse før du publiserer eller ta kontakt med en utvikler.`,
+          `${field.type.title} er skjult, men er satt til ${tilTekst(
+            feltverdi,
+          )}. Fjern dette før du publiserer eller ta kontakt med en utvikler.`,
         );
       }
     });

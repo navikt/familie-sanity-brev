@@ -37,6 +37,7 @@ export const erFagsakspesifikkRegel = rule =>
 
     if (erSakspesifikkBegrunnelse(begrunnelse)) {
       return nåVerdi ? true : 'Må velge fagsaktype når valgbarhet er satt til "sakspesifikk"';
+    } else {
+      return nåVerdi ? 'Kan kun velge fagsaktype når valgbarhet er satt til "sakspesifikk"' : true;
     }
-    return true;
   });
