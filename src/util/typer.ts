@@ -55,6 +55,7 @@ export enum BegrunnelseDokumentNavn {
   BA_BEGRUNNELSE = 'begrunnelse',
   RESULTAT = 'resultat',
   VALGBARHET = 'valgbarhet',
+  FAGSAK_TYPE = 'fagsakType',
   TEMA = 'tema',
   BEGRUNNELSE_TYPE = 'begrunnelsetype',
   HJEMLER = 'hjemler',

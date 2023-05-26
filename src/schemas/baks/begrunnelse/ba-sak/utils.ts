@@ -9,11 +9,9 @@ import {
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
-import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
-  dokument?.tema &&
-  dokument.tema !== BegrunnelseTema.INSTITUSJON &&
+  erInstitusjonsBegrunnelse(dokument) &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));

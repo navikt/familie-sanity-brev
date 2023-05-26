@@ -25,6 +25,7 @@ import { vedtakResultat } from './sanityMappeFelt/vedtakResultat';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
 import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
+import { fagsakType } from './sanityMappeFelt/fagsakType';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -170,6 +171,7 @@ const begrunnelse = {
     vedtakResultat,
     begrunnelseTema,
     valgbarhet,
+    fagsakType,
     begunnelseType,
     {
       title: 'Api-navn',
