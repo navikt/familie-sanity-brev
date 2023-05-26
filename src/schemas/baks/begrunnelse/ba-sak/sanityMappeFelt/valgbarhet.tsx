@@ -1,4 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { Begrunnelse } from '../typer';
 
 export enum Valgbarhet {
   STANDARD = 'STANDARD',
@@ -6,6 +7,10 @@ export enum Valgbarhet {
   TILLEGGSTEKST = 'TILLEGGSTEKST',
   SAKSPESIFIKK = 'SAKSPESIFIKK',
 }
+
+export const erSakspesifikkBegrunnelse = (begrunnelse: Begrunnelse) =>
+  begrunnelse[BegrunnelseDokumentNavn.VALGBARHET] &&
+  begrunnelse[BegrunnelseDokumentNavn.VALGBARHET] === Valgbarhet.SAKSPESIFIKK;
 
 export const valgbarhetTilMenynavn: Record<
   Valgbarhet,

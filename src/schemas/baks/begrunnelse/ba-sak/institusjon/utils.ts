@@ -1,13 +1,12 @@
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { Begrunnelse, InstitusjonBegrunnelse, Vilkår, VilkårTriggere } from '../typer';
-import { Valgbarhet } from '../sanityMappeFelt/valgbarhet';
+import { erSakspesifikkBegrunnelse } from '../sanityMappeFelt/valgbarhet';
 import { FagsakType } from '../sanityMappeFelt/fagsakType';
 
 export const erInstitusjonsBegrunnelse = (
-  document: Begrunnelse,
-): document is InstitusjonBegrunnelse =>
-  document[BegrunnelseDokumentNavn.VALGBARHET] &&
-  document[BegrunnelseDokumentNavn.VALGBARHET] === Valgbarhet.SAKSPESIFIKK &&
+  begrunnelse: Begrunnelse,
+): begrunnelse is InstitusjonBegrunnelse =>
+  erSakspesifikkBegrunnelse(begrunnelse) &&
   document[BegrunnelseDokumentNavn.FAGSAK_TYPE] &&
   document[BegrunnelseDokumentNavn.FAGSAK_TYPE] === FagsakType.INSTITUSJON;
 

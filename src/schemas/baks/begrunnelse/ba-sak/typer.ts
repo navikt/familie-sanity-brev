@@ -3,7 +3,6 @@ import {
   DokumentNavn,
   EØSBegrunnelseDokumentNavn,
 } from '../../../../util/typer';
-import { VedtakResultat } from './sanityMappeFelt/vedtakResultat';
 
 export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
@@ -223,6 +222,7 @@ export interface InstitusjonBegrunnelse extends BegrunnelseBase {
   [BegrunnelseDokumentNavn.BOR_MED_SØKER_TRIGGERE]?: string[];
   [BegrunnelseDokumentNavn.ØVRIGE_TRIGGERE]?: string[];
 }
+
 export interface EøsBegrunnelse extends BegrunnelseBase {
   [BegrunnelseDokumentNavn.ROLLE]?: string[];
   [BegrunnelseDokumentNavn.HJEMLER_EØS_FORORDNINGEN_833]?: string[];
@@ -235,4 +235,5 @@ export interface EøsBegrunnelse extends BegrunnelseBase {
   [EØSBegrunnelseDokumentNavn.VILKÅR]?: string[];
   [EØSBegrunnelseDokumentNavn.UTDYPENDE_VILKÅRSVURDERINGER]?: string[];
 }
+
 export type Begrunnelse = NasjonalBegrunnelse | InstitusjonBegrunnelse | EøsBegrunnelse;
