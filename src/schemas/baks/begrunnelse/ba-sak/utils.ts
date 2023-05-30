@@ -11,7 +11,7 @@ import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 
 export const rolleSkalVises = (dokument?: any): boolean =>
-  erInstitusjonsBegrunnelse(dokument) &&
+  !erInstitusjonsBegrunnelse(dokument) &&
   dokument?.vilkaar &&
   (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
     dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
