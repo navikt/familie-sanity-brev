@@ -26,7 +26,7 @@ export const vedtakResultatTilMenynavn: Record<
 export const vedtakResultat = {
   title: 'Resultat',
   type: SanityTyper.STRING,
-  name: BegrunnelseDokumentNavn.RESULTAT,
+  name: BegrunnelseDokumentNavn.VEDTAK_RESULTAT,
   options: {
     list: Object.values(VedtakResultat).map(
       vedtakResultat => vedtakResultatTilMenynavn[vedtakResultat],
