@@ -187,7 +187,7 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
 
 interface BegrunnelseBase {
   [DokumentNavn.VISNINGSNAVN]?: string;
-  [BegrunnelseDokumentNavn.RESULTAT]?: string;
+  [BegrunnelseDokumentNavn.VEDTAK_RESULTAT]?: string;
   [BegrunnelseDokumentNavn.TEMA]?: string;
   [BegrunnelseDokumentNavn.VALGBARHET]?: string;
   [BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE]?: string;

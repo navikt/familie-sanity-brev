@@ -16,6 +16,7 @@ import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
 import { begrunnelseTemaTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
 import { valgbarhetTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
 import { begrunnelsestyperTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetype';
+import { vedtakResultatTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/vedtakResultat';
 
 interface IDokument {
   mappe?: string[] | null;
@@ -25,7 +26,7 @@ interface IDokument {
 }
 
 interface IBegrunnelse extends IDokument {
-  begrunnelsetype?: string;
+  vedtakResultat?: string;
   tema?: string;
   valgbarhet?: string;
 }
@@ -231,12 +232,12 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
-    const begrunnelseHarTemaOgType =
-      !!begrunnelse.begrunnelsetype && !!begrunnelse.tema && !!begrunnelse.valgbarhet;
+    const begrunnelseHarTemaOgTypeOgResultat =
+      !!begrunnelse.vedtakResultat && !!begrunnelse.tema && !!begrunnelse.valgbarhet;
 
-    const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgType
+    const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgTypeOgResultat
       ? [
-          begrunnelsestyperTilMenynavn[begrunnelse.begrunnelsetype].title,
+          begrunnelsestyperTilMenynavn[begrunnelse.vedtakResultat].title,
           begrunnelseTemaTilMenynavn[begrunnelse.tema].title,
           valgbarhetTilMenynavn[begrunnelse.valgbarhet].title,
         ]
