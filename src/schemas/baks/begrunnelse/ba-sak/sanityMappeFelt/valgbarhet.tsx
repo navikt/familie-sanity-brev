@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse } from '../typer';
 
 export enum Valgbarhet {
@@ -12,17 +12,21 @@ export const erSakspesifikkBegrunnelse = (begrunnelse: Begrunnelse) =>
   begrunnelse[BegrunnelseDokumentNavn.VALGBARHET] &&
   begrunnelse[BegrunnelseDokumentNavn.VALGBARHET] === Valgbarhet.SAKSPESIFIKK;
 
-export const valgbarhetTilMenynavn: Record<
-  Valgbarhet,
-  {
-    title: string;
-    value: Valgbarhet;
-  }
-> = {
-  AUTOMATISK: { title: 'Automatisk', value: Valgbarhet.AUTOMATISK },
-  STANDARD: { title: 'Standard', value: Valgbarhet.STANDARD },
-  TILLEGGSTEKST: { title: 'Tilleggstekst', value: Valgbarhet.TILLEGGSTEKST },
-  SAKSPESIFIKK: { title: 'Sakspesifikk', value: Valgbarhet.SAKSPESIFIKK },
+export const valgbarhetTilMenyValg = (valgbarhet: Valgbarhet): Menyvalg<Valgbarhet> => {
+  const valgbarhetTilMenynavn = (valgbarhet: Valgbarhet): string => {
+    switch (valgbarhet) {
+      case Valgbarhet.AUTOMATISK:
+        return 'Automatisk';
+      case Valgbarhet.STANDARD:
+        return 'Standard';
+      case Valgbarhet.TILLEGGSTEKST:
+        return 'Tilleggstekst';
+      case Valgbarhet.SAKSPESIFIKK:
+        return 'Sakspesifikk';
+    }
+  };
+
+  return { title: valgbarhetTilMenynavn(valgbarhet), value: valgbarhet };
 };
 
 export const valgbarhet = {
@@ -30,7 +34,7 @@ export const valgbarhet = {
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.VALGBARHET,
   options: {
-    list: Object.values(Valgbarhet).map(valgbarhet => valgbarhetTilMenynavn[valgbarhet]),
+    list: Object.values(Valgbarhet).map(valgbarhet => valgbarhetTilMenyValg(valgbarhet)),
   },
   validation: rule => rule.required().error('Valgbarhet ikke satt'),
 };

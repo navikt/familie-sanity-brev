@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 
 export enum BegrunnelseTema {
   NASJONAL = 'NASJONAL',
@@ -6,16 +6,21 @@ export enum BegrunnelseTema {
   EØS = 'EØS',
 }
 
-export const begrunnelseTemaTilMenynavn: Record<
-  BegrunnelseTema,
-  {
-    title: string;
-    value: BegrunnelseTema;
-  }
-> = {
-  FELLES: { title: 'Felles', value: BegrunnelseTema.FELLES },
-  NASJONAL: { title: 'Nasjonal', value: BegrunnelseTema.NASJONAL },
-  EØS: { title: 'EØS', value: BegrunnelseTema.EØS },
+export const begrunnelseTemaTilMenyValg = (
+  begrunnelseTema: BegrunnelseTema,
+): Menyvalg<BegrunnelseTema> => {
+  const begrunnelseTemaTilMenynavn = (begrunnelseTema: BegrunnelseTema): string => {
+    switch (begrunnelseTema) {
+      case BegrunnelseTema.FELLES:
+        return 'Felles';
+      case BegrunnelseTema.NASJONAL:
+        return 'Nasjonal';
+      case BegrunnelseTema.EØS:
+        return 'EØS';
+    }
+  };
+
+  return { title: begrunnelseTemaTilMenynavn(begrunnelseTema), value: begrunnelseTema };
 };
 
 export const begrunnelseTema = {
@@ -23,8 +28,8 @@ export const begrunnelseTema = {
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.TEMA,
   options: {
-    list: Object.values(BegrunnelseTema).map(
-      begrunnelseTema => begrunnelseTemaTilMenynavn[begrunnelseTema],
+    list: Object.values(BegrunnelseTema).map(begrunnelseTema =>
+      begrunnelseTemaTilMenyValg(begrunnelseTema),
     ),
   },
   validation: rule => rule.required().error('Behandlingstema ikke valgt'),

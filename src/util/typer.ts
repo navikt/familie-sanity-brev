@@ -1,3 +1,5 @@
+import { Valgbarhet } from '../schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
+
 export enum DokumentNavn {
   DOKUMENT = 'dokument',
   TITTEL_BOKMAAL = 'tittelBokmaal',
@@ -99,4 +101,9 @@ export enum KSBegrunnelseDokumentNavn {
   ENDRET_UTBETALINGSPERIODE = 'endretUtbetalingsperiode',
   STØTTER_FRITEKST = 'stotterFritekst',
   SKAL_ALLTID_VISES = 'skalAlltidVises',
+}
+
+export interface Menyvalg<T> {
+  title: string;
+  value: T;
 }
