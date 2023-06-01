@@ -1,4 +1,4 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse } from '../typer';
 import { erSakspesifikkBegrunnelse } from './valgbarhet';
 
@@ -8,16 +8,19 @@ export enum FagsakType {
   ENSLIG_MINDREÅRIG = 'ENSLIG_MINDREÅRIG',
 }
 
-export const fagsaktypeTilMenynavn: Record<
-  FagsakType,
-  {
-    title: string;
-    value: FagsakType;
-  }
-> = {
-  STANDARD: { title: 'Standard', value: FagsakType.STANDARD },
-  INSTITUSJON: { title: 'Institusjon', value: FagsakType.INSTITUSJON },
-  ENSLIG_MINDREÅRIG: { title: 'Enslig mindreårig', value: FagsakType.ENSLIG_MINDREÅRIG },
+export const fagsaktypeTilMenyValg = (fagsaktype: FagsakType): Menyvalg<FagsakType> => {
+  const fagsaktypeTilMenynavn = (fagsaktype: FagsakType): string => {
+    switch (fagsaktype) {
+      case FagsakType.STANDARD:
+        return 'Standard';
+      case FagsakType.INSTITUSJON:
+        return 'Institusjon';
+      case FagsakType.ENSLIG_MINDREÅRIG:
+        return 'Enslig mindreårig';
+    }
+  };
+
+  return { title: fagsaktypeTilMenynavn(fagsaktype), value: fagsaktype };
 };
 
 export const fagsakType = {
@@ -25,7 +28,7 @@ export const fagsakType = {
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.FAGSAK_TYPE,
   options: {
-    list: Object.values(FagsakType).map(valgbarhet => fagsaktypeTilMenynavn[valgbarhet]),
+    list: Object.values(FagsakType).map(valgbarhet => fagsaktypeTilMenyValg(valgbarhet)),
   },
   hidden: context => !erSakspesifikkBegrunnelse(context.document),
   validation: rule => [erFagsakspesifikkRegel(rule)],

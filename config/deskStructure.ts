@@ -13,10 +13,18 @@ import { uuid } from '@sanity/uuid';
 import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
 import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
-import { begrunnelseTemaTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
-import { valgbarhetTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
-import { begrunnelsestyperTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetype';
-import { vedtakResultatTilMenynavn } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/vedtakResultat';
+import {
+  BegrunnelseTema,
+  begrunnelseTemaTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
+import {
+  Valgbarhet,
+  valgbarhetTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
+import {
+  VedtakResultat,
+  vedtakResultatTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/vedtakResultat';
 
 interface IDokument {
   mappe?: string[] | null;
@@ -26,9 +34,9 @@ interface IDokument {
 }
 
 interface IBegrunnelse extends IDokument {
-  vedtakResultat?: string;
-  tema?: string;
-  valgbarhet?: string;
+  vedtakResultat?: VedtakResultat;
+  tema?: BegrunnelseTema;
+  valgbarhet?: Valgbarhet;
 }
 
 interface IKSBegrunnelse extends IDokument {
@@ -49,7 +57,7 @@ export default async () => {
     false,
   );
 
-  const begrunnelser: IKSBegrunnelse[] = await hentFraSanity(
+  const begrunnelser: IBegrunnelse[] = await hentFraSanity(
     '*[_type == "begrunnelse"]',
     false,
     false,
@@ -237,9 +245,9 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
     const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgTypeOgResultat
       ? [
-          begrunnelsestyperTilMenynavn[begrunnelse.vedtakResultat].title,
-          begrunnelseTemaTilMenynavn[begrunnelse.tema].title,
-          valgbarhetTilMenynavn[begrunnelse.valgbarhet].title,
+          vedtakResultatTilMenyValg(begrunnelse.vedtakResultat).title,
+          begrunnelseTemaTilMenyValg(begrunnelse.tema).title,
+          valgbarhetTilMenyValg(begrunnelse.valgbarhet).title,
         ]
       : [];
 
