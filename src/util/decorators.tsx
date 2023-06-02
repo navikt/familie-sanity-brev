@@ -1,4 +1,4 @@
-import styles from '../../styles/myStyling.css';
+import styles from '../../styles/myStyling.css?inline';
 import * as React from 'react';
 import { MdLink } from 'react-icons/md';
 import { BsFilterRight } from 'react-icons/bs';

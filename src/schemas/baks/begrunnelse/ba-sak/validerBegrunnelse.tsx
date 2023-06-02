@@ -1,7 +1,5 @@
-import { isArray } from 'rxjs/internal-compatibility';
-
 function tilTekst(feltverdi) {
-  return isArray(feltverdi) ? feltverdi.join(', ') : feltverdi;
+  return Array.isArray(feltverdi) ? feltverdi.join(', ') : feltverdi;
 }
 
 export const validerBegrunnelse = () => rule =>
