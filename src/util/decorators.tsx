@@ -9,21 +9,17 @@ export default [
   {
     title: 'Høyrestill',
     value: 'hoyrestill',
-    blockEditor: {
-      icon: BsFilterRight,
-      render: props => <span className={styles.høyrestill}>{props.children}</span>,
-    },
+    icon: BsFilterRight,
+    component: props => <span className={styles.høyrestill}>{props.children}</span>,
   },
   {
     title: 'Lenke',
     value: 'lenke',
-    blockEditor: {
-      icon: () => <MdLink className={styles.lenkeIcon} />,
-      render: props => (
-        <span contentEditable={true} className={styles.lenke}>
-          {props.children}
-        </span>
-      ),
-    },
+    icon: () => <MdLink className={styles.lenkeIcon} />,
+    component: props => (
+      <span contentEditable={true} className={styles.lenke}>
+        {props.children}
+      </span>
+    ),
   },
 ];
