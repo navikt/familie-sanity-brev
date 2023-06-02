@@ -33,9 +33,10 @@ export const delmalAvsnitt = maalform => ({
     select: {
       _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => {
-      return DelmalBlockComponent(props, maalform, props.value._id);
+  },
+  components: {
+    preview: (props: any) => {
+      return DelmalBlockComponent(props, maalform, props._id);
     },
   },
 });

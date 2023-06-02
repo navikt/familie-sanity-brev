@@ -26,8 +26,9 @@ export const begrunnelseFlettefelt = {
     select: {
       flettefelt: DokumentNavn.FLETTEFELT,
     },
-    prepare: selection => selection,
-    component: props => {
+  },
+  components: {
+    preview: (props: any) => {
       const flettefelt = flettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
@@ -57,8 +58,9 @@ export const begrunnelseEØSFlettefelt = {
     select: {
       flettefelt: DokumentNavn.FLETTEFELT,
     },
-    prepare: selection => selection,
-    component: props => {
+  },
+  components: {
+    preview: (props: any) => {
       const flettefelt = eøsFlettefelter.find(
         flettefelt => flettefelt.value === props.value.flettefelt,
       );
@@ -91,8 +93,9 @@ export const begrunnelseValgfelt = {
     select: {
       valgVisningsnavn: `${DokumentNavn.VALG_REFERANSE}.${DokumentNavn.VISNINGSNAVN}`,
     },
-    prepare: selection => selection,
-    component: props => (
+  },
+  components: {
+    preview: (props: any) => (
       <Flettefelt>
         {props.value?.valgVisningsnavn ? props.value.valgVisningsnavn : 'Tomt valgfelt'}
       </Flettefelt>

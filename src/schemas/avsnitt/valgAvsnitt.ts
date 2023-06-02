@@ -12,7 +12,8 @@ export const valgAvsnitt = maalform => ({
     select: {
       _id: `${DokumentNavn.VALG_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => ValgfeltBlockComponent(props, maalform),
+  },
+  components: {
+    preview: (props: any) => ValgfeltBlockComponent(props._id, maalform),
   },
 });

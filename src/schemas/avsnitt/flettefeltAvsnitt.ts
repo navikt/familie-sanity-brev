@@ -27,9 +27,10 @@ export const flettefeltAvsnitt = {
     select: {
       _ref: `${DokumentNavn.FLETTEFELT_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => {
-      return FlettefeltBlockComponent(props.value._ref);
+  },
+  components: {
+    preview: (props: any) => {
+      return FlettefeltBlockComponent(props._ref);
     },
   },
 };
