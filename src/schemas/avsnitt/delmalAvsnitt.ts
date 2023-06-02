@@ -25,7 +25,7 @@ export const delmalAvsnitt = maalform => ({
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage ny delmal',
-      inputComponent: props => NyttFelt(props, DokumentNavn.DELMAL),
+      components: { input: props => NyttFelt(props, DokumentNavn.DELMAL) },
     },
   ],
   validation: Rule => [Rule.required().error('Ingen delmal valgt')],

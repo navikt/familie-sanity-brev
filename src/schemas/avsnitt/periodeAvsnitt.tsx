@@ -10,7 +10,7 @@ export const peroideAvsnitt = {
     {
       name: 'periodeblokkbeskrivelse',
       type: SanityTyper.STRING,
-      inputComponent: PeriodeBeskrivelse,
+      components: { input: PeriodeBeskrivelse },
     },
   ],
   preview: {

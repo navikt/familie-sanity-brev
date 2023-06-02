@@ -31,7 +31,7 @@ export const ValgFelter = (erGjentagende = false) => [
     name: 'lagNy',
     type: SanityTyper.STRING,
     description: 'En knapp for å lage nye valgfelt',
-    inputComponent: props => NyttFelt(props, 'valgfelt'),
+    components: { input: props => NyttFelt(props, 'valgfelt') },
   },
 ];
 

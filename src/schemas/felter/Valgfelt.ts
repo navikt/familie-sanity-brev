@@ -30,7 +30,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Dette er et dummyfelt for å få vist komponenten som viser hvor valgfeltet er i bruk.',
-      inputComponent: HvorErValgfeltetIBruk,
+      components: { input: HvorErValgfeltetIBruk },
     },
     {
       title: 'Muligheter',

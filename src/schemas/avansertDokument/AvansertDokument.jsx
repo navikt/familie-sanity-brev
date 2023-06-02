@@ -28,7 +28,7 @@ export default {
   fields: [
     {
       name: 'badgeTittel',
-      inputComponent: TittelBadge,
+      components: { input: TittelBadge },
       type: 'string',
     },
     {

@@ -39,7 +39,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Dette er et dummyfelt for å få vist komponenten som viser hvor flettefeltet er i bruk.',
-      inputComponent: HvorErFlettefeltetIBruk,
+      components: { input: HvorErFlettefeltetIBruk },
     },
   ],
 };

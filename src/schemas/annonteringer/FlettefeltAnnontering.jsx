@@ -27,7 +27,7 @@ export default (filter = undefined) => ({
       name: 'lagNy',
       type: 'string',
       description: 'En knapp for å lage nye flettefelt',
-      inputComponent: props => NyttFelt(props, 'flettefelt'),
+      components: { input: props => NyttFelt(props, 'flettefelt') },
     },
   ],
 });

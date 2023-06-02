@@ -18,7 +18,9 @@ export const flettefeltAvsnitt = {
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage nye flettefelt',
-      inputComponent: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
+      components: {
+        input: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
+      },
     },
   ],
   preview: {
