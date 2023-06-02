@@ -71,7 +71,6 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "barcode-input",
     "markdown",
     "@sanity/dashboard",
     "@sanity/production-preview",
