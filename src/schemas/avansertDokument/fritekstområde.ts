@@ -1,4 +1,3 @@
-import { uuid } from '@sanity/uuid';
 import { FritekstområdePreview } from '../../komponenter/FritekstområdePreview';
 
 export const Fritekstområde = {

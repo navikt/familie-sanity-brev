@@ -12,7 +12,7 @@ const FlettefeltBlockComponent = (id = '') => {
   }
 };
 
-const FlettefeltBlock = ({ id = '' }) => {
+const FlettefeltBlock = ({ id = '' }: { id: string }) => {
   const query = `*[_type=="flettefelt" && _id=="${id}"]`;
   const { data, error } = useSanityQuery(query);
 

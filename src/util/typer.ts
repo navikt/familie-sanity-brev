@@ -1,5 +1,3 @@
-import { Valgbarhet } from '../schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
-
 export enum DokumentNavn {
   DOKUMENT = 'dokument',
   TITTEL_BOKMAAL = 'tittelBokmaal',

@@ -19,8 +19,14 @@ export const resultatValg: Record<Resultat, { title: string; value: Resultat }> 
   AVSLAG: { title: 'Avslag', value: Resultat.AVSLAG },
   OPPHØR: { title: 'Opphør', value: Resultat.OPPHØR },
   FORTSATT_INNVILGET: { title: 'Fortsatt innvilget', value: Resultat.FORTSATT_INNVILGET },
-  ENDRET_UTBETALINGSPERIODE: { title: 'Endret utbetaling', value: Resultat.ENDRET_UTBETALINGSPERIODE },
-  ETTER_ENDRET_UTBETALINGSPERIODE: { title: 'Etter endret utbetaling', value: Resultat.ETTER_ENDRET_UTBETALINGSPERIODE },
+  ENDRET_UTBETALINGSPERIODE: {
+    title: 'Endret utbetaling',
+    value: Resultat.ENDRET_UTBETALINGSPERIODE,
+  },
+  ETTER_ENDRET_UTBETALINGSPERIODE: {
+    title: 'Etter endret utbetaling',
+    value: Resultat.ETTER_ENDRET_UTBETALINGSPERIODE,
+  },
 };
 
 export const resultat = {
@@ -34,6 +40,8 @@ export const resultat = {
 };
 
 export const erEndretUtbetaling: (document) => boolean = document =>
-    document[KSBegrunnelseDokumentNavn.RESULTAT] &&
-    (document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.ENDRET_UTBETALINGSPERIODE) ||
-        document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.ETTER_ENDRET_UTBETALINGSPERIODE));
+  document[KSBegrunnelseDokumentNavn.RESULTAT] &&
+  (document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.ENDRET_UTBETALINGSPERIODE) ||
+    document[KSBegrunnelseDokumentNavn.RESULTAT].includes(
+      Resultat.ETTER_ENDRET_UTBETALINGSPERIODE,
+    ));

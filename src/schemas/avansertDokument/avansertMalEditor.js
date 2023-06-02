@@ -6,7 +6,6 @@ import decorators from '../../util/decorators';
 import { htmlAvsnitt } from '../avsnitt/htmlAvsnitt';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { Fritekstområde } from './fritekstområde';
-import React from 'react';
 
 export default (maalform, tittel) => ({
   name: maalform,
