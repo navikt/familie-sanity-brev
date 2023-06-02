@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
 import { Badge, Inline } from '@sanity/ui';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const BlockContent = require('@sanity/block-content-to-react');
+import { PortableText } from '@portabletext/react';
 
 const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPadding = true) => {
   if (id) {
@@ -50,9 +49,9 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
   return (
     <TekstFelt {...props} skalHaPadding={skalHaPadding}>
       <DelmalTittelBadge tone="primary">Delmal: {data[0].visningsnavn}</DelmalTittelBadge>
-      <BlockContent
-        blocks={data[0][maalform]}
-        serializers={{
+      <PortableText
+        value={data[0][maalform]}
+        components={{
           marks: {
             flettefelt: (props: any) => <Felttelfelt>{props.children}</Felttelfelt>,
             delmal: (props: any) => <Delmal>{props.children}</Delmal>,
@@ -62,13 +61,12 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
           },
           types: {
             dokumentliste: (props: any) => props.children,
-            block: BlockSerializer,
             delmalBlock: (props: any) =>
-              DelmalBlockComponent(props, maalform, props.node.delmalReferanse._ref, false),
+              DelmalBlockComponent(props, maalform, props.value.delmalReferanse._ref, false),
             valgBlock: (props: any) => (
               <ValgfeltBadgeWrapper>
                 <ValgfeltBadge>
-                  {'Valgfelt: '} {props.node.valgReferanse.visningsnavn}
+                  {'Valgfelt: '} {props.value.valgReferanse.visningsnavn}
                 </ValgfeltBadge>
               </ValgfeltBadgeWrapper>
             ),
@@ -77,26 +75,6 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
         }}
       />
     </TekstFelt>
-  );
-};
-
-const settTag = (node: any) => {
-  const style = node.style;
-
-  if (RegExp('/?h[1-6]').test(style)) {
-    return style;
-  }
-
-  return 'div';
-};
-
-const BlockSerializer = (props: any) => {
-  const Tag = settTag(props.node);
-
-  return (
-    <Tag style={{ minHeight: '1rem' }} className={`block`}>
-      {props.children}
-    </Tag>
   );
 };
 

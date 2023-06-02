@@ -25,9 +25,7 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.34.0",
-    "@sanity/block-content-to-html": "^2.0.0",
-    "@sanity/block-content-to-hyperscript": "^3.0.0",
-    "@sanity/block-content-to-react": "^3.0.0",
+    "@portabletext/react": "^3.0.0",
     "@sanity/client": "^3.4.1",
     "@sanity/components": "^2.14.0",
     "@sanity/core": "^2.34.0",
