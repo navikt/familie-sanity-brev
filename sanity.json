@@ -73,7 +73,6 @@
     "@sanity/desk-tool",
     "markdown",
     "@sanity/dashboard",
-    "@sanity/production-preview",
     "@sanity/vision"
   ],
   "parts": [
@@ -92,10 +91,6 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./config/dashboardConfig.js"
-    },
-    {
-      "implements": "part:@sanity/production-preview/resolve-production-url",
-      "path": "./config/resolveProductionUrl.js"
     },
     {
       "implements": "part:@sanity/base/brand-logo",
