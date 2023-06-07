@@ -4,7 +4,8 @@ import { BegrunnelseTema } from '../sanityMappeFelt/begrunnelsetema';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
   document[BegrunnelseDokumentNavn.TEMA] &&
-  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.NASJONAL;
+  (document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.NASJONAL ||
+    document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.FELLES);
 
 export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
