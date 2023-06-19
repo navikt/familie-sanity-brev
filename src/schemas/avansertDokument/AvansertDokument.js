@@ -56,6 +56,39 @@ export default {
       type: SanityTyper.BOOLEAN,
     },
     {
+      title: 'Frittstående brev',
+      name: DokumentNavn.FRITTSTÅENDE_BREV,
+      type: SanityTyper.OBJECT,
+      fields: [
+        {
+          title: 'Kan brukes frittstående',
+          name: DokumentNavn.VALGT_SOM_FRITTSTÅENDE_BREV,
+          description:
+            'Når denne avhukes vil malen vises for frittsående brev. En mal kan brukes både frittstående og i behandlinsgflyt',
+          type: SanityTyper.BOOLEAN,
+        },
+        {
+          title: 'Tittel Dokumentoversikt',
+          name: DokumentNavn.TITTEL_DOKUMENTOVERSIKT,
+          description:
+            'Tittel på brev i dokumentoversikten. Er kun gjeldende for frittstående brev',
+          type: SanityTyper.STRING,
+          validation: Rule =>
+            Rule.custom((tittel, context) => {
+              if (
+                context.document[DokumentNavn.FRITTSTÅENDE_BREV][
+                  DokumentNavn.VALGT_SOM_FRITTSTÅENDE_BREV
+                ] &&
+                (!tittel || tittel.length < 3)
+              ) {
+                return "Tittel i dokumentoversikt er påkrevd når 'Frittstående brev' er valgt";
+              }
+              return true;
+            }),
+        },
+      ],
+    },
+    {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
