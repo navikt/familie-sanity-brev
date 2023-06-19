@@ -42,7 +42,7 @@ export enum DokumentNavn {
   FOR_SKOLEPENGER = 'skolepenger',
   BESKRIVELSE = 'beskrivelse',
   FRITTSTÅENDE_BREV = 'frittstaendeBrev',
-  VALGT_SOM_FRITTSTÅENDE_BREV = 'valgtSomFrittstaendeBrev',
+  FOR_FRITTSTÅENDE_BREV = 'valgtSomFrittstaendeBrev',
   TITTEL_DOKUMENTOVERSIKT = 'tittelDokumentoversikt',
 }
 
