@@ -41,6 +41,9 @@ export enum DokumentNavn {
   FOR_BARNETILSYN = 'barnetilsyn',
   FOR_SKOLEPENGER = 'skolepenger',
   BESKRIVELSE = 'beskrivelse',
+  FRITTSTÅENDE_BREV = 'frittstaendeBrev',
+  FOR_FRITTSTÅENDE_BREV = 'valgtSomFrittstaendeBrev',
+  TITTEL_DOKUMENTOVERSIKT = 'tittelDokumentoversikt',
 }
 
 export enum SanityTyper {
