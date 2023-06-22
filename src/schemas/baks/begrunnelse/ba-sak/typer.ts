@@ -4,7 +4,7 @@ import {
   EØSBegrunnelseDokumentNavn,
 } from '../../../../util/typer';
 
-export const hjemler = ['2', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
+export const hjemler = ['2', '3', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
