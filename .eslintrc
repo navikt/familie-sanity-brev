@@ -1,18 +1,11 @@
 {
-  "extends": [
-    "@sanity/eslint-config-studio",
-    "prettier"
-  ],
+  "extends": ["@sanity/eslint-config-studio", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "rules": {
     "no-case-declarations": "off",
     "import/extensions": [
