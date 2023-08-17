@@ -28,8 +28,6 @@ export default {
     {
       name: 'hvorBrukesValgfeltet',
       type: SanityTyper.STRING,
-      description:
-        'Dette er et dummyfelt for å få vist komponenten som viser hvor valgfeltet er i bruk.',
       components: { input: HvorErValgfeltetIBruk },
     },
     {

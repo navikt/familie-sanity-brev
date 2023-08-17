@@ -37,8 +37,6 @@ export default {
     {
       name: 'hvorBrukesFlettefeltet',
       type: SanityTyper.STRING,
-      description:
-        'Dette er et dummyfelt for å få vist komponenten som viser hvor flettefeltet er i bruk.',
       components: { input: HvorErFlettefeltetIBruk },
     },
   ],

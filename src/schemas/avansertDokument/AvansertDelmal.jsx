@@ -40,8 +40,6 @@ export default {
     {
       name: 'hvorDenBrukes',
       type: SanityTyper.STRING,
-      description:
-        'Dette er et dummyfelt for å få vist komponenten som viser hvor den delte teksten er i bruk',
       components: { input: HvorErDelmalenIBruk },
     },
     {
