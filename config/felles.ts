@@ -1,6 +1,8 @@
-import client from 'part:@sanity/base/client';
-
-import {BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn} from '../src/util/typer';
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  KSBegrunnelseDokumentNavn,
+} from '../src/util/typer';
 
 export const ekskluderesForEf: string[] = [
   DokumentNavn.DELMAL,
@@ -22,7 +24,7 @@ export const ekskluderesForKs: string[] = [
   BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
 ];
 
-const { dataset } = client.config();
+const dataset = window.location.pathname.split('/')[1];
 
 export const erEf = () => ['ef-brev', 'ef-test', 'testdata'].includes(dataset);
 export const erBa = () => ['ba-brev', 'ba-test', 'testdata'].includes(dataset);
