@@ -23,6 +23,7 @@ export default {
       name: 'badgeTittel',
       components: { input: TittelBadge },
       type: 'string',
+      title: 'Dokumenttype',
     },
     {
       title: 'Visningsnavn',
