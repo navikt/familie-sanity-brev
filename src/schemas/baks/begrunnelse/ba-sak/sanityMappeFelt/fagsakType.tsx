@@ -37,10 +37,10 @@ export const fagsakType = {
 export const erFagsakspesifikkRegel = rule =>
   rule.custom((nåVerdi, context) => {
     const begrunnelse: Begrunnelse = context.document;
+    const feltErSattMenErIkkeSakspesifikkBegrunnelse =
+      !erSakspesifikkBegrunnelse(begrunnelse) && nåVerdi;
 
-    if (erSakspesifikkBegrunnelse(begrunnelse)) {
-      return nåVerdi ? true : 'Må velge fagsaktype når valgbarhet er satt til "sakspesifikk"';
-    } else {
-      return nåVerdi ? 'Kan kun velge fagsaktype når valgbarhet er satt til "sakspesifikk"' : true;
-    }
+    return feltErSattMenErIkkeSakspesifikkBegrunnelse
+      ? 'Kan kun velge fagsaktype når valgbarhet er satt til "sakspesifikk"'
+      : true;
   });

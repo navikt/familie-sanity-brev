@@ -166,7 +166,7 @@ const hentDokumentMappe = (
 };
 
 const sorterBegrunnelseDokumenter = (dokumenter: IDokument[], type): IDokument[] => {
-  if (type === 'begrunnelse') {
+  if (type === 'begrunnelse' || type === 'ksBegrunnelse') {
     return dokumenter.sort((a, b) =>
       a?.visningsnavn && b?.visningsnavn
         ? hentFørsteTallIStartAvTekst(a.visningsnavn) - hentFørsteTallIStartAvTekst(b.visningsnavn)
