@@ -18,16 +18,19 @@ export const flettefeltAvsnitt = {
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage nye flettefelt',
-      inputComponent: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
+      components: {
+        input: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
+      },
     },
   ],
   preview: {
     select: {
       _ref: `${DokumentNavn.FLETTEFELT_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => {
-      return FlettefeltBlockComponent(props.value._ref);
+  },
+  components: {
+    preview: (props: any) => {
+      return FlettefeltBlockComponent(props._ref);
     },
   },
 };

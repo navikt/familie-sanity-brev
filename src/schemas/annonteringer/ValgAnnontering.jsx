@@ -1,4 +1,4 @@
-import styles from '../../../styles/myStyling.css';
+import styles from '../../../styles/myStyling.css?inline';
 import React from 'react';
 import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
@@ -31,7 +31,7 @@ export const ValgFelter = (erGjentagende = false) => [
     name: 'lagNy',
     type: SanityTyper.STRING,
     description: 'En knapp for å lage nye valgfelt',
-    inputComponent: props => NyttFelt(props, 'valgfelt'),
+    components: { input: props => NyttFelt(props, 'valgfelt') },
   },
 ];
 

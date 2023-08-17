@@ -1,14 +1,12 @@
-import S from '@sanity/desk-tool/structure-builder';
 import { hentFraSanity } from '../src/util/sanity';
 import { GrDocumentText } from 'react-icons/gr';
-import { ListItemBuilder } from '@sanity/structure/lib/ListItem';
 import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs } from './felles';
 import {
   BegrunnelseDokumentNavn,
   DokumentNavn,
   KSBegrunnelseDokumentNavn,
 } from '../src/util/typer';
-import ComposeIcon from 'part:@sanity/base/compose-icon';
+import { ComposeIcon } from '@sanity/icons';
 import { uuid } from '@sanity/uuid';
 import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
@@ -25,6 +23,7 @@ import {
   VedtakResultat,
   vedtakResultatTilMenyValg,
 } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/vedtakResultat';
+import { ListItemBuilder, StructureBuilder } from 'sanity/desk';
 
 interface IDokument {
   mappe?: string[] | null;
@@ -50,7 +49,7 @@ type IMappe = {
   undermapper: Record<string, IMappe> | Record<string, never>;
 };
 
-export default async () => {
+export const structure = async (S: StructureBuilder) => {
   const delmaler: IDokument[] = await hentFraSanity(
     '*[_type == "delmal" || _type == "avansertDelmal"]',
     false,
@@ -89,22 +88,25 @@ export default async () => {
   return S.list()
     .title('Content')
     .items([
-      hentDokumentMappe('delmal', delmalHierarki, 'Delmal'),
+      hentDokumentMappe(S, 'delmal', delmalHierarki, 'Delmal'),
       ...S.documentTypeListItems().filter(skalBrukeSanitySinStruktur),
-      ...(erEf() ? [hentDokumentMappe('avansertDelmal', avansertDelmalHierarki, 'Innhold')] : []),
+      ...(erEf()
+        ? [hentDokumentMappe(S, 'avansertDelmal', avansertDelmalHierarki, 'Innhold')]
+        : []),
       ...(erBa()
         ? [
-            hentDokumentMappe('begrunnelse', begrunnelseHierarki, 'Begrunnelse BA'),
-            hentDokumentMappe('begrunnelse', baBegrunnelseHierarki, 'Begrunnelse BA Beta'),
+            hentDokumentMappe(S, 'begrunnelse', begrunnelseHierarki, 'Begrunnelse BA'),
+            hentDokumentMappe(S, 'begrunnelse', baBegrunnelseHierarki, 'Begrunnelse BA Beta'),
           ]
         : []),
       ...(erKs()
-        ? [hentDokumentMappe('ksBegrunnelse', ksBegrunnelseHierarki, 'Begrunnelse KS')]
+        ? [hentDokumentMappe(S, 'ksBegrunnelse', ksBegrunnelseHierarki, 'Begrunnelse KS')]
         : []),
     ]);
 };
 
 const hentDokumentMappe = (
+  S: StructureBuilder,
   type,
   mappe: IMappe,
   mappeNavn: string,
@@ -148,8 +150,8 @@ const hentDokumentMappe = (
   const undermapper = mappe.undermapper
     ? Object.keys(mappe.undermapper).map(navn =>
         navn.length > 0
-          ? hentDokumentMappe(type, mappe.undermapper[navn], navn, ider)
-          : hentDokumentMappe(type, mappe.undermapper[navn], 'Mappe uten navn', ider),
+          ? hentDokumentMappe(S, type, mappe.undermapper[navn], navn, ider)
+          : hentDokumentMappe(S, type, mappe.undermapper[navn], 'Mappe uten navn', ider),
       )
     : [];
 
@@ -157,7 +159,7 @@ const hentDokumentMappe = (
     .title(mappeNavn)
     .child(
       S.list()
-        .menuItems(lagNyMenyknapp(type))
+        .menuItems(lagNyMenyknapp(S, type))
         .title(mappeNavn)
         .items([...undermapper, ...dokumenter]),
     );
@@ -318,7 +320,7 @@ const hentMapperKsBegrunnelse = (type, begrunnelser: IKSBegrunnelse[]): IMappe =
   }, tomMappe);
 };
 
-const lagNyMenyknapp = (type: string, prefix?: string) => {
+const lagNyMenyknapp = (S: StructureBuilder, type: string, prefix?: string) => {
   prefix = prefix ?? type;
   return [
     S.menuItem()

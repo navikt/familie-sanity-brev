@@ -1,4 +1,4 @@
-import styles from '../../../styles/myStyling.css';
+import styles from '../../../styles/myStyling.css?inline';
 import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import TekstStyles from '../../util/TekstStyles';

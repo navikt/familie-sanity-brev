@@ -10,19 +10,13 @@ export const peroideAvsnitt = {
     {
       name: 'periodeblokkbeskrivelse',
       type: SanityTyper.STRING,
-      inputComponent: PeriodeBeskrivelse,
+      components: { input: PeriodeBeskrivelse },
     },
   ],
   preview: {
-    select: {
-      title: 'title',
-    },
-    prepare: selection => {
-      const { title } = selection;
-      return {
-        media: AiOutlineUnorderedList,
-        title: title,
-      };
-    },
+    prepare: () => ({
+      media: AiOutlineUnorderedList,
+      title: 'Perioder',
+    }),
   },
 };

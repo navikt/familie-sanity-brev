@@ -1,4 +1,4 @@
-import styles from '../../../styles/myStyling.css';
+import styles from '../../../styles/myStyling.css?inline';
 import React from 'react';
 import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
@@ -27,7 +27,7 @@ export default (filter = undefined) => ({
       name: 'lagNy',
       type: 'string',
       description: 'En knapp for å lage nye flettefelt',
-      inputComponent: props => NyttFelt(props, 'flettefelt'),
+      components: { input: props => NyttFelt(props, 'flettefelt') },
     },
   ],
 });

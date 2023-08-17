@@ -25,7 +25,7 @@ export const delmalAvsnitt = maalform => ({
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage ny delmal',
-      inputComponent: props => NyttFelt(props, DokumentNavn.DELMAL),
+      components: { input: props => NyttFelt(props, DokumentNavn.DELMAL) },
     },
   ],
   validation: Rule => [Rule.required().error('Ingen delmal valgt')],
@@ -33,9 +33,10 @@ export const delmalAvsnitt = maalform => ({
     select: {
       _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => {
-      return DelmalBlockComponent(props, maalform, props.value._id);
+  },
+  components: {
+    preview: (props: any) => {
+      return DelmalBlockComponent(props, maalform, props._id);
     },
   },
 });

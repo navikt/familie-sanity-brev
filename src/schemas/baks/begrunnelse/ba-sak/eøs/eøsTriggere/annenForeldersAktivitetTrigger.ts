@@ -28,7 +28,10 @@ const annenForeldersAktivitetValg: Record<
   MOTTAR_PENSJON: { title: 'Mottar pensjon', value: AnnenForelderAktivitet.MOTTAR_PENSJON },
   INAKTIV: { title: 'Inaktiv', value: AnnenForelderAktivitet.INAKTIV },
   IKKE_AKTUELT: { title: 'Ikke aktuelt', value: AnnenForelderAktivitet.IKKE_AKTUELT },
-  UTSENDT_ARBEIDSTAKER: { title: 'Utsendt arbeidstaker', value: AnnenForelderAktivitet.UTSENDT_ARBEIDSTAKER },
+  UTSENDT_ARBEIDSTAKER: {
+    title: 'Utsendt arbeidstaker',
+    value: AnnenForelderAktivitet.UTSENDT_ARBEIDSTAKER,
+  },
 };
 
 export const annenForeldersAktivitetTrigger = {

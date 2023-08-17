@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import sanityClient from '@sanity/client';
+import { createClient } from '@sanity/client';
 
 export const client = (datasett, brukCache) => {
-  return sanityClient({
+  return createClient({
     projectId: 'xsrv1mh6',
     dataset: datasett,
     useCdn: brukCache,

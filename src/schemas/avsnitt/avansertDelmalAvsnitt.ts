@@ -12,7 +12,8 @@ export const avansertDelmalAvsnitt = maalform => ({
     select: {
       _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
     },
-    prepare: selection => selection,
-    component: props => DelmalBlockComponent(props, maalform, props.value._id),
+  },
+  components: {
+    preview: (props: any) => DelmalBlockComponent(props, maalform, props._id),
   },
 });

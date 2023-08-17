@@ -3,9 +3,7 @@ import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 
-const ValgfeltBlockComponent = (props: any, maalform: string) => {
-  const id = props.value._id;
-
+const ValgfeltBlockComponent = (id: string, maalform: string) => {
   const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
   const { data, error } = useSanityQuery(query);
@@ -32,7 +30,7 @@ export const Valgblokker = (props: any) => {
   return (
     <PreviewValg>
       {delmaler?.map(delmal => (
-        <Valg>
+        <Valg key={delmal._id}>
           <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
           {DelmalBlockComponent(props, maalform, delmal._id, false)}
         </Valg>
