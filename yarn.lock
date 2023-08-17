@@ -2255,24 +2255,12 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@floating-ui/core@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.6.tgz#d21ace437cc919cdd8f1640302fa8851e65e75c0"
-  integrity sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==
-
 "@floating-ui/core@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.4.1.tgz#0d633f4b76052668afb932492ac452f7ebe97f17"
   integrity sha512-jk3WqquEJRlcyu7997NtR5PibI+y5bi+LS3hPmguVClypenMsCY3CBa3LAQnozRCtCrYWSEtAdiskpamuJRFOQ==
   dependencies:
     "@floating-ui/utils" "^0.1.1"
-
-"@floating-ui/dom@^1.1.0":
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.9.tgz#b9ed1c15d30963419a6736f1b7feb350dd49c603"
-  integrity sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==
-  dependencies:
-    "@floating-ui/core" "^1.2.6"
 
 "@floating-ui/dom@^1.2.7":
   version "1.5.1"
@@ -2281,13 +2269,6 @@
   dependencies:
     "@floating-ui/core" "^1.4.1"
     "@floating-ui/utils" "^0.1.1"
-
-"@floating-ui/react-dom@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.1.1.tgz#8289bd28188fa0fce7e24fc2a6e57f3d94fea930"
-  integrity sha512-F27E+7SLB5NZvwF9Egqx/PlvxOhMnA6k/yNMQUqaQ9BPZdr4fQgSW6J6AKNIrBQElBT8IRDtv9j6h7FDkgp3dA==
-  dependencies:
-    "@floating-ui/dom" "^1.1.0"
 
 "@floating-ui/react-dom@2.0.0":
   version "2.0.0"
@@ -2543,7 +2524,7 @@
     get-it "^8.4.2"
     rxjs "^7.0.0"
 
-"@sanity/color@^2.1.20", "@sanity/color@^2.2.3", "@sanity/color@^2.2.5":
+"@sanity/color@^2.1.20", "@sanity/color@^2.2.5":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@sanity/color/-/color-2.2.5.tgz#6b28578573859495ed1ffd5491322cb8e90b3e07"
   integrity sha512-tTi22KoKuER3sldXYl4c1Dq2zU7tMLDkljFiaUKVkBbu4PBvRGCFw75kXZnD2b4Bsp6vin+7sI+AKdCKRhfRuw==
@@ -2600,11 +2581,6 @@
   version "3.0.0"
   resolved "https://registry.npmjs.org/@sanity/generate-help-url/-/generate-help-url-3.0.0.tgz#60e9cba61b82103ea3761730a53cd9310b98892d"
   integrity sha512-wtMYcV5GIDIhVyF/jjmdwq1GdlK07dRL40XMns73VbrFI7FteRltxv48bhYVZPcLkRXb0SHjpDS/icj9/yzbVA==
-
-"@sanity/icons@^2.2.2", "@sanity/icons@^2.3.0":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-2.3.1.tgz#38e0e85095a2ae41c7e9836aa4e4dbf1905ac68f"
-  integrity sha512-DyUdjjWFIokrMewnK24Vvxpv2lKx5LrzUM3eEk0ZVwhS8+hWkFFN1Z7jhcwQnQ5NweejhzsZkT4JHUdffCAQaw==
 
 "@sanity/icons@^2.4.0", "@sanity/icons@^2.4.1":
   version "2.4.1"
@@ -2706,18 +2682,6 @@
     "@sanity/client" "^6.4.5"
     "@types/react" "^18.0.25"
 
-"@sanity/ui@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.3.3.tgz#ec3b9aeb8be79f53d94406bbf80c806af1a47e7f"
-  integrity sha512-fp5eyc6U760Mvg6wmiv0wOnX/uiPpFoPf4Ne9cJX6X80mk2/u2pOkXCuMuhfXmty3KP7uPZxkapD8atd7BaWIw==
-  dependencies:
-    "@floating-ui/react-dom" "1.1.1"
-    "@sanity/color" "^2.2.3"
-    "@sanity/icons" "^2.2.2"
-    csstype "^3.1.1"
-    framer-motion "^10.0.0"
-    react-refractor "^2.1.7"
-
 "@sanity/ui@^1.7.2":
   version "1.7.8"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.7.8.tgz#49a64006bdc64924beaa2db2e61c856b4b4f9bec"
@@ -2747,10 +2711,10 @@
     "@types/uuid" "^8.0.0"
     uuid "^8.0.0"
 
-"@sanity/vision@^3.11.3":
-  version "3.11.5"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.11.5.tgz#3be3c13c3a0eb9ccbad056b22b169423c5c4af29"
-  integrity sha512-loZY3XGmj+U6pYGdEOfWsGQWNF1B8/RskwsCtjHEE4ji1PCsmZxcYr+VaVZhp2khl2wkJRWdVA8mFdTQieWXwA==
+"@sanity/vision@^3.15.1":
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.15.1.tgz#8e083fc5e8e758a091ac7a6ec021aef430b1fab5"
+  integrity sha512-rHPbsHGdwplRsfx00TaQ6MKWV2nekupFQUi3dU1ywGvtnYaXPq5LHJLMb0ARePwnvtPgZcx8j4jreD1nHEA7QA==
   dependencies:
     "@codemirror/autocomplete" "^6.1.0"
     "@codemirror/commands" "^6.0.1"
@@ -2763,8 +2727,8 @@
     "@rexxars/react-json-inspector" "^8.0.1"
     "@rexxars/react-split-pane" "^0.1.93"
     "@sanity/color" "^2.1.20"
-    "@sanity/icons" "^2.3.0"
-    "@sanity/ui" "^1.3.3"
+    "@sanity/icons" "^2.4.0"
+    "@sanity/ui" "^1.7.2"
     "@uiw/react-codemirror" "^4.11.4"
     hashlru "^2.3.0"
     is-hotkey "^0.1.6"
@@ -4079,7 +4043,7 @@ csstype@^3.0.2:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
-csstype@^3.1.1, csstype@^3.1.2:
+csstype@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
@@ -6013,12 +5977,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
-  integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
-
-json5@^2.2.2, json5@^2.2.3:
+json5@^2.2.1, json5@^2.2.2, json5@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
