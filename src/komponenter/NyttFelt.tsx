@@ -1,4 +1,4 @@
-import { GoPlusSmall } from 'react-icons/go';
+import { GoPlus } from 'react-icons/go';
 import styled from 'styled-components';
 import * as React from 'react';
 
@@ -14,7 +14,7 @@ const NyttFelt = (props: any, felttype: string) => {
           (window.location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
         }
       >
-        <GoPlusSmall size={35} style={{ paddingTop: '2px' }} /> Lag{' '}
+        <GoPlus size={35} style={{ paddingTop: '2px' }} /> Lag{' '}
         {felttype === 'delmal' ? 'ny' : 'nytt'} {felttype}
       </StyledButton>
     </div>
@@ -54,6 +54,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     border-color: #95a3b9;
   }
+
   &:focus {
     box-shadow: 0 0 0 1px #2276fc;
     border-color: #2276fc;
