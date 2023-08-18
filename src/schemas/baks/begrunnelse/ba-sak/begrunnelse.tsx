@@ -80,10 +80,6 @@ const begrunnelseEØSFlettefelt = {
   },
   components: {
     preview: (props: any) => {
-      if (!props?.value?.flettefelt) {
-        console.log(props);
-        console.log(props?.flettefelt);
-      }
       const flettefelt = eøsFlettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
     },
