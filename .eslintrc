@@ -12,10 +12,7 @@
     "project": true,
     "tsconfigRootDir": "__dirname"
   },
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "no-case-declarations": "off",
     "import/extensions": [
