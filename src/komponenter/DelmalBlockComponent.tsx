@@ -1,4 +1,4 @@
-import styled, { IStyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
 import { Badge, Inline } from '@sanity/ui';
