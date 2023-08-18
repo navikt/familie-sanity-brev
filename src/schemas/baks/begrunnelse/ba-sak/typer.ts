@@ -3,6 +3,8 @@ import {
   DokumentNavn,
   EØSBegrunnelseDokumentNavn,
 } from '../../../../util/typer';
+import { Valgbarhet } from './sanityMappeFelt/valgbarhet';
+import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 export const hjemler = ['2', '3', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
@@ -188,8 +190,8 @@ export const endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling = [
 interface BegrunnelseBase {
   [DokumentNavn.VISNINGSNAVN]?: string;
   [BegrunnelseDokumentNavn.VEDTAK_RESULTAT]?: string;
-  [BegrunnelseDokumentNavn.TEMA]?: string;
-  [BegrunnelseDokumentNavn.VALGBARHET]?: string;
+  [BegrunnelseDokumentNavn.TEMA]?: BegrunnelseTema;
+  [BegrunnelseDokumentNavn.VALGBARHET]?: Valgbarhet;
   [BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE]?: string;
   [DokumentNavn.API_NAVN]?: string;
   [DokumentNavn.MAPPE]?: string[];

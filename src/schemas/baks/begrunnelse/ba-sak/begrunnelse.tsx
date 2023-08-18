@@ -50,9 +50,7 @@ const begrunnelseFlettefelt = {
   },
   components: {
     preview: (props: any) => {
-      const flettefelt = flettefelter.find(
-        flettefelt => flettefelt.value === props.value.flettefelt,
-      );
+      const flettefelt = flettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
     },
   },
@@ -82,9 +80,7 @@ const begrunnelseEØSFlettefelt = {
   },
   components: {
     preview: (props: any) => {
-      const flettefelt = eøsFlettefelter.find(
-        flettefelt => flettefelt.value === props.value.flettefelt,
-      );
+      const flettefelt = eøsFlettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
       return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
     },
   },
