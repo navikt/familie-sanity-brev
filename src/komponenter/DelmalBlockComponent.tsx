@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { IStyledComponent } from 'styled-components';
 import * as React from 'react';
 import { useSanityQuery } from '../util/sanity';
 import { Badge, Inline } from '@sanity/ui';
@@ -78,7 +78,7 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
   );
 };
 
-const TekstFelt = styled.div`
+const TekstFelt = styled.div<{ skalHaPadding?: boolean }>`
   padding: ${props => (props.skalHaPadding ? '0.75rem' : 0)};
   overflow: auto;
 `;

@@ -48,7 +48,7 @@ const Valgmulighet = styled.h2`
   font-size: 22px;
 `;
 
-const TekstFelt = styled.div`
+const TekstFelt = styled.div<{ skalHaPadding?: boolean }>`
   padding: ${props => (props.skalHaPadding ? '0.75rem' : 0)};
   overflow: auto;
 `;
