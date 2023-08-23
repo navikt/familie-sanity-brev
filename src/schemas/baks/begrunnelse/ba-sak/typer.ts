@@ -3,8 +3,8 @@ import {
   DokumentNavn,
   EØSBegrunnelseDokumentNavn,
 } from '../../../../util/typer';
-import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { Valgbarhet } from './sanityMappeFelt/valgbarhet';
+import { BegrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 
 export const hjemler = ['2', '3', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 
