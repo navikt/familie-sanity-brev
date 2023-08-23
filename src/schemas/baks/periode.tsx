@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import styles from '../../../styles/myStyling.css?inline';
 import * as React from 'react';
 import { DokumentNavn, SanityTyper } from '../../util/typer';

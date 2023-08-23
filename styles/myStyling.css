@@ -58,4 +58,6 @@
   float: right;
 }
 
-span { background-color: inherit; }
+span {
+  background-color: inherit;
+}
