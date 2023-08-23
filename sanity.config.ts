@@ -3,7 +3,8 @@ import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './src';
 import { structure } from './config/deskStructure';
-import { PROSJEKT_ID } from './sanity.cli';
+
+const PROSJEKT_ID = 'xsrv1mh6';
 
 const sharedConfig = definePlugin({
   name: 'shareConfig',
