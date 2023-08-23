@@ -1,4 +1,4 @@
-name: Buld and deploy prod
+name: Build and deploy prod
 on:
   workflow_dispatch:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Installer sanity
         run: yarn global add @sanity/cli && sanity install
 
-      - name: Exporter production dataset
+      - name: Deploy sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         run: sanity deploy
