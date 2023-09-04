@@ -12,7 +12,7 @@ jobs:
     name: Backup ba dataset
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Installer sanity
         run: yarn global add @sanity/cli && sanity install
@@ -40,7 +40,7 @@ jobs:
     name: Backup ef dataset
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Installer sanity
         run: yarn global add @sanity/cli && sanity install
