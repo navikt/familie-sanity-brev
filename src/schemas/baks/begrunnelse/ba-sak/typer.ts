@@ -123,11 +123,11 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     value: VilkårTriggere.SMÅBARNSTILLEGG,
   },
   GJELDER_FØRSTE_PERIODE: {
-    title: 'Gjelder første periode',
+    title: 'Opphør fra forrige behandling',
     value: VilkårTriggere.GJELDER_FØRSTE_PERIODE,
   },
   GJELDER_FRA_INNVILGELSESTIDSPUNKT: {
-    title: 'Gjelder fra invilgelsestidspunkt',
+    title: 'Reduksjon fra forrige behandling',
     value: VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
   },
   BARN_DØD: {
