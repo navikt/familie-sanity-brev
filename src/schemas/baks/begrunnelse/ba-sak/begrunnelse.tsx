@@ -113,9 +113,7 @@ const begrunnelseValgfelt = {
   },
   components: {
     preview: (props: any) => (
-      <Flettefelt>
-        {props.value?.valgVisningsnavn ? props.value.valgVisningsnavn : 'Tomt valgfelt'}
-      </Flettefelt>
+      <Flettefelt>{props?.valgVisningsnavn ? props.valgVisningsnavn : 'Tomt valgfelt'}</Flettefelt>
     ),
   },
 };
