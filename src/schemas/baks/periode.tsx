@@ -18,6 +18,7 @@ const flettefelterForPeriode = [
   { title: 'Fødselsdager - Barn med utbetaling', value: 'fodselsdagerBarnMedUtbetaling' },
   { title: 'Fødselsdager - Barn med nullutbetaling', value: 'fodselsdagerBarnMedNullutbetaling' },
   { title: 'Type Barnetrygd', value: 'typeBarnetrygd' },
+  { title: 'Du eller Institusjonen', value: 'duEllerInstitusjonen' },
 ];
 
 const avsnittflettefelterPeriode = ['begrunnelser'];
