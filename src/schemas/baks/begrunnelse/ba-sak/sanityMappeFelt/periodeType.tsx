@@ -25,12 +25,13 @@ export const periodeTypeTilMenyValg = (periodeType: PeriodeType): Menyvalg<Perio
   return { title: periodeTypeTilMenynavn(periodeType), value: periodeType };
 };
 
+const title = 'Periodetype';
 export const periodeType = {
-  title: 'Resultat',
+  title: title,
   type: SanityTyper.STRING,
-  name: BegrunnelseDokumentNavn.VEDTAK_RESULTAT,
+  name: BegrunnelseDokumentNavn.PERIODE_TYPE,
   options: {
     list: Object.values(PeriodeType).map(periodeType => periodeTypeTilMenyValg(periodeType)),
   },
-  validation: (rule: Rule) => rule.required().error('VedtakResultat ikke valgt'),
+  validation: (rule: Rule) => rule.required().error(`${title} er ikke valgt`),
 };
