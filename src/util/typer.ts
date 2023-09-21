@@ -57,6 +57,7 @@ export enum SanityTyper {
 export enum BegrunnelseDokumentNavn {
   BA_BEGRUNNELSE = 'begrunnelse',
   VEDTAK_RESULTAT = 'vedtakResultat',
+  VEDTAK_PERIODE_TYPE = 'vedtakPeriodeType',
   VALGBARHET = 'valgbarhet',
   FAGSAK_TYPE = 'fagsakType',
   TEMA = 'tema',
