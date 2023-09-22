@@ -26,7 +26,7 @@ import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
 import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
-import { vedtakPeriodeType } from './sanityMappeFelt/vedtakPeriodeType';
+import { periodeType } from './sanityMappeFelt/periodeType';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -166,7 +166,7 @@ const begrunnelse = {
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
-    vedtakPeriodeType,
+    periodeType,
     vedtakResultat,
     begrunnelseTema,
     valgbarhet,
