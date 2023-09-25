@@ -1,6 +1,7 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling, Endringsårsak } from '../typer';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
+import { Rule } from 'sanity';
 
 const erEndretUtbetalingAvTypeDeltBosted = document =>
   document[BegrunnelseDokumentNavn.ENDRINGSAARSAKER] &&
@@ -13,11 +14,10 @@ export const endretUtbetalingsperiodeDeltBostedUtbetalingTrigger = {
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling,
-    layout: 'radio',
   },
   hidden: ({ document }) =>
     !erEndretUtbetalingAvTypeDeltBosted(document) || !erNasjonalBegrunnelse(document),
-  validation: rule => [
+  validation: (rule: Rule) => [
     rule.custom((currentValue, { document }) => {
       if (erEndretUtbetalingAvTypeDeltBosted(document) && currentValue === undefined) {
         return 'Du må krysse av for et alternativ';
