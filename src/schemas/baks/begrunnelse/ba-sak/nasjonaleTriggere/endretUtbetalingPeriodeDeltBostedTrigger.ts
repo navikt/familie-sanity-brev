@@ -13,7 +13,6 @@ export const endretUtbetalingsperiodeDeltBostedUtbetalingTrigger = {
   of: [{ type: SanityTyper.STRING }],
   options: {
     list: endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling,
-    layout: 'radio',
   },
   hidden: ({ document }) =>
     !erEndretUtbetalingAvTypeDeltBosted(document) || !erNasjonalBegrunnelse(document),
