@@ -90,6 +90,20 @@ export default {
       ],
     },
     {
+      title: 'prioriteringsnummer',
+      type: SanityTyper.NUMBER,
+      name: DokumentNavn.PRIORITERINGSNUMMER,
+      description:
+        'Et nummer som brukes for å sortere brevmaler stigende i saksbehandlingsløsningen. Eksempel 1 vil vises først',
+      validation: Rule =>
+        Rule.custom(value => {
+          if (value < 1) {
+            return 'Tallet må være større enn eller lik 1';
+          }
+          return true;
+        }),
+    },
+    {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
