@@ -3,7 +3,7 @@ import { endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
-export const erEndretUtbetaling: (document) => boolean = document =>
+export const erEndretUtbetalingBegrunnelse: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&
   (document[DokumentNavn.MAPPE].includes(Mappe.ENDRET_UTBETALINGSPERIODE) ||
     document[DokumentNavn.MAPPE].includes(Mappe.ETTER_ENDRET_UTBETALINGSPERIODE));
@@ -16,11 +16,13 @@ export const endringsårsakTrigger = {
   options: {
     list: endringsårsaker,
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
+  hidden: ({ document }) =>
+    !erEndretUtbetalingBegrunnelse(document) || !erNasjonalBegrunnelse(document),
   validation: rule => [
     rule
       .custom((endringsårsaktriggere, context) => {
-        const _erEndretUtbetaling = context.document && erEndretUtbetaling(context.document);
+        const _erEndretUtbetaling =
+          context.document && erEndretUtbetalingBegrunnelse(context.document);
         const endringsårsakErValgt = endringsårsaktriggere && endringsårsaktriggere.length !== 0;
 
         return !_erEndretUtbetaling || endringsårsakErValgt

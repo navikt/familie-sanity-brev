@@ -1,6 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { endretUtbetalingsperioderTriggereValg } from '../typer';
-import { erEndretUtbetaling } from './endringsårsakTrigger';
+import { erEndretUtbetalingBegrunnelse } from './endringsårsakTrigger';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
 export const endretUtbetalingsperiodeTriggere = {
@@ -11,6 +11,7 @@ export const endretUtbetalingsperiodeTriggere = {
   options: {
     list: endretUtbetalingsperioderTriggereValg,
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
+  hidden: ({ document }) =>
+    !erEndretUtbetalingBegrunnelse(document) || !erNasjonalBegrunnelse(document),
   validation: rule => hentNasjonaleTriggereRegler(rule),
 };
