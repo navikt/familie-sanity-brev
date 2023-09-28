@@ -3,6 +3,7 @@ import editor from './avansertMalEditor';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import { Badge } from '@sanity/ui';
+import { Rule } from 'sanity';
 
 const TittelBadge = () => {
   return <Badge tone="primary">Brevmal</Badge>;
@@ -74,8 +75,8 @@ export default {
           description:
             'Tittel på brev i dokumentoversikten. Er kun gjeldende for frittstående brev',
           type: SanityTyper.STRING,
-          validation: Rule =>
-            Rule.custom((tittel, context) => {
+          validation: (rule: Rule) =>
+            rule.custom((tittel: string, context) => {
               if (
                 context.document[DokumentNavn.FRITTSTÅENDE_BREV][
                   DokumentNavn.FOR_FRITTSTÅENDE_BREV
@@ -95,8 +96,8 @@ export default {
       name: DokumentNavn.PRIORITERINGSNUMMER,
       description:
         'Et nummer som brukes for å sortere brevmaler stigende i saksbehandlingsløsningen. Eksempel 1 vil vises først',
-      validation: Rule =>
-        Rule.custom(value => {
+      validation: (rule: Rule) =>
+        rule.custom((value: number) => {
           if (value < 1) {
             return 'Tallet må være større enn eller lik 1';
           }
@@ -107,14 +108,14 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Api navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DOKUMENT),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DOKUMENT),
     },
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
