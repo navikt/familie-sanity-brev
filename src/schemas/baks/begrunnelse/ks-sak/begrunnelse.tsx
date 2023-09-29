@@ -1,9 +1,4 @@
-import {
-  BegrunnelseDokumentNavn,
-  DokumentNavn,
-  KSBegrunnelseDokumentNavn,
-  SanityTyper,
-} from '../../../../util/typer';
+import { DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { triggere } from './triggere';
 import { eøsHjemler } from '../ba-sak/eøs/hjemler';
 import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
