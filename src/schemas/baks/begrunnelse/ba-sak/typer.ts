@@ -60,11 +60,6 @@ export enum VilkårTriggere {
   BARN_DØD = 'BARN_DØD',
 }
 
-export enum VilkårRolle {
-  SOKER = 'SOKER',
-  BARN = 'BARN',
-}
-
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
 export const lovligOppholdTriggerTyper = [VilkårTriggere.VURDERING_ANNET_GRUNNLAG];
 export const bosattIRiketTriggerTyper = [

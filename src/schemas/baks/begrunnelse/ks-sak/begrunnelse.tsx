@@ -1,14 +1,7 @@
-import {
-  BegrunnelseDokumentNavn,
-  DokumentNavn,
-  KSBegrunnelseDokumentNavn,
-  SanityTyper,
-} from '../../../../util/typer';
-import { VilkårRolle } from '../ba-sak/typer';
+import { DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { triggere } from './triggere';
 import { eøsHjemler } from '../ba-sak/eøs/hjemler';
 import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
-import { rolleSkalVises } from '../ba-sak/utils';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
 import {
   begrunnelseEØSFlettefelt,
@@ -23,6 +16,7 @@ import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { utdypendeVilkårsvurderinger } from './utdypendeVilkårsvurderinger';
 import { endringsårsakTriggere } from './endringsårsakTriggere';
 import { endretUtbetalingsperiodeTriggere } from './endretUtbetalingPeriodeTriggere';
+import { rolle } from '../ba-sak/sanityMappeFelt/rolle';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -73,32 +67,7 @@ const begrunnelse = {
     },
     hjemler,
     ...eøsHjemler,
-    {
-      title: 'Rolle',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.ROLLE,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        list: [
-          {
-            title: 'Søker',
-            value: VilkårRolle.SOKER,
-          },
-          {
-            title: 'Barn',
-            value: VilkårRolle.BARN,
-          },
-        ],
-      },
-      hidden: context => !rolleSkalVises(context.document),
-      validation: rule =>
-        rule.custom((rolleListe, context) => {
-          if (rolleSkalVises(context.document)) {
-            return !rolleListe || rolleListe.length === 0 ? 'Må velge minst en rolle' : true;
-          }
-          return true;
-        }),
-    },
+    rolle,
     {
       title: 'Støtter fritekst',
       type: SanityTyper.BOOLEAN,

@@ -1,21 +1,13 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import styled from 'styled-components';
-import {
-  eøsFlettefelter,
-  flettefelter,
-  hjemler,
-  hjemlerFolketrygdloven,
-  vilkår,
-  VilkårRolle,
-} from './typer';
+import { eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
 import { triggesAv } from './triggesAv';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
-  rolleSkalVises,
   validerFlettefeltErGyldigForBehandlingstema,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
@@ -27,6 +19,7 @@ import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
 import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
 import { periodeType } from './sanityMappeFelt/periodeType';
+import { rolle } from './sanityMappeFelt/rolle';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -238,32 +231,7 @@ const begrunnelse = {
       hidden: context => !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
     },
 
-    {
-      title: 'Rolle',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.ROLLE,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        list: [
-          {
-            title: 'Søker',
-            value: VilkårRolle.SOKER,
-          },
-          {
-            title: 'Barn',
-            value: VilkårRolle.BARN,
-          },
-        ],
-      },
-      hidden: context => !rolleSkalVises(context.document),
-      validation: rule =>
-        rule.custom((rolleListe, context) => {
-          if (rolleSkalVises(context.document)) {
-            return !rolleListe || rolleListe.length === 0 ? 'Må velge minst en rolle' : true;
-          }
-          return true;
-        }),
-    },
+    rolle,
     ...triggesAv,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),

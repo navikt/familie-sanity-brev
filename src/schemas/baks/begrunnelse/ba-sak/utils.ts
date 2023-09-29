@@ -4,17 +4,10 @@ import {
   flettefelter,
   InstitusjonBegrunnelse,
   NasjonalBegrunnelse,
-  Vilkår,
 } from './typer';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
-
-export const rolleSkalVises = (dokument?: any): boolean =>
-  !erInstitusjonsBegrunnelse(dokument) &&
-  dokument?.vilkaar &&
-  (dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET) ||
-    dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD));
 
 export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
   if (
