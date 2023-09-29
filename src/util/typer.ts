@@ -5,6 +5,7 @@ export enum DokumentNavn {
   DELMAL_REFERANSE = 'delmalReferanse',
   DELMAL = 'delmal',
   SKAL_ALLTID_MED = 'skalAlltidMed',
+  PRIORITERINGSNUMMER = 'prioriteringsnummer',
   VISNINGSNAVN = 'visningsnavn',
   API_NAVN = 'apiNavn',
   FLETTEFELT = 'flettefelt',
@@ -52,6 +53,7 @@ export enum SanityTyper {
   ARRAY = 'array',
   BLOCK = 'block',
   DOCUMENT = 'document',
+  NUMBER = 'number',
 }
 
 export enum BegrunnelseDokumentNavn {
