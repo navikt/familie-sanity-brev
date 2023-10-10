@@ -1929,10 +1929,10 @@
     "@types/uuid" "^8.0.0"
     uuid "^8.0.0"
 
-"@sanity/vision@^3.16.0":
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.16.0.tgz#2a65b3c474e8402d430fecda01e5cef153dfe6bd"
-  integrity sha512-BFlPJTHvigxo2jtLHtdYp6rjj5GtGjYY4w0//EdUP9ek6eyRzkKm0oDrIHpmd4+o8qFugXGrw7J9EwGh2ovjaw==
+"@sanity/vision@^3.17.0":
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.17.0.tgz#c0d25eded0c55d171f5b79f2c580a6dce5a7baa3"
+  integrity sha512-d3ZU+Gsi/eANs+rMSnruiatUAC6RkJNIxPfWe7piOABl4HZ/imrGww2I70EJGk4/19fpbEF9R6SSb6kKV89tNg==
   dependencies:
     "@codemirror/autocomplete" "^6.1.0"
     "@codemirror/commands" "^6.0.1"
