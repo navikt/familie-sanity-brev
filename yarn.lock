@@ -1723,10 +1723,10 @@
     golden-fleece "^1.0.9"
     pkg-dir "^5.0.0"
 
-"@sanity/client@^6.4.8", "@sanity/client@^6.4.9":
-  version "6.4.9"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.4.9.tgz#453fc7127cc959cbb929b91d3990cf3943362973"
-  integrity sha512-9y/exbu9kBgIuXouUWlHLGfPm3/jxRP8bSaysteILTQknLQZHExSyjFsYD/CxH3Xk43NzELqktvEXlP1/kZ6LA==
+"@sanity/client@^6.4.9", "@sanity/client@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.5.0.tgz#0d353623dc82c9ac40f33079f8b25aeddc0a1f52"
+  integrity sha512-Lvrqm0L0mSc/KixLEYjFl44LTCCUn/BaGQYh1rXO9mVo78sXfySG7Qja3ek8bJHZ6zqhyvwg+Ejb8xMZ3FsopQ==
   dependencies:
     "@sanity/eventsource" "^5.0.0"
     get-it "^8.4.3"
