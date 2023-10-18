@@ -26,6 +26,7 @@ export const vedtakResultatTilMenyValg = (
   return { title: vedtakResultatTilMenynavn(vedtakResultat), value: vedtakResultat };
 };
 
+// Tilsvarer sanityPeriodeResultat i ba-sak
 export const vedtakResultat = {
   title: 'Resultat i perioden for gjeldende person(er)',
   type: SanityTyper.STRING,
