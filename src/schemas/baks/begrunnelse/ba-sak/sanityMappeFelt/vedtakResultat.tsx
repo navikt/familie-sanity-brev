@@ -27,7 +27,7 @@ export const vedtakResultatTilMenyValg = (
 };
 
 export const vedtakResultat = {
-  title: 'Resultat',
+  title: 'Resultat i perioden for gjeldende person(er)',
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.VEDTAK_RESULTAT,
   options: {
@@ -35,5 +35,5 @@ export const vedtakResultat = {
       vedtakResultatTilMenyValg(vedtakResultat),
     ),
   },
-  validation: rule => rule.required().error('VedtakResultat ikke valgt'),
+  validation: rule => rule.required().error('Resultat i perioden ikke valgt'),
 };
