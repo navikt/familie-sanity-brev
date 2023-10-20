@@ -58,6 +58,7 @@ export enum VilkårTriggere {
   GJELDER_FØRSTE_PERIODE = 'GJELDER_FØRSTE_PERIODE',
   GJELDER_FRA_INNVILGELSESTIDSPUNKT = 'GJELDER_FRA_INNVILGELSESTIDSPUNKT',
   BARN_DØD = 'BARN_DØD',
+  SKAL_VISES_SELV_OM_IKKE_ENDRING = 'SKAL_VISES_SELV_OM_IKKE_ENDRING',
 }
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
@@ -83,10 +84,15 @@ export const øvrigeTriggertyper = [
   VilkårTriggere.GJELDER_FØRSTE_PERIODE,
   VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
   VilkårTriggere.BARN_DØD,
+  VilkårTriggere.SKAL_VISES_SELV_OM_IKKE_ENDRING,
 ];
 export const utvidetBarnetrygdTriggertyper = [VilkårTriggere.SMÅBARNSTILLEGG];
 
 export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string; value: string }> = {
+  SKAL_VISES_SELV_OM_IKKE_ENDRING: {
+    title: 'Skal vises selv om det ikke er endring',
+    value: VilkårTriggere.SKAL_VISES_SELV_OM_IKKE_ENDRING,
+  },
   VURDERING_ANNET_GRUNNLAG: {
     title: 'Vurdering annet grunnlag',
     value: VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
