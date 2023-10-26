@@ -44,7 +44,7 @@ const buildPatchesForEndretUtbetaling = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { begrunnelseTypeForPerson: 'ENDRET_UTBETALINGSPERIODE' },
+      set: { begrunnelseTypeForPerson: 'ENDRET_UTBETALING' },
       //unset: ['name'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
@@ -56,7 +56,7 @@ const buildPatchesForEtterEndretUtbetaling = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { begrunnelseTypeForPerson: 'ETTER_ENDRET_UTBETALINGSPERIODE' },
+      set: { begrunnelseTypeForPerson: 'ETTER_ENDRET_UTBETALING' },
       //unset: ['name'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
