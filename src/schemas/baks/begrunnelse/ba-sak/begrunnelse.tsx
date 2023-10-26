@@ -20,6 +20,10 @@ import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
 import { periodeType } from './sanityMappeFelt/periodeType';
 import { rolle } from './sanityMappeFelt/rolle';
+import { begunnelseTypeForPerson } from './sanityMappeFelt/begrunnelsetypeForPerson';
+import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
+import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
+import { regelverk } from './sanityMappeFelt/regelverk';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -160,11 +164,15 @@ const begrunnelse = {
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
     periodeType,
+    brevPeriodeType,
     vedtakResultat,
+    periodeResultatForPerson,
     begrunnelseTema,
+    regelverk,
     valgbarhet,
     fagsakType,
     begunnelseType,
+    begunnelseTypeForPerson,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
