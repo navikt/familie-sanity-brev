@@ -6,8 +6,8 @@ export enum BegrunnelsestypeForPerson {
   AVSLAG = 'AVSLAG',
   OPPHØR = 'OPPHØR',
   FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
-  ENDRET_UTBETALINGSPERIODE = 'ENDRET_UTBETALINGSPERIODE',
-  ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
+  ENDRET_UTBETALING = 'ENDRET_UTBETALING',
+  ETTER_ENDRET_UTBETALING = 'ETTER_ENDRET_UTBETALING',
 }
 
 export const begrunnelsestyperTilMenyValg = (
@@ -25,9 +25,9 @@ export const begrunnelsestyperTilMenyValg = (
         return 'Opphør';
       case BegrunnelsestypeForPerson.FORTSATT_INNVILGET:
         return 'Fortsatt innvilget';
-      case BegrunnelsestypeForPerson.ENDRET_UTBETALINGSPERIODE:
+      case BegrunnelsestypeForPerson.ENDRET_UTBETALING:
         return 'Endret utbetaling';
-      case BegrunnelsestypeForPerson.ETTER_ENDRET_UTBETALINGSPERIODE:
+      case BegrunnelsestypeForPerson.ETTER_ENDRET_UTBETALING:
         return 'Etter endret utbetaling';
     }
   };
