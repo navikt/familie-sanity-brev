@@ -38,7 +38,7 @@ const client = createClient({
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 var fetchDocuments = (feltNavn, feltVerdi) =>
-  client.fetch(`*[_type == 'begrunnelse' && ${feltNavn} == ${feltVerdi}] {_id, _rev, ${feltNavn}`);
+  client.fetch(`*[_type == 'begrunnelse' && ${feltNavn} == ${feltVerdi}] {_id, _rev, ${feltNavn}}`);
 
 const buildPatchesForEndretUtbetaling = docs =>
   docs.map(doc => ({
