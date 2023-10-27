@@ -1,10 +1,10 @@
 import { apiNavnValideringer } from '../../../../util/valideringer';
-import { Begrunnelsestype } from './sanityMappeFelt/begrunnelsetype';
+import { BegrunnelsestypeForPerson } from './sanityMappeFelt/begrunnelsetypeForPerson';
 
-const apiNavnPrefiksMap: Record<Begrunnelsestype, string> = {
+const apiNavnPrefiksMap: Record<BegrunnelsestypeForPerson, string> = {
   AVSLAG: 'avslag',
-  ENDRET_UTBETALINGSPERIODE: 'endretUtbetaling',
-  ETTER_ENDRET_UTBETALINGSPERIODE: 'etterEndretUtbetaling',
+  ENDRET_UTBETALING: 'endretUtbetaling',
+  ETTER_ENDRET_UTBETALING: 'etterEndretUtbetaling',
   FORTSATT_INNVILGET: 'fortsattInnvilget',
   INNVILGET: 'innvilget',
   OPPHØR: 'opphor',
@@ -17,7 +17,7 @@ export const apiNavnValideringerBegrunnelse = (rule, type) => {
     rule.custom((verdi: string, kontekst): true | string => {
       const begrunnelsestype = kontekst.document.begrunnelsetype;
 
-      if (!Object.values(Begrunnelsestype).includes(begrunnelsestype)) {
+      if (!Object.values(BegrunnelsestypeForPerson).includes(begrunnelsestype)) {
         return (
           'Begrunnelsestypen er ikke satt og valideringen for Apinavnet avhenger av begrunnelsestypen. ' +
           'Sett begrunnelsestype før du setter apiNavn.'

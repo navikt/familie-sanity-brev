@@ -64,7 +64,6 @@ export enum BegrunnelseDokumentNavn {
   BREV_PERIODE_TYPE = 'brevPeriodeType',
   VALGBARHET = 'valgbarhet',
   FAGSAK_TYPE = 'fagsakType',
-  TEMA = 'tema',
   REGELVERK = 'regelverk',
   BEGRUNNELSE_TYPE = 'begrunnelsetype',
   BEGRUNNELSE_TYPE_FOR_PERSON = 'begrunnelseTypeForPerson',

@@ -1,11 +1,11 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
-import { BegrunnelseTema } from '../../sanityMappeFelt/begrunnelsetema';
+import { Regelverk } from '../../sanityMappeFelt/regelverk';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
-  document[BegrunnelseDokumentNavn.TEMA] &&
-  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.EØS;
+  document[BegrunnelseDokumentNavn.REGELVERK] &&
+  document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
   erEøsBegrunnelse(document) &&

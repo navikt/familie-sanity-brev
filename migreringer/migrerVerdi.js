@@ -2,7 +2,7 @@ import { createClient } from '@sanity/client';
 
 const token = process.env.SANITY_TOKEN_PAT; //hentes fra .env-fil eks: SANITY_TOKEN_PAT=superhemmeligtoken1234
 const projectId = 'xsrv1mh6';
-const dataset = 'ba-test';
+const dataset = 'ba-brev';
 const apiVersion = '2023-03-01';
 
 async function migrerAlleFelt() {
@@ -14,6 +14,7 @@ const client = createClient({
   projectId,
   dataset,
   token,
+  useCdn: false,
 });
 
 // Dette er et ustabilt script. Dvs at det ofte feiler og må rekjøres flere ganger før det går.
@@ -38,7 +39,9 @@ const client = createClient({
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 var fetchDocuments = (feltNavn, feltVerdi) =>
-  client.fetch(`*[_type == 'begrunnelse' && ${feltNavn} == ${feltVerdi}] {_id, _rev, ${feltNavn}}`);
+  client.fetch(
+    `*[_type == 'begrunnelse' && ${feltNavn} == '${feltVerdi}'] {_id, _rev, ${feltNavn}}`,
+  );
 
 const buildPatchesForEndretUtbetaling = docs =>
   docs.map(doc => ({

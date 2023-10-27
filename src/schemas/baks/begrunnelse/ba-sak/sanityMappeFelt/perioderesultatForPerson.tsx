@@ -32,7 +32,7 @@ export const periodeResultatForPersonTilMenyValg = (
 };
 
 export const periodeResultatForPerson = {
-  title: 'periodeResultatForPerson',
+  title: 'PeriodeResultatForPerson',
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.PERIODE_RESULTAT_FOR_PERSON,
   options: {
