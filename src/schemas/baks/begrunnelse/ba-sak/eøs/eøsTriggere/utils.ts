@@ -1,11 +1,11 @@
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
-import { BegrunnelseTema } from '../../sanityMappeFelt/begrunnelsetema';
+import { Regelverk } from '../../sanityMappeFelt/regelverk';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
-  document[BegrunnelseDokumentNavn.TEMA] &&
-  document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.EØS;
+  document[BegrunnelseDokumentNavn.REGELVERK] &&
+  document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = document =>
   erEøsBegrunnelse(document) &&
@@ -22,18 +22,12 @@ export const hentEØSTriggereRegler = (
   erObligatoriskOmSynlig: boolean,
   regelTyper: EØSTriggerType[],
 ) => [
-  hentEØSFeltRegler(
-    rule,
-    'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
-  ),
+  hentEØSFeltRegler(rule, 'en EØS-trigger er valgt, men regleverk for begrunnelsen er ikke EØS.'),
   erObligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
 ];
 
 export const hentEØSHjemmelRegler = rule =>
-  hentEØSFeltRegler(
-    rule,
-    'En EØS-hjemmel er valgt, men behandlingstema for begrunnelsen er ikke eøs.',
-  );
+  hentEØSFeltRegler(rule, 'En EØS-hjemmel er valgt, men regelverk for begrunnelsen er ikke eøs.');
 
 export const hentEØSFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {

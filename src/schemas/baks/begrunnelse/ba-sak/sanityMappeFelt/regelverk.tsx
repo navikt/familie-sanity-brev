@@ -26,8 +26,8 @@ export const regelverk = {
   type: SanityTyper.STRING,
   name: BegrunnelseDokumentNavn.REGELVERK,
   options: {
-    list: Object.values(Regelverk).map(begrunnelseTema => regelverkTilMenyValg(begrunnelseTema)),
+    list: Object.values(Regelverk).map(regelverk => regelverkTilMenyValg(regelverk)),
   },
-  validation: rule => rule.required().error('Behandlingstema ikke valgt'),
+  validation: rule => rule.required().error('Regelverk ikke valgt'),
   initialValue: Regelverk.NASJONAL,
 };

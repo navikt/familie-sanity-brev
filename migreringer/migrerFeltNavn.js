@@ -2,7 +2,7 @@ import { createClient } from '@sanity/client';
 
 const token = process.env.SANITY_TOKEN_PAT; //hentes fra .env-fil eks: SANITY_TOKEN_PAT=superhemmeligtoken1234
 const projectId = 'xsrv1mh6';
-const dataset = 'ba-brev';
+const dataset = 'ba-test';
 const apiVersion = '2023-03-01';
 
 async function migrerAlleFelt() {
@@ -14,6 +14,7 @@ const client = createClient({
   projectId,
   dataset,
   token,
+  useCdn: false,
 });
 
 // Dette er et ustabilt script. Dvs at det ofte feiler og må rekjøres flere ganger før det går.
@@ -44,8 +45,20 @@ const buildPatchesForRegelverk = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { regelverk: doc.tema },
-      //unset: ['name'],
+      //set: { regelverk: doc.tema },
+      unset: ['tema'],
+      // this will cause the transaction to fail if the documents has been
+      // modified since it was fetched.
+      ifRevisionID: doc._rev,
+    },
+  }));
+
+const buildPatchesForBehandlingstema = docs =>
+  docs.map(doc => ({
+    id: doc._id,
+    patch: {
+      //set: { regelverk: doc.tema },
+      unset: ['behandlingstema'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
       ifRevisionID: doc._rev,
@@ -56,8 +69,8 @@ const buildPatchesForBrevPeriodeType = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { brevPeriodeType: doc.periodeType },
-      //unset: ['name'],
+      //set: { brevPeriodeType: doc.periodeType },
+      unset: ['periodeType'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
       ifRevisionID: doc._rev,
@@ -68,8 +81,8 @@ const buildPatchesForPeriodeResultatForPerson = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { periodeResultatForPerson: doc.vedtakResultat },
-      //unset: ['name'],
+      //set: { periodeResultatForPerson: doc.vedtakResultat },
+      unset: ['vedtakResultat'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
       ifRevisionID: doc._rev,
@@ -80,8 +93,8 @@ const buildPatchesForBegrunnelseTypeForPerson = docs =>
   docs.map(doc => ({
     id: doc._id,
     patch: {
-      set: { begrunnelseTypeForPerson: doc.begrunnelsetype },
-      //unset: ['name'],
+      //set: { begrunnelseTypeForPerson: doc.begrunnelsetype },
+      unset: ['begrunnelsetype'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
       ifRevisionID: doc._rev,
@@ -126,6 +139,15 @@ const migrate = async () => {
   console.log(
     `Migrating tema:\n %s`,
     regelverkPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
+  );
+  const transactionTema = createTransaction(regelverkPatch);
+  await commitTransaction(transactionTema);
+
+  documents = await fetchDocuments('behandlingstema');
+  const behandlingstemaPatch = buildPatchesForBehandlingstema(documents);
+  console.log(
+    `Migrating tema:\n %s`,
+    behandlingstemaPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
   );
   const transactionbehandlingsTema = createTransaction(regelverkPatch);
   await commitTransaction(transactionbehandlingsTema);

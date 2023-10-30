@@ -1,11 +1,11 @@
 import { NasjonalBegrunnelse, Begrunnelse } from '../typer';
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
-import { BegrunnelseTema } from '../sanityMappeFelt/begrunnelsetema';
+import { Regelverk } from '../sanityMappeFelt/regelverk';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
-  document[BegrunnelseDokumentNavn.TEMA] &&
-  (document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.NASJONAL ||
-    document[BegrunnelseDokumentNavn.TEMA] === BegrunnelseTema.FELLES);
+  document[BegrunnelseDokumentNavn.REGELVERK] &&
+  (document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.NASJONAL ||
+    document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.FELLES);
 
 export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
@@ -18,5 +18,5 @@ export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
 export const hentNasjonaleTriggereRegler = rule =>
   hentNasjonaltFeltRegler(
     rule,
-    'En nasjonal begrunnelse-trigger er valgt, men behandlingstema for begrunnelsen er ikke nasjonal.',
+    'En nasjonal begrunnelse-trigger er valgt, men regelverk for begrunnelsen er ikke nasjonal.',
   );

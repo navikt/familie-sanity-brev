@@ -12,18 +12,18 @@ import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
 import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
 import {
-  BegrunnelseTema,
-  begrunnelseTemaTilMenyValg,
-} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/begrunnelsetema';
-import {
   Valgbarhet,
   valgbarhetTilMenyValg,
 } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
-import {
-  VedtakResultat,
-  vedtakResultatTilMenyValg,
-} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/vedtakResultat';
 import { ListItemBuilder, StructureBuilder } from 'sanity/desk';
+import {
+  Regelverk,
+  regelverkTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/regelverk';
+import {
+  PerioderesultatForPerson,
+  periodeResultatForPersonTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/perioderesultatForPerson';
 
 interface IDokument {
   mappe?: string[] | null;
@@ -33,8 +33,8 @@ interface IDokument {
 }
 
 interface IBegrunnelse extends IDokument {
-  vedtakResultat?: VedtakResultat;
-  tema?: BegrunnelseTema;
+  periodeResultatForPerson?: PerioderesultatForPerson;
+  regelverk?: Regelverk;
   valgbarhet?: Valgbarhet;
 }
 
@@ -243,12 +243,12 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
     const begrunnelseHarTemaOgTypeOgResultat =
-      !!begrunnelse.vedtakResultat && !!begrunnelse.tema && !!begrunnelse.valgbarhet;
+      !!begrunnelse.periodeResultatForPerson && !!begrunnelse.regelverk && !!begrunnelse.valgbarhet;
 
     const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgTypeOgResultat
       ? [
-          vedtakResultatTilMenyValg(begrunnelse.vedtakResultat).title,
-          begrunnelseTemaTilMenyValg(begrunnelse.tema).title,
+          periodeResultatForPersonTilMenyValg(begrunnelse.periodeResultatForPerson).title,
+          regelverkTilMenyValg(begrunnelse.regelverk).title,
           valgbarhetTilMenyValg(begrunnelse.valgbarhet).title,
         ]
       : [];

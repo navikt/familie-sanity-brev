@@ -2,7 +2,7 @@ import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer'
 import { lovligOppholdTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
-  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+  lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
 
 export const lovligOppholdTriggere = {
@@ -19,5 +19,5 @@ export const lovligOppholdTriggere = {
       document.vilkaar &&
       document.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD)
     ),
-  validation: rule => lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
+  validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

@@ -8,17 +8,13 @@ import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
-  validerFlettefeltErGyldigForBehandlingstema,
+  validerFlettefeltErGyldigForRegelverk,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
 import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
-import { vedtakResultat } from './sanityMappeFelt/vedtakResultat';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
-import { begunnelseType } from './sanityMappeFelt/begrunnelsetype';
-import { begrunnelseTema } from './sanityMappeFelt/begrunnelsetema';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
-import { periodeType } from './sanityMappeFelt/periodeType';
 import { rolle } from './sanityMappeFelt/rolle';
 import { begunnelseTypeForPerson } from './sanityMappeFelt/begrunnelsetypeForPerson';
 import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
@@ -37,7 +33,7 @@ const begrunnelseFlettefelt = {
       },
       validation: rule => [
         rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+        rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
     },
   ],
@@ -67,7 +63,7 @@ const begrunnelseEØSFlettefelt = {
       },
       validation: rule => [
         rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+        rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
     },
   ],
@@ -163,15 +159,11 @@ const begrunnelse = {
       name: DokumentNavn.VISNINGSNAVN,
       validation: rule => [rule.required().error('Dokumentet må ha et navn')],
     },
-    periodeType,
     brevPeriodeType,
-    vedtakResultat,
     periodeResultatForPerson,
-    begrunnelseTema,
     regelverk,
     valgbarhet,
     fagsakType,
-    begunnelseType,
     begunnelseTypeForPerson,
     {
       title: 'Api-navn',

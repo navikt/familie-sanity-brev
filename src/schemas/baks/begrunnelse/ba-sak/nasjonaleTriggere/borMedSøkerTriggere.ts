@@ -2,7 +2,7 @@ import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer'
 import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
-  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+  lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
 import { lagInstitusjonBorMedSøkerRegel } from '../institusjon/utils';
 
@@ -21,7 +21,7 @@ export const borMedSøkerTriggere = {
       document.vilkaar.includes(Vilkår.BOR_MED_SOKER)
     ),
   validation: rule => [
-    lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
+    lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
     lagInstitusjonBorMedSøkerRegel(rule),
   ],
 };
