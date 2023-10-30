@@ -15,7 +15,7 @@ export const apiNavnValideringerBegrunnelse = (rule, type) => {
   return [
     ...apiNavnValideringer(rule, type),
     rule.custom((verdi: string, kontekst): true | string => {
-      const begrunnelsestype = kontekst.document.begrunnelsetype;
+      const begrunnelsestype = kontekst.document.begrunnelseTypeForPerson;
 
       if (!Object.values(BegrunnelsestypeForPerson).includes(begrunnelsestype)) {
         return (

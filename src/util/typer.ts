@@ -58,14 +58,11 @@ export enum SanityTyper {
 
 export enum BegrunnelseDokumentNavn {
   BA_BEGRUNNELSE = 'begrunnelse',
-  VEDTAK_RESULTAT = 'vedtakResultat',
   PERIODE_RESULTAT_FOR_PERSON = 'periodeResultatForPerson',
-  PERIODE_TYPE = 'periodeType',
   BREV_PERIODE_TYPE = 'brevPeriodeType',
   VALGBARHET = 'valgbarhet',
   FAGSAK_TYPE = 'fagsakType',
   REGELVERK = 'regelverk',
-  BEGRUNNELSE_TYPE = 'begrunnelsetype',
   BEGRUNNELSE_TYPE_FOR_PERSON = 'begrunnelseTypeForPerson',
   HJEMLER = 'hjemler',
   HJEMLER_EØS_FORORDNINGEN_833 = 'hjemlerEOSForordningen883',
@@ -85,7 +82,6 @@ export enum BegrunnelseDokumentNavn {
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
   ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
-  BEHANDLINGSTEMA = 'behandlingstema',
 }
 
 export enum EØSBegrunnelseDokumentNavn {
