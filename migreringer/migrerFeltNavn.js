@@ -14,6 +14,7 @@ const client = createClient({
   projectId,
   dataset,
   token,
+  useCdn: false,
 });
 
 // Dette er et ustabilt script. Dvs at det ofte feiler og må rekjøres flere ganger før det går.
@@ -46,6 +47,18 @@ const buildPatchesForRegelverk = docs =>
     patch: {
       //set: { regelverk: doc.tema },
       unset: ['tema'],
+      // this will cause the transaction to fail if the documents has been
+      // modified since it was fetched.
+      ifRevisionID: doc._rev,
+    },
+  }));
+
+const buildPatchesForBehandlingstema = docs =>
+  docs.map(doc => ({
+    id: doc._id,
+    patch: {
+      //set: { regelverk: doc.tema },
+      unset: ['behandlingstema'],
       // this will cause the transaction to fail if the documents has been
       // modified since it was fetched.
       ifRevisionID: doc._rev,
@@ -126,6 +139,15 @@ const migrate = async () => {
   console.log(
     `Migrating tema:\n %s`,
     regelverkPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
+  );
+  const transactionTema = createTransaction(regelverkPatch);
+  await commitTransaction(transactionTema);
+
+  documents = await fetchDocuments('behandlingstema');
+  const behandlingstemaPatch = buildPatchesForBehandlingstema(documents);
+  console.log(
+    `Migrating tema:\n %s`,
+    behandlingstemaPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
   );
   const transactionbehandlingsTema = createTransaction(regelverkPatch);
   await commitTransaction(transactionbehandlingsTema);

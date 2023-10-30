@@ -8,7 +8,7 @@ import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
-  validerFlettefeltErGyldigForBehandlingstema,
+  validerFlettefeltErGyldigForRegelverk,
 } from './utils';
 import { Mappe, mapperTilMenynavn } from './mapper';
 import { eøsHjemler } from './eøs/hjemler';
@@ -33,7 +33,7 @@ const begrunnelseFlettefelt = {
       },
       validation: rule => [
         rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+        rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
     },
   ],
@@ -63,7 +63,7 @@ const begrunnelseEØSFlettefelt = {
       },
       validation: rule => [
         rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForBehandlingstema),
+        rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
     },
   ],

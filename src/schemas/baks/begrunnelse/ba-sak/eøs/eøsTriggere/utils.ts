@@ -22,18 +22,12 @@ export const hentEØSTriggereRegler = (
   erObligatoriskOmSynlig: boolean,
   regelTyper: EØSTriggerType[],
 ) => [
-  hentEØSFeltRegler(
-    rule,
-    'en EØS-trigger er valgt, men behandlingstema for begrunnelsen er ikke EØS.',
-  ),
+  hentEØSFeltRegler(rule, 'en EØS-trigger er valgt, men regleverk for begrunnelsen er ikke EØS.'),
   erObligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
 ];
 
 export const hentEØSHjemmelRegler = rule =>
-  hentEØSFeltRegler(
-    rule,
-    'En EØS-hjemmel er valgt, men behandlingstema for begrunnelsen er ikke eøs.',
-  );
+  hentEØSFeltRegler(rule, 'En EØS-hjemmel er valgt, men regelverk for begrunnelsen er ikke eøs.');
 
 export const hentEØSFeltRegler = (rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {

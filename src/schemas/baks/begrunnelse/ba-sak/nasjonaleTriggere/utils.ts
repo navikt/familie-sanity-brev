@@ -18,5 +18,5 @@ export const hentNasjonaltFeltRegler = (rule, feilmelding: string) =>
 export const hentNasjonaleTriggereRegler = rule =>
   hentNasjonaltFeltRegler(
     rule,
-    'En nasjonal begrunnelse-trigger er valgt, men behandlingstema for begrunnelsen er ikke nasjonal.',
+    'En nasjonal begrunnelse-trigger er valgt, men regelverk for begrunnelsen er ikke nasjonal.',
   );

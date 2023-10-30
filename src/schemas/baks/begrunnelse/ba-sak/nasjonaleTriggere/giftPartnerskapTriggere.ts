@@ -2,7 +2,7 @@ import { giftPartnerskapTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from 
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
-  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+  lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
 
 export const giftPartnerskapTriggere = {
@@ -19,5 +19,5 @@ export const giftPartnerskapTriggere = {
       document.vilkaar &&
       document.vilkaar.includes(Vilkår.GIFT_PARTNERSKAP)
     ),
-  validation: rule => lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
+  validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

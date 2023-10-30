@@ -3,7 +3,7 @@ import { erEndretUtbetalingBegrunnelse } from './endringsårsakTrigger';
 import { vilkårTriggerTilMenynavn, øvrigeTriggertyper } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
-  lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel,
+  lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
 
 export const øvrigeTriggere = {
@@ -16,5 +16,5 @@ export const øvrigeTriggere = {
   },
   hidden: ({ document }) =>
     erEndretUtbetalingBegrunnelse(document) || !erNasjonalEllerInstitusjonsBegrunnelse(document),
-  validation: rule => lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel(rule),
+  validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

@@ -9,7 +9,7 @@ import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 
-export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context) => {
+export const validerFlettefeltErGyldigForRegelverk = (flettefelt, context) => {
   if (
     erEøsBegrunnelse(context.document) &&
     !eøsFlettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
@@ -20,7 +20,7 @@ export const validerFlettefeltErGyldigForBehandlingstema = (flettefelt, context)
     erNasjonalBegrunnelse(context.document) &&
     !flettefelter.map(flettefelt => flettefelt.value).includes(flettefelt)
   ) {
-    return `Flettefeltet ${flettefelt} er ikke tillatt når behandlingstema er "Nasjonal"`;
+    return `Flettefeltet ${flettefelt} er ikke tillatt når regelverk er "Nasjonal"`;
   } else return true;
 };
 
@@ -29,10 +29,10 @@ export const erNasjonalEllerInstitusjonsBegrunnelse = (
 ): document is NasjonalBegrunnelse | InstitusjonBegrunnelse =>
   erNasjonalBegrunnelse(document) || erInstitusjonsBegrunnelse(document);
 
-export const lagUtfyltNasjonaltFeltMenFeilBehandlingstemaRegel = rule =>
+export const lagUtfyltNasjonaltFeltMenFeilRegelverkRegel = rule =>
   rule.custom((nåVerdi, context) => {
     if (nåVerdi !== undefined && !erNasjonalEllerInstitusjonsBegrunnelse(context.document)) {
-      return 'Feltet er kun gyldig for behandlingstema Nasjonal eller Nasjonal institusjon.';
+      return 'Feltet er kun gyldig for regelverk Nasjonal eller Nasjonal institusjon.';
     }
     return true;
   });
