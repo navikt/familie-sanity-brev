@@ -37,6 +37,14 @@ export const lagUtfyltNasjonaltFeltMenFeilRegelverkRegel = rule =>
     return true;
   });
 
+export const lagUtfyltØvrigeTriggereFeltMenFeilRegelverkRegel = rule =>
+  rule.custom((nåVerdi, context) => {
+    if (nåVerdi !== undefined && !erInstitusjonsBegrunnelse(context.document)) {
+      return 'Feltet er ikke gyldig for regelverk Institusjon.';
+    }
+    return true;
+  });
+
 export const lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse = rule =>
   rule.custom((nåVerdi, context) => {
     if (erNasjonalEllerInstitusjonsBegrunnelse(context.document) && nåVerdi === undefined) {

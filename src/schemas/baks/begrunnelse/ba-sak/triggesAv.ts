@@ -3,7 +3,7 @@ import { lovligOppholdTriggere } from './nasjonaleTriggere/lovligOppholdTriggere
 import { bosattIRiketTriggere } from './nasjonaleTriggere/bosattIRiketTriggere';
 import { giftPartnerskapTriggere } from './nasjonaleTriggere/giftPartnerskapTriggere';
 import { utvidetBarnetrygdTriggere } from './nasjonaleTriggere/utvidetBarnetrygdTriggere';
-import { øvrigeTriggere } from './nasjonaleTriggere/øvrigeTriggere';
+import { øvrigeTriggere } from './øvrigeTriggere';
 import { endringsårsakTrigger } from './nasjonaleTriggere/endringsårsakTrigger';
 import { endretUtbetalingsperiodeTriggere } from './nasjonaleTriggere/endretUtbetalingPeriodeTrigger';
 import { endretUtbetalingsperiodeDeltBostedUtbetalingTrigger } from './nasjonaleTriggere/endretUtbetalingPeriodeDeltBostedTrigger';
@@ -20,7 +20,6 @@ const nasjonaleBegrunnelserTriggere = [
   giftPartnerskapTriggere,
   borMedSøkerTriggere,
   utvidetBarnetrygdTriggere,
-  øvrigeTriggere,
   endringsårsakTrigger,
   endretUtbetalingsperiodeTriggere,
   endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
@@ -35,4 +34,8 @@ const EØSBegrunnelseTriggere = [
   utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
-export const triggesAv = [...nasjonaleBegrunnelserTriggere, ...EØSBegrunnelseTriggere];
+export const triggesAv = [
+  ...nasjonaleBegrunnelserTriggere,
+  ...EØSBegrunnelseTriggere,
+  øvrigeTriggere,
+];

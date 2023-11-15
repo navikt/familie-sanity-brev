@@ -76,6 +76,7 @@ export enum BegrunnelseDokumentNavn {
   GIFT_PARTNERSKAP_TRIGGERE = 'giftPartnerskapTriggere',
   BOR_MED_SØKER_TRIGGERE = 'borMedSokerTriggere',
   ØVRIGE_TRIGGERE = 'ovrigeTriggere',
+  ØVRIGE_TRIGGERE_EØS = 'ovrigeTriggereEOS',
   SKAL_HA_STOR_FORBOSKTAV = 'skalHaStorForbokstav',
   VALGFELT_V2 = 'valgfeltV2',
   ENDRINGSAARSAKER = 'endringsaarsaker',
