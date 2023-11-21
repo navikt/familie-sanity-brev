@@ -1,7 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { erEndretUtbetalingBegrunnelse } from './nasjonaleTriggere/endringsårsakTrigger';
 import { vilkårTriggerTilMenynavn, øvrigeTriggertyper } from './typer';
-import { lagUtfyltØvrigeTriggereFeltMenFeilRegelverkRegel } from './utils';
 
 export const øvrigeTriggere = {
   title: 'Øvrige triggere',
@@ -12,5 +11,4 @@ export const øvrigeTriggere = {
     list: øvrigeTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
   hidden: ({ document }) => erEndretUtbetalingBegrunnelse(document),
-  validation: rule => lagUtfyltØvrigeTriggereFeltMenFeilRegelverkRegel(rule),
 };
