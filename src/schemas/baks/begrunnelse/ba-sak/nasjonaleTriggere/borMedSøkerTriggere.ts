@@ -1,9 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import {
-  erNasjonalEllerInstitusjonsBegrunnelse,
-  lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
-} from '../utils';
 import { lagInstitusjonBorMedSøkerRegel } from '../institusjon/utils';
 
 export const borMedSøkerTriggere = {
@@ -14,14 +10,6 @@ export const borMedSøkerTriggere = {
   options: {
     list: borMedSøkerTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) =>
-    !(
-      erNasjonalEllerInstitusjonsBegrunnelse(document) &&
-      document.vilkaar &&
-      document.vilkaar.includes(Vilkår.BOR_MED_SOKER)
-    ),
-  validation: rule => [
-    lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
-    lagInstitusjonBorMedSøkerRegel(rule),
-  ],
+  hidden: ({ document }) => !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)),
+  validation: rule => [lagInstitusjonBorMedSøkerRegel(rule)],
 };

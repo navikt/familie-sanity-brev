@@ -31,6 +31,7 @@ const EØSBegrunnelseTriggere = [
   barnetsBostedslandTrigger,
   kompetentLandTrigger,
   vilkårsvurderingTriggere,
+  borMedSøkerTriggere,
   utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
