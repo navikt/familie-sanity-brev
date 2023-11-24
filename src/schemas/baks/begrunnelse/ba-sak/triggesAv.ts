@@ -18,7 +18,7 @@ const nasjonaleBegrunnelserTriggere = [
   lovligOppholdTriggere,
   bosattIRiketTriggere,
   giftPartnerskapTriggere,
-  borMedSøkerTriggere,
+
   utvidetBarnetrygdTriggere,
   endringsårsakTrigger,
   endretUtbetalingsperiodeTriggere,
@@ -31,12 +31,13 @@ const EØSBegrunnelseTriggere = [
   barnetsBostedslandTrigger,
   kompetentLandTrigger,
   vilkårsvurderingTriggere,
-  borMedSøkerTriggere,
+
   utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
 export const triggesAv = [
   ...nasjonaleBegrunnelserTriggere,
   ...EØSBegrunnelseTriggere,
+  borMedSøkerTriggere,
   øvrigeTriggere,
 ];
