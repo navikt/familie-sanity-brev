@@ -10,6 +10,8 @@ export const borMedSøkerTriggere = {
   options: {
     list: borMedSøkerTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) => !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)),
+  hidden: ({ document }) =>
+    !(document.vilkaar && document.vilkaar.includes(Vilkår.BOR_MED_SOKER)) &&
+    !(document.eosVilkaar && document.eosVilkaar.includes(Vilkår.BOR_MED_SOKER)),
   validation: rule => [lagInstitusjonBorMedSøkerRegel(rule)],
 };
