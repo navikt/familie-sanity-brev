@@ -6,7 +6,7 @@ import {
 } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
-export enum Vilkår {
+export enum EøsVilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
   BOR_MED_SØKER = 'BOR_MED_SØKER',
   GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
@@ -15,13 +15,13 @@ export enum Vilkår {
   UTVIDET_BARNETRYGD = 'UTVIDET_BARNETRYGD',
 }
 
-const vilkårValg: Record<Vilkår, { title: string; value: Vilkår }> = {
-  UNDER_18_ÅR: { title: 'Under 18 år', value: Vilkår.UNDER_18_ÅR },
-  BOR_MED_SØKER: { title: 'Bor med søker', value: Vilkår.BOR_MED_SØKER },
-  GIFT_PARTNERSKAP: { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
-  BOSATT_I_RIKET: { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
-  LOVLIG_OPPHOLD: { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
-  UTVIDET_BARNETRYGD: { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
+const vilkårValg: Record<EøsVilkår, { title: string; value: EøsVilkår }> = {
+  UNDER_18_ÅR: { title: 'Under 18 år', value: EøsVilkår.UNDER_18_ÅR },
+  BOR_MED_SØKER: { title: 'Bor med søker', value: EøsVilkår.BOR_MED_SØKER },
+  GIFT_PARTNERSKAP: { title: 'Gift partnerskap', value: EøsVilkår.GIFT_PARTNERSKAP },
+  BOSATT_I_RIKET: { title: 'Bosatt i riket', value: EøsVilkår.BOSATT_I_RIKET },
+  LOVLIG_OPPHOLD: { title: 'Lovlig opphold', value: EøsVilkår.LOVLIG_OPPHOLD },
+  UTVIDET_BARNETRYGD: { title: 'Utvidet barnetrygd', value: EøsVilkår.UTVIDET_BARNETRYGD },
 };
 
 export const vilkårsvurderingTriggere = {
@@ -34,7 +34,7 @@ export const vilkårsvurderingTriggere = {
     },
   ],
   options: {
-    list: Object.values(Vilkår).map(vilkår => vilkårValg[vilkår]),
+    list: Object.values(EøsVilkår).map(vilkår => vilkårValg[vilkår]),
   },
 
   hidden: ({ document }) =>

@@ -11,7 +11,7 @@ export const hjemler = ['2', '3', '4', '5', '9', '10', '11', '12', '14', '17', '
 export const hjemlerFolketrygdloven = ['2-5', '2-8'];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
-export enum Vilkår {
+export enum NasjonaleVilkår {
   UNDER_18_ÅR = 'UNDER_18_ÅR',
   BOR_MED_SOKER = 'BOR_MED_SOKER',
   GIFT_PARTNERSKAP = 'GIFT_PARTNERSKAP',
@@ -21,12 +21,12 @@ export enum Vilkår {
 }
 
 export const vilkår = [
-  { title: 'Under 18 år', value: Vilkår.UNDER_18_ÅR },
-  { title: 'Bor med søker', value: Vilkår.BOR_MED_SOKER },
-  { title: 'Gift partnerskap', value: Vilkår.GIFT_PARTNERSKAP },
-  { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
-  { title: 'Lovlig opphold', value: Vilkår.LOVLIG_OPPHOLD },
-  { title: 'Utvidet barnetrygd', value: Vilkår.UTVIDET_BARNETRYGD },
+  { title: 'Under 18 år', value: NasjonaleVilkår.UNDER_18_ÅR },
+  { title: 'Bor med søker', value: NasjonaleVilkår.BOR_MED_SOKER },
+  { title: 'Gift partnerskap', value: NasjonaleVilkår.GIFT_PARTNERSKAP },
+  { title: 'Bosatt i riket', value: NasjonaleVilkår.BOSATT_I_RIKET },
+  { title: 'Lovlig opphold', value: NasjonaleVilkår.LOVLIG_OPPHOLD },
+  { title: 'Utvidet barnetrygd', value: NasjonaleVilkår.UTVIDET_BARNETRYGD },
 ];
 
 export const flettefelter = [

@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
-import { Vilkår } from '../typer';
+import { NasjonaleVilkår } from '../typer';
 import { erInstitusjonsBegrunnelse } from '../institusjon/utils';
 import { erEndretUtbetalingBegrunnelse } from '../nasjonaleTriggere/endringsårsakTrigger';
 import { Rule } from 'sanity';
@@ -10,10 +10,10 @@ export enum Rolle {
 }
 
 const gjelderBosattIRiketVilkår = (dokument?: any) =>
-  dokument?.vilkaar && dokument.vilkaar.includes(Vilkår.BOSATT_I_RIKET);
+  dokument?.vilkaar && dokument.vilkaar.includes(NasjonaleVilkår.BOSATT_I_RIKET);
 
 const gjelderLovligOppholdVilkår = (dokument?: any) =>
-  dokument?.vilkaar && dokument.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD);
+  dokument?.vilkaar && dokument.vilkaar.includes(NasjonaleVilkår.LOVLIG_OPPHOLD);
 
 const rolleSkalVises = (dokument?: any): boolean =>
   !erInstitusjonsBegrunnelse(dokument) &&

@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { lovligOppholdTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { lovligOppholdTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
@@ -17,7 +17,7 @@ export const lovligOppholdTriggere = {
     !(
       erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
-      document.vilkaar.includes(Vilkår.LOVLIG_OPPHOLD)
+      document.vilkaar.includes(NasjonaleVilkår.LOVLIG_OPPHOLD)
     ),
   validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

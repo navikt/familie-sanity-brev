@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
-import { Begrunnelse, InstitusjonBegrunnelse, Vilkår, VilkårTriggere } from '../typer';
+import { Begrunnelse, InstitusjonBegrunnelse, NasjonaleVilkår, VilkårTriggere } from '../typer';
 import { erSakspesifikkBegrunnelse } from '../sanityMappeFelt/valgbarhet';
 import { FagsakType } from '../sanityMappeFelt/fagsakType';
 
@@ -13,7 +13,7 @@ export const erInstitusjonsBegrunnelse = (
 export const lagInvaliderUtvidetForInstitusjonRegel = rule =>
   rule.custom((nåVerdi, context) => {
     if (erInstitusjonsBegrunnelse(context.document) && nåVerdi !== undefined) {
-      return nåVerdi.includes(Vilkår.UTVIDET_BARNETRYGD)
+      return nåVerdi.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)
         ? 'Utvidet barnetrygd er ikke i bruk i institusjonssaker'
         : true;
     }

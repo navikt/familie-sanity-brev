@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { utvidetBarnetrygdTriggertyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { utvidetBarnetrygdTriggertyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
 import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 
@@ -15,7 +15,7 @@ export const utvidetBarnetrygdTriggere = {
     !(
       erNasjonalBegrunnelse(document) &&
       document.vilkaar &&
-      document.vilkaar.includes(Vilkår.UTVIDET_BARNETRYGD)
+      document.vilkaar.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)
     ) || erEøsBegrunnelse(document),
   validation: rule => hentNasjonaleTriggereRegler(rule),
 };
