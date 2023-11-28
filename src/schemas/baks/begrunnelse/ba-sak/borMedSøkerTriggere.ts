@@ -3,7 +3,7 @@ import { EøsVilkår } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 import { NasjonaleVilkår } from './typer';
 import { lagInstitusjonBorMedSøkerRegel } from './institusjon/utils';
 
-enum BorMedSøkerTriggere {
+export enum BorMedSøkerTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   DELT_BOSTED = 'DELT_BOSTED',
   DELT_BOSTED_SKAL_IKKE_DELES = 'DELT_BOSTED_SKAL_IKKE_DELES',
