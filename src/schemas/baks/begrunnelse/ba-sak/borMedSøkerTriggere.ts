@@ -1,6 +1,6 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { lagInstitusjonBorMedSøkerRegel } from '../institusjon/utils';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { borMedSøkerTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from './typer';
+import { lagInstitusjonBorMedSøkerRegel } from './institusjon/utils';
 
 export const borMedSøkerTriggere = {
   title: 'Triggere for "Bor med søker"',
