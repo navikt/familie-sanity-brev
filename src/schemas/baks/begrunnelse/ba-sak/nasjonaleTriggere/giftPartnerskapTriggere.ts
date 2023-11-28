@@ -1,4 +1,4 @@
-import { giftPartnerskapTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
@@ -17,7 +17,7 @@ export const giftPartnerskapTriggere = {
     !(
       erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
-      document.vilkaar.includes(Vilkår.GIFT_PARTNERSKAP)
+      document.vilkaar.includes(NasjonaleVilkår.GIFT_PARTNERSKAP)
     ),
   validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

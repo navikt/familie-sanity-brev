@@ -1,4 +1,4 @@
-import { borMedSøkerTriggere } from './nasjonaleTriggere/borMedSøkerTriggere';
+import { borMedSøkerTriggere } from './borMedSøkerTriggere';
 import { lovligOppholdTriggere } from './nasjonaleTriggere/lovligOppholdTriggere';
 import { bosattIRiketTriggere } from './nasjonaleTriggere/bosattIRiketTriggere';
 import { giftPartnerskapTriggere } from './nasjonaleTriggere/giftPartnerskapTriggere';

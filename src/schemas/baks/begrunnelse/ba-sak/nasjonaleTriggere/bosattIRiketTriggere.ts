@@ -1,5 +1,5 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { bosattIRiketTriggerTyper, Vilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { bosattIRiketTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
@@ -17,7 +17,7 @@ export const bosattIRiketTriggere = {
     !(
       erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
-      document.vilkaar.includes(Vilkår.BOSATT_I_RIKET)
+      document.vilkaar.includes(NasjonaleVilkår.BOSATT_I_RIKET)
     ),
   validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };
