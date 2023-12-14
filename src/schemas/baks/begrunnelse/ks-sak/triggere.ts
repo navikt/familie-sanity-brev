@@ -1,5 +1,4 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { erNasjonalBegrunnelse } from './eøs/eøsTriggere/utils';
 
 export enum Trigger {
   SATSENDRING = 'SATSENDRING',
