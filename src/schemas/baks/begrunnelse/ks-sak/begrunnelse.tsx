@@ -1,5 +1,5 @@
 import { DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { triggere } from './nasjonal/nasjonaleTriggere/triggere';
+import { triggere } from './triggere';
 import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
 import {
