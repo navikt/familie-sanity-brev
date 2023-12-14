@@ -3,8 +3,7 @@ import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 export enum Tema {
   NASJONAL = 'NASJONAL',
   FELLES = 'FELLES',
-  EØS_PRIMÆRLAND = 'EØS_PRIMÆRLAND',
-  EØS_SEKUNDÆRLAND = 'EØS_SEKUNDÆRLAND',
+  EØS = 'EØS',
 }
 
 export const temaValg: Record<Tema, { title: string; value: Tema }> = {
@@ -13,8 +12,7 @@ export const temaValg: Record<Tema, { title: string; value: Tema }> = {
     title: 'Felles',
     value: Tema.FELLES,
   },
-  EØS_PRIMÆRLAND: { title: 'EØS - Primærland', value: Tema.EØS_PRIMÆRLAND },
-  EØS_SEKUNDÆRLAND: { title: 'EØS - Sekundærland', value: Tema.EØS_SEKUNDÆRLAND },
+  EØS: { title: 'EØS', value: Tema.EØS },
 };
 
 export const tema = {

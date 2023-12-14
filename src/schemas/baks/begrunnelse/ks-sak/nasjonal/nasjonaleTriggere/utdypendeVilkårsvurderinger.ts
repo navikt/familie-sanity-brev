@@ -1,4 +1,5 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 
 export enum UtdypendeVilkårsvurderinger {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
@@ -44,4 +45,5 @@ export const utdypendeVilkårsvurderinger = {
       trigger => utdypendeVilkårsvurderingerValg[trigger],
     ),
   },
+  hidden: ({ document }) => !erNasjonalBegrunnelse(document),
 };

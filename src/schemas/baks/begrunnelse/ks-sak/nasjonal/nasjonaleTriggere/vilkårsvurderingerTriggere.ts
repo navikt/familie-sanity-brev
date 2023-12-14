@@ -1,4 +1,5 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 
 export enum Vilkår {
   BOSATT_I_RIKET = 'BOSATT_I_RIKET',
@@ -10,7 +11,7 @@ export enum Vilkår {
 }
 
 const vilkårValg: Record<Vilkår, { title: string; value: Vilkår }> = {
-  BOSATT_I_RIKET: { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
+  BOSATT_I_RIKET: { title: 'Bosaatt i riket', value: Vilkår.BOSATT_I_RIKET },
   MEDLEMSKAP: {
     title: 'Medlemskap',
     value: Vilkår.MEDLEMSKAP,
@@ -42,4 +43,5 @@ export const vilkårsvurderingTriggere = {
   options: {
     list: Object.values(Vilkår).map(vilkår => vilkårValg[vilkår]),
   },
+  hidden: ({ document }) => !erNasjonalBegrunnelse(document),
 };

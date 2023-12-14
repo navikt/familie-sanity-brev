@@ -1,9 +1,17 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { erEndretUtbetaling } from './resultat';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { Resultat } from '../../resultat';
+import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 
 export enum EndretUtbetalingsperioder {
   ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
 }
+
+export const erEndretUtbetaling: (document) => boolean = document =>
+  document[KSBegrunnelseDokumentNavn.RESULTAT] &&
+  (document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.ENDRET_UTBETALINGSPERIODE) ||
+    document[KSBegrunnelseDokumentNavn.RESULTAT].includes(
+      Resultat.ETTER_ENDRET_UTBETALINGSPERIODE,
+    ));
 
 const endretUtbetalingsperioderValg: Record<
   EndretUtbetalingsperioder,
@@ -25,5 +33,5 @@ export const endretUtbetalingsperiodeTriggere = {
       endretUtbetalingsperiode => endretUtbetalingsperioderValg[endretUtbetalingsperiode],
     ),
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document),
+  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
 };
