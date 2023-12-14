@@ -1,4 +1,5 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 
 export enum Trigger {
   SATSENDRING = 'SATSENDRING',
@@ -31,4 +32,5 @@ export const triggere = {
   options: {
     list: Object.values(Trigger).map(trigger => triggerValg[trigger]),
   },
+  hidden: ({ document }) => !erNasjonalBegrunnelse(document),
 };

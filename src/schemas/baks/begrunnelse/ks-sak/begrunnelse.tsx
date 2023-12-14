@@ -1,7 +1,6 @@
 import { DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { triggere } from './triggere';
-import { eøsHjemler } from '../ba-sak/eøs/hjemler';
-import { vilkårsvurderingTriggere } from './vilkårsvurderingerTriggere';
+import { triggere } from './nasjonal/nasjonaleTriggere/triggere';
+import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
 import {
   begrunnelseEØSFlettefelt,
@@ -13,10 +12,16 @@ import { tema } from './tema';
 import { type } from './type';
 import { hjemler } from './hjemler';
 import { apiNavnValideringerBegrunnelse } from './valideringer';
-import { utdypendeVilkårsvurderinger } from './utdypendeVilkårsvurderinger';
-import { endringsårsakTriggere } from './endringsårsakTriggere';
-import { endretUtbetalingsperiodeTriggere } from './endretUtbetalingPeriodeTriggere';
+import { utdypendeVilkårsvurderinger } from './nasjonal/nasjonaleTriggere/utdypendeVilkårsvurderinger';
+import { endringsårsakTriggere } from './nasjonal/nasjonaleTriggere/endringsårsakTriggere';
+import { endretUtbetalingsperiodeTriggere } from './nasjonal/nasjonaleTriggere/endretUtbetalingPeriodeTriggere';
 import { rolle } from '../ba-sak/sanityMappeFelt/rolle';
+import { hvilkeTriggereSkalBrukes } from './eøs/eøsTriggere/hvilkeTriggereSkalBrukes';
+import { eøsHjemler } from './eøs/hjemler';
+import { annenForeldersAktivitetTrigger } from './eøs/eøsTriggere/annenForeldersAktivitetTrigger';
+import { barnetsBostedslandTrigger } from './eøs/eøsTriggere/barnetsBostedslandTriggere';
+import { kompetentLandTrigger } from './eøs/eøsTriggere/kompetentLandTrigger';
+import { eøsVilkårsvurderingTriggere } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -82,10 +87,15 @@ const begrunnelse = {
       description: 'Huk av dersom begrunnelsen alltid skal dukke opp som et valg',
     },
     vilkårsvurderingTriggere,
-    utdypendeVilkårsvurderinger,
     triggere,
     endringsårsakTriggere,
     endretUtbetalingsperiodeTriggere,
+    hvilkeTriggereSkalBrukes,
+    annenForeldersAktivitetTrigger,
+    barnetsBostedslandTrigger,
+    kompetentLandTrigger,
+    eøsVilkårsvurderingTriggere,
+    utdypendeVilkårsvurderinger,
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],

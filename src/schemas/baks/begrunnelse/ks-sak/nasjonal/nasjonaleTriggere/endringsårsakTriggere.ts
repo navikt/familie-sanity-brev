@@ -1,5 +1,6 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { erEndretUtbetaling } from './resultat';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { erEndretUtbetaling } from './endretUtbetalingPeriodeTriggere';
+import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 
 export enum Endringsårsak {
   DELT_BOSTED = 'DELT_BOSTED',
@@ -21,7 +22,8 @@ export const endringsårsakTriggere = {
   options: {
     list: Object.values(Endringsårsak).map(endringsårsak => endringsårsakValg[endringsårsak]),
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document),
+  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
+
   validation: rule => [
     rule
       .custom((endringsårsakTriggere, context) => {
