@@ -2085,10 +2085,10 @@
     "@types/uuid" "^8.0.0"
     uuid "^8.0.0"
 
-"@sanity/vision@^3.21.3":
-  version "3.21.3"
-  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.21.3.tgz#ffcfff87a5aff517daf036baf308f2560b2932a9"
-  integrity sha512-hdKtwDsxspMY6cRi/Q/A34sqRONHLQ1toic/bD1+hCVKAf+YAzFVlekckxNqB/ukKN4q09Sv8T6JHLqy+c/Z3A==
+"@sanity/vision@^3.22.1":
+  version "3.22.1"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-3.22.1.tgz#3d31cec9f62c449a76cb00101234244eb9723876"
+  integrity sha512-vYIGYZRHXT9IQxYhhe5OZx63+d7X/O1HsUweyRPed3or6UcYdQEzUtgBpymVFx3q27FGJE/NFeAmYjzaBgDGjg==
   dependencies:
     "@codemirror/autocomplete" "^6.1.0"
     "@codemirror/commands" "^6.0.1"
