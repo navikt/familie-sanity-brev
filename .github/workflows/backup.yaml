@@ -23,7 +23,7 @@ jobs:
         run: sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backup-ba
           path: backups/ba-sak.tar.gz
@@ -51,7 +51,7 @@ jobs:
         run: sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backup-ef
           path: backups/ef-sak.tar.gz
