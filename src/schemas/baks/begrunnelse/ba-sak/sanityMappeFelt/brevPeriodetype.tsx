@@ -6,6 +6,7 @@ export enum BrevPeriodetype {
   INGEN_UTBETALING = 'INGEN_UTBETALING',
   INGEN_UTBETALING_UTEN_PERIODE = 'INGEN_UTBETALING_UTEN_PERIODE',
   FORTSATT_INNVILGET = 'FORTSATT_INNVILGET',
+  IKKE_RELEVANT = 'IKKE_RELEVANT',
 }
 
 export const brevPeriodeTypeTilMenyValg = (
@@ -21,6 +22,8 @@ export const brevPeriodeTypeTilMenyValg = (
         return 'Ingen utbetaling uten periode';
       case BrevPeriodetype.FORTSATT_INNVILGET:
         return 'Fortsatt innvilget';
+      case BrevPeriodetype.IKKE_RELEVANT:
+        return 'Ikke relevant';
     }
   };
 
