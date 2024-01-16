@@ -8,22 +8,11 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Deploy Sanity
     steps:
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v4
-
-      - name: ⎔ Setup node
-        uses: actions/setup-node@v4
-        with:
-          cache: yarn
-          cache-dependency-path: ./package.json
-          node-version: 20
-
-      - name: Installer sanity
-        run: yarn global add @sanity/cli && sanity install
-
-      - name: Deploy sanity
+      - uses: actions/checkout@v2
+      - uses: sanity-io/github-action-sanity@v0.7-alpha
         env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
-        run: sanity deploy
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        with:
+          args: deploy
