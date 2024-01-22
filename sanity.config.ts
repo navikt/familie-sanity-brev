@@ -1,5 +1,5 @@
 import { AuthConfig, defineConfig, definePlugin } from 'sanity';
-import { deskTool } from 'sanity/desk';
+import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './src';
 import { structure } from './config/deskStructure';
@@ -8,7 +8,7 @@ const PROSJEKT_ID = 'xsrv1mh6';
 
 const sharedConfig = definePlugin({
   name: 'shareConfig',
-  plugins: [deskTool({ structure }), visionTool()],
+  plugins: [structureTool({ structure }), visionTool()],
   schema: {
     types: schemaTypes,
   },

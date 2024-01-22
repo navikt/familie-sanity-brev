@@ -15,7 +15,7 @@ import {
   Valgbarhet,
   valgbarhetTilMenyValg,
 } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
-import { ListItemBuilder, StructureBuilder } from 'sanity/desk';
+import { ListItemBuilder, StructureBuilder } from 'sanity/structure';
 import {
   Regelverk,
   regelverkTilMenyValg,
