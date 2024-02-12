@@ -4446,10 +4446,10 @@ groq-js@^1.1.12, groq-js@^1.4.1:
   resolved "https://registry.yarnpkg.com/groq-js/-/groq-js-1.4.1.tgz#eedb722d88635f30d5254c1e52db644013f721ae"
   integrity sha512-AA9n7NRxGd0smsAW/vE+dudCL3mBd73Fe21I7cMrrpDHamVFvWHNMs8LdkfvFBsnHI9XKQph8swzI4ExDWhsgg==
 
-groq@^3.27.1:
-  version "3.27.1"
-  resolved "https://registry.yarnpkg.com/groq/-/groq-3.27.1.tgz#fbb2a03f839939cb3aab94017136caead5c9a833"
-  integrity sha512-fJ4GN0LEVwT+Xt2E0vO9nwBg9SZzbVBjnBxXlKWhqFczGS9QQgOdcqp5Eu/xu/ByD3uKz/r8v65E7ZQm5dmp/g==
+groq@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-3.28.0.tgz#daba909a81177e8cc857768d7fa2271f8d4833f8"
+  integrity sha512-8VPmxXAHlX+oWECMxPH89o4jUB2t5FqVvyJq8ZhPwqK4Usb4rzLkWX1R+Lh7NVhAk30NuZV3k+4R3D9pBrdVgg==
 
 gunzip-maybe@^1.4.1:
   version "1.4.2"
