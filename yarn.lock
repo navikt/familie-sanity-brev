@@ -1892,10 +1892,10 @@
     node-machine-id "^1.1.12"
     pkg-dir "^5.0.0"
 
-"@sanity/client@^6.12.3":
-  version "6.12.3"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.12.3.tgz#240d50c55b3ed4e0f3a24a055c852d0aea992c89"
-  integrity sha512-oA9LkDZOpVN8nciGb6/h+1r4ElH0IUTC3bHyBdVsxB5namdWBJKZzuVjJiWQlsK8up7U1xsATB4hyimSgUCSjA==
+"@sanity/client@^6.12.3", "@sanity/client@^6.13.0":
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.13.0.tgz#e57c9bbb9f244774186d5023ee53ad99c13fae0b"
+  integrity sha512-YryKpAszLZN7khTpUD2Xf3q+74oC+RUBZN49n5NEKy6Bng5ZeY+8+p0/PG44Ql976n25Hzo72MBWrMPKXiI84w==
   dependencies:
     "@sanity/eventsource" "^5.0.0"
     "@vercel/stega" "0.1.0"
