@@ -4,14 +4,29 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: daily
-    time: "18:00"
+    interval: weekly
+    day: "sunday"
+    time: "04:00"
   open-pull-requests-limit: 10
+  groups:
+    minor-and-patch-dependencies:
+      patterns:
+        - "*"
+      update-types:
+        - "minor"
+        - "patch"
+    major-dependencies:
+      patterns:
+        - "*"
+      update-types:
+        - "major"
   ignore:
     - dependency-name: "*"
       update-types: ["version-update:semver-patch"]
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
+    day: "sunday"
+    time: "04:00"
   open-pull-requests-limit: 10
