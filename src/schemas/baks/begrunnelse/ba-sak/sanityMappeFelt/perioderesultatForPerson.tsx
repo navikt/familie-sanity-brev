@@ -5,6 +5,7 @@ export enum PerioderesultatForPerson {
   REDUKSJON = 'REDUKSJON',
   IKKE_INNVILGET = 'IKKE_INNVILGET',
   INGEN_ENDRING = 'INGEN_ENDRING',
+  IKKE_RELEVANT = 'IKKE_RELEVANT',
 }
 
 export const periodeResultatForPersonTilMenyValg = (
@@ -22,6 +23,8 @@ export const periodeResultatForPersonTilMenyValg = (
         return 'Ingen endring';
       case PerioderesultatForPerson.IKKE_INNVILGET:
         return 'Ikke innvilget';
+      case PerioderesultatForPerson.IKKE_RELEVANT:
+        return 'Ikke relevant';
     }
   };
 
