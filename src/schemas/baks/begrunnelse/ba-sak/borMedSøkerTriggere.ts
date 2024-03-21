@@ -7,6 +7,7 @@ export enum BorMedSøkerTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   DELT_BOSTED = 'DELT_BOSTED',
   DELT_BOSTED_SKAL_IKKE_DELES = 'DELT_BOSTED_SKAL_IKKE_DELES',
+  FAST_BOSTED = 'FAST_BOSTED',
 }
 
 const vilkårTriggerTilMenynavn: Record<BorMedSøkerTriggere, { title: string; value: string }> = {
@@ -21,6 +22,10 @@ const vilkårTriggerTilMenynavn: Record<BorMedSøkerTriggere, { title: string; v
   VURDERING_ANNET_GRUNNLAG: {
     title: 'Vurdering annet grunnlag',
     value: BorMedSøkerTriggere.VURDERING_ANNET_GRUNNLAG,
+  },
+  FAST_BOSTED: {
+    title: 'Fast bosted',
+    value: BorMedSøkerTriggere.FAST_BOSTED,
   },
 };
 
