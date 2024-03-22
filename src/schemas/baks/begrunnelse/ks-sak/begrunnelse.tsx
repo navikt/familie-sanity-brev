@@ -1,4 +1,9 @@
-import { DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  KSBegrunnelseDokumentNavn,
+  SanityTyper,
+} from '../../../../util/typer';
 import { triggere } from './triggere';
 import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
@@ -76,7 +81,7 @@ const begrunnelse = {
     {
       title: 'Støtter fritekst',
       type: SanityTyper.BOOLEAN,
-      name: KSBegrunnelseDokumentNavn.STØTTER_FRITEKST,
+      name: BegrunnelseDokumentNavn.STØTTER_FRITEKST,
       description:
         'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i KS-SAK',
     },

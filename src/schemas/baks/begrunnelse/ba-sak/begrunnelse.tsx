@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import {
+  BegrunnelseDokumentNavn,
+  DokumentNavn,
+  KSBegrunnelseDokumentNavn,
+  SanityTyper,
+} from '../../../../util/typer';
 import styled from 'styled-components';
 import { eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
 import { triggesAv } from './triggesAv';
@@ -213,6 +218,13 @@ const begrunnelse = {
       },
     },
     ...eøsHjemler,
+    {
+      title: 'Støtter fritekst',
+      type: SanityTyper.BOOLEAN,
+      name: BegrunnelseDokumentNavn.STØTTER_FRITEKST,
+      description:
+        'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i BA-SAK',
+    },
     {
       title: 'Vilkår',
       description:

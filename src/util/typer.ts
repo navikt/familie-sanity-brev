@@ -82,6 +82,7 @@ export enum BegrunnelseDokumentNavn {
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
   ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
+  STØTTER_FRITEKST = 'stotterFritekst',
 }
 
 export enum EØSBegrunnelseDokumentNavn {
@@ -102,7 +103,6 @@ export enum KSBegrunnelseDokumentNavn {
   UTDYPENDE_VILKÅRSVURDERINGER = 'utdypendeVilkaarsvurderinger',
   ENDRINGSAARSAKER = 'endringsaarsaker',
   ENDRET_UTBETALINGSPERIODE = 'endretUtbetalingsperiode',
-  STØTTER_FRITEKST = 'stotterFritekst',
   SKAL_ALLTID_VISES = 'skalAlltidVises',
 }
 
