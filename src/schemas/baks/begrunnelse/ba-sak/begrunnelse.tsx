@@ -214,6 +214,13 @@ const begrunnelse = {
     },
     ...eøsHjemler,
     {
+      title: 'Støtter fritekst',
+      type: SanityTyper.BOOLEAN,
+      name: BegrunnelseDokumentNavn.STØTTER_FRITEKST,
+      description:
+        'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i BA-SAK',
+    },
+    {
       title: 'Vilkår',
       description:
         'Hvilke vilkår som må være utgjørende for at begrunnelsen skal vises. ' +
