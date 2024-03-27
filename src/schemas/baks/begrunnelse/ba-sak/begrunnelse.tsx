@@ -212,6 +212,12 @@ const begrunnelse = {
         list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
       },
     },
+    {
+      title: 'Skrudd av i produksjon',
+      type: SanityTyper.BOOLEAN,
+      name: BegrunnelseDokumentNavn.SLÅTT_AV_I_PRODUKSJON,
+      description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig i produksjon',
+    },
     ...eøsHjemler,
     {
       title: 'Støtter fritekst',
