@@ -82,7 +82,7 @@ export enum BegrunnelseDokumentNavn {
   ENDRET_UTBETALINGSPERIODE_TRIGGERE = 'endretUtbetalingsperiodeTriggere',
   ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_UTBETALING_TRIGGER = 'endretUtbetalingsperiodeDeltBostedUtbetalingTrigger',
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
-  SLÅTT_AV_I_PRODUKSJON = 'slaattAvIProduksjon',
+  IKKE_I_BRUK = 'ikkeIBruk',
   STØTTER_FRITEKST = 'stotterFritekst',
 }
 

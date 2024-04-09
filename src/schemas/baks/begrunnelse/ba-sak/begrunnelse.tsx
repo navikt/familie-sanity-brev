@@ -213,10 +213,10 @@ const begrunnelse = {
       },
     },
     {
-      title: 'Skrudd av i produksjon',
+      title: 'Ikke i bruk',
       type: SanityTyper.BOOLEAN,
-      name: BegrunnelseDokumentNavn.SLÅTT_AV_I_PRODUKSJON,
-      description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig i produksjon',
+      name: BegrunnelseDokumentNavn.IKKE_I_BRUK,
+      description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig',
     },
     ...eøsHjemler,
     {
