@@ -22,6 +22,12 @@ export const delmalAvsnitt = maalform => ({
       validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
     },
     {
+      title: 'Delmalen skal begynne på neste side',
+      name: DokumentNavn.SKAL_BEGYNNE_PÅ_NY_SIDE,
+      type: SanityTyper.BOOLEAN,
+      description: 'Dersom denne er på vil delmalen begynne på ny side',
+    },
+    {
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage ny delmal',

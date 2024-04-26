@@ -43,6 +43,8 @@ export enum DokumentNavn {
   FRITTSTÅENDE_BREV = 'frittstaendeBrev',
   FOR_FRITTSTÅENDE_BREV = 'valgtSomFrittstaendeBrev',
   TITTEL_DOKUMENTOVERSIKT = 'tittelDokumentoversikt',
+  UTBETALINGER = 'utbetalinger',
+  SKAL_BEGYNNE_PÅ_NY_SIDE = 'skalBegynnePaaNySide',
 }
 
 export enum SanityTyper {

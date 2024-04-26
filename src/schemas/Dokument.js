@@ -6,6 +6,7 @@ import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
 import decorators from '../util/decorators';
 import { apiNavnValideringer } from '../util/valideringer';
+import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -15,6 +16,7 @@ const editor = (maalform, tittel) => ({
     delmalAvsnitt(maalform),
     flettefeltAvsnitt,
     peroideAvsnitt,
+    utbetalingerAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {

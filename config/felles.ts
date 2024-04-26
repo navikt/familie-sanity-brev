@@ -8,6 +8,7 @@ export const ekskluderesForEf: string[] = [
   DokumentNavn.DELMAL,
   DokumentNavn.DOKUMENT,
   DokumentNavn.PERIODE,
+  DokumentNavn.UTBETALINGER,
   BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
   KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
