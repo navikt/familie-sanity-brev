@@ -5,6 +5,7 @@ import TekstStyles from '../util/TekstStyles';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import decorators from '../util/decorators';
 import { apiNavnValideringer } from '../util/valideringer';
+import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -12,6 +13,7 @@ const editor = (maalform, tittel) => ({
   type: SanityTyper.ARRAY,
   of: [
     flettefeltAvsnitt,
+    utbetalingerAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {
