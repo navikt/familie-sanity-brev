@@ -53,8 +53,8 @@ export enum VilkårTriggere {
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
   ALLTID_AUTOMATISK = 'ALLTID_AUTOMATISK',
   SMÅBARNSTILLEGG = 'SMÅBARNSTILLEGG',
-  GJELDER_FØRSTE_PERIODE = 'GJELDER_FØRSTE_PERIODE',
-  GJELDER_FRA_INNVILGELSESTIDSPUNKT = 'GJELDER_FRA_INNVILGELSESTIDSPUNKT',
+  OPPHØR_FRA_FORRIGE_BEHANDLING = 'OPPHØR_FRA_FORRIGE_BEHANDLING',
+  REDUKSJON_FRA_FORRIGE_BEHANDLING = 'REDUKSJON_FRA_FORRIGE_BEHANDLING',
   BARN_DØD = 'BARN_DØD',
   SKAL_VISES_SELV_OM_IKKE_ENDRING = 'SKAL_VISES_SELV_OM_IKKE_ENDRING',
 }
@@ -74,8 +74,8 @@ export const øvrigeTriggertyper = [
   VilkårTriggere.SATSENDRING,
   VilkårTriggere.MANGLER_OPPLYSNINGER,
   VilkårTriggere.ALLTID_AUTOMATISK,
-  VilkårTriggere.GJELDER_FØRSTE_PERIODE,
-  VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
+  VilkårTriggere.OPPHØR_FRA_FORRIGE_BEHANDLING,
+  VilkårTriggere.REDUKSJON_FRA_FORRIGE_BEHANDLING,
   VilkårTriggere.BARN_DØD,
   VilkårTriggere.SKAL_VISES_SELV_OM_IKKE_ENDRING,
 ];
@@ -108,13 +108,13 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     title: 'Småbarnstillegg',
     value: VilkårTriggere.SMÅBARNSTILLEGG,
   },
-  GJELDER_FØRSTE_PERIODE: {
+  OPPHØR_FRA_FORRIGE_BEHANDLING: {
     title: 'Opphør fra forrige behandling',
-    value: VilkårTriggere.GJELDER_FØRSTE_PERIODE,
+    value: VilkårTriggere.OPPHØR_FRA_FORRIGE_BEHANDLING,
   },
-  GJELDER_FRA_INNVILGELSESTIDSPUNKT: {
+  REDUKSJON_FRA_FORRIGE_BEHANDLING: {
     title: 'Reduksjon fra forrige behandling',
-    value: VilkårTriggere.GJELDER_FRA_INNVILGELSESTIDSPUNKT,
+    value: VilkårTriggere.REDUKSJON_FRA_FORRIGE_BEHANDLING,
   },
   BARN_DØD: {
     title: 'Barn død',
