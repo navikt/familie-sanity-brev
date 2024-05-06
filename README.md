@@ -5,7 +5,7 @@
 
 ### Kjøre lokalt
 * Kjør `yarn` for å installere alle npm-pakkene. 
-* Kjør `sanity dev` for å starte applikasjonen på localhost:3333.
+* Kjør `sanity dev` for å starte applikasjonen på `http://localhost:3333/`.
 
 ## Kode generert av GitHub Copilot
 
