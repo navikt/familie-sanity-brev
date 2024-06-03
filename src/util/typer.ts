@@ -45,6 +45,7 @@ export enum DokumentNavn {
   TITTEL_DOKUMENTOVERSIKT = 'tittelDokumentoversikt',
   UTBETALINGER = 'utbetalinger',
   SKAL_BEGYNNE_PÅ_NY_SIDE = 'skalBegynnePaaNySide',
+  SAMMENSATT_KONTROLLSAK_FRITEKST = 'sammensattKontrollsakFritekst',
 }
 
 export enum SanityTyper {
