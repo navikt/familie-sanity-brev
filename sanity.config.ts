@@ -65,6 +65,15 @@ export default defineConfig([
     auth: auth,
   },
   {
+    name: 'ks-v2',
+    title: 'KS-v2',
+    projectId: PROSJEKT_ID,
+    dataset: 'ks-v2',
+    basePath: '/ks-v2',
+    plugins: [sharedConfig()],
+    auth: auth,
+  },
+  {
     name: 'ks-test',
     title: 'KS-test',
     projectId: PROSJEKT_ID,
