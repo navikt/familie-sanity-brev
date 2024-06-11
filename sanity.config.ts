@@ -56,6 +56,15 @@ export default defineConfig([
     auth: auth,
   },
   {
+    name: 'ba-v2',
+    title: 'BA-v2',
+    projectId: PROSJEKT_ID,
+    dataset: 'ba-v2',
+    basePath: '/ba-v2',
+    plugins: [sharedConfig()],
+    auth: auth,
+  },
+  {
     name: 'ks-brev',
     title: 'KS',
     projectId: PROSJEKT_ID,
