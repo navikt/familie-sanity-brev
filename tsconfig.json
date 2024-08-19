@@ -7,7 +7,7 @@
     "./logo/*.js",
     "./logo/*.js",
     "./migreringer/*.js"
-  ],
+, "eslint.config.js"  ],
   "compilerOptions": {
     "jsx": "react",
     "allowSyntheticDefaultImports": true
