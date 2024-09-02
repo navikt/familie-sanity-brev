@@ -6,7 +6,8 @@
     "./config/*.js",
     "./logo/*.js",
     "./logo/*.js",
-    "./migreringer/*.js"
+    "./migreringer/*.js",
+    "eslint.config.mjs",
   ],
   "compilerOptions": {
     "jsx": "react",
