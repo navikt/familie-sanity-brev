@@ -9,11 +9,19 @@ type IReferrer = {
   _type: string;
 };
 
-function HvorErDelmalenIBruk(props: any) {
+const utledDokumentId = (): string => {
   const url = window.location.pathname;
-  const documentId = url.includes(';')
-    ? url.split(';').reverse()[0].slice(0, 36)
-    : url.split('__edit__').reverse()[0].slice(0, 36);
+
+  if (url.includes(';avansertDelmal')) {
+    return url.split(';').reverse()[0].slice(15, 51);
+  } else if (url.includes(';')) {
+    return url.split(';').reverse()[0].slice(0, 36);
+  }
+  return url.split('__edit__').reverse()[0].slice(0, 36);
+};
+
+function HvorErDelmalenIBruk(props: any) {
+  const documentId = utledDokumentId();
 
   const query = `*[references("${documentId}")]`;
   const { data, error } = useSanityQuery(query);
