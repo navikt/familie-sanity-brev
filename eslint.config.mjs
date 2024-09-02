@@ -15,20 +15,6 @@ const compat = new FlatCompat({
 });
 
 export default [
-  {
-    ignores: [
-      '**/*.json',
-      '**/*.less',
-      '**/*.yaml',
-      '**/*.yml',
-      '**/*.md',
-      '**/*.html',
-      'node_modules/',
-      'plugins/',
-      'dist/',
-      '.idea/',
-    ],
-  },
   ...compat.extends(
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
