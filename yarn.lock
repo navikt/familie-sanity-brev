@@ -2081,7 +2081,7 @@
     get-it "^8.6.3"
     rxjs "^7.0.0"
 
-"@sanity/client@^6.21.0", "@sanity/client@^6.21.2":
+"@sanity/client@^6.21.2", "@sanity/client@^6.21.3":
   version "6.21.3"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.21.3.tgz#f08302843c46464cb964270441c544a9ab75af6d"
   integrity sha512-oE2+4kKRTZhFCc4IIsojkzKF0jIhsSYSRxkPZjScZ1k/EQ3Y2tEcQYiKwvvotzaXoaWsIL3RTpulE+R4iBYiBw==
