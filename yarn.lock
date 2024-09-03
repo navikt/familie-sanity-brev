@@ -3507,6 +3507,11 @@
   dependencies:
     "@types/unist" "^2"
 
+"@types/json-schema@^7.0.15":
+  version "7.0.15"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
+  integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -6233,7 +6238,7 @@ groq-js@^1.13.0:
   dependencies:
     debug "^4.3.4"
 
-groq@3.56.0, groq@^3.55.0:
+groq@3.56.0, groq@^3.56.0:
   version "3.56.0"
   resolved "https://registry.yarnpkg.com/groq/-/groq-3.56.0.tgz#0e2149e74ef4e43bc7067f4ee93adc27175305b9"
   integrity sha512-r4L0U0oLkEysu5ZuB6kW9nhfXupec9NhRDRr/zzj4GuSDLgaqtDStPJu6a8G8Cp1Gc1ZOFGSTUHWEyBalKmCbQ==
@@ -8630,7 +8635,7 @@ sanity-plugin-markdown@^4.1.0:
     "@sanity/ui" "^1.0.0"
     react-simplemde-editor "^5.2.0"
 
-sanity@3.56.0:
+sanity@^3.56.0:
   version "3.56.0"
   resolved "https://registry.yarnpkg.com/sanity/-/sanity-3.56.0.tgz#ec7e1fdec20bd2948e4e415115ba54126385c95b"
   integrity sha512-k8cjaADCNsPrVmZM+HstoZ/BvHqe8DOp+l7XOkea/j/C/XoptWeiullhoeKk5PDZieqjk1JheeBCCJc4GFvCuA==

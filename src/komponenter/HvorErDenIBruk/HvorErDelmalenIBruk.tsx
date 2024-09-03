@@ -9,11 +9,29 @@ type IReferrer = {
   _type: string;
 };
 
-function HvorErDelmalenIBruk(props: any) {
+/* Ser på nettleseren sin URL for å utlede dokumentId. URLen ser slik ut i de tre tilfellene:
+Avanserte delmaler:
+https://familie-brev.sanity.studio/ef-brev/structure/innhold;avansertDelmal-a8530c4d-b70c-4eaa-a7a1-e6b810fb06bd
+
+Vanlige delmaler:
+https://familie-brev.sanity.studio/ef-brev/structure/innhold;0e92ea3a-0ab9-45d9-9092-0db1a7adc58d
+
+Når man oppretter en ny delmal:
+https://familie-brev.sanity.studio/ef-brev/structure/__edit__avansertDelmal-9236b142-e196-4d5d-ae2a-5f576b8f36bf%2Ctemplate%3DavansertDelmal%2Ctype%3DavansertDelmal
+*/
+const utledDokumentId = (): string => {
   const url = window.location.pathname;
-  const documentId = url.includes(';')
-    ? url.split(';').reverse()[0].slice(0, 36)
-    : url.split('__edit__').reverse()[0].slice(0, 36);
+
+  if (url.includes(';avansertDelmal')) {
+    return url.split(';').reverse()[0].slice(0, 51);
+  } else if (url.includes(';')) {
+    return url.split(';').reverse()[0].slice(0, 36);
+  }
+  return url.split('__edit__').reverse()[0].slice(0, 36);
+};
+
+function HvorErDelmalenIBruk(props: any) {
+  const documentId = utledDokumentId();
 
   const query = `*[references("${documentId}")]`;
   const { data, error } = useSanityQuery(query);
