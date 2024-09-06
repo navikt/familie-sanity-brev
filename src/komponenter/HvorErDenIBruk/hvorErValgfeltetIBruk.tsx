@@ -16,10 +16,7 @@ function HvorErValgfeltetIBruk(props: any) {
   const dokument = getFormValue([]) as SanityDocument;
   const documentId = dokument._id;
   const query = `*[references("${documentId}")]`;
-  console.log(query);
   const { data, error } = useSanityQuery(query);
-
-  console.log(data);
 
   if (error) {
     console.error(error);
