@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit --skipLibCheck",
     "eslint-fix": "eslint './src/**/*.{js,ts,tsx}' --fix",
     "prettier-fix": "prettier -w .",
-    "eslint-check": "eslint .",
+    "eslint-check": "eslint './src/**/*.{js,ts,tsx}'",
     "prettier-check": "prettier --check .",
     "lint": "prettier --check . && eslint ."
   },
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^4.0.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
