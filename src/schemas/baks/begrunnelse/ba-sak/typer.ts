@@ -129,6 +129,7 @@ export enum Endringsårsak {
   ENDRE_MOTTAKER = 'ENDRE_MOTTAKER',
   ALLEREDE_UTBETALT = 'ALLEREDE_UTBETALT',
   ETTERBETALING_3ÅR = 'ETTERBETALING_3ÅR',
+  ETTERBETALING_3MND = 'ETTERBETALING_3MND',
 }
 
 export const endringsårsaker = [
@@ -137,6 +138,7 @@ export const endringsårsaker = [
   { title: 'Allerede utbetalt', value: Endringsårsak.ALLEREDE_UTBETALT },
   { title: 'Eøs sekundærland', value: Endringsårsak.EØS_SEKUNDÆRLAND },
   { title: 'Etterbetaling 3 år', value: Endringsårsak.ETTERBETALING_3ÅR },
+  { title: 'Etterbetaling 3 måned', value: Endringsårsak.ETTERBETALING_3MND },
 ];
 
 //NB: Endrer du på disse bør du endre i ba-sak først (Før du tester lokalt også)
