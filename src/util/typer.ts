@@ -66,7 +66,7 @@ export enum BegrunnelseDokumentNavn {
   VALGBARHET = 'valgbarhet',
   FAGSAK_TYPE = 'fagsakType',
   REGELVERK = 'regelverk',
-  BEGRUNNELSE_TYPE_FOR_PERSON = 'begrunnelseTypeForPerson',
+  BEGRUNNELSE_TYPE = 'begrunnelseType',
   HJEMLER = 'hjemler',
   HJEMLER_EØS_FORORDNINGEN_833 = 'hjemlerEOSForordningen883',
   HJEMLER_EØS_FORORDNINGEN_987 = 'hjemlerEOSForordningen987',
