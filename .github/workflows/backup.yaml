@@ -30,11 +30,6 @@ jobs:
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
 
-      - name: Import ba dataset til ba-test
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        run: sanity dataset import backups/ba-sak.tar.gz ba-test --replace
-
   backup-ef-dataset:
     runs-on: ubuntu-latest
     name: Backup ef dataset
