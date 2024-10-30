@@ -11,7 +11,7 @@ export enum Vilkår {
 }
 
 const vilkårValg: Record<Vilkår, { title: string; value: Vilkår }> = {
-  BOSATT_I_RIKET: { title: 'Bosaatt i riket', value: Vilkår.BOSATT_I_RIKET },
+  BOSATT_I_RIKET: { title: 'Bosatt i riket', value: Vilkår.BOSATT_I_RIKET },
   MEDLEMSKAP: {
     title: 'Medlemskap',
     value: Vilkår.MEDLEMSKAP,
