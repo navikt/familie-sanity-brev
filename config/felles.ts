@@ -27,6 +27,6 @@ export const ekskluderesForKs: string[] = [
 
 const hentDataset = () => window.location.pathname.split('/')[1];
 
-export const erEf = () => ['ef-brev', 'ef-test', 'testdata'].includes(hentDataset());
-export const erBa = () => ['ba-brev', 'testdata'].includes(hentDataset());
-export const erKs = () => ['ks-brev', 'testdata'].includes(hentDataset());
+export const erEf = () => ['ef-brev', 'ef-test'].includes(hentDataset());
+export const erBa = () => ['ba-brev'].includes(hentDataset());
+export const erKs = () => ['ks-brev'].includes(hentDataset());
