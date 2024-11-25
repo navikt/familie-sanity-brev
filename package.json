@@ -17,7 +17,7 @@
     "prettier-fix": "prettier -w .",
     "eslint-check": "eslint './src/**/*.{js,ts,tsx}'",
     "prettier-check": "prettier --check .",
-    "lint": "prettier --check . && eslint ."
+    "lint": "prettier --check . && eslint './src/**/*.{js,ts,tsx}'"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^4.0.0",
-    "eslint": "^9.15.0",
+    "eslint": "9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
