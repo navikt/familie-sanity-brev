@@ -1,6 +1,8 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { erEndretUtbetaling } from './endretUtbetalingPeriodeTriggere';
 import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
+import { Type } from '../../type';
+import { Resultat } from '../../resultat';
 
 export enum Endringsårsak {
   DELT_BOSTED = 'DELT_BOSTED',
@@ -14,6 +16,22 @@ const endringsårsakValg: Record<Endringsårsak, { title: string; value: Endring
   ETTERBETALING_3MND: { title: 'Etterbetaling 3 måned', value: Endringsårsak.ETTERBETALING_3MND },
 };
 
+const erEndringsperiodeOgAvslag: (document) => boolean = document => {
+  return (
+    document[KSBegrunnelseDokumentNavn.TYPE] &&
+    document[KSBegrunnelseDokumentNavn.TYPE].includes(Type.ENDRINGSPERIODE) &&
+    document[KSBegrunnelseDokumentNavn.RESULTAT] &&
+    document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.AVSLAG)
+  );
+};
+
+const skalEndringsårsakVises = document => {
+  return (
+    erNasjonalBegrunnelse(document) &&
+    (erEndretUtbetaling(document) || erEndringsperiodeOgAvslag(document))
+  );
+};
+
 export const endringsårsakTriggere = {
   title: 'Endringsårsaker',
   type: SanityTyper.ARRAY,
@@ -22,7 +40,7 @@ export const endringsårsakTriggere = {
   options: {
     list: Object.values(Endringsårsak).map(endringsårsak => endringsårsakValg[endringsårsak]),
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
+  hidden: ({ document }) => !skalEndringsårsakVises(document),
 
   validation: rule => [
     rule
