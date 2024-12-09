@@ -91,6 +91,12 @@ const begrunnelse = {
       name: KSBegrunnelseDokumentNavn.SKAL_ALLTID_VISES,
       description: 'Huk av dersom begrunnelsen alltid skal dukke opp som et valg',
     },
+    {
+      title: 'Ikke i bruk',
+      type: SanityTyper.BOOLEAN,
+      name: BegrunnelseDokumentNavn.IKKE_I_BRUK,
+      description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig',
+    },
     vilkårsvurderingTriggere,
     triggere,
     endringsårsakTriggere,
