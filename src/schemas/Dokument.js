@@ -8,6 +8,7 @@ import decorators from '../util/decorators';
 import { apiNavnValideringer } from '../util/valideringer';
 import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 import { sammensattKontrollsakFritekstAvsnitt } from './avsnitt/sammensattKontrollsakFritekstAvsnitt';
+import { fritekstAvsnitt } from './avsnitt/fritekstAvsnitt';
 
 const editor = (maalform, tittel) => ({
   name: maalform,
@@ -18,6 +19,7 @@ const editor = (maalform, tittel) => ({
     flettefeltAvsnitt,
     peroideAvsnitt,
     utbetalingerAvsnitt,
+    fritekstAvsnitt,
     sammensattKontrollsakFritekstAvsnitt,
     {
       type: SanityTyper.BLOCK,

@@ -28,6 +28,7 @@ export enum DokumentNavn {
   ER_FRITEKSTFELT = 'erFritektsfelt',
   FELT = 'felt',
   FELT_VISNINGSNAVN = 'feltVisningsnavn',
+  FRITEKST = 'fritekst',
   VALG = 'valg',
   VALG_REFERANSE = 'valgReferanse',
   VALGMULIGHET = 'valgmulighet',
