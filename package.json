@@ -41,9 +41,9 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^4.0.0",
+    "@sanity/eslint-config-studio": "^5.0.2",
     "eslint": "9.14.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.1",
