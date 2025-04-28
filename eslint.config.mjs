@@ -22,7 +22,7 @@ export default [
     'plugin:@typescript-eslint/recommended-type-checked',
     'prettier',
   ),
-  {...studio},
+  ...studio,
   {
     plugins: {
       prettier,
