@@ -1,5 +1,5 @@
 import TekstStyles from '../../util/TekstStyles';
-import { SanityTyper } from '../../util/typer';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { avansertDelmalAvsnitt } from '../avsnitt/avansertDelmalAvsnitt';
 import { valgAvsnitt } from '../avsnitt/valgAvsnitt';
 import decorators from '../../util/decorators';
@@ -7,7 +7,7 @@ import { htmlAvsnitt } from '../avsnitt/htmlAvsnitt';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { Fritekstområde } from './fritekstområde';
 
-export default (maalform, tittel) => ({
+export default (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,

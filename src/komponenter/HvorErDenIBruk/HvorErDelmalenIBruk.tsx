@@ -11,7 +11,7 @@ type IReferrer = {
   _type: string;
 };
 
-function HvorErDelmalenIBruk(props: any, x: any, y: any, z: any) {
+function HvorErDelmalenIBruk(props: any) {
   const getFormValue = useGetFormValue();
   const dokument = getFormValue([]) as SanityDocument;
   const documentId = dokument._id;
