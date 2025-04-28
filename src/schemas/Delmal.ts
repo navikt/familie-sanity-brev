@@ -1,26 +1,19 @@
+import HvorErDelmalenIBruk from '../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { DokumentNavn, SanityTyper } from '../util/typer';
 import TekstStyles from '../util/TekstStyles';
-import { delmalAvsnitt } from './avsnitt/delmalAvsnitt';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
-import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
 import decorators from '../util/decorators';
 import { apiNavnValideringer } from '../util/valideringer';
 import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
-import { sammensattKontrollsakFritekstAvsnitt } from './avsnitt/sammensattKontrollsakFritekstAvsnitt';
-import { fritekstAvsnitt } from './avsnitt/fritekstAvsnitt';
 
-const editor = (maalform, tittel) => ({
+const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
   of: [
-    delmalAvsnitt(maalform),
     flettefeltAvsnitt,
-    peroideAvsnitt,
     utbetalingerAvsnitt,
-    fritekstAvsnitt,
-    sammensattKontrollsakFritekstAvsnitt,
     {
       type: SanityTyper.BLOCK,
       marks: {
@@ -33,9 +26,14 @@ const editor = (maalform, tittel) => ({
 });
 
 export default {
-  title: 'Dokument',
-  name: DokumentNavn.DOKUMENT,
+  title: 'Delmal',
+  name: DokumentNavn.DELMAL,
   type: SanityTyper.DOCUMENT,
+  preview: {
+    select: {
+      title: DokumentNavn.VISNINGSNAVN,
+    },
+  },
   fields: [
     {
       title: 'Visningsnavn',
@@ -44,21 +42,24 @@ export default {
       validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
     },
     {
-      title: 'Api navn',
+      title: 'Api-navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.DOKUMENT),
+      validation: rule => apiNavnValideringer(rule, DokumentNavn.DELMAL),
     },
-    { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
-    { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
-
+    {
+      name: 'hvorDenBrukes',
+      type: SanityTyper.STRING,
+      components: { input: HvorErDelmalenIBruk },
+    },
+    {
+      title: 'Mappe',
+      name: DokumentNavn.MAPPE,
+      type: SanityTyper.ARRAY,
+      of: [{ type: 'string' }],
+    },
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
   ],
-  preview: {
-    select: {
-      title: DokumentNavn.VISNINGSNAVN,
-    },
-  },
 };
