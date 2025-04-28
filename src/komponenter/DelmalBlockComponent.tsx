@@ -70,7 +70,7 @@ const DelmalBlock = (props: any, maalform: string, id = '', skalHaPadding = true
                 </ValgfeltBadge>
               </ValgfeltBadgeWrapper>
             ),
-            htmlfelt: (props: any) => <h3>Html</h3>,
+            htmlfelt: () => <h3>Html</h3>,
           },
         }}
       />
