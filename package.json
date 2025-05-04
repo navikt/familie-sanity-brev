@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "@portabletext/react": "^3.2.0",
-    "@sanity/client": "^6.29.1",
+    "@sanity/client": "^7.0.0",
     "@sanity/vision": "^3.86.1",
     "groq": "^3.86.1",
     "react": "^19.1.0",
