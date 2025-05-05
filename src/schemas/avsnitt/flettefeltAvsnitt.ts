@@ -25,12 +25,14 @@ export const flettefeltAvsnitt = {
   ],
   preview: {
     select: {
-      _ref: `${DokumentNavn.FLETTEFELT_REFERANSE}._ref`,
+      flettefeltReferanse: `${DokumentNavn.FLETTEFELT_REFERANSE}`,
     },
   },
   components: {
     preview: (props: any) => {
-      return FlettefeltBlockComponent(props._ref);
+      const ref = props?.flettefeltReferanse?._ref;
+
+      return FlettefeltBlockComponent(ref);
     },
   },
 };

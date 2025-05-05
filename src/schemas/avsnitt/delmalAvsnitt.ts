@@ -37,12 +37,14 @@ export const delmalAvsnitt = maalform => ({
   validation: Rule => [Rule.required().error('Ingen delmal valgt')],
   preview: {
     select: {
-      _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
+      delmalReferanse: `${DokumentNavn.DELMAL_REFERANSE}`,
     },
   },
   components: {
     preview: (props: any) => {
-      return DelmalBlockComponent(props, maalform, props._id);
+      const ref = props?.delmalReferanse?._ref;
+
+      return DelmalBlockComponent(props, maalform, ref);
     },
   },
 });
