@@ -1,7 +1,8 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
+import { erNasjonalBegrunnelse } from './utils';
+import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
 
 export const erEndretUtbetalingBegrunnelse: (document) => boolean = document =>
   document[DokumentNavn.MAPPE] &&
@@ -17,7 +18,8 @@ export const endringsårsakTrigger = {
     list: endringsårsaker,
   },
   hidden: ({ document }) =>
-    !erEndretUtbetalingBegrunnelse(document) || !erNasjonalBegrunnelse(document),
+    !erEndretUtbetalingBegrunnelse(document) ||
+    !(erNasjonalBegrunnelse(document) || erEøsBegrunnelse(document)),
   validation: rule => [
     rule
       .custom((endringsårsaktriggere, context) => {
@@ -30,6 +32,5 @@ export const endringsårsakTrigger = {
           : 'Må velge årsak for endret utbetalingsperiode.';
       })
       .error(),
-    hentNasjonaleTriggereRegler(rule),
   ],
 };
