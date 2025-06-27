@@ -16,7 +16,7 @@ import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
 import { rolle } from './sanityMappeFelt/rolle';
-import { begunnelseTypeForPerson } from './sanityMappeFelt/begrunnelsetypeForPerson';
+import { begrunnelseType } from './sanityMappeFelt/begrunnelseType';
 import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
 import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
 import { regelverk } from './sanityMappeFelt/regelverk';
@@ -164,7 +164,7 @@ const begrunnelse = {
     regelverk,
     valgbarhet,
     fagsakType,
-    begunnelseTypeForPerson,
+    begrunnelseType,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
