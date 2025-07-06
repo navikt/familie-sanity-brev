@@ -4,6 +4,7 @@ import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 export enum UtdypendeVilkårsvurderinger {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   DELT_BOSTED = 'DELT_BOSTED',
+  BOSATT_PÅ_SVALBARD = 'BOSATT_PÅ_SVALBARD',
   DELT_BOSTED_SKAL_IKKE_DELES = 'DELT_BOSTED_SKAL_IKKE_DELES',
   ADOPSJON = 'ADOPSJON',
   SOMMERFERIE = 'SOMMERFERIE',
@@ -24,6 +25,10 @@ const utdypendeVilkårsvurderingerValg: Record<
   DELT_BOSTED_SKAL_IKKE_DELES: {
     title: 'Delt bosted - skal ikke deles',
     value: UtdypendeVilkårsvurderinger.DELT_BOSTED_SKAL_IKKE_DELES,
+  },
+  BOSATT_PÅ_SVALBARD: {
+    title: 'Bosatt på Svalbard',
+    value: UtdypendeVilkårsvurderinger.BOSATT_PÅ_SVALBARD,
   },
   ADOPSJON: {
     title: 'Adopsjon',
