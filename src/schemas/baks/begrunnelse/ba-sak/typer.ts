@@ -48,6 +48,7 @@ export const eøsFlettefelter = [
 export enum VilkårTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   MEDLEMSKAP = 'MEDLEMSKAP',
+  BOSATT_PÅ_SVALBARD = 'BOSATT_PÅ_SVALBARD',
   MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
@@ -64,6 +65,7 @@ export const lovligOppholdTriggerTyper = [VilkårTriggere.VURDERING_ANNET_GRUNNL
 export const bosattIRiketTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.MEDLEMSKAP,
+  VilkårTriggere.BOSATT_PÅ_SVALBARD,
 ];
 export const giftPartnerskapTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
@@ -93,6 +95,10 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   MEDLEMSKAP: {
     title: 'Medlemskap',
     value: VilkårTriggere.MEDLEMSKAP,
+  },
+  BOSATT_PÅ_SVALBARD: {
+    title: 'Bosatt på Svalbard',
+    value: VilkårTriggere.BOSATT_PÅ_SVALBARD,
   },
   BARN_MED_6_ÅRS_DAG: { title: 'Barn med 6 års dag', value: VilkårTriggere.BARN_MED_6_ÅRS_DAG },
   MANGLER_OPPLYSNINGER: {
