@@ -49,6 +49,7 @@ export enum VilkårTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
   MEDLEMSKAP = 'MEDLEMSKAP',
   BOSATT_PÅ_SVALBARD = 'BOSATT_PÅ_SVALBARD',
+  BOSATT_I_FINNMARK_NORD_TROMS = 'BOSATT_I_FINNMARK_NORD_TROMS',
   MANGLER_OPPLYSNINGER = 'MANGLER_OPPLYSNINGER',
   SATSENDRING = 'SATSENDRING',
   BARN_MED_6_ÅRS_DAG = 'BARN_MED_6_ÅRS_DAG',
@@ -66,6 +67,7 @@ export const bosattIRiketTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
   VilkårTriggere.MEDLEMSKAP,
   VilkårTriggere.BOSATT_PÅ_SVALBARD,
+  VilkårTriggere.BOSATT_I_FINNMARK_NORD_TROMS,
 ];
 export const giftPartnerskapTriggerTyper = [
   VilkårTriggere.VURDERING_ANNET_GRUNNLAG,
@@ -95,6 +97,10 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
   MEDLEMSKAP: {
     title: 'Medlemskap',
     value: VilkårTriggere.MEDLEMSKAP,
+  },
+  BOSATT_I_FINNMARK_NORD_TROMS: {
+    title: 'Bosatt i Finnmark/Nord-Troms',
+    value: VilkårTriggere.BOSATT_I_FINNMARK_NORD_TROMS,
   },
   BOSATT_PÅ_SVALBARD: {
     title: 'Bosatt på Svalbard',
