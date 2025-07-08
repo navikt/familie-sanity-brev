@@ -99,7 +99,7 @@ export const vilkårTriggerTilMenynavn: Record<VilkårTriggere, { title: string;
     value: VilkårTriggere.MEDLEMSKAP,
   },
   BOSATT_I_FINNMARK_NORD_TROMS: {
-    title: 'Bosatt i Finnmark/Nord Troms',
+    title: 'Bosatt i Finnmark/Nord-Troms',
     value: VilkårTriggere.BOSATT_I_FINNMARK_NORD_TROMS,
   },
   BOSATT_PÅ_SVALBARD: {
