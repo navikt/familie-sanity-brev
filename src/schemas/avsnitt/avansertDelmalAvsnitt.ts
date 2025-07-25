@@ -10,10 +10,10 @@ export const avansertDelmalAvsnitt = maalform => ({
   validation: Rule => [Rule.required().error('Ingen delmal valgt')],
   preview: {
     select: {
-      _id: `${DokumentNavn.DELMAL_REFERANSE}._ref`,
+      delmalReferanse: `${DokumentNavn.DELMAL_REFERANSE}`,
     },
   },
   components: {
-    preview: (props: any) => DelmalBlockComponent(props, maalform, props._id),
+    preview: (props: any) => DelmalBlockComponent(props, maalform, props?.delmalReferanse?._ref),
   },
 });

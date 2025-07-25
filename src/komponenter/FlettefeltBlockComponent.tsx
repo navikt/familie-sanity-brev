@@ -5,10 +5,10 @@ import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
 const FlettefeltBlockComponent = (id = '') => {
-  if (!id) {
-    return <ErrorStyling>Fyll ut delmal.</ErrorStyling>;
-  } else {
+  if (id) {
     return <FlettefeltBlock id={id} />;
+  } else {
+    return <ErrorStyling>Fyll ut flettefelt.</ErrorStyling>;
   }
 };
 
