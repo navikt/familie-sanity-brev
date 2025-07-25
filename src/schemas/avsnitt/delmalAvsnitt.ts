@@ -37,7 +37,7 @@ export const delmalAvsnitt = maalform => ({
   validation: Rule => [Rule.required().error('Ingen delmal valgt')],
   preview: {
     select: {
-      title: `${DokumentNavn.DELMAL_REFERANSE}.tittel`,
+      title: `${DokumentNavn.DELMAL_REFERANSE}`,
     },
     prepare(selection) {
       return {
