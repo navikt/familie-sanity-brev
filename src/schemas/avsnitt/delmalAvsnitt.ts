@@ -48,6 +48,6 @@ export const delmalAvsnitt = maalform => ({
     },
   },
   components: {
-    input: props => DelmalBlockComponent(props, maalform, props.value?.delmalReferanse?._ref),
+    input: props => DelmalBlockComponent(props, maalform, props.delmalReferanse?._ref),
   },
 });
