@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "@portabletext/react": "^3.2.1",
-    "@sanity/client": "^7.6.0",
+    "@sanity/client": "^7.8.1",
     "@sanity/vision": "^3.95.0",
     "groq": "^3.95.0",
     "react": "^19.1.0",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "eslint": "^9.30.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
