@@ -1,5 +1,5 @@
-import styles from '../../../styles/myStyling.css?inline';
 import React from 'react';
+import styles from '../../../styles/styles.module.css';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const AvansertDelmalFelter = (erGjentagende = false) => [
@@ -8,14 +8,14 @@ export const AvansertDelmalFelter = (erGjentagende = false) => [
     name: DokumentNavn.DELMAL_REFERANSE,
     type: SanityTyper.REFERENCE,
     to: { type: 'avansertDelmal' },
-    validation: Rule => [Rule.required().error('Tom delmal')],
+    validation: rule => [rule.required().error('Tom delmal')],
   },
   {
     title: 'Delmalen skal alltid med',
     name: DokumentNavn.SKAL_ALLTID_MED,
     type: SanityTyper.BOOLEAN,
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-    validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
+    validation: rule => [rule.required().error('Velg om delmalen alltid skal med.')],
   },
   ...(erGjentagende
     ? [
@@ -23,7 +23,7 @@ export const AvansertDelmalFelter = (erGjentagende = false) => [
           title: 'Er gjentagende',
           name: DokumentNavn.ER_GJENTAGENDE,
           type: SanityTyper.BOOLEAN,
-          validation: Rule => [Rule.required().error('Må sette om delmalen er gjentagende')],
+          validation: rule => [rule.required().error('Må sette om delmalen er gjentagende')],
         },
       ]
     : []),

@@ -1,5 +1,5 @@
-import styles from '../../../styles/myStyling.css?inline';
 import React from 'react';
+import styles from '../../../styles/styles.module.css';
 import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 
@@ -8,14 +8,14 @@ export const ValgFelter = (erGjentagende = false) => [
     name: DokumentNavn.VALG_REFERANSE,
     type: SanityTyper.REFERENCE,
     to: [{ type: 'valgfelt' }],
-    validation: Rule => [Rule.required().error('Tomt valgfelt')],
+    validation: rule => [rule.required().error('Tomt valgfelt')],
   },
   {
     title: 'Valgfeltet skal alltid med',
     name: DokumentNavn.SKAL_ALLTID_MED,
     type: SanityTyper.BOOLEAN,
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-    validation: Rule => [Rule.required().error('Velg om Valgfeltet alltid skal med.')],
+    validation: rule => [rule.required().error('Velg om Valgfeltet alltid skal med.')],
   },
   ...(erGjentagende
     ? [
@@ -23,7 +23,7 @@ export const ValgFelter = (erGjentagende = false) => [
           title: 'Er gjentagende',
           name: DokumentNavn.ER_GJENTAGENDE,
           type: SanityTyper.BOOLEAN,
-          validation: Rule => [Rule.required().error('Må sette om valgfeltet er gjentagende')],
+          validation: rule => [rule.required().error('Må sette om valgfeltet er gjentagende')],
         },
       ]
     : []),

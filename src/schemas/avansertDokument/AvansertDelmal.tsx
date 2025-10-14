@@ -29,7 +29,7 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et visningsnavn')],
+      validation: rule => [rule.required().error('Dokumentet må ha et visningsnavn')],
     },
     {
       title: 'Api navn',
