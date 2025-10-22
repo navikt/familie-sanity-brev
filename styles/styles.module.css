@@ -1,42 +1,22 @@
-.flettefelt {
-  background-color: rgba(30, 133, 209, 0.2);
-  color: #000;
-
-  @nest &:hover {
-    cursor: pointer;
-  }
-}
-
-.flettefeltIcon {
-  composes: flettefelt;
-  padding: 0 5px;
-}
-
 .lenke {
   background-color: rgba(97, 78, 116, 0.3);
   color: #000;
 
-  @nest &:hover {
+  &:hover {
     cursor: pointer;
   }
-}
-
-.lenkeIcon {
-  composes: lenke;
-  padding: 1px;
 }
 
 .delmal {
   background-color: rgba(183, 177, 100, 0.2);
   color: #000;
 
-  @nest &:hover {
+  &:hover {
     cursor: pointer;
   }
 }
 
 .delmalIcon {
-  composes: delmal;
   padding: 0 5px;
 }
 
@@ -44,13 +24,12 @@
   background-color: rgba(180, 106, 161, 0.5);
   color: #000;
 
-  @nest &:hover {
+  &:hover {
     cursor: pointer;
   }
 }
 
 .valgfeltIcon {
-  composes: valgfelt;
   padding: 0 5px;
 }
 

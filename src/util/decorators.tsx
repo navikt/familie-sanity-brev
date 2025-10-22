@@ -1,7 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import styles from '../../styles/myStyling.css?inline';
-import * as React from 'react';
+import React from 'react';
+import styles from '../../styles/styles.module.css';
 import { MdLink } from 'react-icons/md';
 import { BsFilterRight } from 'react-icons/bs';
 
@@ -17,7 +15,7 @@ export default [
   {
     title: 'Lenke',
     value: 'lenke',
-    icon: () => <MdLink className={styles.lenkeIcon} />,
+    icon: () => <MdLink />,
     component: props => (
       <span contentEditable={true} className={styles.lenke}>
         {props.children}
