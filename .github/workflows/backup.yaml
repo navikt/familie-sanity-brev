@@ -23,7 +23,7 @@ jobs:
         run: sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ba
           path: backups/ba-sak.tar.gz
@@ -46,7 +46,7 @@ jobs:
         run: sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ef
           path: backups/ef-sak.tar.gz
