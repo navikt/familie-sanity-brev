@@ -10,6 +10,7 @@ enum AnnenForelderAktivitet {
   INAKTIV = 'INAKTIV',
   IKKE_AKTUELT = 'IKKE_AKTUELT',
   UTSENDT_ARBEIDSTAKER = 'UTSENDT_ARBEIDSTAKER',
+  NASJONAL_RETT_DIFFERANSEBEREGNING = 'NASJONAL_RETT_DIFFERANSEBEREGNING',
 
   // Annen forelders aktivitet valg som kun gjelder dersom annen forelder er omfattet av norsk lovgivning
   ARBEIDER = 'ARBEIDER',
@@ -44,6 +45,10 @@ const annenForeldersAktivitetValg: Record<
   UTSENDT_ARBEIDSTAKER: {
     title: 'Utsendt arbeidstaker',
     value: AnnenForelderAktivitet.UTSENDT_ARBEIDSTAKER,
+  },
+  NASJONAL_RETT_DIFFERANSEBEREGNING: {
+    title: 'Nasjonal rett-differanseberegning',
+    value: AnnenForelderAktivitet.NASJONAL_RETT_DIFFERANSEBEREGNING,
   },
   // Annen forelders aktivitet valg som kun gjelder dersom annen forelder er omfattet av norsk lovgivning
   ARBEIDER: {
