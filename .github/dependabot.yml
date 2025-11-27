@@ -7,6 +7,8 @@ updates:
     interval: weekly
     day: "sunday"
     time: "04:00"
+  cooldown:
+    default-days: 4
   open-pull-requests-limit: 10
   groups:
     minor-and-patch-dependencies:
@@ -29,6 +31,8 @@ updates:
     interval: weekly
     day: "sunday"
     time: "04:00"
+  cooldown:
+    default-days: 4
   open-pull-requests-limit: 10
   groups:
     workflows:
