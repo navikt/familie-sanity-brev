@@ -6,6 +6,7 @@ enum Kompetanse {
   NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',
   NORGE_ER_SEKUNDÆRLAND = 'NORGE_ER_SEKUNDÆRLAND',
   TO_PRIMÆRLAND = 'TO_PRIMÆRLAND',
+  NASJONAL_RETT_DIFFERANSEBEREGNING = 'NASJONAL_RETT_DIFFERANSEBEREGNING',
 }
 
 const KompetanseValg: Record<Kompetanse, { title: string; value: Kompetanse }> = {
@@ -20,6 +21,10 @@ const KompetanseValg: Record<Kompetanse, { title: string; value: Kompetanse }> =
   TO_PRIMÆRLAND: {
     title: 'To primærland',
     value: Kompetanse.TO_PRIMÆRLAND,
+  },
+  NASJONAL_RETT_DIFFERANSEBEREGNING: {
+    title: 'Nasjonal rett-differanseberegning',
+    value: Kompetanse.NASJONAL_RETT_DIFFERANSEBEREGNING,
   },
 };
 
