@@ -12,7 +12,7 @@ jobs:
     name: Backup ba dataset
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # ratchet:actions/checkout@v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v4
 
       - name: Installer sanity
         run: yarn global add @sanity/cli && sanity install
@@ -23,7 +23,7 @@ jobs:
         run: sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ba
           path: backups/ba-sak.tar.gz
@@ -35,7 +35,7 @@ jobs:
     name: Backup ef dataset
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # ratchet:actions/checkout@v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v4
 
       - name: Installer sanity
         run: yarn global add @sanity/cli && sanity install
@@ -46,7 +46,7 @@ jobs:
         run: sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ef
           path: backups/ef-sak.tar.gz
