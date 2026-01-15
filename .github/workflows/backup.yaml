@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v4
 
       - name: Installer sanity
-        run: yarn global add @sanity/cli && sanity install
+        run: yarn global add @sanity/cli --exact && sanity install
 
       - name: Export ba dataset
         env:
@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v4
 
       - name: Installer sanity
-        run: yarn global add @sanity/cli && sanity install
+        run: yarn global add @sanity/cli --exact && sanity install
 
       - name: Export dataset
         env:
