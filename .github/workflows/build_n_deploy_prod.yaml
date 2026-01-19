@@ -21,7 +21,7 @@ jobs:
           node-version: 24
 
       - name: Installer sanity
-        run: yarn global add @sanity/cli && sanity install
+        run: yarn global add @sanity/cli --exact && sanity install
 
       - name: Deploy sanity
         env:
