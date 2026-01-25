@@ -6014,6 +6014,11 @@ groq@4.18.0:
   resolved "https://registry.yarnpkg.com/groq/-/groq-4.18.0.tgz#e80d17921dacf5262acad4083fa40de08f194115"
   integrity sha512-/VCAOaBkpB907ojqUgj75KBRHbD5NuzHWjfP7WgdD5zE1hg4BdrXejw/mOMaPE47t4D+EshizeYPMkPwPdHZbg==
 
+groq@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-5.5.0.tgz#80ce5613c23714039b70602235ead058daffcde3"
+  integrity sha512-bLYqVE51cmoq/We+Hvt/UdsT021VJHUxn3IM51bUuLrQMBXI3gst+vq7rhooW9Xp9Sb7jNNailHgi6zsdLCGfg==
+
 gunzip-maybe@^1.4.1, gunzip-maybe@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/gunzip-maybe/-/gunzip-maybe-1.4.2.tgz#b913564ae3be0eda6f3de36464837a9cd94b98ac"
