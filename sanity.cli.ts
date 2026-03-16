@@ -6,4 +6,7 @@ export default defineCliConfig({
   api: {
     projectId: PROSJEKT_ID,
   },
+  deployment: {
+    appId: 'a5127a088702861473521b94',
+  },
 });
