@@ -20,10 +20,10 @@ jobs:
           cache-dependency-path: ./package.json
           node-version: 24
 
-      - name: Installer sanity
-        run: yarn global add @sanity/cli --exact && sanity install
+      - name: Installer avhengigheter
+        run: yarn install
 
       - name: Deploy sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
-        run: sanity deploy
+        run: yarn deploy
