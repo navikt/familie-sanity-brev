@@ -6,10 +6,10 @@ jobs:
     name: Build PR
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v4
 
-      - name: ⎔ Setup node
+      - name: Setup node
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # ratchet:actions/setup-node@v4
         with:
           cache: yarn
@@ -21,11 +21,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
-      - name: 🔬 Run ESLint check
+      - name: Run ESLint check
         run: yarn eslint-check
 
-      - name: 🔬 Run Prettier check
+      - name: Run Prettier check
         run: yarn prettier-check
 
-      - name: 🔎 Type check
+      - name: Type check
         run: yarn typecheck
+
+      - name: Build
+        run: yarn build
