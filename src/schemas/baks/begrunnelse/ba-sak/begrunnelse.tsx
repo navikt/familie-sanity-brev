@@ -3,7 +3,6 @@ import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../
 import styled from 'styled-components';
 import { eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
 import { triggesAv } from './triggesAv';
-import { apiNavnValideringerBegrunnelse } from './valideringer';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
@@ -16,7 +15,6 @@ import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { fagsakType } from './sanityMappeFelt/fagsakType';
 import { rolle } from './sanityMappeFelt/rolle';
-import { begunnelseTypeForPerson } from './sanityMappeFelt/begrunnelsetypeForPerson';
 import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
 import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
 import { regelverk } from './sanityMappeFelt/regelverk';
@@ -164,7 +162,6 @@ const begrunnelse = {
     regelverk,
     valgbarhet,
     fagsakType,
-    begunnelseTypeForPerson,
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
