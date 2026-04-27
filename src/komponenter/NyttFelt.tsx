@@ -14,8 +14,10 @@ const NyttFelt = (props: any, felttype: string) => {
           (window.location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
         }
       >
-        <GoPlus size={35} style={{ paddingTop: '2px' }} /> Lag{' '}
-        {felttype === 'delmal' ? 'ny' : 'nytt'} {felttype}
+        <span style={{ paddingTop: '2px', display: 'inline-flex' }}>
+          <GoPlus size="35" />
+        </span>{' '}
+        Lag {felttype === 'delmal' ? 'ny' : 'nytt'} {felttype}
       </StyledButton>
     </div>
   );
