@@ -192,7 +192,6 @@ interface BegrunnelseBase {
   [BegrunnelseDokumentNavn.PERIODE_RESULTAT_FOR_PERSON]?: string;
   [BegrunnelseDokumentNavn.REGELVERK]?: Regelverk;
   [BegrunnelseDokumentNavn.VALGBARHET]?: Valgbarhet;
-  [BegrunnelseDokumentNavn.BEGRUNNELSE_TYPE_FOR_PERSON]?: string;
   [DokumentNavn.API_NAVN]?: string;
   [DokumentNavn.MAPPE]?: string[];
   [DokumentNavn.NAVN_I_SYSTEM]?: string;
