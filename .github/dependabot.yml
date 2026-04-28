@@ -11,17 +11,30 @@ updates:
     default-days: 4
   open-pull-requests-limit: 10
   groups:
+    sanity:
+      patterns:
+        - "@sanity/*"
+        - "sanity"
+        - "groq"
+    dev-dependencies:
+      patterns:
+        - "@eslint/eslintrc"
+        - "@eslint/js"
+        - "@sanity/eslint-config-studio"
+        - "@typescript-eslint/eslint-plugin"
+        - "@typescript-eslint/parser"
+        - "eslint"
+        - "eslint-config-prettier"
+        - "eslint-plugin-prettier"
+        - "husky"
+        - "lint-staged"
+        - "prettier"
     minor-and-patch-dependencies:
       patterns:
         - "*"
       update-types:
         - "minor"
         - "patch"
-    major-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "major"
   ignore:
     - dependency-name: "*"
       update-types: ["version-update:semver-patch"]
