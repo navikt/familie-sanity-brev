@@ -6,6 +6,9 @@ on:
     # Runs at 04:00 UTC on the 1st and 17th of every month
     - cron: "0 4 */16 * *"
 
+permissions:
+  contents: read
+
 jobs:
   backup-ba-dataset:
     runs-on: ubuntu-latest
@@ -13,6 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
 
       - name: Installer sanity
         run: yarn global add @sanity/cli --exact && sanity install
@@ -30,12 +38,45 @@ jobs:
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
 
+  backup-ks-dataset:
+    runs-on: ubuntu-latest
+    name: Backup ks dataset
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+
+      - name: Installer sanity
+        run: yarn global add @sanity/cli --exact && sanity install
+
+      - name: Export ks dataset
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
+        run: sanity dataset export ks-brev backups/ks-sak.tar.gz
+
+      - name: Upload ks-sak.tar.gz
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
+        with:
+          name: backup-ks
+          path: backups/ks-sak.tar.gz
+          # Fails the workflow if no files are found; defaults to 'warn'
+          if-no-files-found: error
+
   backup-ef-dataset:
     runs-on: ubuntu-latest
     name: Backup ef dataset
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
 
       - name: Installer sanity
         run: yarn global add @sanity/cli --exact && sanity install
