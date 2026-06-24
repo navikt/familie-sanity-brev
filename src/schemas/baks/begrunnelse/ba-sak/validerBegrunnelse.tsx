@@ -1,14 +1,18 @@
-function tilTekst(feltverdi) {
-  return Array.isArray(feltverdi) ? feltverdi.join(', ') : feltverdi;
+import { ObjectSchemaType, Rule, ValidationContext } from 'sanity';
+
+function tilTekst(feltverdi: unknown): string {
+  return Array.isArray(feltverdi) ? feltverdi.join(', ') : String(feltverdi);
 }
 
-export const validerBegrunnelse = () => rule =>
-  rule.custom((verdi: string, kontekst): true | string => {
-    const feil = [];
+export const validerBegrunnelse = () => (rule: Rule) =>
+  rule.custom((_verdi: unknown, kontekst: ValidationContext): true | string => {
+    const feil: string[] = [];
+    const type = kontekst.type as ObjectSchemaType;
 
-    kontekst.type.fields.forEach(field => {
-      const erHidden = field?.type?.hidden ? field.type.hidden(kontekst) : false;
-      const feltverdi = kontekst.document[field.name];
+    type.fields.forEach(field => {
+      const hidden = field.type?.hidden;
+      const erHidden = typeof hidden === 'function' ? hidden(kontekst as any) : hidden;
+      const feltverdi = kontekst.document?.[field.name];
       if (erHidden && feltverdi !== undefined) {
         feil.push(
           `${field.type.title} er skjult, men er satt til ${tilTekst(

@@ -42,7 +42,7 @@ export const rolle = {
   options: {
     list: Object.values(Rolle).map(rolle => rolleTilMenyValg(rolle)),
   },
-  hidden: context => !rolleSkalVises(context.document),
+  hidden: (context: { document?: Record<string, unknown> }) => !rolleSkalVises(context.document),
   validation: (rule: Rule) =>
     rule.custom((rolleListe: Rolle[] | undefined, context) => {
       if (rolleSkalVises(context.document)) {

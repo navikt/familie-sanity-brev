@@ -27,7 +27,7 @@ function HvorErValgfeltetIBruk(props: any) {
     return <div>Sjekker om valgfeltet er i bruk..</div>;
   }
 
-  const unike = data.filter(ref => !ref._id.includes('drafts'));
+  const unike = data.filter((ref: IReferrer) => !ref._id.includes('drafts'));
   if (!unike.length) {
     return <Header {...props}>Dette valgfeltet er ikke i bruk.</Header>;
   }

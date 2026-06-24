@@ -4,6 +4,7 @@ import {
   KSBegrunnelseDokumentNavn,
   SanityTyper,
 } from '../../../../util/typer';
+import { Rule } from 'sanity';
 import { triggere } from './triggere';
 import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
@@ -28,7 +29,7 @@ import { barnetsBostedslandTrigger } from './eøs/eøsTriggere/barnetsBostedslan
 import { kompetentLandTrigger } from './eøs/eøsTriggere/kompetentLandTrigger';
 import { eøsVilkårsvurderingTriggere } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 
-const editor = (maalform, tittel) => ({
+const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
@@ -56,7 +57,7 @@ const begrunnelse = {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: rule => [rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     resultat,
     tema,
@@ -66,14 +67,14 @@ const begrunnelse = {
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
-      validation: rule =>
+      validation: (rule: Rule) =>
         apiNavnValideringerBegrunnelse(rule, KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE),
     },
     {
       title: 'Navn i ks-sak',
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,
-      validation: rule => [rule.required().error('Dokumentet må ha et navn i ks-sak')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn i ks-sak')],
     },
     hjemler,
     ...eøsHjemler,

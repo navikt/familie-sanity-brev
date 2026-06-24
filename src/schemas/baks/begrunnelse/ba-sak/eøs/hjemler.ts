@@ -1,4 +1,6 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { Begrunnelse } from '../typer';
 import { erEøsBegrunnelse, hentEØSHjemmelRegler } from './eøsTriggere/utils';
 
 export const hjemlerEØSForordningen883 = ['2', '11-16', '67', '68'];
@@ -15,8 +17,8 @@ export const eøsHjemler = [
       layout: 'grid',
       list: hjemlerEØSForordningen883.map(hjemmel => ({ value: hjemmel, title: hjemmel })),
     },
-    validation: rule => hentEØSHjemmelRegler(rule),
-    hidden: context => !erEøsBegrunnelse(context.document),
+    validation: (rule: Rule) => hentEØSHjemmelRegler(rule),
+    hidden: (context: { document: Begrunnelse }) => !erEøsBegrunnelse(context.document),
   },
   {
     title: 'Hjemler fra EØS-forordning 987/2009',
@@ -27,8 +29,8 @@ export const eøsHjemler = [
       layout: 'grid',
       list: hjemlerEØSForordningen987.map(hjemmel => ({ value: hjemmel, title: hjemmel })),
     },
-    validation: rule => hentEØSHjemmelRegler(rule),
-    hidden: context => !erEøsBegrunnelse(context.document),
+    validation: (rule: Rule) => hentEØSHjemmelRegler(rule),
+    hidden: (context: { document: Begrunnelse }) => !erEøsBegrunnelse(context.document),
   },
   {
     title: 'Hjemler fra Separasjonsavtalen mellom Storbritannia og Norge',
@@ -42,7 +44,7 @@ export const eøsHjemler = [
         title: hjemmel,
       })),
     },
-    validation: rule => hentEØSHjemmelRegler(rule),
-    hidden: context => !erEøsBegrunnelse(context.document),
+    validation: (rule: Rule) => hentEØSHjemmelRegler(rule),
+    hidden: (context: { document: Begrunnelse }) => !erEøsBegrunnelse(context.document),
   },
 ];

@@ -3,7 +3,7 @@ import editor from './avansertMalEditor';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import { Badge } from '@sanity/ui';
-import { Rule } from 'sanity';
+import { Rule, ValidationContext } from 'sanity';
 
 const TittelBadge = () => {
   return <Badge tone="primary">Brevmal</Badge>;
@@ -18,7 +18,7 @@ export default {
       tittel: DokumentNavn.VISNINGSNAVN,
       publisert: DokumentNavn.PUBLISERT,
     },
-    prepare(selection) {
+    prepare(selection: any) {
       const { tittel, publisert } = selection;
       return {
         title: tittel,
@@ -76,11 +76,11 @@ export default {
             'Tittel på brev i dokumentoversikten. Er kun gjeldende for frittstående brev',
           type: SanityTyper.STRING,
           validation: (rule: Rule) =>
-            rule.custom((tittel: string, context) => {
+            rule.custom((tittel: string, context: ValidationContext) => {
+              const doc = context.document as Record<string, Record<string, unknown>>;
+
               if (
-                context.document[DokumentNavn.FRITTSTÅENDE_BREV][
-                  DokumentNavn.FOR_FRITTSTÅENDE_BREV
-                ] &&
+                doc[DokumentNavn.FRITTSTÅENDE_BREV]?.[DokumentNavn.FOR_FRITTSTÅENDE_BREV] &&
                 (!tittel || tittel.length < 3)
               ) {
                 return "Tittel i dokumentoversikt er påkrevd når 'Frittstående brev' er valgt";

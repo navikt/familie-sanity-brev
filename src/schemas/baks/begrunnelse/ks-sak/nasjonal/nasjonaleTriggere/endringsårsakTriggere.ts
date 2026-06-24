@@ -1,4 +1,5 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { Rule } from 'sanity';
 import { erEndretUtbetaling } from './endretUtbetalingPeriodeTriggere';
 import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 import { Type } from '../../type';
@@ -16,7 +17,7 @@ const endringsårsakValg: Record<Endringsårsak, { title: string; value: Endring
   ETTERBETALING_3MND: { title: 'Etterbetaling 3 måned', value: Endringsårsak.ETTERBETALING_3MND },
 };
 
-const erEndringsperiodeOgAvslag: (document) => boolean = document => {
+const erEndringsperiodeOgAvslag: (document: Record<string, any>) => boolean = document => {
   return (
     document[KSBegrunnelseDokumentNavn.TYPE] &&
     document[KSBegrunnelseDokumentNavn.TYPE].includes(Type.ENDRINGSPERIODE) &&
@@ -25,7 +26,7 @@ const erEndringsperiodeOgAvslag: (document) => boolean = document => {
   );
 };
 
-const skalEndringsårsakVises = document => {
+const skalEndringsårsakVises = (document: Record<string, any>) => {
   return (
     erNasjonalBegrunnelse(document) &&
     (erEndretUtbetaling(document) || erEndringsperiodeOgAvslag(document))
@@ -40,18 +41,23 @@ export const endringsårsakTriggere = {
   options: {
     list: Object.values(Endringsårsak).map(endringsårsak => endringsårsakValg[endringsårsak]),
   },
-  hidden: ({ document }) => !skalEndringsårsakVises(document),
+  hidden: ({ document }: { document: Record<string, any> }) => !skalEndringsårsakVises(document),
 
-  validation: rule => [
+  validation: (rule: Rule) => [
     rule
-      .custom((endringsårsakTriggere, context) => {
-        const _erEndretUtbetaling = context.document && erEndretUtbetaling(context.document);
-        const endringsårsakErValgt = endringsårsakTriggere && endringsårsakTriggere.length !== 0;
+      .custom(
+        (
+          endringsårsakTriggere: string[] | undefined,
+          context: { document?: Record<string, any> },
+        ) => {
+          const _erEndretUtbetaling = context.document && erEndretUtbetaling(context.document);
+          const endringsårsakErValgt = endringsårsakTriggere && endringsårsakTriggere.length !== 0;
 
-        return !_erEndretUtbetaling || endringsårsakErValgt
-          ? true
-          : 'Må velge årsak for endret utbetalingsperiode.';
-      })
+          return !_erEndretUtbetaling || endringsårsakErValgt
+            ? true
+            : 'Må velge årsak for endret utbetalingsperiode.';
+        },
+      )
       .error(),
   ],
 };

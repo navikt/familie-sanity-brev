@@ -1,4 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { Rule } from 'sanity';
 import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
@@ -102,6 +103,7 @@ export const annenForeldersAktivitetTrigger = {
       annenForelderAktivitet => annenForeldersAktivitetValg[annenForelderAktivitet],
     ),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
-  validation: rule => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
+  hidden: ({ document }: { document: Record<string, any> }) =>
+    !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+  validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };

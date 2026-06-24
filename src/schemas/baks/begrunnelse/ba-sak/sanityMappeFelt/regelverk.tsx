@@ -1,3 +1,4 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 
 export enum Regelverk {
@@ -28,6 +29,6 @@ export const regelverk = {
   options: {
     list: Object.values(Regelverk).map(regelverk => regelverkTilMenyValg(regelverk)),
   },
-  validation: rule => rule.required().error('Regelverk ikke valgt'),
+  validation: (rule: Rule) => rule.required().error('Regelverk ikke valgt'),
   initialValue: Regelverk.NASJONAL,
 };

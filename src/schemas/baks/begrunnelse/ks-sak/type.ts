@@ -1,4 +1,5 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { Rule } from 'sanity';
 
 export enum Type {
   STANDARD = 'STANDARD',
@@ -22,5 +23,5 @@ export const type = {
   options: {
     list: Object.values(Type).map(type => typeValg[type]),
   },
-  validation: rule => rule.required().error('Type ikke valgt'),
+  validation: (rule: Rule) => rule.required().error('Type ikke valgt'),
 };

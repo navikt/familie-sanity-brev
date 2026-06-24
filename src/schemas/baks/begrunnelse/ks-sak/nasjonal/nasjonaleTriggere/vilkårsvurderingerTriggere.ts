@@ -43,5 +43,5 @@ export const vilkårsvurderingTriggere = {
   options: {
     list: Object.values(Vilkår).map(vilkår => vilkårValg[vilkår]),
   },
-  hidden: ({ document }) => !erNasjonalBegrunnelse(document),
+  hidden: ({ document }: { document: Record<string, any> }) => !erNasjonalBegrunnelse(document),
 };

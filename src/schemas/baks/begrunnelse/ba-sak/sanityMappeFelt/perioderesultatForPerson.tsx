@@ -1,3 +1,4 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 
 export enum PerioderesultatForPerson {
@@ -43,5 +44,5 @@ export const periodeResultatForPerson = {
       periodeResultatForPersonTilMenyValg(vedtakResultat),
     ),
   },
-  validation: rule => rule.required().error('Resultat i perioden ikke valgt'),
+  validation: (rule: Rule) => rule.required().error('Resultat i perioden ikke valgt'),
 };

@@ -1,9 +1,15 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { lovligOppholdTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
+import {
+  Begrunnelse,
+  lovligOppholdTriggerTyper,
+  NasjonaleVilkår,
+  vilkårTriggerTilMenynavn,
+} from '../typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
+import { Rule } from 'sanity';
 
 export const lovligOppholdTriggere = {
   title: 'Triggere for "Lovlig opphold"',
@@ -13,11 +19,11 @@ export const lovligOppholdTriggere = {
   options: {
     list: lovligOppholdTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) =>
+  hidden: ({ document }: { document: Begrunnelse }) =>
     !(
       erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
       document.vilkaar.includes(NasjonaleVilkår.LOVLIG_OPPHOLD)
     ),
-  validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
+  validation: (rule: Rule) => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

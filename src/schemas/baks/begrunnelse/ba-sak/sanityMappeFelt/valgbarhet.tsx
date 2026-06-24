@@ -1,3 +1,4 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse } from '../typer';
 
@@ -36,5 +37,5 @@ export const valgbarhet = {
   options: {
     list: Object.values(Valgbarhet).map(valgbarhet => valgbarhetTilMenyValg(valgbarhet)),
   },
-  validation: rule => rule.required().error('Valgbarhet ikke satt'),
+  validation: (rule: Rule) => rule.required().error('Valgbarhet ikke satt'),
 };

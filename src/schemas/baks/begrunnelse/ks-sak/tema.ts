@@ -1,4 +1,5 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { Rule } from 'sanity';
 
 export enum Tema {
   NASJONAL = 'NASJONAL',
@@ -22,6 +23,6 @@ export const tema = {
   options: {
     list: Object.values(Tema).map(tema => temaValg[tema]),
   },
-  validation: rule => rule.required().error('Tema ikke valgt'),
+  validation: (rule: Rule) => rule.required().error('Tema ikke valgt'),
   initialValue: Tema.NASJONAL,
 };

@@ -10,13 +10,15 @@ export default [
     title: 'Høyrestill',
     value: 'hoyrestill',
     icon: BsFilterRight,
-    component: props => <span className={styles.høyrestill}>{props.children}</span>,
+    component: (props: { children: React.ReactNode }) => (
+      <span className={styles.høyrestill}>{props.children}</span>
+    ),
   },
   {
     title: 'Lenke',
     value: 'lenke',
     icon: () => <MdLink />,
-    component: props => (
+    component: (props: { children: React.ReactNode }) => (
       <span contentEditable={true} className={styles.lenke}>
         {props.children}
       </span>

@@ -5,6 +5,7 @@ import { eøsFlettefelter } from '../ba-sak/typer';
 import { validerFlettefeltErGyldigForRegelverk } from '../ba-sak/utils';
 import styled from 'styled-components';
 import { flettefelter } from './flettefelter';
+import { Rule } from 'sanity';
 
 export const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -16,7 +17,7 @@ export const begrunnelseFlettefelt = {
       options: {
         list: [...flettefelter],
       },
-      validation: rule => [
+      validation: (rule: Rule) => [
         rule.required().error('Tomt flettefelt'),
         rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
@@ -46,7 +47,7 @@ export const begrunnelseEØSFlettefelt = {
       options: {
         list: [...eøsFlettefelter],
       },
-      validation: rule => [
+      validation: (rule: Rule) => [
         rule.required().error('Tomt flettefelt'),
         rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
@@ -74,12 +75,14 @@ export const begrunnelseValgfelt = {
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.VALGFELT }],
       name: DokumentNavn.VALG_REFERANSE,
-      validation: rule => [rule.required().error('Tomt valgfelt')],
+      validation: (rule: Rule) => [rule.required().error('Tomt valgfelt')],
     },
     {
       name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
       type: SanityTyper.BOOLEAN,
-      validation: rule => [rule.required().error('Du må velge om det skal være stor bokstav')],
+      validation: (rule: Rule) => [
+        rule.required().error('Du må velge om det skal være stor bokstav'),
+      ],
     },
   ],
   initialValue: {

@@ -1,9 +1,15 @@
-import { giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
+import {
+  Begrunnelse,
+  giftPartnerskapTriggerTyper,
+  NasjonaleVilkår,
+  vilkårTriggerTilMenynavn,
+} from '../typer';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
   erNasjonalEllerInstitusjonsBegrunnelse,
   lagUtfyltNasjonaltFeltMenFeilRegelverkRegel,
 } from '../utils';
+import { Rule } from 'sanity';
 
 export const giftPartnerskapTriggere = {
   title: 'Triggere for "Gift partnerskap"',
@@ -13,11 +19,11 @@ export const giftPartnerskapTriggere = {
   options: {
     list: giftPartnerskapTriggerTyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) =>
+  hidden: ({ document }: { document: Begrunnelse }) =>
     !(
       erNasjonalEllerInstitusjonsBegrunnelse(document) &&
       document.vilkaar &&
       document.vilkaar.includes(NasjonaleVilkår.GIFT_PARTNERSKAP)
     ),
-  validation: rule => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
+  validation: (rule: Rule) => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

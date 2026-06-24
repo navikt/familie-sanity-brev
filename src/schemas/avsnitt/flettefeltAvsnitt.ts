@@ -11,7 +11,7 @@ export const flettefeltAvsnitt = {
       name: DokumentNavn.FLETTEFELT_REFERANSE,
       type: SanityTyper.REFERENCE,
       to: [{ type: 'flettefelt' }],
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+      validation: (Rule: any) => [Rule.required().error('Tomt flettefelt')],
       options: { filter: 'erListe == true' },
     },
     {
@@ -19,7 +19,7 @@ export const flettefeltAvsnitt = {
       type: SanityTyper.STRING,
       description: 'En knapp for å lage nye flettefelt',
       components: {
-        input: props => NyttFelt(props, DokumentNavn.FLETTEFELT),
+        input: (props: any) => NyttFelt(props, DokumentNavn.FLETTEFELT),
       },
     },
   ],
