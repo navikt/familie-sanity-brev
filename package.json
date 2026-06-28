@@ -43,13 +43,13 @@
     "@eslint/eslintrc": "3.3.3",
     "@eslint/js": "10.0.1",
     "@sanity/eslint-config-studio": "6.0.0",
-    "@typescript-eslint/eslint-plugin": "8.59.0",
-    "@typescript-eslint/parser": "8.59.0",
-    "eslint": "9.39.1",
+    "@typescript-eslint/eslint-plugin": "8.62.0",
+    "@typescript-eslint/parser": "8.62.0",
+    "eslint": "10.5.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.5.0",
     "husky": "9.1.7",
-    "lint-staged": "16.4.0",
+    "lint-staged": "17.0.8",
     "prettier": "3.8.1",
     "typescript": "5.9.2"
   }
