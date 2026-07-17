@@ -2,7 +2,7 @@ import { DokumentNavn, SanityTyper } from '../../util/typer';
 import NyttFelt from '../../komponenter/NyttFelt';
 import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
 
-export const delmalAvsnitt = maalform => ({
+export const delmalAvsnitt = (maalform: any) => ({
   title: 'Delmal',
   name: DokumentNavn.DELMAL,
   type: SanityTyper.OBJECT,
@@ -12,14 +12,14 @@ export const delmalAvsnitt = maalform => ({
       name: DokumentNavn.DELMAL_REFERANSE,
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.DELMAL }],
-      validation: Rule => [Rule.required().error('Fyll inn en enkel delmal.')],
+      validation: (Rule: any) => [Rule.required().error('Fyll inn en enkel delmal.')],
     },
     {
       title: 'Delmalen skal alltid med',
       name: DokumentNavn.SKAL_ALLTID_MED,
       type: SanityTyper.BOOLEAN,
       description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-      validation: Rule => [Rule.required().error('Velg om delmalen alltid skal med.')],
+      validation: (Rule: any) => [Rule.required().error('Velg om delmalen alltid skal med.')],
     },
     {
       title: 'Delmalen skal begynne på neste side',
@@ -31,10 +31,10 @@ export const delmalAvsnitt = maalform => ({
       name: 'lagNy',
       type: SanityTyper.STRING,
       description: 'En knapp for å lage ny delmal',
-      components: { input: props => NyttFelt(props, DokumentNavn.DELMAL) },
+      components: { input: (props: any) => NyttFelt(props, DokumentNavn.DELMAL) },
     },
   ],
-  validation: Rule => [Rule.required().error('Ingen delmal valgt')],
+  validation: (Rule: any) => [Rule.required().error('Ingen delmal valgt')],
   preview: {
     select: {
       delmalReferanse: `${DokumentNavn.DELMAL_REFERANSE}`,
