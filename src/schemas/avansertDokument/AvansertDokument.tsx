@@ -58,6 +58,20 @@ export default {
       type: SanityTyper.BOOLEAN,
     },
     {
+      title: 'Regelverk',
+      name: DokumentNavn.REGELVERK_VERSJON,
+      description: 'Hvilke behandlingsregler gjelder brevet for?',
+      type: SanityTyper.STRING,
+      options: {
+        list: [
+          { title: 'Gammelt regelverk', value: 'gammelt_regelverk' },
+          { title: 'Nytt regelverk (2026)', value: 'nytt_regelverk' },
+          { title: 'Begge regelverk', value: 'begge_regelverk' },
+        ],
+        layout: 'radio',
+      },
+    },
+    {
       title: 'Frittstående brev',
       name: DokumentNavn.FRITTSTÅENDE_BREV,
       type: SanityTyper.OBJECT,
