@@ -7,11 +7,12 @@
     "./logo/*.js",
     "./logo/*.js",
     "./migreringer/*.js",
-    "eslint.config.mjs",
+    "eslint.config.mjs"
   ],
   "compilerOptions": {
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
-  },
-  "esModuleInterop": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
 }
