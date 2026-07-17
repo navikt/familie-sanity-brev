@@ -50,5 +50,5 @@ export const utdypendeVilkårsvurderinger = {
       trigger => utdypendeVilkårsvurderingerValg[trigger],
     ),
   },
-  hidden: ({ document }) => !erNasjonalBegrunnelse(document),
+  hidden: ({ document }: { document: Record<string, any> }) => !erNasjonalBegrunnelse(document),
 };

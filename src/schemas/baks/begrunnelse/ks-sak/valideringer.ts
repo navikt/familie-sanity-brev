@@ -1,4 +1,6 @@
+import { Rule } from 'sanity';
 import { apiNavnValideringer } from '../../../../util/valideringer';
+import { DokumentNavn } from '../../../../util/typer';
 import { Resultat } from './resultat';
 
 const apiNavnPrefiksMap: Record<Resultat, string> = {
@@ -11,11 +13,11 @@ const apiNavnPrefiksMap: Record<Resultat, string> = {
   ETTER_ENDRET_UTBETALINGSPERIODE: 'etterEndretUtbetaling',
 };
 
-export const apiNavnValideringerBegrunnelse = (rule, type) => {
+export const apiNavnValideringerBegrunnelse = (rule: Rule, type: string) => {
   return [
-    ...apiNavnValideringer(rule, type),
-    rule.custom((verdi: string, kontekst): true | string => {
-      const resultat = kontekst.document.resultat;
+    ...apiNavnValideringer(rule, type as DokumentNavn),
+    rule.custom((verdi: string, kontekst: { document?: Record<string, any> }): true | string => {
+      const resultat: Resultat = kontekst.document?.resultat;
 
       if (!Object.values(Resultat).includes(resultat)) {
         return (

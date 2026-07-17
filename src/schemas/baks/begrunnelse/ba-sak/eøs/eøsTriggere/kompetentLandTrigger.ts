@@ -1,4 +1,6 @@
+import { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { Begrunnelse } from '../../typer';
 import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
@@ -36,6 +38,7 @@ export const kompetentLandTrigger = {
   options: {
     list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
-  validation: rule => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
+  hidden: ({ document }: { document: Begrunnelse }) =>
+    !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+  validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };

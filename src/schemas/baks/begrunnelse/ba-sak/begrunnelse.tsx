@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import styled from 'styled-components';
-import { eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
+import {
+  Begrunnelse,
+  eøsFlettefelter,
+  flettefelter,
+  hjemler,
+  hjemlerFolketrygdloven,
+  vilkår,
+} from './typer';
 import { triggesAv } from './triggesAv';
 import { validerBegrunnelse } from './validerBegrunnelse';
 import {
@@ -18,6 +25,7 @@ import { rolle } from './sanityMappeFelt/rolle';
 import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
 import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
 import { regelverk } from './sanityMappeFelt/regelverk';
+import { Rule } from 'sanity';
 
 const begrunnelseFlettefelt = {
   name: DokumentNavn.FLETTEFELT,
@@ -29,7 +37,7 @@ const begrunnelseFlettefelt = {
       options: {
         list: [...flettefelter],
       },
-      validation: rule => [
+      validation: (rule: Rule) => [
         rule.required().error('Tomt flettefelt'),
         rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
@@ -59,7 +67,7 @@ const begrunnelseEØSFlettefelt = {
       options: {
         list: [...eøsFlettefelter],
       },
-      validation: rule => [
+      validation: (rule: Rule) => [
         rule.required().error('Tomt flettefelt'),
         rule.custom(validerFlettefeltErGyldigForRegelverk),
       ],
@@ -87,12 +95,14 @@ const begrunnelseValgfelt = {
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.VALGFELT }],
       name: DokumentNavn.VALG_REFERANSE,
-      validation: rule => [rule.required().error('Tomt valgfelt')],
+      validation: (rule: Rule) => [rule.required().error('Tomt valgfelt')],
     },
     {
       name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
       type: SanityTyper.BOOLEAN,
-      validation: rule => [rule.required().error('Du må velge om det skal være stor bokstav')],
+      validation: (rule: Rule) => [
+        rule.required().error('Du må velge om det skal være stor bokstav'),
+      ],
     },
   ],
   initialValue: {
@@ -110,7 +120,7 @@ const begrunnelseValgfelt = {
   },
 };
 
-const editor = (maalform, tittel) => ({
+const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
@@ -155,7 +165,7 @@ const begrunnelse = {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: rule => [rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     brevPeriodeType,
     periodeResultatForPerson,
@@ -185,7 +195,7 @@ const begrunnelse = {
       title: 'Navn i ba-sak',
       type: SanityTyper.STRING,
       name: DokumentNavn.NAVN_I_SYSTEM,
-      validation: rule => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
     },
     {
       title: 'Hjemler',
@@ -232,11 +242,12 @@ const begrunnelse = {
       options: {
         list: vilkår,
       },
-      validation: rule => [
+      validation: (rule: Rule) => [
         lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse(rule).warning(),
         lagInvaliderUtvidetForInstitusjonRegel(rule),
       ],
-      hidden: context => !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
+      hidden: (context: { document?: Begrunnelse }) =>
+        !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
     },
 
     rolle,

@@ -1,6 +1,6 @@
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { erEndretUtbetalingBegrunnelse } from './nasjonaleTriggere/endringsårsakTrigger';
-import { vilkårTriggerTilMenynavn, øvrigeTriggertyper } from './typer';
+import { Begrunnelse, vilkårTriggerTilMenynavn, øvrigeTriggertyper } from './typer';
 
 export const øvrigeTriggere = {
   title: 'Øvrige triggere',
@@ -10,5 +10,5 @@ export const øvrigeTriggere = {
   options: {
     list: øvrigeTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) => erEndretUtbetalingBegrunnelse(document),
+  hidden: ({ document }: { document: Begrunnelse }) => erEndretUtbetalingBegrunnelse(document),
 };

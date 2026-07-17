@@ -4,6 +4,7 @@ import { DokumentNavn, SanityTyper } from '../../util/typer';
 import TekstStyles from '../../util/TekstStyles';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { apiNavnValideringer } from '../../util/valideringer';
+import { Rule } from 'sanity';
 
 const flettefelterForPeriode = [
   { title: 'Fom', value: 'fom' },
@@ -22,7 +23,7 @@ const periodeFlettefeltAnnotering = {
   type: SanityTyper.OBJECT,
   blockEditor: {
     icon: () => <span className={styles.flettefeltIcon}>F</span>,
-    render: props => (
+    render: (props: { children: React.ReactNode }) => (
       <span contentEditable={true} className={styles.flettefelt}>
         {props.children}
       </span>
@@ -35,7 +36,7 @@ const periodeFlettefeltAnnotering = {
       options: {
         list: flettefelterForPeriode,
       },
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+      validation: (rule: Rule) => [rule.required().error('Tomt flettefelt')],
     },
   ],
 };
@@ -50,21 +51,21 @@ const periodeFlettefeltAvsnitt = {
       options: {
         list: avsnittflettefelterPeriode,
       },
-      validation: Rule => [Rule.required().error('Tomt flettefelt')],
+      validation: (rule: Rule) => [rule.required().error('Tomt flettefelt')],
     },
   ],
   preview: {
     select: {
       title: DokumentNavn.FELT,
     },
-    prepare: selection => ({
+    prepare: (selection: { title?: string }) => ({
       title: selection.title,
       media: AiOutlineUnorderedList,
     }),
   },
 };
 
-const editor = (maalform, tittel) => ({
+const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
   title: tittel,
   type: SanityTyper.ARRAY,
@@ -94,14 +95,14 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.PERIODE),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.PERIODE),
     },
     editor(DokumentNavn.BOKMAAL, 'Bokmål'),
     editor(DokumentNavn.NYNORSK, 'Nynorsk'),
