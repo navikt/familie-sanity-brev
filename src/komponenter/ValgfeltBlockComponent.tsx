@@ -4,6 +4,14 @@ import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 
 const ValgfeltBlockComponent = (id: string, maalform: string) => {
+  if (!id) {
+    return <TekstFelt>Laster valgfeltet..</TekstFelt>;
+  }
+
+  return <ValgfeltBlock id={id} maalform={maalform} />;
+};
+
+const ValgfeltBlock = ({ id, maalform }: { id: string; maalform: string }) => {
   const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
   const { data, error } = useSanityQuery(query);
@@ -17,7 +25,15 @@ const ValgfeltBlockComponent = (id: string, maalform: string) => {
     return <TekstFelt>Laster delmalen..</TekstFelt>;
   }
 
-  if (!data.delmaler?.length || data.delmaler.length !== data.valgmuligheter.length) {
+  if (!data.valgmuligheter?.length) {
+    return <ErrorStyling>Valgfeltet finnes ikke, eller har ingen valgmuligheter.</ErrorStyling>;
+  }
+
+  if (
+    !data.delmaler?.length ||
+    data.delmaler.length !== data.valgmuligheter.length ||
+    data.delmaler.some(delmal => !delmal)
+  ) {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 
