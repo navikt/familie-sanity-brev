@@ -25,15 +25,7 @@ const ValgfeltBlock = ({ id, maalform }: { id: string; maalform: string }) => {
     return <TekstFelt>Laster delmalen..</TekstFelt>;
   }
 
-  if (!data.valgmuligheter?.length) {
-    return <ErrorStyling>Valgfeltet finnes ikke, eller har ingen valgmuligheter.</ErrorStyling>;
-  }
-
-  if (
-    !data.delmaler?.length ||
-    data.delmaler.length !== data.valgmuligheter.length ||
-    data.delmaler.some(delmal => !delmal)
-  ) {
+  if (!data.delmaler?.length || data.delmaler.length !== data.valgmuligheter.length) {
     return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
   }
 

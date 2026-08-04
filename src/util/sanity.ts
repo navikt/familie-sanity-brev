@@ -5,7 +5,6 @@ export const client = (datasett, brukCache) => {
   return createClient({
     projectId: 'xsrv1mh6',
     dataset: datasett,
-    apiVersion: '2021-10-21',
     useCdn: brukCache,
     withCredentials: true,
   });
@@ -30,18 +29,9 @@ export function useSanityQuery(query, brukCache = true, brukSessionStorage = tru
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
-    let erUtdatert = false;
-
-    setData(undefined);
-    setError(undefined);
-
     hentFraSanity(query, brukCache, brukSessionStorage)
-      .then(response => !erUtdatert && setData(response))
-      .catch(error => !erUtdatert && setError(error));
-
-    return () => {
-      erUtdatert = true;
-    };
+      .then(response => setData(response))
+      .catch(error => setError(error));
   }, [query, brukCache, brukSessionStorage]);
 
   return { data, error };
