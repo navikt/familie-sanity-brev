@@ -222,6 +222,14 @@ const begrunnelse = {
         'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i BA-SAK',
     },
     {
+      title: 'Splitt på søknadstidspunkt',
+      type: SanityTyper.BOOLEAN,
+      name: BegrunnelseDokumentNavn.SPLITT_PÅ_SØKNADSTIDSPUNKT,
+      description:
+        'Huk av dersom begrunnelsen skal deles i én tekst per søknadstidspunkt når barna i en ' +
+        'endret utbetalingsperiode har ulike søknadstidspunkt. Krever at brevteksten fletter inn "Søknadstidspunkt".',
+    },
+    {
       title: 'Vilkår',
       description:
         'Hvilke vilkår som må være utgjørende for at begrunnelsen skal vises. ' +
