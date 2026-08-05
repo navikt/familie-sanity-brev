@@ -4,14 +4,6 @@ import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 
 const ValgfeltBlockComponent = (id: string, maalform: string) => {
-  if (!id) {
-    return <TekstFelt>Laster valgfeltet..</TekstFelt>;
-  }
-
-  return <ValgfeltBlock id={id} maalform={maalform} />;
-};
-
-const ValgfeltBlock = ({ id, maalform }: { id: string; maalform: string }) => {
   const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
   const { data, error } = useSanityQuery(query);
