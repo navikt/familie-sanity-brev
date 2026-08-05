@@ -10,10 +10,13 @@ export const valgAvsnitt = maalform => ({
   validation: Rule => [Rule.required().error('Du må velge et valgfelt')],
   preview: {
     select: {
-      _id: `${DokumentNavn.VALG_REFERANSE}._ref`,
+      valgReferanse: DokumentNavn.VALG_REFERANSE,
     },
+    prepare: (valgBlock: any) => ({
+      valgfeltId: valgBlock?.valgReferanse?._ref,
+    }),
   },
   components: {
-    preview: (props: any) => ValgfeltBlockComponent(props._id, maalform),
+    preview: (props: any) => ValgfeltBlockComponent(props.valgfeltId, maalform),
   },
 });

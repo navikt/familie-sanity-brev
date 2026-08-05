@@ -40,12 +40,15 @@ export const Valgblokker = (props: any) => {
       {delmaler?.map(delmal => (
         <Valg key={delmal._id}>
           <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
-          {DelmalBlockComponent(props, maalform, delmal._id, false)}
+          <DelmalIValg blokkProps={props} maalform={maalform} id={delmal._id} />
         </Valg>
       ))}
     </PreviewValg>
   );
 };
+
+const DelmalIValg = (props: { blokkProps: any; maalform: string; id: string }) =>
+  DelmalBlockComponent(props.blokkProps, props.maalform, props.id, false);
 
 const Valg = styled.div`
   display: flex;
