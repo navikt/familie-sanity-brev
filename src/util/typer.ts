@@ -88,6 +88,7 @@ export enum BegrunnelseDokumentNavn {
   UTVIDET_BARNETRYGD_TRIGGERE = 'utvidetBarnetrygdTriggere',
   IKKE_I_BRUK = 'ikkeIBruk',
   STØTTER_FRITEKST = 'stotterFritekst',
+  SPLITT_PÅ_SØKNADSTIDSPUNKT = 'splittPaaSoknadstidspunkt',
 }
 
 export enum EØSBegrunnelseDokumentNavn {
