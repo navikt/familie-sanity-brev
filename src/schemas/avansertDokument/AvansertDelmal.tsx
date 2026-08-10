@@ -4,6 +4,7 @@ import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalen
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import { Badge } from '@sanity/ui';
+import { Rule } from 'sanity';
 
 const TittelBadge = () => {
   return <Badge tone="primary">Avansert delmal</Badge>;
@@ -29,14 +30,14 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: rule => [rule.required().error('Dokumentet må ha et visningsnavn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et visningsnavn')],
     },
     {
       title: 'Api navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DELMAL),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DELMAL),
     },
     {
       name: 'hvorDenBrukes',

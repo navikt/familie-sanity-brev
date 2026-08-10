@@ -8,9 +8,9 @@ import {
 } from '../src/util/typer';
 import { ComposeIcon } from '@sanity/icons';
 import { uuid } from '@sanity/uuid';
-import { resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
-import { temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
-import { typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
+import { Resultat, resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
+import { Tema, temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
+import { Type, typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
 import {
   Valgbarhet,
   valgbarhetTilMenyValg,
@@ -74,7 +74,7 @@ export const structure = async (S: StructureBuilder) => {
   const baBegrunnelseHierarki: IMappe = hentMapperBaBegrunnelse('begrunnelse', begrunnelser);
   const ksBegrunnelseHierarki: IMappe = hentMapperKsBegrunnelse('ksBegrunnelse', ksBegrunnelser);
 
-  const skalBrukeSanitySinStruktur = listItem =>
+  const skalBrukeSanitySinStruktur = (listItem: ListItemBuilder) =>
     ![
       BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
       KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
@@ -83,7 +83,7 @@ export const structure = async (S: StructureBuilder) => {
       ...(erEf() ? ekskluderesForEf : []),
       ...(erBa() ? ekskluderesForBa : []),
       ...(erKs() ? ekskluderesForKs : []),
-    ].includes(listItem.getId());
+    ].includes(listItem.getId() ?? '');
 
   return S.list()
     .title('Content')
@@ -107,12 +107,12 @@ export const structure = async (S: StructureBuilder) => {
 
 const hentDokumentMappe = (
   S: StructureBuilder,
-  type,
+  type: string,
   mappe: IMappe,
   mappeNavn: string,
   tidligereIder: string[] = [],
 ): ListItemBuilder => {
-  const fjernDraftsFraId = dokumenter =>
+  const fjernDraftsFraId = (dokumenter: IDokument[]) =>
     dokumenter.map(dokument =>
       dokument._id.split('.')[0] === 'drafts'
         ? { ...dokument, _id: dokument._id.split('.')[1] }
@@ -165,7 +165,7 @@ const hentDokumentMappe = (
     );
 };
 
-const sorterBegrunnelseDokumenter = (dokumenter: IDokument[], type): IDokument[] => {
+const sorterBegrunnelseDokumenter = (dokumenter: IDokument[], type: string): IDokument[] => {
   if (type === 'begrunnelse' || type === 'ksBegrunnelse') {
     return dokumenter.sort((a, b) =>
       a?.visningsnavn && b?.visningsnavn
@@ -201,8 +201,8 @@ const leggTilMappe = (
   mappenavnTransformator: (mappeNavn: string) => string = trimAndCapitalize,
 ): IMappe => {
   let parent = mapper;
-  for (let index = 0; index < delmal.mappe.length; index++) {
-    const mappeNavn = mappenavnTransformator(delmal.mappe[index]);
+  delmal.mappe?.forEach(mappe => {
+    const mappeNavn = mappenavnTransformator(mappe);
     if (!parent.undermapper[mappeNavn]) {
       parent.undermapper[mappeNavn] = {
         dokumenter: [],
@@ -210,7 +210,7 @@ const leggTilMappe = (
       };
     }
     parent = parent.undermapper[mappeNavn];
-  }
+  });
   parent.dokumenter.push({
     _type: delmal._type,
     visningsnavn: delmal.visningsnavn,
@@ -219,7 +219,7 @@ const leggTilMappe = (
   return mapper;
 };
 
-const hentMapper = (type, delmaler: IDokument[]): IMappe => {
+const hentMapper = (type: string, delmaler: IDokument[]): IMappe => {
   let mapper: IMappe = { dokumenter: [], undermapper: {} };
   delmaler.forEach(delmal => {
     if (delmal._type !== type) return;
@@ -238,7 +238,7 @@ const hentMapper = (type, delmaler: IDokument[]): IMappe => {
   return mapper;
 };
 
-const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => {
+const hentMapperBaBegrunnelse = (type: string, begrunnelser: IBegrunnelse[]): IMappe => {
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
@@ -247,9 +247,9 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
     const mappehierarkiForBegrunnelse: string[] = begrunnelseHarTemaOgTypeOgResultat
       ? [
-          periodeResultatForPersonTilMenyValg(begrunnelse.periodeResultatForPerson).title,
-          regelverkTilMenyValg(begrunnelse.regelverk).title,
-          valgbarhetTilMenyValg(begrunnelse.valgbarhet).title,
+          periodeResultatForPersonTilMenyValg(begrunnelse.periodeResultatForPerson!).title,
+          regelverkTilMenyValg(begrunnelse.regelverk!).title,
+          valgbarhetTilMenyValg(begrunnelse.valgbarhet!).title,
         ]
       : [];
 
@@ -280,20 +280,20 @@ const hentMapperBaBegrunnelse = (type, begrunnelser: IBegrunnelse[]): IMappe => 
 
 const tomMappe: IMappe = { dokumenter: [], undermapper: {} };
 
-const hentMapperKsBegrunnelse = (type, begrunnelser: IKSBegrunnelse[]): IMappe => {
+const hentMapperKsBegrunnelse = (type: string, begrunnelser: IKSBegrunnelse[]): IMappe => {
   const begrunnelserAvRiktigType = begrunnelser.filter(begrunnelse => begrunnelse._type === type);
 
   const begrunnelserMedTypeOgTemaSomMappe = begrunnelserAvRiktigType.map(begrunnelse => {
     const begrunnelseHarTemaOgType =
       !!begrunnelse.resultat && !!begrunnelse.tema && !!begrunnelse.type;
 
-    const mappehierarkiForBegrunnelse = begrunnelseHarTemaOgType
-      ? [
-          resultatValg[begrunnelse.resultat].title,
-          temaValg[begrunnelse.tema].title,
-          typeValg[begrunnelse.type].title,
-        ]
-      : [];
+    const mappehierarkiForBegrunnelse = !begrunnelseHarTemaOgType
+      ? []
+      : [
+          resultatValg[begrunnelse.resultat! as Resultat].title,
+          temaValg[begrunnelse.tema! as Tema].title,
+          typeValg[begrunnelse.type! as Type].title,
+        ];
 
     return {
       ...begrunnelse,

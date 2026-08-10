@@ -6,6 +6,7 @@ import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
 import decorators from '../util/decorators';
 import { apiNavnValideringer } from '../util/valideringer';
 import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
+import { Rule } from 'sanity';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
@@ -39,14 +40,14 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Api-navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.DELMAL),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.DELMAL),
     },
     {
       name: 'hvorDenBrukes',

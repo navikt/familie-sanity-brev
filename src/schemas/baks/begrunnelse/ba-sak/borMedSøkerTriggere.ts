@@ -2,6 +2,7 @@ import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { EøsVilkår } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 import { NasjonaleVilkår } from './typer';
 import { lagInstitusjonBorMedSøkerRegel } from './institusjon/utils';
+import { Rule } from 'sanity';
 
 export enum BorMedSøkerTriggere {
   VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',
@@ -37,8 +38,8 @@ export const borMedSøkerTriggere = {
   options: {
     list: Object.values(BorMedSøkerTriggere).map(trigger => vilkårTriggerTilMenynavn[trigger]),
   },
-  hidden: ({ document }) =>
+  hidden: ({ document }: { document: Record<string, any> }) =>
     !(document.vilkaar && document.vilkaar.includes(NasjonaleVilkår.BOR_MED_SOKER)) &&
     !(document.eosVilkaar && document.eosVilkaar.includes(EøsVilkår.BOR_MED_SØKER)),
-  validation: rule => [lagInstitusjonBorMedSøkerRegel(rule)],
+  validation: (rule: Rule) => [lagInstitusjonBorMedSøkerRegel(rule)],
 };

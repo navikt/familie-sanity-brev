@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../../styles/styles.module.css';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { Rule } from 'sanity';
 
 export const AvansertDelmalFelter = (erGjentagende = false) => [
   {
@@ -8,14 +9,14 @@ export const AvansertDelmalFelter = (erGjentagende = false) => [
     name: DokumentNavn.DELMAL_REFERANSE,
     type: SanityTyper.REFERENCE,
     to: { type: 'avansertDelmal' },
-    validation: rule => [rule.required().error('Tom delmal')],
+    validation: (rule: Rule) => [rule.required().error('Tom delmal')],
   },
   {
     title: 'Delmalen skal alltid med',
     name: DokumentNavn.SKAL_ALLTID_MED,
     type: SanityTyper.BOOLEAN,
     description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-    validation: rule => [rule.required().error('Velg om delmalen alltid skal med.')],
+    validation: (rule: Rule) => [rule.required().error('Velg om delmalen alltid skal med.')],
   },
   ...(erGjentagende
     ? [
@@ -23,7 +24,9 @@ export const AvansertDelmalFelter = (erGjentagende = false) => [
           title: 'Er gjentagende',
           name: DokumentNavn.ER_GJENTAGENDE,
           type: SanityTyper.BOOLEAN,
-          validation: rule => [rule.required().error('Må sette om delmalen er gjentagende')],
+          validation: (rule: Rule) => [
+            rule.required().error('Må sette om delmalen er gjentagende'),
+          ],
         },
       ]
     : []),
@@ -35,7 +38,7 @@ export default {
   title: 'Delmal',
   blockEditor: {
     icon: () => <span className={styles.delmalIcon}>D</span>,
-    render: props => <span className={styles.delmal}>{props.children}</span>,
+    render: (props: any) => <span className={styles.delmal}>{props.children}</span>,
   },
   fields: AvansertDelmalFelter(),
 };

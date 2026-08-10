@@ -2,28 +2,29 @@ import {
   EØSBegrunnelseDokumentNavn,
   KSBegrunnelseDokumentNavn,
 } from '../../../../../../util/typer';
+import { Rule } from 'sanity';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 import { Tema } from '../../tema';
 
-export const erNasjonalBegrunnelse: (document) => boolean = document =>
+export const erNasjonalBegrunnelse: (document: Record<string, any>) => boolean = document =>
   document[KSBegrunnelseDokumentNavn.TEMA] &&
   document[KSBegrunnelseDokumentNavn.TEMA] == Tema.NASJONAL;
 
-export const erEøsBegrunnelse: (document) => boolean = document =>
+export const erEøsBegrunnelse: (document: Record<string, any>) => boolean = document =>
   document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] == Tema.EØS;
 
-export const kanVilkårsvurderingTriggereVelges = document =>
+export const kanVilkårsvurderingTriggereVelges = (document: Record<string, any>) =>
   erEøsBegrunnelse(document) &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK] &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK].includes(EØSTriggerType.VILKÅRSVURDERING);
 
-export const kanKompetanseTriggereVelges = document =>
+export const kanKompetanseTriggereVelges = (document: Record<string, any>) =>
   erEøsBegrunnelse(document) &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK] &&
   document[EØSBegrunnelseDokumentNavn.TRIGGERE_I_BRUK].includes(EØSTriggerType.KOMPETANSE);
 
 export const hentEØSTriggereRegler = (
-  rule,
+  rule: Rule,
   erObligatoriskOmSynlig: boolean,
   regelTyper: EØSTriggerType[],
 ) => [
@@ -31,22 +32,22 @@ export const hentEØSTriggereRegler = (
   erObligatoriskOmSynlig && lagEØSFeltObligatoriskRegel(rule, regelTyper),
 ];
 
-export const hentEØSHjemmelRegler = rule =>
+export const hentEØSHjemmelRegler = (rule: Rule) =>
   hentEØSFeltRegler(rule, 'En EØS-hjemmel er valgt, men regelverk for begrunnelsen er ikke eøs.');
 
-export const hentEØSFeltRegler = (rule, feilmelding: string) =>
+export const hentEØSFeltRegler = (rule: Rule, feilmelding: string) =>
   rule.custom((currentValue, { document }) => {
-    if (!erEøsBegrunnelse(document) && currentValue !== undefined) {
+    if (!erEøsBegrunnelse(document as Record<string, any>) && currentValue !== undefined) {
       return feilmelding;
     }
     return true;
   });
 
-const lagEØSFeltObligatoriskRegel = (rule, triggerTyperforFelt: EØSTriggerType[]) =>
+const lagEØSFeltObligatoriskRegel = (rule: Rule, triggerTyperforFelt: EØSTriggerType[]) =>
   rule.custom((currentValue, { document }) => {
     if (
-      erEøsBegrunnelse(document) &&
-      kanVelgeTriggerForEØSBegrunnelse(triggerTyperforFelt, document) &&
+      erEøsBegrunnelse(document as Record<string, any>) &&
+      kanVelgeTriggerForEØSBegrunnelse(triggerTyperforFelt, document as Record<string, any>) &&
       currentValue === undefined
     ) {
       return 'Du må velge minst ett valg for triggerne';
@@ -54,7 +55,10 @@ const lagEØSFeltObligatoriskRegel = (rule, triggerTyperforFelt: EØSTriggerType
     return true;
   });
 
-const kanTriggereAvTypeVelges = (triggerTyperforFelt: EØSTriggerType, document): boolean => {
+const kanTriggereAvTypeVelges = (
+  triggerTyperforFelt: EØSTriggerType,
+  document: Record<string, any>,
+): boolean => {
   switch (triggerTyperforFelt) {
     case EØSTriggerType.VILKÅRSVURDERING:
       return kanVilkårsvurderingTriggereVelges(document);
@@ -63,5 +67,7 @@ const kanTriggereAvTypeVelges = (triggerTyperforFelt: EØSTriggerType, document)
   }
 };
 
-const kanVelgeTriggerForEØSBegrunnelse = (triggerTyperForFelt: EØSTriggerType[], document) =>
-  triggerTyperForFelt.every(triggerType => kanTriggereAvTypeVelges(triggerType, document));
+const kanVelgeTriggerForEØSBegrunnelse = (
+  triggerTyperForFelt: EØSTriggerType[],
+  document: Record<string, any>,
+) => triggerTyperForFelt.every(triggerType => kanTriggereAvTypeVelges(triggerType, document));

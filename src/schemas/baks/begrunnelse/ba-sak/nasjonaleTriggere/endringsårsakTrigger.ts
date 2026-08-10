@@ -1,11 +1,12 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { endringsårsaker } from '../typer';
+import { Begrunnelse, endringsårsaker } from '../typer';
 import { Mappe } from '../mapper';
 import { erNasjonalBegrunnelse } from './utils';
 import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
+import { Rule } from 'sanity';
 
-export const erEndretUtbetalingBegrunnelse: (document) => boolean = document =>
-  document[DokumentNavn.MAPPE] &&
+export const erEndretUtbetalingBegrunnelse: (document: Begrunnelse) => boolean = document =>
+  document[DokumentNavn.MAPPE] != undefined &&
   (document[DokumentNavn.MAPPE].includes(Mappe.ENDRET_UTBETALINGSPERIODE) ||
     document[DokumentNavn.MAPPE].includes(Mappe.ETTER_ENDRET_UTBETALINGSPERIODE));
 
@@ -17,14 +18,14 @@ export const endringsårsakTrigger = {
   options: {
     list: endringsårsaker,
   },
-  hidden: ({ document }) =>
+  hidden: ({ document }: { document: Begrunnelse }) =>
     !erEndretUtbetalingBegrunnelse(document) ||
     !(erNasjonalBegrunnelse(document) || erEøsBegrunnelse(document)),
-  validation: rule => [
+  validation: (rule: Rule) => [
     rule
-      .custom((endringsårsaktriggere, context) => {
+      .custom((endringsårsaktriggere: string[] | undefined, context) => {
         const _erEndretUtbetaling =
-          context.document && erEndretUtbetalingBegrunnelse(context.document);
+          context.document && erEndretUtbetalingBegrunnelse(context.document as Begrunnelse);
         const endringsårsakErValgt = endringsårsaktriggere && endringsårsaktriggere.length !== 0;
 
         return !_erEndretUtbetaling || endringsårsakErValgt
