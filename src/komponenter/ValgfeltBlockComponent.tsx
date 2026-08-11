@@ -4,6 +4,14 @@ import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 
 const ValgfeltBlockComponent = (id: string, maalform: string) => {
+  if (!id) {
+    return <TekstFelt>Laster valgfeltet..</TekstFelt>;
+  }
+
+  return <ValgfeltBlock id={id} maalform={maalform} />;
+};
+
+const ValgfeltBlock = ({ id, maalform }: { id: string; maalform: string }) => {
   const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
   const { data, error } = useSanityQuery(query);
@@ -32,12 +40,15 @@ export const Valgblokker = (props: any) => {
       {delmaler?.map((delmal: any) => (
         <Valg key={delmal._id}>
           <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
-          {DelmalBlockComponent(props, maalform, delmal._id, false)}
+          <DelmalIValg blokkProps={props} maalform={maalform} id={delmal._id} />
         </Valg>
       ))}
     </PreviewValg>
   );
 };
+
+const DelmalIValg = (props: { blokkProps: any; maalform: string; id: string }) =>
+  DelmalBlockComponent(props.blokkProps, props.maalform, props.id, false);
 
 const Valg = styled.div`
   display: flex;
