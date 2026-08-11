@@ -1,3 +1,4 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse } from '../typer';
 import { erSakspesifikkBegrunnelse } from './valgbarhet';
@@ -30,13 +31,14 @@ export const fagsakType = {
   options: {
     list: Object.values(FagsakType).map(valgbarhet => fagsaktypeTilMenyValg(valgbarhet)),
   },
-  hidden: context => !erSakspesifikkBegrunnelse(context.document),
-  validation: rule => [erFagsakspesifikkRegel(rule)],
+  hidden: (context: { document?: Record<string, unknown> }) =>
+    !erSakspesifikkBegrunnelse(context.document as Begrunnelse),
+  validation: (rule: Rule) => [erFagsakspesifikkRegel(rule)],
 };
 
-export const erFagsakspesifikkRegel = rule =>
+export const erFagsakspesifikkRegel = (rule: Rule) =>
   rule.custom((nåVerdi, context) => {
-    const begrunnelse: Begrunnelse = context.document;
+    const begrunnelse = context.document as Begrunnelse;
     const feltErSattMenErIkkeSakspesifikkBegrunnelse =
       !erSakspesifikkBegrunnelse(begrunnelse) && nåVerdi;
 

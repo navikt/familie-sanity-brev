@@ -6,7 +6,7 @@ export enum EndretUtbetalingsperioder {
   ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',
 }
 
-export const erEndretUtbetaling: (document) => boolean = document =>
+export const erEndretUtbetaling: (document: Record<string, any>) => boolean = document =>
   document[KSBegrunnelseDokumentNavn.RESULTAT] &&
   (document[KSBegrunnelseDokumentNavn.RESULTAT].includes(Resultat.ENDRET_UTBETALINGSPERIODE) ||
     document[KSBegrunnelseDokumentNavn.RESULTAT].includes(
@@ -33,5 +33,6 @@ export const endretUtbetalingsperiodeTriggere = {
       endretUtbetalingsperiode => endretUtbetalingsperioderValg[endretUtbetalingsperiode],
     ),
   },
-  hidden: ({ document }) => !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
+  hidden: ({ document }: { document: Record<string, any> }) =>
+    !erEndretUtbetaling(document) || !erNasjonalBegrunnelse(document),
 };

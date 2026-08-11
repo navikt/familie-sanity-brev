@@ -25,5 +25,5 @@ export const hvilkeTriggereSkalBrukes = {
   options: {
     list: Object.values(EØSTriggerType).map(eøsTrigger => KompetanseValg[eøsTrigger]),
   },
-  hidden: ({ document }) => !erEøsBegrunnelse(document),
+  hidden: ({ document }: { document: Record<string, any> }) => !erEøsBegrunnelse(document),
 };

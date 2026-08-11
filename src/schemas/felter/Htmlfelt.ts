@@ -1,5 +1,6 @@
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
+import { Rule } from 'sanity';
 
 export default {
   title: 'Htmlfelt',
@@ -12,7 +13,7 @@ export default {
       type: SanityTyper.STRING,
       description:
         'Navnet på htmlfeltet. Kan kun bestå av tall eller bokstaver. Eksempel: fødselsdatoBarn.',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.HTMLFELT),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.HTMLFELT),
     },
   ],
 };

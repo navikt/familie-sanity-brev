@@ -37,7 +37,7 @@ export const Valgblokker = (props: any) => {
 
   return (
     <PreviewValg>
-      {delmaler?.map(delmal => (
+      {delmaler?.map((delmal: any) => (
         <Valg key={delmal._id}>
           <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
           <DelmalIValg blokkProps={props} maalform={maalform} id={delmal._id} />

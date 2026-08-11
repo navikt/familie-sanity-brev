@@ -1,3 +1,4 @@
+import { Rule } from 'sanity';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer, maskinnavnValideringer } from '../../util/valideringer';
 import HvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
@@ -11,13 +12,13 @@ export default {
       title: 'Visningsnavn',
       name: DokumentNavn.VISNINGSNAVN,
       type: SanityTyper.STRING,
-      validation: Rule => [Rule.required().error('Valgfeltet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Valgfeltet må ha et navn')],
     },
     {
       title: 'Api-navn',
       name: DokumentNavn.API_NAVN,
       type: SanityTyper.STRING,
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.VALGFELT),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.VALGFELT),
     },
     {
       title: 'Beskrivelse',
@@ -49,7 +50,7 @@ export default {
               to: [{ type: DokumentNavn.DELMAL }, { type: DokumentNavn.AVANSERT_DELMAL }],
               name: DokumentNavn.DELMAL,
               title: 'Delmal',
-              validation: Rule => [Rule.required().error('Valgfeltet må ha en delmal')],
+              validation: (Rule: Rule) => [Rule.required().error('Valgfeltet må ha en delmal')],
             },
           ],
           preview: {
@@ -57,7 +58,7 @@ export default {
               title: 'valgmulighet',
               delmal: 'delmal.visningsnavn',
             },
-            prepare(selection) {
+            prepare(selection: any) {
               const { title, delmal } = selection;
               return {
                 title: title,

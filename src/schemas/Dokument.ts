@@ -9,6 +9,7 @@ import { apiNavnValideringer } from '../util/valideringer';
 import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 import { sammensattKontrollsakFritekstAvsnitt } from './avsnitt/sammensattKontrollsakFritekstAvsnitt';
 import { fritekstAvsnitt } from './avsnitt/fritekstAvsnitt';
+import { Rule } from 'sanity';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
   name: maalform,
@@ -41,14 +42,14 @@ export default {
       title: 'Visningsnavn',
       type: SanityTyper.STRING,
       name: DokumentNavn.VISNINGSNAVN,
-      validation: Rule => [Rule.required().error('Dokumentet må ha et navn')],
+      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
     },
     {
       title: 'Api navn',
       type: SanityTyper.STRING,
       name: DokumentNavn.API_NAVN,
       description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: rule => apiNavnValideringer(rule, DokumentNavn.DOKUMENT),
+      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.DOKUMENT),
     },
     { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
     { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },

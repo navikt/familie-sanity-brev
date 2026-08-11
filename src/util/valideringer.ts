@@ -1,6 +1,8 @@
 import { Konstanter } from './konstanter';
 import groq from 'groq';
 import { client } from './sanity';
+import { Rule, ValidationContext } from 'sanity';
+import { DokumentNavn } from './typer';
 
 const førsteTegnErLitenBokstav = (tekst: string): true | string =>
   RegExp(/^[a-zæøå].*/).test(tekst)
@@ -12,26 +14,33 @@ const kunBokstaverOgTallUtenÆØÅ = (tekst: string): true | string =>
     ? true
     : 'Feltet kan kun bestå av tall eller boksaver (ikke æ, ø, å).';
 
-export const maskinnavnValideringer = Rule => [
-  Rule.required().error('Feltet må settes'),
-  Rule.required().custom(kunBokstaverOgTallUtenÆØÅ),
-  Rule.required().custom(førsteTegnErLitenBokstav),
-  Rule.required()
+export const maskinnavnValideringer = (rule: Rule) => [
+  rule.required().error('Feltet må settes'),
+  rule.required().custom(kunBokstaverOgTallUtenÆØÅ),
+  rule.required().custom(førsteTegnErLitenBokstav),
+  rule
+    .required()
     .max(Konstanter.API_NAME_MAX_LENGTH)
     .error(`Feltet kan være på maksimalt ${Konstanter.API_NAME_MAX_LENGTH} tegn.`),
 ];
 
-export const apiNavnValideringer = (Rule, type) => [
-  ...maskinnavnValideringer(Rule),
-  Rule.custom(async (value, context) => {
-    const erUnik = await erUniktApiNavn(type, value, context);
+export const apiNavnValideringer = (rule: Rule, type: DokumentNavn) => [
+  ...maskinnavnValideringer(rule),
+  rule.custom(async (value, context) => {
+    const erUnik = await erUniktApiNavn(type, value as string | undefined, context);
     if (!erUnik) return 'Apinavnet er ikke unikt.';
     return true;
   }),
 ];
 
-const erUniktApiNavn = (type, apiNavn, context) => {
+const erUniktApiNavn = (
+  type: DokumentNavn,
+  apiNavn: string | undefined,
+  context: ValidationContext,
+) => {
   const { document } = context;
+
+  if (!document) return true;
 
   const id = document._id.replace(/^drafts\./, '');
 

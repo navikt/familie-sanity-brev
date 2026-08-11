@@ -5,7 +5,7 @@ import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 const FlettefeltIcon = () => <span className={styles.flettefeltIcon}>F</span>;
 
-export default (filter = undefined) => ({
+export default (filter?: string) => ({
   name: DokumentNavn.FLETTEFELT,
   type: SanityTyper.OBJECT,
   title: 'Flettefelt',
@@ -15,14 +15,14 @@ export default (filter = undefined) => ({
       name: 'flettefeltReferanse',
       type: SanityTyper.REFERENCE,
       to: [{ type: DokumentNavn.FLETTEFELT }],
-      validation: rule => [rule.required().error('Tomt flettefelt')],
+      validation: (rule: any) => [rule.required().error('Tomt flettefelt')],
       options: { filter: filter },
     },
     {
       name: 'lagNy',
       type: 'string',
       description: 'En knapp for å lage nye flettefelt',
-      components: { input: props => NyttFelt(props, 'flettefelt') },
+      components: { input: (props: any) => NyttFelt(props, 'flettefelt') },
     },
   ],
 });

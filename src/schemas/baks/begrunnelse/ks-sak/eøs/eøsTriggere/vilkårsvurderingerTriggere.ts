@@ -1,4 +1,5 @@
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
+import { Rule } from 'sanity';
 import {
   erEøsBegrunnelse,
   hentEØSTriggereRegler,
@@ -42,7 +43,7 @@ export const eøsVilkårsvurderingTriggere = {
     list: Object.values(EøsVilkår).map(vilkår => vilkårValg[vilkår]),
   },
 
-  hidden: ({ document }) =>
+  hidden: ({ document }: { document: Record<string, any> }) =>
     !erEøsBegrunnelse(document) || !kanVilkårsvurderingTriggereVelges(document),
-  validation: rule => hentEØSTriggereRegler(rule, true, [EØSTriggerType.VILKÅRSVURDERING]),
+  validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.VILKÅRSVURDERING]),
 };
