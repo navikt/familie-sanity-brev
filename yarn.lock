@@ -2348,12 +2348,12 @@
   dependencies:
     "@portabletext/plugin-input-rule" "^4.0.25"
 
-"@portabletext/react@6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-6.2.0.tgz#8e90d54fef244efcf41af5c64fe9eedccec7b40d"
-  integrity sha512-Z0J/AWrvg7GyDfEBQRRhi6ZpxLOsN4/QbU8KhTwfa6r2ELiRaMa4gkHE9wfs3V1ozNDrTG4IRr+8yBnHNDnAqA==
+"@portabletext/react@8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-8.0.0.tgz#dbd10d342d7155632efc0a683348b01dc6027f0f"
+  integrity sha512-xXWm0LvJrWPqv1BI2wR95q/+YNQW2hFl0wG26hoF0YUoQFhXz5jWZHlsvTtLx/IkFcPd+LCsfoYRgEHnLJslIQ==
   dependencies:
-    "@portabletext/toolkit" "^5.0.2"
+    "@portabletext/toolkit" "^6.0.0"
     "@portabletext/types" "^4.0.2"
 
 "@portabletext/react@^6.0.3":
@@ -2390,6 +2390,13 @@
   version "5.0.2"
   resolved "https://registry.npmjs.org/@portabletext/toolkit/-/toolkit-5.0.2.tgz"
   integrity sha512-Njc1LE1PMJkTx/wEPqZ6sOWGgFgX2B47fxpOQ/Ia4ByhsZoA5Sq8dNvvV5F052j/xE8TbOLiBEjS848FkKADDQ==
+  dependencies:
+    "@portabletext/types" "^4.0.2"
+
+"@portabletext/toolkit@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-6.0.0.tgz#1609172bc4a2d977973f0e153f9963cdb544d987"
+  integrity sha512-+qSqe0KnefuZfNLUhzQRTpbSKxslZof+3pNwxg0DC8dfZ1yLKyyBUw6iR7EpDL+SJlrnpiBfEcfmEuFitK1NSQ==
   dependencies:
     "@portabletext/types" "^4.0.2"
 
