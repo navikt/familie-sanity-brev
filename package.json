@@ -2,6 +2,7 @@
   "name": "familie-sanity-brev",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@11.15.0",
   "description": "",
   "main": "package.json",
   "author": "navikt",
@@ -17,7 +18,9 @@
     "prettier-fix": "prettier -w .",
     "eslint-check": "eslint './src/**/*.{js,ts,tsx}'",
     "prettier-check": "prettier --check .",
-    "lint": "prettier --check . && eslint './src/**/*.{js,ts,tsx}'"
+    "lint": "prettier --check . && eslint './src/**/*.{js,ts,tsx}'",
+    "validate": "pnpm typecheck && pnpm lint",
+    "test": "echo \"No test specified.\""
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
@@ -31,6 +34,9 @@
   "dependencies": {
     "@portabletext/react": "8.0.0",
     "@sanity/client": "7.22.0",
+    "@sanity/icons": "3.7.4",
+    "@sanity/ui": "3.5.2",
+    "@sanity/uuid": "3.0.2",
     "@sanity/vision": "5.22.0",
     "groq": "5.22.0",
     "react": "19.2.3",
@@ -54,6 +60,7 @@
     "husky": "9.1.7",
     "lint-staged": "17.3.0",
     "prettier": "3.9.6",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vite": "8.2.1"
   }
 }
