@@ -17,18 +17,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
+      - name: Set up node and install pnpm packages
+        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version-file: .nvmrc
-
-      - name: Installer sanity
-        run: yarn global add @sanity/cli --exact && sanity install
+          node-version: '24'
+          reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export ba dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        run: sanity dataset export ba-brev backups/ba-sak.tar.gz
+        run: pnpm exec sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
@@ -45,18 +43,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
+      - name: Set up node and install pnpm packages
+        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version-file: .nvmrc
-
-      - name: Installer sanity
-        run: yarn global add @sanity/cli --exact && sanity install
+          node-version: '24'
+          reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export ks dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        run: sanity dataset export ks-brev backups/ks-sak.tar.gz
+        run: pnpm exec sanity dataset export ks-brev backups/ks-sak.tar.gz
 
       - name: Upload ks-sak.tar.gz
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
@@ -73,18 +69,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
+      - name: Set up node and install pnpm packages
+        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version-file: .nvmrc
-
-      - name: Installer sanity
-        run: yarn global add @sanity/cli --exact && sanity install
+          node-version: '24'
+          reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        run: sanity dataset export ef-brev backups/ef-sak.tar.gz
+        run: pnpm exec sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
@@ -97,4 +91,4 @@ jobs:
       - name: Import ef dataset til ef-test
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-        run: sanity dataset import backups/ef-sak.tar.gz ef-test --replace
+        run: pnpm exec sanity dataset import backups/ef-sak.tar.gz ef-test --replace

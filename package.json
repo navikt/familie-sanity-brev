@@ -2,6 +2,7 @@
   "name": "familie-sanity-brev",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@11.15.0",
   "description": "",
   "main": "package.json",
   "author": "navikt",
@@ -17,7 +18,9 @@
     "prettier-fix": "prettier -w .",
     "eslint-check": "eslint './src/**/*.{js,ts,tsx}'",
     "prettier-check": "prettier --check .",
-    "lint": "prettier --check . && eslint './src/**/*.{js,ts,tsx}'"
+    "lint": "prettier --check . && eslint './src/**/*.{js,ts,tsx}'",
+    "validate": "pnpm typecheck && pnpm lint",
+    "test": "echo \"No test specified.\""
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
