@@ -1,8 +1,7 @@
 # Flat node_modules (som yarn) slik at Sanity/Vite-oppsettet resolver som før
-# migreringen (vite/esbuild trekkes inn transitivt via 'sanity'). De direkte
-# importene @sanity/ui, @sanity/icons og @sanity/uuid er deklarert i
-# package.json, slik at de ikke avhenger av hoisting alene. Samme oppsett som
-# sak-frontendene og familie-baks-soknad-sanity (PR #782).
+# migreringen: vite/esbuild trekkes inn transitivt via 'sanity', og koden
+# importerer @sanity/ui, @sanity/icons og @sanity/uuid som hoistes fra 'sanity'.
+# Samme oppsett som sak-frontendene og familie-baks-soknad-sanity (PR #782).
 nodeLinker: hoisted
 # Nye avhengigheter pinnes eksakt (pnpm 11 leser bare auth/registry fra .npmrc,
 # så save-exact der har ingen effekt — tilsvarer 'save-exact true' i .yarnrc).
