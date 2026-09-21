@@ -6,7 +6,7 @@ import {
   DokumentNavn,
   KSBegrunnelseDokumentNavn,
 } from '../src/util/typer';
-import { ComposeIcon } from '@sanity/icons';
+import { ComposeIcon } from '@sanity/icons/Compose';
 import { uuid } from '@sanity/uuid';
 import { Resultat, resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
 import { Tema, temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
