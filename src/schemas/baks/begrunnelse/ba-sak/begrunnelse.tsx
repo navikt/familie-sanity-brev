@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type { Rule } from 'sanity';
 import styled from 'styled-components';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';

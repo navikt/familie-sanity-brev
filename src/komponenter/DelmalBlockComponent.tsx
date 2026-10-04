@@ -1,6 +1,5 @@
 import { PortableText } from '@portabletext/react';
 import { Badge, Inline } from '@sanity/ui';
-import * as React from 'react';
 import styled from 'styled-components';
 import { useSanityQuery } from '../util/sanity';
 

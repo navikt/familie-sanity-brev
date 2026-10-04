@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { type SanityDocument, useGetFormValue } from 'sanity';
 import { IntentLink } from 'sanity/router';
 import { useSanityQuery } from '../../util/sanity';

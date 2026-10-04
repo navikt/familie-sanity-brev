@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 import { useSanityQuery } from '../util/sanity';

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { DokumentNavn } from '../util/typer';
 
 export const PeriodeBeskrivelse = () => {

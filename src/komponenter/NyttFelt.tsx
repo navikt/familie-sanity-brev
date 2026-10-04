@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { GoPlus } from 'react-icons/go';
 import styled from 'styled-components';
 

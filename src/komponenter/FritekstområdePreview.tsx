@@ -1,5 +1,5 @@
 import { Card, Flex, Stack, Text } from '@sanity/ui';
-import React from 'react';
+import type React from 'react';
 
 export const FritekstområdePreview: React.FC = () => (
     <Stack>

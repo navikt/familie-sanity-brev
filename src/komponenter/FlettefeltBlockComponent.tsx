@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 import styled from 'styled-components';

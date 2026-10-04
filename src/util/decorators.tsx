@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { BsFilterRight } from 'react-icons/bs';
 import { MdLink } from 'react-icons/md';
 import styles from '../../styles/styles.module.css';

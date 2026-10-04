@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../../../styles/styles.module.css';
 import NyttFelt from '../../komponenter/NyttFelt';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
