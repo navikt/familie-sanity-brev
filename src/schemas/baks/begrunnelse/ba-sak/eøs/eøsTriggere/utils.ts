@@ -5,7 +5,7 @@ import type { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
-    document[BegrunnelseDokumentNavn.REGELVERK] != undefined &&
+    document[BegrunnelseDokumentNavn.REGELVERK] != null &&
     document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = (document: Begrunnelse): boolean =>

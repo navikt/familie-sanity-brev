@@ -7,7 +7,7 @@ import { type Begrunnelse, type InstitusjonBegrunnelse, NasjonaleVilkår } from 
 
 export const erInstitusjonsBegrunnelse = (begrunnelse: Begrunnelse): begrunnelse is InstitusjonBegrunnelse =>
     !!erSakspesifikkBegrunnelse(begrunnelse) &&
-    (begrunnelse as Record<string, unknown>)[BegrunnelseDokumentNavn.FAGSAK_TYPE] != undefined &&
+    (begrunnelse as Record<string, unknown>)[BegrunnelseDokumentNavn.FAGSAK_TYPE] != null &&
     (begrunnelse as Record<string, unknown>)[BegrunnelseDokumentNavn.FAGSAK_TYPE] === FagsakType.INSTITUSJON;
 
 export const lagInvaliderUtvidetForInstitusjonRegel = (rule: Rule) =>

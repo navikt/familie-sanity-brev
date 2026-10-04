@@ -4,10 +4,10 @@ import { Tema } from '../../tema';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erNasjonalBegrunnelse: (document: Record<string, any>) => boolean = document =>
-    document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] == Tema.NASJONAL;
+    document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] === Tema.NASJONAL;
 
 export const erEøsBegrunnelse: (document: Record<string, any>) => boolean = document =>
-    document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] == Tema.EØS;
+    document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] === Tema.EØS;
 
 export const kanVilkårsvurderingTriggereVelges = (document: Record<string, any>) =>
     erEøsBegrunnelse(document) &&

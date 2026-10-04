@@ -6,7 +6,7 @@ import { type Begrunnelse, endringsårsaker } from '../typer';
 import { erNasjonalBegrunnelse } from './utils';
 
 export const erEndretUtbetalingBegrunnelse: (document: Begrunnelse) => boolean = document =>
-    document[DokumentNavn.MAPPE] != undefined &&
+    document[DokumentNavn.MAPPE] != null &&
     (document[DokumentNavn.MAPPE].includes(Mappe.ENDRET_UTBETALINGSPERIODE) ||
         document[DokumentNavn.MAPPE].includes(Mappe.ETTER_ENDRET_UTBETALINGSPERIODE));
 

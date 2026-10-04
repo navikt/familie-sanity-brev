@@ -4,7 +4,7 @@ import { Regelverk } from '../sanityMappeFelt/regelverk';
 import type { Begrunnelse, NasjonalBegrunnelse } from '../typer';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
-    document[BegrunnelseDokumentNavn.REGELVERK] != undefined &&
+    document[BegrunnelseDokumentNavn.REGELVERK] != null &&
     (document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.NASJONAL ||
         document[BegrunnelseDokumentNavn.REGELVERK] === Regelverk.FELLES);
 
