@@ -157,7 +157,7 @@ const sorterBegrunnelseDokumenter = (dokumenter: IDokument[], type: string): IDo
 };
 
 const hentFørsteTallIStartAvTekst = (tekst: string): number => {
-    const tallIStartenAvTekst = parseInt(tekst.replace(/(^\d+)(.+$)/i, '$1'));
+    const tallIStartenAvTekst = parseInt(tekst.replace(/(^\d+)(.+$)/i, '$1'), 10);
     return isNaN(tallIStartenAvTekst) ? -1 : tallIStartenAvTekst;
 };
 
