@@ -12,7 +12,7 @@ export const client = (datasett: string, brukCache: boolean) => {
 
 export async function hentFraSanity(query: string, brukCache = true, brukSessionStorage = true): Promise<any> {
     const datasett = window.location.pathname.split('/')[1];
-    const key = datasett + ';' + query;
+    const key = `${datasett};${query}`;
     const cachedHits = sessionStorage.getItem(key);
 
     if (cachedHits && brukSessionStorage) {
