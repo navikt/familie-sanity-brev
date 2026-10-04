@@ -1,6 +1,6 @@
+import { Rule } from 'sanity';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
-import { Rule } from 'sanity';
 
 export default {
     title: 'Htmlfelt',

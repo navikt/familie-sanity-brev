@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/styles.module.css';
-import { MdLink } from 'react-icons/md';
 import { BsFilterRight } from 'react-icons/bs';
+import { MdLink } from 'react-icons/md';
+import styles from '../../styles/styles.module.css';
 
 export default [
     { title: 'Fet', value: 'strong' },

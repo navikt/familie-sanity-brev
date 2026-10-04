@@ -1,10 +1,10 @@
+import { Badge } from '@sanity/ui';
 import React from 'react';
-import editor from './avansertMalEditor';
+import { Rule } from 'sanity';
 import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
-import { Badge } from '@sanity/ui';
-import { Rule } from 'sanity';
+import editor from './avansertMalEditor';
 
 const TittelBadge = () => {
     return <Badge tone="primary">Avansert delmal</Badge>;

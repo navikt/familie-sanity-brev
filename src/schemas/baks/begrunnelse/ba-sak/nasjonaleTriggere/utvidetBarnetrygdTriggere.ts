@@ -1,8 +1,8 @@
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse, utvidetBarnetrygdTriggertyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
 import { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
+import { Begrunnelse, NasjonaleVilkår, utvidetBarnetrygdTriggertyper, vilkårTriggerTilMenynavn } from '../typer';
+import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 
 export const utvidetBarnetrygdTriggere = {
     title: 'Utvidet barnetrygd triggere',

@@ -1,5 +1,5 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { Rule } from 'sanity';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Resultat {
     INNVILGET = 'INNVILGET',

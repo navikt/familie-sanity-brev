@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { createClient } from '@sanity/client';
+import { useEffect, useState } from 'react';
 
 export const client = (datasett: string, brukCache: boolean) => {
     return createClient({

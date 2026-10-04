@@ -1,8 +1,8 @@
-import styled from 'styled-components';
 import * as React from 'react';
-import { useSanityQuery } from '../util/sanity';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
+import styled from 'styled-components';
+import { useSanityQuery } from '../util/sanity';
 
 const FlettefeltBlockComponent = (id = '') => {
     if (id) {

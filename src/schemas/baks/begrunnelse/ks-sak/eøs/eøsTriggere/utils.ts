@@ -1,7 +1,7 @@
-import { EØSBegrunnelseDokumentNavn, KSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Rule } from 'sanity';
-import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { EØSBegrunnelseDokumentNavn, KSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Tema } from '../../tema';
+import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erNasjonalBegrunnelse: (document: Record<string, any>) => boolean = document =>
     document[KSBegrunnelseDokumentNavn.TEMA] && document[KSBegrunnelseDokumentNavn.TEMA] == Tema.NASJONAL;

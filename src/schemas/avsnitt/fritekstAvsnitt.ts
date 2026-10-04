@@ -1,5 +1,5 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const fritekstAvsnitt = {
     name: DokumentNavn.FRITEKST,

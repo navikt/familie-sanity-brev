@@ -1,7 +1,7 @@
-import { Begrunnelse, giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
-import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { erNasjonalEllerInstitusjonsBegrunnelse, lagUtfyltNasjonaltFeltMenFeilRegelverkRegel } from '../utils';
 import { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { Begrunnelse, giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { erNasjonalEllerInstitusjonsBegrunnelse, lagUtfyltNasjonaltFeltMenFeilRegelverkRegel } from '../utils';
 
 export const giftPartnerskapTriggere = {
     title: 'Triggere for "Gift partnerskap"',

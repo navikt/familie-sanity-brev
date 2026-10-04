@@ -1,8 +1,8 @@
+import { visionTool } from '@sanity/vision';
 import { AuthConfig, defineConfig, definePlugin } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './src';
 import { structure } from './config/deskStructure';
+import { schemaTypes } from './src';
 
 const PROSJEKT_ID = 'xsrv1mh6';
 

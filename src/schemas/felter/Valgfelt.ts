@@ -1,7 +1,7 @@
 import { Rule } from 'sanity';
+import HvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer, maskinnavnValideringer } from '../../util/valideringer';
-import HvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 
 export default {
     title: 'Valgfelt',

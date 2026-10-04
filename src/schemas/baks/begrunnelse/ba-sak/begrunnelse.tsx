@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import { Rule } from 'sanity';
 import styled from 'styled-components';
-import { Begrunnelse, eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import { eøsHjemler } from './eøs/hjemler';
+import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
+import { Mappe, mapperTilMenynavn } from './mapper';
+import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
+import { fagsakType } from './sanityMappeFelt/fagsakType';
+import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
+import { regelverk } from './sanityMappeFelt/regelverk';
+import { rolle } from './sanityMappeFelt/rolle';
+import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { triggesAv } from './triggesAv';
-import { validerBegrunnelse } from './validerBegrunnelse';
+import { Begrunnelse, eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
 import {
     erNasjonalEllerInstitusjonsBegrunnelse,
     lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
     validerFlettefeltErGyldigForRegelverk,
 } from './utils';
-import { Mappe, mapperTilMenynavn } from './mapper';
-import { eøsHjemler } from './eøs/hjemler';
-import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
-import { valgbarhet } from './sanityMappeFelt/valgbarhet';
-import { fagsakType } from './sanityMappeFelt/fagsakType';
-import { rolle } from './sanityMappeFelt/rolle';
-import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
-import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
-import { regelverk } from './sanityMappeFelt/regelverk';
-import { Rule } from 'sanity';
+import { validerBegrunnelse } from './validerBegrunnelse';
 
 const begrunnelseFlettefelt = {
     name: DokumentNavn.FLETTEFELT,

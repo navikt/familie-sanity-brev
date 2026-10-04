@@ -1,7 +1,7 @@
 import React from 'react';
+import { Rule } from 'sanity';
 import styles from '../../../styles/styles.module.css';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
-import { Rule } from 'sanity';
 
 export const AvansertDelmalFelter = (erGjentagende = false) => [
     {

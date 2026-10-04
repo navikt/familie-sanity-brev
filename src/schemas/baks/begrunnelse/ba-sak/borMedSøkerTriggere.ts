@@ -1,8 +1,8 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { EøsVilkår } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
-import { NasjonaleVilkår } from './typer';
 import { lagInstitusjonBorMedSøkerRegel } from './institusjon/utils';
-import { Rule } from 'sanity';
+import { NasjonaleVilkår } from './typer';
 
 export enum BorMedSøkerTriggere {
     VURDERING_ANNET_GRUNNLAG = 'VURDERING_ANNET_GRUNNLAG',

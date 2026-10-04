@@ -1,6 +1,6 @@
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
-import { Resultat } from '../../resultat';
 import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
+import { Resultat } from '../../resultat';
 
 export enum EndretUtbetalingsperioder {
     ETTER_ENDRET_UTBETALINGSPERIODE = 'ETTER_ENDRET_UTBETALINGSPERIODE',

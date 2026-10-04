@@ -1,4 +1,4 @@
-import { Stack, Card, Flex, Text } from '@sanity/ui';
+import { Card, Flex, Stack, Text } from '@sanity/ui';
 import React from 'react';
 
 export const FritekstområdePreview: React.FC = () => (

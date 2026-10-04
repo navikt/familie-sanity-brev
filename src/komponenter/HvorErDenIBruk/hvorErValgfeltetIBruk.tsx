@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useSanityQuery } from '../../util/sanity';
-import { Header, ErrorStyling } from './Elementer';
 import { SanityDocument, useGetFormValue } from 'sanity';
 import { IntentLink } from 'sanity/router';
+import { useSanityQuery } from '../../util/sanity';
+import { ErrorStyling, Header } from './Elementer';
 
 type IReferrer = {
     stikkord?: string[];

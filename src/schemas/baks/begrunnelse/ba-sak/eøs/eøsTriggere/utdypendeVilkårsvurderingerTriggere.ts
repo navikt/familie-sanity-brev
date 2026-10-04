@@ -1,8 +1,8 @@
 import { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { Begrunnelse } from '../../typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 
 enum UtdypendeVilkårsvurderingForEØS {
     BARN_BOR_I_STORBRITANNIA = 'BARN_BOR_I_STORBRITANNIA',

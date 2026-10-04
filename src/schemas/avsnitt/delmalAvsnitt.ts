@@ -1,6 +1,6 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
-import NyttFelt from '../../komponenter/NyttFelt';
 import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
+import NyttFelt from '../../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const delmalAvsnitt = (maalform: any) => ({
     title: 'Delmal',

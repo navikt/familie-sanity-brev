@@ -1,6 +1,6 @@
 import { Rule } from 'sanity';
-import { apiNavnValideringer } from '../../../../util/valideringer';
 import { DokumentNavn } from '../../../../util/typer';
+import { apiNavnValideringer } from '../../../../util/valideringer';
 import { Resultat } from './resultat';
 
 const apiNavnPrefiksMap: Record<Resultat, string> = {

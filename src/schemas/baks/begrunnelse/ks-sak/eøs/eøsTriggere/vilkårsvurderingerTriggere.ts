@@ -1,7 +1,7 @@
-import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { Rule } from 'sanity';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
+import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 
 export enum EøsVilkår {
     BOSATT_I_RIKET = 'BOSATT_I_RIKET',

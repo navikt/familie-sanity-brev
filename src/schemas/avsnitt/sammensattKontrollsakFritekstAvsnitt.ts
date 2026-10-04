@@ -1,6 +1,6 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { SammensattKontrollsakFritekstBeskrivelse } from '../../komponenter/SammensattKontrollsakFritekstBeskrivelse';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const sammensattKontrollsakFritekstAvsnitt = {
     name: DokumentNavn.SAMMENSATT_KONTROLLSAK_FRITEKST,

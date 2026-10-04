@@ -1,8 +1,8 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
+import { Regelverk } from '../../sanityMappeFelt/regelverk';
 import { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
-import { Regelverk } from '../../sanityMappeFelt/regelverk';
-import { Rule } from 'sanity';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>
     document[BegrunnelseDokumentNavn.REGELVERK] != undefined &&

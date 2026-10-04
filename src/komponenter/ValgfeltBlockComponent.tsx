@@ -1,7 +1,7 @@
-import styled from 'styled-components';
 import * as React from 'react';
-import { useSanityQuery } from '../util/sanity';
+import styled from 'styled-components';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
+import { useSanityQuery } from '../util/sanity';
 
 const ValgfeltBlockComponent = (id: string, maalform: string) => {
     if (!id) {

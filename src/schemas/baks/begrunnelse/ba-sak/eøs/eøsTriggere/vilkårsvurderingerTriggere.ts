@@ -1,8 +1,8 @@
 import { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { Begrunnelse } from '../../typer';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 
 export enum EøsVilkår {
     UNDER_18_ÅR = 'UNDER_18_ÅR',

@@ -1,7 +1,7 @@
-import { NasjonalBegrunnelse, Begrunnelse } from '../typer';
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { Regelverk } from '../sanityMappeFelt/regelverk';
-import { Rule } from 'sanity';
+import { Begrunnelse, NasjonalBegrunnelse } from '../typer';
 
 export const erNasjonalBegrunnelse = (document: Begrunnelse): document is NasjonalBegrunnelse =>
     document[BegrunnelseDokumentNavn.REGELVERK] != undefined &&

@@ -1,9 +1,9 @@
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse, endringsårsaker } from '../typer';
-import { Mappe } from '../mapper';
-import { erNasjonalBegrunnelse } from './utils';
-import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
 import { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../../util/typer';
+import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
+import { Mappe } from '../mapper';
+import { Begrunnelse, endringsårsaker } from '../typer';
+import { erNasjonalBegrunnelse } from './utils';
 
 export const erEndretUtbetalingBegrunnelse: (document: Begrunnelse) => boolean = document =>
     document[DokumentNavn.MAPPE] != undefined &&

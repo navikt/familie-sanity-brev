@@ -1,24 +1,24 @@
-import { BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { Rule } from 'sanity';
-import { triggere } from './triggere';
-import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
+import { BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
+import { rolle } from '../ba-sak/sanityMappeFelt/rolle';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';
 import { begrunnelseEØSFlettefelt, begrunnelseFlettefelt, begrunnelseValgfelt } from './begrunnelseFlettefelt';
-import { resultat } from './resultat';
-import { tema } from './tema';
-import { type } from './type';
-import { hjemler } from './hjemler';
-import { apiNavnValideringerBegrunnelse } from './valideringer';
-import { utdypendeVilkårsvurderinger } from './nasjonal/nasjonaleTriggere/utdypendeVilkårsvurderinger';
-import { endringsårsakTriggere } from './nasjonal/nasjonaleTriggere/endringsårsakTriggere';
-import { endretUtbetalingsperiodeTriggere } from './nasjonal/nasjonaleTriggere/endretUtbetalingPeriodeTriggere';
-import { rolle } from '../ba-sak/sanityMappeFelt/rolle';
-import { hvilkeTriggereSkalBrukes } from './eøs/eøsTriggere/hvilkeTriggereSkalBrukes';
-import { eøsHjemler } from './eøs/hjemler';
 import { annenForeldersAktivitetTrigger } from './eøs/eøsTriggere/annenForeldersAktivitetTrigger';
 import { barnetsBostedslandTrigger } from './eøs/eøsTriggere/barnetsBostedslandTriggere';
+import { hvilkeTriggereSkalBrukes } from './eøs/eøsTriggere/hvilkeTriggereSkalBrukes';
 import { kompetentLandTrigger } from './eøs/eøsTriggere/kompetentLandTrigger';
 import { eøsVilkårsvurderingTriggere } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
+import { eøsHjemler } from './eøs/hjemler';
+import { hjemler } from './hjemler';
+import { endretUtbetalingsperiodeTriggere } from './nasjonal/nasjonaleTriggere/endretUtbetalingPeriodeTriggere';
+import { endringsårsakTriggere } from './nasjonal/nasjonaleTriggere/endringsårsakTriggere';
+import { utdypendeVilkårsvurderinger } from './nasjonal/nasjonaleTriggere/utdypendeVilkårsvurderinger';
+import { vilkårsvurderingTriggere } from './nasjonal/nasjonaleTriggere/vilkårsvurderingerTriggere';
+import { resultat } from './resultat';
+import { tema } from './tema';
+import { triggere } from './triggere';
+import { type } from './type';
+import { apiNavnValideringerBegrunnelse } from './valideringer';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
     name: maalform,

@@ -1,7 +1,7 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
-import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
-import { AvansertDelmalFelter } from '../annonteringer/AvansertDelmalAnnontering';
 import { Rule } from 'sanity';
+import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { AvansertDelmalFelter } from '../annonteringer/AvansertDelmalAnnontering';
 
 export const avansertDelmalAvsnitt = (maalform: any) => ({
     title: 'Avansert delmal',

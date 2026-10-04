@@ -1,15 +1,15 @@
-import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
-import { DokumentNavn, SanityTyper } from '../util/typer';
+import { Rule } from 'sanity';
+import decorators from '../util/decorators';
 import TekstStyles from '../util/TekstStyles';
+import { DokumentNavn, SanityTyper } from '../util/typer';
+import { apiNavnValideringer } from '../util/valideringer';
+import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
 import { delmalAvsnitt } from './avsnitt/delmalAvsnitt';
 import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
-import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
-import decorators from '../util/decorators';
-import { apiNavnValideringer } from '../util/valideringer';
-import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
-import { sammensattKontrollsakFritekstAvsnitt } from './avsnitt/sammensattKontrollsakFritekstAvsnitt';
 import { fritekstAvsnitt } from './avsnitt/fritekstAvsnitt';
-import { Rule } from 'sanity';
+import { peroideAvsnitt } from './avsnitt/periodeAvsnitt';
+import { sammensattKontrollsakFritekstAvsnitt } from './avsnitt/sammensattKontrollsakFritekstAvsnitt';
+import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
     name: maalform,

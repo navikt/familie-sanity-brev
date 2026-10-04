@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import * as React from 'react';
-import { useSanityQuery } from '../util/sanity';
-import { Badge, Inline } from '@sanity/ui';
 import { PortableText } from '@portabletext/react';
+import { Badge, Inline } from '@sanity/ui';
+import * as React from 'react';
+import styled from 'styled-components';
+import { useSanityQuery } from '../util/sanity';
 
 const DelmalBlockComponent = (props: any, maalform: string, id = '', skalHaPadding = true) => {
     if (id) {

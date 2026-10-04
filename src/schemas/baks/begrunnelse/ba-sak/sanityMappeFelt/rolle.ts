@@ -1,8 +1,8 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
-import { NasjonaleVilkår } from '../typer';
 import { erInstitusjonsBegrunnelse } from '../institusjon/utils';
 import { erEndretUtbetalingBegrunnelse } from '../nasjonaleTriggere/endringsårsakTrigger';
-import { Rule } from 'sanity';
+import { NasjonaleVilkår } from '../typer';
 
 export enum Rolle {
     SOKER = 'SOKER',

@@ -1,12 +1,12 @@
-import HvorErDelmalenIBruk from '../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
-import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
-import { DokumentNavn, SanityTyper } from '../util/typer';
-import TekstStyles from '../util/TekstStyles';
-import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
-import decorators from '../util/decorators';
-import { apiNavnValideringer } from '../util/valideringer';
-import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 import { Rule } from 'sanity';
+import HvorErDelmalenIBruk from '../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
+import decorators from '../util/decorators';
+import TekstStyles from '../util/TekstStyles';
+import { DokumentNavn, SanityTyper } from '../util/typer';
+import { apiNavnValideringer } from '../util/valideringer';
+import FlettefeltAnnontering from './annonteringer/FlettefeltAnnontering';
+import { flettefeltAvsnitt } from './avsnitt/flettefeltAvsnitt';
+import { utbetalingerAvsnitt } from './avsnitt/utbetalingerAvsnitt';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
     name: maalform,

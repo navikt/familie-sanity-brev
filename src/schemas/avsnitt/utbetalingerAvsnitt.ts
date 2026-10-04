@@ -1,6 +1,6 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { UtbetalingerBeskrivelse } from '../../komponenter/UtbetalingerBeskrivelse';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const utbetalingerAvsnitt = {
     name: DokumentNavn.UTBETALINGER,

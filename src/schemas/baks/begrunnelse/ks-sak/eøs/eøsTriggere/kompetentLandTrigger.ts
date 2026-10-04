@@ -1,7 +1,7 @@
-import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { Rule } from 'sanity';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
+import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 
 enum Kompetanse {
     NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',

@@ -1,9 +1,9 @@
-import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { Rule } from 'sanity';
-import { erEndretUtbetaling } from './endretUtbetalingPeriodeTriggere';
+import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
-import { Type } from '../../type';
 import { Resultat } from '../../resultat';
+import { Type } from '../../type';
+import { erEndretUtbetaling } from './endretUtbetalingPeriodeTriggere';
 
 export enum Endringsårsak {
     DELT_BOSTED = 'DELT_BOSTED',

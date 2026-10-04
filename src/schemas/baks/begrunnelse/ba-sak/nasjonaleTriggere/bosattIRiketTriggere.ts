@@ -1,7 +1,7 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse, bosattIRiketTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { erNasjonalEllerInstitusjonsBegrunnelse, lagUtfyltNasjonaltFeltMenFeilRegelverkRegel } from '../utils';
-import { Rule } from 'sanity';
 
 export const bosattIRiketTriggere = {
     title: 'Triggere for "Bosatt i riket"',

@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../../../styles/styles.module.css';
-import { DokumentNavn, SanityTyper } from '../../util/typer';
-import TekstStyles from '../../util/TekstStyles';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { apiNavnValideringer } from '../../util/valideringer';
 import { Rule } from 'sanity';
+import styles from '../../../styles/styles.module.css';
+import TekstStyles from '../../util/TekstStyles';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { apiNavnValideringer } from '../../util/valideringer';
 
 const flettefelterForPeriode = [
     { title: 'Fom', value: 'fom' },

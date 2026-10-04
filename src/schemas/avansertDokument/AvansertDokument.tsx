@@ -1,9 +1,9 @@
+import { Badge } from '@sanity/ui';
 import React from 'react';
-import editor from './avansertMalEditor';
+import { Rule, ValidationContext } from 'sanity';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
-import { Badge } from '@sanity/ui';
-import { Rule, ValidationContext } from 'sanity';
+import editor from './avansertMalEditor';
 
 const TittelBadge = () => {
     return <Badge tone="primary">Brevmal</Badge>;

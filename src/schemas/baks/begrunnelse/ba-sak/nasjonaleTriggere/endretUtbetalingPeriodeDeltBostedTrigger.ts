@@ -1,12 +1,12 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import {
     Begrunnelse,
-    NasjonalBegrunnelse,
-    endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling,
     Endringsårsak,
+    endretUtbetalingsperioderDeltBostedTriggereValgUtbetaling,
+    NasjonalBegrunnelse,
 } from '../typer';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
-import { Rule } from 'sanity';
+import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 
 const erEndretUtbetalingAvTypeDeltBosted = (document: Begrunnelse) => {
     const nasjonalDoc = document as NasjonalBegrunnelse;

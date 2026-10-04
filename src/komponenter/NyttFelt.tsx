@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { GoPlus } from 'react-icons/go';
 import styled from 'styled-components';
-import * as React from 'react';
 
 const NyttFelt = (props: any, felttype: string) => {
     const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');

@@ -1,6 +1,6 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
-import NyttFelt from '../../komponenter/NyttFelt';
 import FlettefeltBlockComponent from '../../komponenter/FlettefeltBlockComponent';
+import NyttFelt from '../../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const flettefeltAvsnitt = {
     name: DokumentNavn.FLETTEFELT,

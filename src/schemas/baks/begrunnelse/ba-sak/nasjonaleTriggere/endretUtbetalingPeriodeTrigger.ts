@@ -1,8 +1,8 @@
+import { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { Begrunnelse, endretUtbetalingsperioderTriggereValg } from '../typer';
 import { erEndretUtbetalingBegrunnelse } from './endringsårsakTrigger';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
-import { Rule } from 'sanity';
+import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 
 export const endretUtbetalingsperiodeTriggere = {
     title: 'Endret utbetalingsperiode triggere',

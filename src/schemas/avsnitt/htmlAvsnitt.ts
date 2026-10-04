@@ -1,6 +1,6 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { type Rule } from 'sanity';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const htmlAvsnitt = {
     name: DokumentNavn.HTMLFELT,
