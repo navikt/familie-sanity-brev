@@ -268,9 +268,9 @@ const hentMapperKsBegrunnelse = (type: string, begrunnelser: IKSBegrunnelse[]): 
         const mappehierarkiForBegrunnelse = !begrunnelseHarTemaOgType
             ? []
             : [
-                  resultatValg[begrunnelse.resultat! as Resultat].title,
-                  temaValg[begrunnelse.tema! as Tema].title,
-                  typeValg[begrunnelse.type! as Type].title,
+                  resultatValg[begrunnelse.resultat as Resultat].title,
+                  temaValg[begrunnelse.tema as Tema].title,
+                  typeValg[begrunnelse.type as Type].title,
               ];
 
         return {
