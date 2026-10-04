@@ -5,42 +5,42 @@ import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { MdShortText } from 'react-icons/md';
 
 const FlettefeltBlockComponent = (id = '') => {
-  if (id) {
-    return <FlettefeltBlock id={id} />;
-  } else {
-    return <ErrorStyling>Fyll ut flettefelt.</ErrorStyling>;
-  }
+    if (id) {
+        return <FlettefeltBlock id={id} />;
+    } else {
+        return <ErrorStyling>Fyll ut flettefelt.</ErrorStyling>;
+    }
 };
 
 const FlettefeltBlock = ({ id = '' }: { id: string }) => {
-  const query = `*[_type=="flettefelt" && _id=="${id}"]`;
-  const { data, error } = useSanityQuery(query);
+    const query = `*[_type=="flettefelt" && _id=="${id}"]`;
+    const { data, error } = useSanityQuery(query);
 
-  if (error) {
-    console.error(error);
-    return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
-  }
+    if (error) {
+        console.error(error);
+        return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
+    }
 
-  if (!data) {
-    return <PreviewContainer>Laster Flettefelt..</PreviewContainer>;
-  }
+    if (!data) {
+        return <PreviewContainer>Laster Flettefelt..</PreviewContainer>;
+    }
 
-  if (!data.length) {
-    return <ErrorStyling>Flettefeltet finnes ikke.</ErrorStyling>;
-  }
+    if (!data.length) {
+        return <ErrorStyling>Flettefeltet finnes ikke.</ErrorStyling>;
+    }
 
-  const flettefelt = data[0];
+    const flettefelt = data[0];
 
-  const Ikon = flettefelt.erListe ? AiOutlineUnorderedList : MdShortText;
+    const Ikon = flettefelt.erListe ? AiOutlineUnorderedList : MdShortText;
 
-  return (
-    <PreviewContainer>
-      <PreviewMedia>
-        <Ikon size={'2rem'} />
-      </PreviewMedia>
-      <Tittel>{flettefelt.felt}</Tittel>
-    </PreviewContainer>
-  );
+    return (
+        <PreviewContainer>
+            <PreviewMedia>
+                <Ikon size={'2rem'} />
+            </PreviewMedia>
+            <Tittel>{flettefelt.felt}</Tittel>
+        </PreviewContainer>
+    );
 };
 
 const PreviewContainer = styled.div`

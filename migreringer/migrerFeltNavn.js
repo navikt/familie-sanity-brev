@@ -6,15 +6,15 @@ const dataset = 'ba-test';
 const apiVersion = '2023-03-01';
 
 async function migrerAlleFelt() {
-  await migrate();
+    await migrate();
 }
 
 const client = createClient({
-  apiVersion,
-  projectId,
-  dataset,
-  token,
-  useCdn: false,
+    apiVersion,
+    projectId,
+    dataset,
+    token,
+    useCdn: false,
 });
 
 // Dette er et ustabilt script. Dvs at det ofte feiler og må rekjøres flere ganger før det går.
@@ -39,124 +39,124 @@ const client = createClient({
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 var fetchDocuments = gammeltNavn =>
-  client.fetch(`*[_type == 'begrunnelse' && defined(${gammeltNavn})] {_id, _rev, ${gammeltNavn}}`);
+    client.fetch(`*[_type == 'begrunnelse' && defined(${gammeltNavn})] {_id, _rev, ${gammeltNavn}}`);
 
 const buildPatchesForRegelverk = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      //set: { regelverk: doc.tema },
-      unset: ['tema'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            //set: { regelverk: doc.tema },
+            unset: ['tema'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const buildPatchesForBehandlingstema = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      //set: { regelverk: doc.tema },
-      unset: ['behandlingstema'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            //set: { regelverk: doc.tema },
+            unset: ['behandlingstema'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const buildPatchesForBrevPeriodeType = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      //set: { brevPeriodeType: doc.periodeType },
-      unset: ['periodeType'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            //set: { brevPeriodeType: doc.periodeType },
+            unset: ['periodeType'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const buildPatchesForPeriodeResultatForPerson = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      //set: { periodeResultatForPerson: doc.vedtakResultat },
-      unset: ['vedtakResultat'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            //set: { periodeResultatForPerson: doc.vedtakResultat },
+            unset: ['vedtakResultat'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const buildPatchesForBegrunnelseTypeForPerson = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      //set: { begrunnelseTypeForPerson: doc.begrunnelsetype },
-      unset: ['begrunnelsetype'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            //set: { begrunnelseTypeForPerson: doc.begrunnelsetype },
+            unset: ['begrunnelsetype'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const createTransaction = patches =>
-  patches.reduce((tx, patch) => tx.patch(patch.id, patch.patch), client.transaction());
+    patches.reduce((tx, patch) => tx.patch(patch.id, patch.patch), client.transaction());
 
 const commitTransaction = tx => tx.commit();
 
 const migrate = async () => {
-  let documents = await fetchDocuments('vedtakResultat');
-  const vedtakResultatPatch = buildPatchesForPeriodeResultatForPerson(documents);
-  console.log(
-    `\nMigrating vedtakResultat:\n %s`,
-    vedtakResultatPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionVedtakResultat = createTransaction(vedtakResultatPatch);
-  await commitTransaction(transactionVedtakResultat);
+    let documents = await fetchDocuments('vedtakResultat');
+    const vedtakResultatPatch = buildPatchesForPeriodeResultatForPerson(documents);
+    console.log(
+        `\nMigrating vedtakResultat:\n %s`,
+        vedtakResultatPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionVedtakResultat = createTransaction(vedtakResultatPatch);
+    await commitTransaction(transactionVedtakResultat);
 
-  documents = await fetchDocuments('begrunnelsetype');
-  const periodeTypePatch = buildPatchesForBegrunnelseTypeForPerson(documents);
-  console.log(
-    `Migrating begrunnelsetype:\n %s`,
-    periodeTypePatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionPeriodeType = createTransaction(periodeTypePatch);
-  await commitTransaction(transactionPeriodeType);
+    documents = await fetchDocuments('begrunnelsetype');
+    const periodeTypePatch = buildPatchesForBegrunnelseTypeForPerson(documents);
+    console.log(
+        `Migrating begrunnelsetype:\n %s`,
+        periodeTypePatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionPeriodeType = createTransaction(periodeTypePatch);
+    await commitTransaction(transactionPeriodeType);
 
-  documents = await fetchDocuments('periodeType');
-  const begrunnelsetypePatch = buildPatchesForBrevPeriodeType(documents);
-  console.log(
-    `Migrating brevperiodetype:\n %s`,
-    begrunnelsetypePatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionbegrunnelseType = createTransaction(begrunnelsetypePatch);
-  await commitTransaction(transactionbegrunnelseType);
+    documents = await fetchDocuments('periodeType');
+    const begrunnelsetypePatch = buildPatchesForBrevPeriodeType(documents);
+    console.log(
+        `Migrating brevperiodetype:\n %s`,
+        begrunnelsetypePatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionbegrunnelseType = createTransaction(begrunnelsetypePatch);
+    await commitTransaction(transactionbegrunnelseType);
 
-  documents = await fetchDocuments('tema');
-  const regelverkPatch = buildPatchesForRegelverk(documents);
-  console.log(
-    `Migrating tema:\n %s`,
-    regelverkPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionTema = createTransaction(regelverkPatch);
-  await commitTransaction(transactionTema);
+    documents = await fetchDocuments('tema');
+    const regelverkPatch = buildPatchesForRegelverk(documents);
+    console.log(
+        `Migrating tema:\n %s`,
+        regelverkPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionTema = createTransaction(regelverkPatch);
+    await commitTransaction(transactionTema);
 
-  documents = await fetchDocuments('behandlingstema');
-  const behandlingstemaPatch = buildPatchesForBehandlingstema(documents);
-  console.log(
-    `Migrating tema:\n %s`,
-    behandlingstemaPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionbehandlingsTema = createTransaction(regelverkPatch);
-  await commitTransaction(transactionbehandlingsTema);
+    documents = await fetchDocuments('behandlingstema');
+    const behandlingstemaPatch = buildPatchesForBehandlingstema(documents);
+    console.log(
+        `Migrating tema:\n %s`,
+        behandlingstemaPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionbehandlingsTema = createTransaction(regelverkPatch);
+    await commitTransaction(transactionbehandlingsTema);
 
-  //return migrate();
-  return null;
+    //return migrate();
+    return null;
 };
 
 migrerAlleFelt().catch(err => {
-  console.error(err);
-  process.exit(1);
+    console.error(err);
+    process.exit(1);
 });

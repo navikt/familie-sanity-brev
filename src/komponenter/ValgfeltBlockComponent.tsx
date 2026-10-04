@@ -4,51 +4,51 @@ import { useSanityQuery } from '../util/sanity';
 import DelmalBlockComponent from '../komponenter/DelmalBlockComponent';
 
 const ValgfeltBlockComponent = (id: string, maalform: string) => {
-  if (!id) {
-    return <TekstFelt>Laster valgfeltet..</TekstFelt>;
-  }
+    if (!id) {
+        return <TekstFelt>Laster valgfeltet..</TekstFelt>;
+    }
 
-  return <ValgfeltBlock id={id} maalform={maalform} />;
+    return <ValgfeltBlock id={id} maalform={maalform} />;
 };
 
 const ValgfeltBlock = ({ id, maalform }: { id: string; maalform: string }) => {
-  const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
+    const query = `*[_id=="${id}"][0]{"valgmuligheter": valg[].valgmulighet,"delmaler": valg[].delmal->}`;
 
-  const { data, error } = useSanityQuery(query);
+    const { data, error } = useSanityQuery(query);
 
-  if (error) {
-    console.error(error);
-    return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
-  }
+    if (error) {
+        console.error(error);
+        return <ErrorStyling>Det skjedde en feil.</ErrorStyling>;
+    }
 
-  if (!data) {
-    return <TekstFelt>Laster delmalen..</TekstFelt>;
-  }
+    if (!data) {
+        return <TekstFelt>Laster delmalen..</TekstFelt>;
+    }
 
-  if (!data.delmaler?.length || data.delmaler.length !== data.valgmuligheter.length) {
-    return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
-  }
+    if (!data.delmaler?.length || data.delmaler.length !== data.valgmuligheter.length) {
+        return <ErrorStyling>Feil format på valgfeltet.</ErrorStyling>;
+    }
 
-  return <Valgblokker {...data} maalform={maalform} />;
+    return <Valgblokker {...data} maalform={maalform} />;
 };
 
 export const Valgblokker = (props: any) => {
-  const { delmaler, maalform } = props;
+    const { delmaler, maalform } = props;
 
-  return (
-    <PreviewValg>
-      {delmaler?.map((delmal: any) => (
-        <Valg key={delmal._id}>
-          <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
-          <DelmalIValg blokkProps={props} maalform={maalform} id={delmal._id} />
-        </Valg>
-      ))}
-    </PreviewValg>
-  );
+    return (
+        <PreviewValg>
+            {delmaler?.map((delmal: any) => (
+                <Valg key={delmal._id}>
+                    <Valgmulighet>{delmal.visningsnavn}:</Valgmulighet>
+                    <DelmalIValg blokkProps={props} maalform={maalform} id={delmal._id} />
+                </Valg>
+            ))}
+        </PreviewValg>
+    );
 };
 
 const DelmalIValg = (props: { blokkProps: any; maalform: string; id: string }) =>
-  DelmalBlockComponent(props.blokkProps, props.maalform, props.id, false);
+    DelmalBlockComponent(props.blokkProps, props.maalform, props.id, false);
 
 const Valg = styled.div`
   display: flex;

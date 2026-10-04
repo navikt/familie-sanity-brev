@@ -8,21 +8,21 @@ import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { Fritekstområde } from './fritekstområde';
 
 export default (maalform: DokumentNavn, tittel: string) => ({
-  name: maalform,
-  title: tittel,
-  type: SanityTyper.ARRAY,
-  of: [
-    avansertDelmalAvsnitt(maalform),
-    valgAvsnitt(maalform),
-    {
-      type: 'block',
-      marks: {
-        annotations: [FlettefeltAnnontering()],
-        decorators,
-      },
-      styles: TekstStyles,
-    },
-    htmlAvsnitt,
-    Fritekstområde,
-  ],
+    name: maalform,
+    title: tittel,
+    type: SanityTyper.ARRAY,
+    of: [
+        avansertDelmalAvsnitt(maalform),
+        valgAvsnitt(maalform),
+        {
+            type: 'block',
+            marks: {
+                annotations: [FlettefeltAnnontering()],
+                decorators,
+            },
+            styles: TekstStyles,
+        },
+        htmlAvsnitt,
+        Fritekstområde,
+    ],
 });

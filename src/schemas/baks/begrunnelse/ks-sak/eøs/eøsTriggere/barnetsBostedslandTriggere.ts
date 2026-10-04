@@ -4,29 +4,24 @@ import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges 
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 enum BarnetsBostedsland {
-  NORGE = 'NORGE',
-  IKKE_NORGE = 'IKKE_NORGE',
+    NORGE = 'NORGE',
+    IKKE_NORGE = 'IKKE_NORGE',
 }
 
-const BarnetsBostedslandValg: Record<
-  BarnetsBostedsland,
-  { title: string; value: BarnetsBostedsland }
-> = {
-  NORGE: { title: 'Norge', value: BarnetsBostedsland.NORGE },
-  IKKE_NORGE: { title: 'Ikke Norge', value: BarnetsBostedsland.IKKE_NORGE },
+const BarnetsBostedslandValg: Record<BarnetsBostedsland, { title: string; value: BarnetsBostedsland }> = {
+    NORGE: { title: 'Norge', value: BarnetsBostedsland.NORGE },
+    IKKE_NORGE: { title: 'Ikke Norge', value: BarnetsBostedsland.IKKE_NORGE },
 };
 
 export const barnetsBostedslandTrigger = {
-  title: 'Barnets bostedsland',
-  type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND,
-  of: [{ type: SanityTyper.STRING }],
-  options: {
-    list: Object.values(BarnetsBostedsland).map(
-      barnetsBostedsland => BarnetsBostedslandValg[barnetsBostedsland],
-    ),
-  },
-  hidden: ({ document }: { document: Record<string, any> }) =>
-    !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
-  validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
+    title: 'Barnets bostedsland',
+    type: SanityTyper.ARRAY,
+    name: EØSBegrunnelseDokumentNavn.BARNETS_BOSTEDSLAND,
+    of: [{ type: SanityTyper.STRING }],
+    options: {
+        list: Object.values(BarnetsBostedsland).map(barnetsBostedsland => BarnetsBostedslandValg[barnetsBostedsland]),
+    },
+    hidden: ({ document }: { document: Record<string, any> }) =>
+        !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+    validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };

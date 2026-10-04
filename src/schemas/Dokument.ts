@@ -12,54 +12,54 @@ import { fritekstAvsnitt } from './avsnitt/fritekstAvsnitt';
 import { Rule } from 'sanity';
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
-  name: maalform,
-  title: tittel,
-  type: SanityTyper.ARRAY,
-  of: [
-    delmalAvsnitt(maalform),
-    flettefeltAvsnitt,
-    peroideAvsnitt,
-    utbetalingerAvsnitt,
-    fritekstAvsnitt,
-    sammensattKontrollsakFritekstAvsnitt,
-    {
-      type: SanityTyper.BLOCK,
-      marks: {
-        annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
-        decorators,
-      },
-      styles: TekstStyles,
-    },
-  ],
+    name: maalform,
+    title: tittel,
+    type: SanityTyper.ARRAY,
+    of: [
+        delmalAvsnitt(maalform),
+        flettefeltAvsnitt,
+        peroideAvsnitt,
+        utbetalingerAvsnitt,
+        fritekstAvsnitt,
+        sammensattKontrollsakFritekstAvsnitt,
+        {
+            type: SanityTyper.BLOCK,
+            marks: {
+                annotations: [FlettefeltAnnontering('erListe == false || !defined(erListe)')],
+                decorators,
+            },
+            styles: TekstStyles,
+        },
+    ],
 });
 
 export default {
-  title: 'Dokument',
-  name: DokumentNavn.DOKUMENT,
-  type: SanityTyper.DOCUMENT,
-  fields: [
-    {
-      title: 'Visningsnavn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.VISNINGSNAVN,
-      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
-    },
-    {
-      title: 'Api navn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.API_NAVN,
-      description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.DOKUMENT),
-    },
-    { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
-    { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
+    title: 'Dokument',
+    name: DokumentNavn.DOKUMENT,
+    type: SanityTyper.DOCUMENT,
+    fields: [
+        {
+            title: 'Visningsnavn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.VISNINGSNAVN,
+            validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
+        },
+        {
+            title: 'Api navn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.API_NAVN,
+            description: 'Teknisk navn. Eksempel innhenteOpplysninger',
+            validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.DOKUMENT),
+        },
+        { type: SanityTyper.STRING, title: 'Tittel bokmål', name: DokumentNavn.TITTEL_BOKMAAL },
+        { type: SanityTyper.STRING, title: 'Tittel nynorsk', name: DokumentNavn.TITTEL_NYNORSK },
 
-    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
-    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
-  ],
-  preview: {
-    select: {
-      title: DokumentNavn.VISNINGSNAVN,
+        editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+        editor(DokumentNavn.NYNORSK, 'Nynorsk'),
+    ],
+    preview: {
+        select: {
+            title: DokumentNavn.VISNINGSNAVN,
+        },
     },
-  },
 };

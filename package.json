@@ -1,54 +1,54 @@
 {
-  "name": "familie-sanity-brev",
-  "private": true,
-  "version": "1.0.0",
-  "packageManager": "pnpm@11.15.0",
-  "description": "",
-  "main": "package.json",
-  "author": "navikt",
-  "license": "MIT",
-  "scripts": {
-    "dev": "sanity dev",
-    "start": "sanity start",
-    "build": "sanity build",
-    "deploy": "sanity deploy",
-    "prepare": "husky",
-    "typecheck": "tsc --noEmit --skipLibCheck",
-    "lint": "biome lint .",
-    "lint:fix": "biome lint --write .",
-    "format": "biome format .",
-    "format:fix": "biome format --write .",
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
-    "validate": "pnpm typecheck && pnpm check",
-    "test": "echo \"No test specified.\""
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,css}": [
-      "biome check ."
-    ]
-  },
-  "keywords": [
-    "sanity"
-  ],
-  "dependencies": {
-    "@portabletext/react": "8.0.0",
-    "@sanity/client": "8.6.2",
-    "@sanity/vision": "6.16.0",
-    "groq": "6.16.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "react-icons": "5.7.0",
-    "sanity": "6.16.0",
-    "styled-components": "6.5.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@types/debug": "^4.1.13",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "husky": "9.1.7",
-    "lint-staged": "17.5.0",
-    "typescript": "6.0.3"
-  }
+    "name": "familie-sanity-brev",
+    "private": true,
+    "version": "1.0.0",
+    "packageManager": "pnpm@11.15.0",
+    "description": "",
+    "main": "package.json",
+    "author": "navikt",
+    "license": "MIT",
+    "scripts": {
+        "dev": "sanity dev",
+        "start": "sanity start",
+        "build": "sanity build",
+        "deploy": "sanity deploy",
+        "prepare": "husky",
+        "typecheck": "tsc --noEmit --skipLibCheck",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint --write .",
+        "format": "biome format .",
+        "format:fix": "biome format --write .",
+        "check": "biome check .",
+        "check:fix": "biome check --write .",
+        "validate": "pnpm typecheck && pnpm check",
+        "test": "echo \"No test specified.\""
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,css}": [
+            "biome check ."
+        ]
+    },
+    "keywords": [
+        "sanity"
+    ],
+    "dependencies": {
+        "@portabletext/react": "8.0.0",
+        "@sanity/client": "8.6.2",
+        "@sanity/vision": "6.16.0",
+        "groq": "6.16.0",
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "react-icons": "5.7.0",
+        "sanity": "6.16.0",
+        "styled-components": "6.5.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.5.14",
+        "@types/debug": "^4.1.13",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "husky": "9.1.7",
+        "lint-staged": "17.5.0",
+        "typescript": "6.0.3"
+    }
 }

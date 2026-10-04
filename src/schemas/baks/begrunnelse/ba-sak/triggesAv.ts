@@ -15,27 +15,27 @@ import { hvilkeTriggereSkalBrukes } from './eøs/eøsTriggere/hvilkeTriggereSkal
 import { vilkårsvurderingTriggere } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 
 const nasjonaleBegrunnelserTriggere = [
-  lovligOppholdTriggere,
-  bosattIRiketTriggere,
-  giftPartnerskapTriggere,
-  utvidetBarnetrygdTriggere,
-  endringsårsakTrigger,
-  endretUtbetalingsperiodeTriggere,
-  endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
+    lovligOppholdTriggere,
+    bosattIRiketTriggere,
+    giftPartnerskapTriggere,
+    utvidetBarnetrygdTriggere,
+    endringsårsakTrigger,
+    endretUtbetalingsperiodeTriggere,
+    endretUtbetalingsperiodeDeltBostedUtbetalingTrigger,
 ];
 
 const EØSBegrunnelseTriggere = [
-  hvilkeTriggereSkalBrukes,
-  annenForeldersAktivitetTrigger,
-  barnetsBostedslandTrigger,
-  kompetentLandTrigger,
-  vilkårsvurderingTriggere,
-  utdypendeVilkårsvurderingerForEØSTriggere,
+    hvilkeTriggereSkalBrukes,
+    annenForeldersAktivitetTrigger,
+    barnetsBostedslandTrigger,
+    kompetentLandTrigger,
+    vilkårsvurderingTriggere,
+    utdypendeVilkårsvurderingerForEØSTriggere,
 ];
 
 export const triggesAv = [
-  ...nasjonaleBegrunnelserTriggere,
-  ...EØSBegrunnelseTriggere,
-  borMedSøkerTriggere,
-  øvrigeTriggere,
+    ...nasjonaleBegrunnelserTriggere,
+    ...EØSBegrunnelseTriggere,
+    borMedSøkerTriggere,
+    øvrigeTriggere,
 ];

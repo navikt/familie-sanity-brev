@@ -3,24 +3,24 @@ import styled from 'styled-components';
 import * as React from 'react';
 
 const NyttFelt = (props: any, felttype: string) => {
-  const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
-  return (
-    <div {...props}>
-      <StyledTittel>
-        {`Finnes ikke ${felttype}${felttype === 'delmal' ? 'en' : 'et'} du ønsker å ta med?`}
-      </StyledTittel>
-      <StyledButton
-        onClick={() =>
-          (window.location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
-        }
-      >
-        <span style={{ paddingTop: '2px', display: 'inline-flex' }}>
-          <GoPlus size="35" />
-        </span>{' '}
-        Lag {felttype === 'delmal' ? 'ny' : 'nytt'} {felttype}
-      </StyledButton>
-    </div>
-  );
+    const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
+    return (
+        <div {...props}>
+            <StyledTittel>
+                {`Finnes ikke ${felttype}${felttype === 'delmal' ? 'en' : 'et'} du ønsker å ta med?`}
+            </StyledTittel>
+            <StyledButton
+                onClick={() =>
+                    (window.location.href = `${referenceBaseUrl}/intent/create/type=${felttype};template=${felttype}/`)
+                }
+            >
+                <span style={{ paddingTop: '2px', display: 'inline-flex' }}>
+                    <GoPlus size="35" />
+                </span>{' '}
+                Lag {felttype === 'delmal' ? 'ny' : 'nytt'} {felttype}
+            </StyledButton>
+        </div>
+    );
 };
 const StyledTittel = styled.div`
   font-size: 0.8125rem;

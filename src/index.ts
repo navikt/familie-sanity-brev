@@ -11,15 +11,15 @@ import Htmlfelt from './schemas/felter/Htmlfelt';
 import { Fritekstområde } from './schemas/avansertDokument/fritekstområde';
 
 export const schemaTypes = [
-  Delmal,
-  Dokument,
-  Flettefelt,
-  Htmlfelt,
-  Valgfelt,
-  Periode,
-  BaBegrunnelse,
-  KsBegrunnelse,
-  AvansertDelmal,
-  AvansertDokument,
-  Fritekstområde,
+    Delmal,
+    Dokument,
+    Flettefelt,
+    Htmlfelt,
+    Valgfelt,
+    Periode,
+    BaBegrunnelse,
+    KsBegrunnelse,
+    AvansertDelmal,
+    AvansertDokument,
+    Fritekstområde,
 ];
