@@ -13,10 +13,7 @@ export const utvidetBarnetrygdTriggere = {
         list: utvidetBarnetrygdTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
     },
     hidden: ({ document }: { document: Begrunnelse }) =>
-        !(
-            erNasjonalBegrunnelse(document) &&
-            document.vilkaar &&
-            document.vilkaar.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)
-        ) || erEøsBegrunnelse(document),
+        !(erNasjonalBegrunnelse(document) && document.vilkaar?.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)) ||
+        erEøsBegrunnelse(document),
     validation: (rule: Rule) => hentNasjonaleTriggereRegler(rule),
 };

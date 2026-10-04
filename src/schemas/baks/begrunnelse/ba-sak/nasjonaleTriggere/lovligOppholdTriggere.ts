@@ -14,8 +14,7 @@ export const lovligOppholdTriggere = {
     hidden: ({ document }: { document: Begrunnelse }) =>
         !(
             erNasjonalEllerInstitusjonsBegrunnelse(document) &&
-            document.vilkaar &&
-            document.vilkaar.includes(NasjonaleVilkår.LOVLIG_OPPHOLD)
+            document.vilkaar?.includes(NasjonaleVilkår.LOVLIG_OPPHOLD)
         ),
     validation: (rule: Rule) => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

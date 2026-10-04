@@ -14,8 +14,7 @@ export const bosattIRiketTriggere = {
     hidden: ({ document }: { document: Begrunnelse }) =>
         !(
             erNasjonalEllerInstitusjonsBegrunnelse(document) &&
-            document.vilkaar &&
-            document.vilkaar.includes(NasjonaleVilkår.BOSATT_I_RIKET)
+            document.vilkaar?.includes(NasjonaleVilkår.BOSATT_I_RIKET)
         ),
     validation: (rule: Rule) => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };

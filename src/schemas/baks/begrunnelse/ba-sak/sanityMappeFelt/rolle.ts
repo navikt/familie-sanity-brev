@@ -9,11 +9,9 @@ export enum Rolle {
     BARN = 'BARN',
 }
 
-const gjelderBosattIRiketVilkår = (dokument?: any) =>
-    dokument?.vilkaar && dokument.vilkaar.includes(NasjonaleVilkår.BOSATT_I_RIKET);
+const gjelderBosattIRiketVilkår = (dokument?: any) => dokument?.vilkaar?.includes(NasjonaleVilkår.BOSATT_I_RIKET);
 
-const gjelderLovligOppholdVilkår = (dokument?: any) =>
-    dokument?.vilkaar && dokument.vilkaar.includes(NasjonaleVilkår.LOVLIG_OPPHOLD);
+const gjelderLovligOppholdVilkår = (dokument?: any) => dokument?.vilkaar?.includes(NasjonaleVilkår.LOVLIG_OPPHOLD);
 
 const rolleSkalVises = (dokument?: any): boolean =>
     !erInstitusjonsBegrunnelse(dokument) &&

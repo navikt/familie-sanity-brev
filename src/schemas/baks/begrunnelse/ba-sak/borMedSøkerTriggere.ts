@@ -39,7 +39,7 @@ export const borMedSøkerTriggere = {
         list: Object.values(BorMedSøkerTriggere).map(trigger => vilkårTriggerTilMenynavn[trigger]),
     },
     hidden: ({ document }: { document: Record<string, any> }) =>
-        !(document.vilkaar && document.vilkaar.includes(NasjonaleVilkår.BOR_MED_SOKER)) &&
-        !(document.eosVilkaar && document.eosVilkaar.includes(EøsVilkår.BOR_MED_SØKER)),
+        !document.vilkaar?.includes(NasjonaleVilkår.BOR_MED_SOKER) &&
+        !document.eosVilkaar?.includes(EøsVilkår.BOR_MED_SØKER),
     validation: (rule: Rule) => [lagInstitusjonBorMedSøkerRegel(rule)],
 };

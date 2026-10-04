@@ -14,8 +14,7 @@ export const giftPartnerskapTriggere = {
     hidden: ({ document }: { document: Begrunnelse }) =>
         !(
             erNasjonalEllerInstitusjonsBegrunnelse(document) &&
-            document.vilkaar &&
-            document.vilkaar.includes(NasjonaleVilkår.GIFT_PARTNERSKAP)
+            document.vilkaar?.includes(NasjonaleVilkår.GIFT_PARTNERSKAP)
         ),
     validation: (rule: Rule) => lagUtfyltNasjonaltFeltMenFeilRegelverkRegel(rule),
 };
