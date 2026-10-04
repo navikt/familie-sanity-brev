@@ -1,4 +1,4 @@
-import { ObjectSchemaType, Rule, ValidationContext } from 'sanity';
+import type { ObjectSchemaType, Rule, ValidationContext } from 'sanity';
 
 function tilTekst(feltverdi: unknown): string {
     return Array.isArray(feltverdi) ? feltverdi.join(', ') : String(feltverdi);

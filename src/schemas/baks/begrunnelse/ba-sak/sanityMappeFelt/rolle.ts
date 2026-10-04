@@ -1,5 +1,5 @@
-import { Rule } from 'sanity';
-import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
+import type { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, type Menyvalg, SanityTyper } from '../../../../../util/typer';
 import { erInstitusjonsBegrunnelse } from '../institusjon/utils';
 import { erEndretUtbetalingBegrunnelse } from '../nasjonaleTriggere/endringsårsakTrigger';
 import { NasjonaleVilkår } from '../typer';

@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 
 export enum Resultat {

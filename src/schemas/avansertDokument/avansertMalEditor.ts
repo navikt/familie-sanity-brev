@@ -1,6 +1,6 @@
 import decorators from '../../util/decorators';
 import TekstStyles from '../../util/TekstStyles';
-import { DokumentNavn, SanityTyper } from '../../util/typer';
+import { type DokumentNavn, SanityTyper } from '../../util/typer';
 import FlettefeltAnnontering from '../annonteringer/FlettefeltAnnontering';
 import { avansertDelmalAvsnitt } from '../avsnitt/avansertDelmalAvsnitt';
 import { htmlAvsnitt } from '../avsnitt/htmlAvsnitt';

@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AvansertDelmalFelter } from '../annonteringer/AvansertDelmalAnnontering';

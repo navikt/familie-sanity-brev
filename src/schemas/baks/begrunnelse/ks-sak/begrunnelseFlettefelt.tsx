@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import styled from 'styled-components';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { eøsFlettefelter } from '../ba-sak/typer';

@@ -1,8 +1,14 @@
-import { Rule, ValidationContext } from 'sanity';
+import type { Rule, ValidationContext } from 'sanity';
 import { erEøsBegrunnelse } from './eøs/eøsTriggere/utils';
 import { erInstitusjonsBegrunnelse } from './institusjon/utils';
 import { erNasjonalBegrunnelse } from './nasjonaleTriggere/utils';
-import { Begrunnelse, eøsFlettefelter, flettefelter, InstitusjonBegrunnelse, NasjonalBegrunnelse } from './typer';
+import {
+    type Begrunnelse,
+    eøsFlettefelter,
+    flettefelter,
+    type InstitusjonBegrunnelse,
+    type NasjonalBegrunnelse,
+} from './typer';
 
 export const validerFlettefeltErGyldigForRegelverk = (flettefelt: string | undefined, context: ValidationContext) => {
     if (!flettefelt) return true;

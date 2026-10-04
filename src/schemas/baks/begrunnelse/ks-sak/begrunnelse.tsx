@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { rolle } from '../ba-sak/sanityMappeFelt/rolle';
 import { validerBegrunnelse } from '../ba-sak/validerBegrunnelse';

@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
 import { erNasjonalBegrunnelse } from '../../eøs/eøsTriggere/utils';
 import { Resultat } from '../../resultat';

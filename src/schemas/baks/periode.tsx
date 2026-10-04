@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import styles from '../../../styles/styles.module.css';
 import TekstStyles from '../../util/TekstStyles';
 import { DokumentNavn, SanityTyper } from '../../util/typer';

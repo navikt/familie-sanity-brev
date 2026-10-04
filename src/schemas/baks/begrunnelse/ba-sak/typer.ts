@@ -1,6 +1,6 @@
 import { BegrunnelseDokumentNavn, DokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../util/typer';
-import { Regelverk } from './sanityMappeFelt/regelverk';
-import { Valgbarhet } from './sanityMappeFelt/valgbarhet';
+import type { Regelverk } from './sanityMappeFelt/regelverk';
+import type { Valgbarhet } from './sanityMappeFelt/valgbarhet';
 
 export const hjemler = ['2', '3', '4', '5', '9', '10', '11', '12', '14', '17', '18', '22'];
 

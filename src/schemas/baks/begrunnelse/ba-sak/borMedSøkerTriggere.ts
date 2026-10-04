@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
 import { EøsVilkår } from './eøs/eøsTriggere/vilkårsvurderingerTriggere';
 import { lagInstitusjonBorMedSøkerRegel } from './institusjon/utils';

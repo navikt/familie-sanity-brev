@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, KSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Tema } from '../../tema';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';

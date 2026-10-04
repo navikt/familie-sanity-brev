@@ -1,7 +1,7 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
 import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
-import { Begrunnelse, NasjonaleVilkår, utvidetBarnetrygdTriggertyper, vilkårTriggerTilMenynavn } from '../typer';
+import { type Begrunnelse, NasjonaleVilkår, utvidetBarnetrygdTriggertyper, vilkårTriggerTilMenynavn } from '../typer';
 import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 
 export const utvidetBarnetrygdTriggere = {

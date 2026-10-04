@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse } from '../typer';
+import type { Begrunnelse } from '../typer';
 import { erEøsBegrunnelse, hentEØSHjemmelRegler } from './eøsTriggere/utils';
 
 export const hjemlerEØSForordningen883 = ['2', '11-16', '67', '68'];

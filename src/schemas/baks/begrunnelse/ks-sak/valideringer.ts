@@ -1,5 +1,5 @@
-import { Rule } from 'sanity';
-import { DokumentNavn } from '../../../../util/typer';
+import type { Rule } from 'sanity';
+import type { DokumentNavn } from '../../../../util/typer';
 import { apiNavnValideringer } from '../../../../util/valideringer';
 import { Resultat } from './resultat';
 

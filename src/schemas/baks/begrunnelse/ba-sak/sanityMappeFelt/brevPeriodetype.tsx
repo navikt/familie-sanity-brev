@@ -1,5 +1,5 @@
-import { Rule } from 'sanity';
-import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
+import type { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, type Menyvalg, SanityTyper } from '../../../../../util/typer';
 
 export enum BrevPeriodetype {
     UTBETALING = 'UTBETALING',

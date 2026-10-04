@@ -1,5 +1,5 @@
-import { Rule } from 'sanity';
-import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
+import type { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, type Menyvalg, SanityTyper } from '../../../../../util/typer';
 
 export enum PerioderesultatForPerson {
     INNVILGET_ELLER_ØKNING = 'INNVILGET_ELLER_ØKNING',

@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse, endretUtbetalingsperioderTriggereValg } from '../typer';
+import { type Begrunnelse, endretUtbetalingsperioderTriggereValg } from '../typer';
 import { erEndretUtbetalingBegrunnelse } from './endringsårsakTrigger';
 import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 

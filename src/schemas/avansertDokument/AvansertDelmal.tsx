@@ -1,6 +1,6 @@
 import { Badge } from '@sanity/ui';
 import React from 'react';
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';

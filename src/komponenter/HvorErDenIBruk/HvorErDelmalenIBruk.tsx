@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SanityDocument, useGetFormValue } from 'sanity';
+import { type SanityDocument, useGetFormValue } from 'sanity';
 import { IntentLink } from 'sanity/router';
 import { useSanityQuery } from '../../util/sanity';
 import { ErrorStyling, Header } from './Elementer';

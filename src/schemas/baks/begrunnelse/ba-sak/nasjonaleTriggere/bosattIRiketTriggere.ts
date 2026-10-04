@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse, bosattIRiketTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { type Begrunnelse, bosattIRiketTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { erNasjonalEllerInstitusjonsBegrunnelse, lagUtfyltNasjonaltFeltMenFeilRegelverkRegel } from '../utils';
 
 export const bosattIRiketTriggere = {

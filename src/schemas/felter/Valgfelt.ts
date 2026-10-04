@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import HvorErValgfeltetIBruk from '../../komponenter/HvorErDenIBruk/hvorErValgfeltetIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer, maskinnavnValideringer } from '../../util/valideringer';

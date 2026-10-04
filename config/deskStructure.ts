@@ -1,16 +1,19 @@
 import { ComposeIcon } from '@sanity/icons/Compose';
 import { uuid } from '@sanity/uuid';
 import { GrDocumentText } from 'react-icons/gr';
-import { ListItemBuilder, StructureBuilder } from 'sanity/structure';
+import type { ListItemBuilder, StructureBuilder } from 'sanity/structure';
 import {
-    PerioderesultatForPerson,
+    type PerioderesultatForPerson,
     periodeResultatForPersonTilMenyValg,
 } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/perioderesultatForPerson';
-import { Regelverk, regelverkTilMenyValg } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/regelverk';
-import { Valgbarhet, valgbarhetTilMenyValg } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
-import { Resultat, resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
-import { Tema, temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
-import { Type, typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
+import { type Regelverk, regelverkTilMenyValg } from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/regelverk';
+import {
+    type Valgbarhet,
+    valgbarhetTilMenyValg,
+} from '../src/schemas/baks/begrunnelse/ba-sak/sanityMappeFelt/valgbarhet';
+import { type Resultat, resultatValg } from '../src/schemas/baks/begrunnelse/ks-sak/resultat';
+import { type Tema, temaValg } from '../src/schemas/baks/begrunnelse/ks-sak/tema';
+import { type Type, typeValg } from '../src/schemas/baks/begrunnelse/ks-sak/type';
 import { hentFraSanity } from '../src/util/sanity';
 import { BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn } from '../src/util/typer';
 import { ekskluderesForBa, ekskluderesForEf, ekskluderesForKs, erBa, erEf, erKs } from './felles';

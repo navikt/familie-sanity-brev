@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
-import { BegrunnelseDokumentNavn, Menyvalg, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse } from '../typer';
+import type { Rule } from 'sanity';
+import { BegrunnelseDokumentNavn, type Menyvalg, SanityTyper } from '../../../../../util/typer';
+import type { Begrunnelse } from '../typer';
 
 export enum Valgbarhet {
     STANDARD = 'STANDARD',

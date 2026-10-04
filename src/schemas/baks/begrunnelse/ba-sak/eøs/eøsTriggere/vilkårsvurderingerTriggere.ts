@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
-import { Begrunnelse } from '../../typer';
+import type { Begrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 import { erEøsBegrunnelse, hentEØSTriggereRegler, kanVilkårsvurderingTriggereVelges } from './utils';
 

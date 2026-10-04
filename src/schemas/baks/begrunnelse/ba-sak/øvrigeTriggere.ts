@@ -1,7 +1,7 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { Mappe } from './mapper';
-import { Begrunnelse, VilkårTriggere, vilkårTriggerTilMenynavn, øvrigeTriggertyper } from './typer';
+import { type Begrunnelse, VilkårTriggere, vilkårTriggerTilMenynavn, øvrigeTriggertyper } from './typer';
 
 const erIMappe = (document: Begrunnelse | undefined, mappe: Mappe) =>
     document?.[DokumentNavn.MAPPE]?.includes(mappe) ?? false;

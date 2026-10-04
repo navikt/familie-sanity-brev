@@ -1,8 +1,8 @@
 import groq from 'groq';
-import { Rule, ValidationContext } from 'sanity';
+import type { Rule, ValidationContext } from 'sanity';
 import { Konstanter } from './konstanter';
 import { client } from './sanity';
-import { DokumentNavn } from './typer';
+import type { DokumentNavn } from './typer';
 
 const førsteTegnErLitenBokstav = (tekst: string): true | string =>
     RegExp(/^[a-zæøå].*/).test(tekst) ? true : 'Første tegn i feltet kan ikke være tall eller stor bokstav.';

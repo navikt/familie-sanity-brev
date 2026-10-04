@@ -1,4 +1,4 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import decorators from '../util/decorators';
 import TekstStyles from '../util/TekstStyles';
 import { DokumentNavn, SanityTyper } from '../util/typer';

@@ -1,6 +1,6 @@
 import { Badge } from '@sanity/ui';
 import React from 'react';
-import { Rule, ValidationContext } from 'sanity';
+import type { Rule, ValidationContext } from 'sanity';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
 import editor from './avansertMalEditor';

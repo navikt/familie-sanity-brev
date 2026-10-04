@@ -1,6 +1,6 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import { Begrunnelse, giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
+import { type Begrunnelse, giftPartnerskapTriggerTyper, NasjonaleVilkår, vilkårTriggerTilMenynavn } from '../typer';
 import { erNasjonalEllerInstitusjonsBegrunnelse, lagUtfyltNasjonaltFeltMenFeilRegelverkRegel } from '../utils';
 
 export const giftPartnerskapTriggere = {

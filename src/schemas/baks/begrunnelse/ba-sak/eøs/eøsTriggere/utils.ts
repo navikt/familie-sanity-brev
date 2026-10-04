@@ -1,7 +1,7 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, EØSBegrunnelseDokumentNavn } from '../../../../../../util/typer';
 import { Regelverk } from '../../sanityMappeFelt/regelverk';
-import { Begrunnelse, EøsBegrunnelse } from '../../typer';
+import type { Begrunnelse, EøsBegrunnelse } from '../../typer';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
 
 export const erEøsBegrunnelse = (document: Begrunnelse): document is EøsBegrunnelse =>

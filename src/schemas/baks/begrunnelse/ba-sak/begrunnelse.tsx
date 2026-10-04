@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import styled from 'styled-components';
 import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { eøsHjemler } from './eøs/hjemler';
@@ -12,7 +12,7 @@ import { regelverk } from './sanityMappeFelt/regelverk';
 import { rolle } from './sanityMappeFelt/rolle';
 import { valgbarhet } from './sanityMappeFelt/valgbarhet';
 import { triggesAv } from './triggesAv';
-import { Begrunnelse, eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
+import { type Begrunnelse, eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
 import {
     erNasjonalEllerInstitusjonsBegrunnelse,
     lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,

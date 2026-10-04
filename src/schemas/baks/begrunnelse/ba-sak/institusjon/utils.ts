@@ -1,9 +1,9 @@
-import { Rule } from 'sanity';
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn } from '../../../../../util/typer';
 import { BorMedSøkerTriggere } from '../borMedSøkerTriggere';
 import { FagsakType } from '../sanityMappeFelt/fagsakType';
 import { erSakspesifikkBegrunnelse } from '../sanityMappeFelt/valgbarhet';
-import { Begrunnelse, InstitusjonBegrunnelse, NasjonaleVilkår } from '../typer';
+import { type Begrunnelse, type InstitusjonBegrunnelse, NasjonaleVilkår } from '../typer';
 
 export const erInstitusjonsBegrunnelse = (begrunnelse: Begrunnelse): begrunnelse is InstitusjonBegrunnelse =>
     !!erSakspesifikkBegrunnelse(begrunnelse) &&
