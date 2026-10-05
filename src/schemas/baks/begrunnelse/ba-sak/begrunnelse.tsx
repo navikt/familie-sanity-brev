@@ -1,268 +1,257 @@
-import * as React from 'react';
-import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
+import type { Rule } from 'sanity';
 import styled from 'styled-components';
-import {
-  Begrunnelse,
-  eøsFlettefelter,
-  flettefelter,
-  hjemler,
-  hjemlerFolketrygdloven,
-  vilkår,
-} from './typer';
-import { triggesAv } from './triggesAv';
-import { validerBegrunnelse } from './validerBegrunnelse';
-import {
-  erNasjonalEllerInstitusjonsBegrunnelse,
-  lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
-  validerFlettefeltErGyldigForRegelverk,
-} from './utils';
-import { Mappe, mapperTilMenynavn } from './mapper';
+import { BegrunnelseDokumentNavn, DokumentNavn, SanityTyper } from '../../../../util/typer';
 import { eøsHjemler } from './eøs/hjemler';
 import { lagInvaliderUtvidetForInstitusjonRegel } from './institusjon/utils';
-import { valgbarhet } from './sanityMappeFelt/valgbarhet';
-import { fagsakType } from './sanityMappeFelt/fagsakType';
-import { rolle } from './sanityMappeFelt/rolle';
+import { Mappe, mapperTilMenynavn } from './mapper';
 import { brevPeriodeType } from './sanityMappeFelt/brevPeriodetype';
+import { fagsakType } from './sanityMappeFelt/fagsakType';
 import { periodeResultatForPerson } from './sanityMappeFelt/perioderesultatForPerson';
 import { regelverk } from './sanityMappeFelt/regelverk';
-import { Rule } from 'sanity';
+import { rolle } from './sanityMappeFelt/rolle';
+import { valgbarhet } from './sanityMappeFelt/valgbarhet';
+import { triggesAv } from './triggesAv';
+import { type Begrunnelse, eøsFlettefelter, flettefelter, hjemler, hjemlerFolketrygdloven, vilkår } from './typer';
+import {
+    erNasjonalEllerInstitusjonsBegrunnelse,
+    lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse,
+    validerFlettefeltErGyldigForRegelverk,
+} from './utils';
+import { validerBegrunnelse } from './validerBegrunnelse';
 
 const begrunnelseFlettefelt = {
-  name: DokumentNavn.FLETTEFELT,
-  type: SanityTyper.OBJECT,
-  fields: [
-    {
-      name: DokumentNavn.FLETTEFELT,
-      type: SanityTyper.STRING,
-      options: {
-        list: [...flettefelter],
-      },
-      validation: (rule: Rule) => [
-        rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForRegelverk),
-      ],
+    name: DokumentNavn.FLETTEFELT,
+    type: SanityTyper.OBJECT,
+    fields: [
+        {
+            name: DokumentNavn.FLETTEFELT,
+            type: SanityTyper.STRING,
+            options: {
+                list: [...flettefelter],
+            },
+            validation: (rule: Rule) => [
+                rule.required().error('Tomt flettefelt'),
+                rule.custom(validerFlettefeltErGyldigForRegelverk),
+            ],
+        },
+    ],
+    preview: {
+        select: {
+            flettefelt: DokumentNavn.FLETTEFELT,
+        },
     },
-  ],
-  preview: {
-    select: {
-      flettefelt: DokumentNavn.FLETTEFELT,
+    components: {
+        preview: (props: any) => {
+            const flettefelt = flettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
+            return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+        },
     },
-  },
-  components: {
-    preview: (props: any) => {
-      const flettefelt = flettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
-      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
-    },
-  },
 };
 
 const begrunnelseEØSFlettefelt = {
-  title: 'EØS-flettefelt',
-  name: DokumentNavn.EØS_FLETTEFELT,
-  type: SanityTyper.OBJECT,
-  fields: [
-    {
-      name: DokumentNavn.FLETTEFELT,
-      type: SanityTyper.STRING,
-      options: {
-        list: [...eøsFlettefelter],
-      },
-      validation: (rule: Rule) => [
-        rule.required().error('Tomt flettefelt'),
-        rule.custom(validerFlettefeltErGyldigForRegelverk),
-      ],
+    title: 'EØS-flettefelt',
+    name: DokumentNavn.EØS_FLETTEFELT,
+    type: SanityTyper.OBJECT,
+    fields: [
+        {
+            name: DokumentNavn.FLETTEFELT,
+            type: SanityTyper.STRING,
+            options: {
+                list: [...eøsFlettefelter],
+            },
+            validation: (rule: Rule) => [
+                rule.required().error('Tomt flettefelt'),
+                rule.custom(validerFlettefeltErGyldigForRegelverk),
+            ],
+        },
+    ],
+    preview: {
+        select: {
+            flettefelt: DokumentNavn.FLETTEFELT,
+        },
     },
-  ],
-  preview: {
-    select: {
-      flettefelt: DokumentNavn.FLETTEFELT,
+    components: {
+        preview: (props: any) => {
+            const flettefelt = eøsFlettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
+            return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
+        },
     },
-  },
-  components: {
-    preview: (props: any) => {
-      const flettefelt = eøsFlettefelter.find(flettefelt => flettefelt.value === props.flettefelt);
-      return <Flettefelt>{flettefelt?.title ?? 'Tomt flettefelt'}</Flettefelt>;
-    },
-  },
 };
 
 const begrunnelseValgfelt = {
-  name: BegrunnelseDokumentNavn.VALGFELT_V2,
-  type: SanityTyper.OBJECT,
-  title: 'Referanse til valgfelt',
-  fields: [
-    {
-      type: SanityTyper.REFERENCE,
-      to: [{ type: DokumentNavn.VALGFELT }],
-      name: DokumentNavn.VALG_REFERANSE,
-      validation: (rule: Rule) => [rule.required().error('Tomt valgfelt')],
+    name: BegrunnelseDokumentNavn.VALGFELT_V2,
+    type: SanityTyper.OBJECT,
+    title: 'Referanse til valgfelt',
+    fields: [
+        {
+            type: SanityTyper.REFERENCE,
+            to: [{ type: DokumentNavn.VALGFELT }],
+            name: DokumentNavn.VALG_REFERANSE,
+            validation: (rule: Rule) => [rule.required().error('Tomt valgfelt')],
+        },
+        {
+            name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
+            type: SanityTyper.BOOLEAN,
+            validation: (rule: Rule) => [rule.required().error('Du må velge om det skal være stor bokstav')],
+        },
+    ],
+    initialValue: {
+        [BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV]: false,
     },
-    {
-      name: BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV,
-      type: SanityTyper.BOOLEAN,
-      validation: (rule: Rule) => [
-        rule.required().error('Du må velge om det skal være stor bokstav'),
-      ],
+    preview: {
+        select: {
+            valgVisningsnavn: `${DokumentNavn.VALG_REFERANSE}.${DokumentNavn.VISNINGSNAVN}`,
+        },
     },
-  ],
-  initialValue: {
-    [BegrunnelseDokumentNavn.SKAL_HA_STOR_FORBOSKTAV]: false,
-  },
-  preview: {
-    select: {
-      valgVisningsnavn: `${DokumentNavn.VALG_REFERANSE}.${DokumentNavn.VISNINGSNAVN}`,
+    components: {
+        preview: (props: any) => (
+            <Flettefelt>{props?.valgVisningsnavn ? props.valgVisningsnavn : 'Tomt valgfelt'}</Flettefelt>
+        ),
     },
-  },
-  components: {
-    preview: (props: any) => (
-      <Flettefelt>{props?.valgVisningsnavn ? props.valgVisningsnavn : 'Tomt valgfelt'}</Flettefelt>
-    ),
-  },
 };
 
 const editor = (maalform: DokumentNavn, tittel: string) => ({
-  name: maalform,
-  title: tittel,
-  type: SanityTyper.ARRAY,
-  of: [
-    {
-      name: DokumentNavn.BLOCK,
-      type: SanityTyper.BLOCK,
-      of: [
-        begrunnelseFlettefelt,
-        begrunnelseEØSFlettefelt,
-        begrunnelseValgfelt,
+    name: maalform,
+    title: tittel,
+    type: SanityTyper.ARRAY,
+    of: [
         {
-          /*
-           * Gammel versjon av begrunnelseValgfelt.
-           * Beholdes for å ikke miste det som er lagt inn i sanity.
-           * begrunnelseValgfelt skal brukes.
-           * Vises ikke i sanity.
-           * begrunnelseValgfelt tillater at vi kobler mer data til valgfeltet (for eksempel stor forbokstav).
-           */
-          type: SanityTyper.REFERENCE,
-          to: [{ type: DokumentNavn.VALGFELT }],
-          name: DokumentNavn.VALG_REFERANSE,
-          hidden: true,
+            name: DokumentNavn.BLOCK,
+            type: SanityTyper.BLOCK,
+            of: [
+                begrunnelseFlettefelt,
+                begrunnelseEØSFlettefelt,
+                begrunnelseValgfelt,
+                {
+                    /*
+                     * Gammel versjon av begrunnelseValgfelt.
+                     * Beholdes for å ikke miste det som er lagt inn i sanity.
+                     * begrunnelseValgfelt skal brukes.
+                     * Vises ikke i sanity.
+                     * begrunnelseValgfelt tillater at vi kobler mer data til valgfeltet (for eksempel stor forbokstav).
+                     */
+                    type: SanityTyper.REFERENCE,
+                    to: [{ type: DokumentNavn.VALGFELT }],
+                    name: DokumentNavn.VALG_REFERANSE,
+                    hidden: true,
+                },
+            ],
         },
-      ],
-    },
-  ],
+    ],
 });
 
 const begrunnelse = {
-  title: 'Begrunnelse',
-  name: BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
-  type: SanityTyper.DOCUMENT,
-  preview: {
-    select: {
-      title: DokumentNavn.VISNINGSNAVN,
-    },
-  },
-  validation: validerBegrunnelse(),
-  fields: [
-    {
-      title: 'Visningsnavn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.VISNINGSNAVN,
-      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
-    },
-    brevPeriodeType,
-    periodeResultatForPerson,
-    regelverk,
-    valgbarhet,
-    fagsakType,
-    {
-      title: 'Api-navn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.API_NAVN,
-      description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
-    },
-    {
-      title: 'Mappe',
-      name: DokumentNavn.MAPPE,
-      type: SanityTyper.ARRAY,
-      of: [
-        {
-          type: 'string',
-          options: {
-            list: Object.values(Mappe).map(mappe => mapperTilMenynavn[mappe]),
-          },
+    title: 'Begrunnelse',
+    name: BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
+    type: SanityTyper.DOCUMENT,
+    preview: {
+        select: {
+            title: DokumentNavn.VISNINGSNAVN,
         },
-      ],
     },
-    {
-      title: 'Navn i ba-sak',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.NAVN_I_SYSTEM,
-      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
-    },
-    {
-      title: 'Hjemler',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.HJEMLER,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'grid',
-        list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-    },
-    {
-      title: 'Hjemler fra folketrygdloven',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.HJEMLER_FOLKETRYGDLOVEN,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        layout: 'radio',
-        list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
-      },
-    },
-    {
-      title: 'Ikke i bruk',
-      type: SanityTyper.BOOLEAN,
-      name: BegrunnelseDokumentNavn.IKKE_I_BRUK,
-      description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig',
-    },
-    ...eøsHjemler,
-    {
-      title: 'Støtter fritekst',
-      type: SanityTyper.BOOLEAN,
-      name: BegrunnelseDokumentNavn.STØTTER_FRITEKST,
-      description:
-        'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i BA-SAK',
-    },
-    {
-      title: 'Splitt på søknadstidspunkt',
-      type: SanityTyper.BOOLEAN,
-      name: BegrunnelseDokumentNavn.SPLITT_PÅ_SØKNADSTIDSPUNKT,
-      description:
-        'Huk av dersom begrunnelsen skal deles i én tekst per søknadstidspunkt når barna i en ' +
-        'endret utbetalingsperiode har ulike søknadstidspunkt. Krever at brevteksten fletter inn "Søknadstidspunkt".',
-    },
-    {
-      title: 'Vilkår',
-      description:
-        'Hvilke vilkår som må være utgjørende for at begrunnelsen skal vises. ' +
-        'Dersom flere er valgt må kun én være utgjørende for at begrunnelsen skal vises.',
-      type: SanityTyper.ARRAY,
-      name: BegrunnelseDokumentNavn.VILKÅR,
-      of: [{ type: SanityTyper.STRING }],
-      options: {
-        list: vilkår,
-      },
-      validation: (rule: Rule) => [
-        lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse(rule).warning(),
-        lagInvaliderUtvidetForInstitusjonRegel(rule),
-      ],
-      hidden: (context: { document?: Begrunnelse }) =>
-        !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
-    },
+    validation: validerBegrunnelse(),
+    fields: [
+        {
+            title: 'Visningsnavn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.VISNINGSNAVN,
+            validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn')],
+        },
+        brevPeriodeType,
+        periodeResultatForPerson,
+        regelverk,
+        valgbarhet,
+        fagsakType,
+        {
+            title: 'Api-navn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.API_NAVN,
+            description: 'Teknisk navn. Eksempel innvilgetInnhenteOpplysninger',
+        },
+        {
+            title: 'Mappe',
+            name: DokumentNavn.MAPPE,
+            type: SanityTyper.ARRAY,
+            of: [
+                {
+                    type: 'string',
+                    options: {
+                        list: Object.values(Mappe).map(mappe => mapperTilMenynavn[mappe]),
+                    },
+                },
+            ],
+        },
+        {
+            title: 'Navn i ba-sak',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.NAVN_I_SYSTEM,
+            validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et navn i ba-sak')],
+        },
+        {
+            title: 'Hjemler',
+            type: SanityTyper.ARRAY,
+            name: BegrunnelseDokumentNavn.HJEMLER,
+            of: [{ type: SanityTyper.STRING }],
+            options: {
+                layout: 'grid',
+                list: hjemler.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+            },
+        },
+        {
+            title: 'Hjemler fra folketrygdloven',
+            type: SanityTyper.ARRAY,
+            name: BegrunnelseDokumentNavn.HJEMLER_FOLKETRYGDLOVEN,
+            of: [{ type: SanityTyper.STRING }],
+            options: {
+                layout: 'radio',
+                list: hjemlerFolketrygdloven.map(hjemmel => ({ value: hjemmel, title: `§${hjemmel}` })),
+            },
+        },
+        {
+            title: 'Ikke i bruk',
+            type: SanityTyper.BOOLEAN,
+            name: BegrunnelseDokumentNavn.IKKE_I_BRUK,
+            description: 'Huk av dersom begrunnelsen ikke lenger skal være tilgjengelig',
+        },
+        ...eøsHjemler,
+        {
+            title: 'Støtter fritekst',
+            type: SanityTyper.BOOLEAN,
+            name: BegrunnelseDokumentNavn.STØTTER_FRITEKST,
+            description:
+                'Huk av dersom det skal dukke opp mulighet til å skrive inn fritekst når begrunnelsen er valgt i BA-SAK',
+        },
+        {
+            title: 'Splitt på søknadstidspunkt',
+            type: SanityTyper.BOOLEAN,
+            name: BegrunnelseDokumentNavn.SPLITT_PÅ_SØKNADSTIDSPUNKT,
+            description:
+                'Huk av dersom begrunnelsen skal deles i én tekst per søknadstidspunkt når barna i en ' +
+                'endret utbetalingsperiode har ulike søknadstidspunkt. Krever at brevteksten fletter inn "Søknadstidspunkt".',
+        },
+        {
+            title: 'Vilkår',
+            description:
+                'Hvilke vilkår som må være utgjørende for at begrunnelsen skal vises. ' +
+                'Dersom flere er valgt må kun én være utgjørende for at begrunnelsen skal vises.',
+            type: SanityTyper.ARRAY,
+            name: BegrunnelseDokumentNavn.VILKÅR,
+            of: [{ type: SanityTyper.STRING }],
+            options: {
+                list: vilkår,
+            },
+            validation: (rule: Rule) => [
+                lagVilkårManglerForNasjonalEllerInstitusjonBegrunnelse(rule).warning(),
+                lagInvaliderUtvidetForInstitusjonRegel(rule),
+            ],
+            hidden: (context: { document?: Begrunnelse }) => !erNasjonalEllerInstitusjonsBegrunnelse(context.document),
+        },
 
-    rolle,
-    ...triggesAv,
-    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
-    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
-  ],
+        rolle,
+        ...triggesAv,
+        editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+        editor(DokumentNavn.NYNORSK, 'Nynorsk'),
+    ],
 };
 
 const Flettefelt = styled.span`

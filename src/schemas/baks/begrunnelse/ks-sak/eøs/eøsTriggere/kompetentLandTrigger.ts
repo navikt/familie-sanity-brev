@@ -1,43 +1,43 @@
+import type { Rule } from 'sanity';
 import { EØSBegrunnelseDokumentNavn, SanityTyper } from '../../../../../../util/typer';
-import { Rule } from 'sanity';
-import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 import { EØSTriggerType } from './hvilkeTriggereSkalBrukes';
+import { erEøsBegrunnelse, hentEØSTriggereRegler, kanKompetanseTriggereVelges } from './utils';
 
 enum Kompetanse {
-  NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',
-  NORGE_ER_SEKUNDÆRLAND = 'NORGE_ER_SEKUNDÆRLAND',
-  TO_PRIMÆRLAND = 'TO_PRIMÆRLAND',
-  NASJONAL_RETT_DIFFERANSEBEREGNING = 'NASJONAL_RETT_DIFFERANSEBEREGNING',
+    NORGE_ER_PRIMÆRLAND = 'NORGE_ER_PRIMÆRLAND',
+    NORGE_ER_SEKUNDÆRLAND = 'NORGE_ER_SEKUNDÆRLAND',
+    TO_PRIMÆRLAND = 'TO_PRIMÆRLAND',
+    NASJONAL_RETT_DIFFERANSEBEREGNING = 'NASJONAL_RETT_DIFFERANSEBEREGNING',
 }
 
 const KompetanseValg: Record<Kompetanse, { title: string; value: Kompetanse }> = {
-  NORGE_ER_PRIMÆRLAND: {
-    title: 'Norge er primærland',
-    value: Kompetanse.NORGE_ER_PRIMÆRLAND,
-  },
-  NORGE_ER_SEKUNDÆRLAND: {
-    title: 'Norge er sekundærland',
-    value: Kompetanse.NORGE_ER_SEKUNDÆRLAND,
-  },
-  TO_PRIMÆRLAND: {
-    title: 'To primærland',
-    value: Kompetanse.TO_PRIMÆRLAND,
-  },
-  NASJONAL_RETT_DIFFERANSEBEREGNING: {
-    title: 'Nasjonal rett-differanseberegning',
-    value: Kompetanse.NASJONAL_RETT_DIFFERANSEBEREGNING,
-  },
+    NORGE_ER_PRIMÆRLAND: {
+        title: 'Norge er primærland',
+        value: Kompetanse.NORGE_ER_PRIMÆRLAND,
+    },
+    NORGE_ER_SEKUNDÆRLAND: {
+        title: 'Norge er sekundærland',
+        value: Kompetanse.NORGE_ER_SEKUNDÆRLAND,
+    },
+    TO_PRIMÆRLAND: {
+        title: 'To primærland',
+        value: Kompetanse.TO_PRIMÆRLAND,
+    },
+    NASJONAL_RETT_DIFFERANSEBEREGNING: {
+        title: 'Nasjonal rett-differanseberegning',
+        value: Kompetanse.NASJONAL_RETT_DIFFERANSEBEREGNING,
+    },
 };
 
 export const kompetentLandTrigger = {
-  title: 'Kompetent land',
-  type: SanityTyper.ARRAY,
-  name: EØSBegrunnelseDokumentNavn.KOMPETANSE_RESULTAT,
-  of: [{ type: SanityTyper.STRING }],
-  options: {
-    list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),
-  },
-  hidden: ({ document }: { document: Record<string, any> }) =>
-    !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
-  validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
+    title: 'Kompetent land',
+    type: SanityTyper.ARRAY,
+    name: EØSBegrunnelseDokumentNavn.KOMPETANSE_RESULTAT,
+    of: [{ type: SanityTyper.STRING }],
+    options: {
+        list: Object.values(Kompetanse).map(kompetanse => KompetanseValg[kompetanse]),
+    },
+    hidden: ({ document }: { document: Record<string, any> }) =>
+        !erEøsBegrunnelse(document) || !kanKompetanseTriggereVelges(document),
+    validation: (rule: Rule) => hentEØSTriggereRegler(rule, true, [EØSTriggerType.KOMPETANSE]),
 };

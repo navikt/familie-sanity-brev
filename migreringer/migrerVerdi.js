@@ -6,15 +6,15 @@ const dataset = 'ba-brev';
 const apiVersion = '2023-03-01';
 
 async function migrerAlleFelt() {
-  await migrate();
+    await migrate();
 }
 
 const client = createClient({
-  apiVersion,
-  projectId,
-  dataset,
-  token,
-  useCdn: false,
+    apiVersion,
+    projectId,
+    dataset,
+    token,
+    useCdn: false,
 });
 
 // Dette er et ustabilt script. Dvs at det ofte feiler og må rekjøres flere ganger før det går.
@@ -39,63 +39,61 @@ const client = createClient({
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 var fetchDocuments = (feltNavn, feltVerdi) =>
-  client.fetch(
-    `*[_type == 'begrunnelse' && ${feltNavn} == '${feltVerdi}'] {_id, _rev, ${feltNavn}}`,
-  );
+    client.fetch(`*[_type == 'begrunnelse' && ${feltNavn} == '${feltVerdi}'] {_id, _rev, ${feltNavn}}`);
 
 const buildPatchesForEndretUtbetaling = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      set: { begrunnelseTypeForPerson: 'ENDRET_UTBETALING' },
-      //unset: ['name'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            set: { begrunnelseTypeForPerson: 'ENDRET_UTBETALING' },
+            //unset: ['name'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const buildPatchesForEtterEndretUtbetaling = docs =>
-  docs.map(doc => ({
-    id: doc._id,
-    patch: {
-      set: { begrunnelseTypeForPerson: 'ETTER_ENDRET_UTBETALING' },
-      //unset: ['name'],
-      // this will cause the transaction to fail if the documents has been
-      // modified since it was fetched.
-      ifRevisionID: doc._rev,
-    },
-  }));
+    docs.map(doc => ({
+        id: doc._id,
+        patch: {
+            set: { begrunnelseTypeForPerson: 'ETTER_ENDRET_UTBETALING' },
+            //unset: ['name'],
+            // this will cause the transaction to fail if the documents has been
+            // modified since it was fetched.
+            ifRevisionID: doc._rev,
+        },
+    }));
 
 const createTransaction = patches =>
-  patches.reduce((tx, patch) => tx.patch(patch.id, patch.patch), client.transaction());
+    patches.reduce((tx, patch) => tx.patch(patch.id, patch.patch), client.transaction());
 
 const commitTransaction = tx => tx.commit();
 
 const migrate = async () => {
-  let documents = await fetchDocuments('begrunnelseTypeForPerson', 'ENDRET_UTBETALINGSPERIODE');
-  const endretUtbetalingPatch = buildPatchesForEndretUtbetaling(documents);
-  console.log(
-    `\nMigrating:\n %s`,
-    endretUtbetalingPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const endretUtbetalingResultat = createTransaction(endretUtbetalingPatch);
-  await commitTransaction(endretUtbetalingResultat);
+    let documents = await fetchDocuments('begrunnelseTypeForPerson', 'ENDRET_UTBETALINGSPERIODE');
+    const endretUtbetalingPatch = buildPatchesForEndretUtbetaling(documents);
+    console.log(
+        `\nMigrating:\n %s`,
+        endretUtbetalingPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const endretUtbetalingResultat = createTransaction(endretUtbetalingPatch);
+    await commitTransaction(endretUtbetalingResultat);
 
-  documents = await fetchDocuments('begrunnelseTypeForPerson', 'ETTER_ENDRET_UTBETALINGSPERIODE');
-  const vedtakResultatPatch = buildPatchesForEtterEndretUtbetaling(documents);
-  console.log(
-    `\nMigrating:\n %s`,
-    vedtakResultatPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
-  );
-  const transactionVedtakResultat = createTransaction(vedtakResultatPatch);
-  await commitTransaction(transactionVedtakResultat);
+    documents = await fetchDocuments('begrunnelseTypeForPerson', 'ETTER_ENDRET_UTBETALINGSPERIODE');
+    const vedtakResultatPatch = buildPatchesForEtterEndretUtbetaling(documents);
+    console.log(
+        `\nMigrating:\n %s`,
+        vedtakResultatPatch.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
+    );
+    const transactionVedtakResultat = createTransaction(vedtakResultatPatch);
+    await commitTransaction(transactionVedtakResultat);
 
-  //return migrate();
-  return null;
+    //return migrate();
+    return null;
 };
 
 migrerAlleFelt().catch(err => {
-  console.error(err);
-  process.exit(1);
+    console.error(err);
+    process.exit(1);
 });

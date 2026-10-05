@@ -1,27 +1,19 @@
+import type { Rule } from 'sanity';
 import { BegrunnelseDokumentNavn, SanityTyper } from '../../../../../util/typer';
-import {
-  Begrunnelse,
-  utvidetBarnetrygdTriggertyper,
-  NasjonaleVilkår,
-  vilkårTriggerTilMenynavn,
-} from '../typer';
 import { erEøsBegrunnelse } from '../eøs/eøsTriggere/utils';
-import { hentNasjonaleTriggereRegler, erNasjonalBegrunnelse } from './utils';
-import { Rule } from 'sanity';
+import { type Begrunnelse, NasjonaleVilkår, utvidetBarnetrygdTriggertyper, vilkårTriggerTilMenynavn } from '../typer';
+import { erNasjonalBegrunnelse, hentNasjonaleTriggereRegler } from './utils';
 
 export const utvidetBarnetrygdTriggere = {
-  title: 'Utvidet barnetrygd triggere',
-  type: SanityTyper.ARRAY,
-  name: BegrunnelseDokumentNavn.UTVIDET_BARNETRYGD_TRIGGERE,
-  of: [{ type: SanityTyper.STRING }],
-  options: {
-    list: utvidetBarnetrygdTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
-  },
-  hidden: ({ document }: { document: Begrunnelse }) =>
-    !(
-      erNasjonalBegrunnelse(document) &&
-      document.vilkaar &&
-      document.vilkaar.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)
-    ) || erEøsBegrunnelse(document),
-  validation: (rule: Rule) => hentNasjonaleTriggereRegler(rule),
+    title: 'Utvidet barnetrygd triggere',
+    type: SanityTyper.ARRAY,
+    name: BegrunnelseDokumentNavn.UTVIDET_BARNETRYGD_TRIGGERE,
+    of: [{ type: SanityTyper.STRING }],
+    options: {
+        list: utvidetBarnetrygdTriggertyper.map(trigger => vilkårTriggerTilMenynavn[trigger]),
+    },
+    hidden: ({ document }: { document: Begrunnelse }) =>
+        !(erNasjonalBegrunnelse(document) && document.vilkaar?.includes(NasjonaleVilkår.UTVIDET_BARNETRYGD)) ||
+        erEøsBegrunnelse(document),
+    validation: (rule: Rule) => hentNasjonaleTriggereRegler(rule),
 };

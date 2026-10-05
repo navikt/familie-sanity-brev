@@ -1,28 +1,24 @@
-import {
-  BegrunnelseDokumentNavn,
-  DokumentNavn,
-  KSBegrunnelseDokumentNavn,
-} from '../src/util/typer';
+import { BegrunnelseDokumentNavn, DokumentNavn, KSBegrunnelseDokumentNavn } from '../src/util/typer';
 
 export const ekskluderesForEf: string[] = [
-  DokumentNavn.DELMAL,
-  DokumentNavn.DOKUMENT,
-  DokumentNavn.PERIODE,
-  DokumentNavn.UTBETALINGER,
-  BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
-  KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+    DokumentNavn.DELMAL,
+    DokumentNavn.DOKUMENT,
+    DokumentNavn.PERIODE,
+    DokumentNavn.UTBETALINGER,
+    BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
+    KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
 
 export const ekskluderesForBa: string[] = [
-  DokumentNavn.AVANSERT_DELMAL,
-  DokumentNavn.AVANSERT_DOKUMENT,
-  KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
+    DokumentNavn.AVANSERT_DELMAL,
+    DokumentNavn.AVANSERT_DOKUMENT,
+    KSBegrunnelseDokumentNavn.KS_BEGRUNNELSE,
 ];
 
 export const ekskluderesForKs: string[] = [
-  DokumentNavn.AVANSERT_DELMAL,
-  DokumentNavn.AVANSERT_DOKUMENT,
-  BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
+    DokumentNavn.AVANSERT_DELMAL,
+    DokumentNavn.AVANSERT_DOKUMENT,
+    BegrunnelseDokumentNavn.BA_BEGRUNNELSE,
 ];
 
 const hentDataset = () => window.location.pathname.split('/')[1];

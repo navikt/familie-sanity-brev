@@ -1,27 +1,27 @@
+import type { Rule } from 'sanity';
 import { KSBegrunnelseDokumentNavn, SanityTyper } from '../../../../util/typer';
-import { Rule } from 'sanity';
 
 export enum Type {
-  STANDARD = 'STANDARD',
-  TILLEGGSTEKST = 'TILLEGGSTEKST',
-  ENDRINGSPERIODE = 'ENDRINGSPERIODE',
+    STANDARD = 'STANDARD',
+    TILLEGGSTEKST = 'TILLEGGSTEKST',
+    ENDRINGSPERIODE = 'ENDRINGSPERIODE',
 }
 
 export const typeValg: Record<Type, { title: string; value: Type }> = {
-  STANDARD: { title: 'Standard', value: Type.STANDARD },
-  TILLEGGSTEKST: {
-    title: 'Tilleggstekst',
-    value: Type.TILLEGGSTEKST,
-  },
-  ENDRINGSPERIODE: { title: 'Endringsperiode', value: Type.ENDRINGSPERIODE },
+    STANDARD: { title: 'Standard', value: Type.STANDARD },
+    TILLEGGSTEKST: {
+        title: 'Tilleggstekst',
+        value: Type.TILLEGGSTEKST,
+    },
+    ENDRINGSPERIODE: { title: 'Endringsperiode', value: Type.ENDRINGSPERIODE },
 };
 
 export const type = {
-  title: 'Type',
-  type: SanityTyper.STRING,
-  name: KSBegrunnelseDokumentNavn.TYPE,
-  options: {
-    list: Object.values(Type).map(type => typeValg[type]),
-  },
-  validation: (rule: Rule) => rule.required().error('Type ikke valgt'),
+    title: 'Type',
+    type: SanityTyper.STRING,
+    name: KSBegrunnelseDokumentNavn.TYPE,
+    options: {
+        list: Object.values(Type).map(type => typeValg[type]),
+    },
+    validation: (rule: Rule) => rule.required().error('Type ikke valgt'),
 };

@@ -1,22 +1,22 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { type Rule } from 'sanity';
+import type { Rule } from 'sanity';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const htmlAvsnitt = {
-  name: DokumentNavn.HTMLFELT,
-  type: SanityTyper.OBJECT,
-  title: 'Htmlfelt',
-  fields: [
-    {
-      name: DokumentNavn.HTMLFELT_REFERANSE,
-      type: SanityTyper.REFERENCE,
-      to: [{ type: DokumentNavn.HTMLFELT }],
-      validation: (Rule: Rule) => [Rule.required().error('Tomt felt')],
+    name: DokumentNavn.HTMLFELT,
+    type: SanityTyper.OBJECT,
+    title: 'Htmlfelt',
+    fields: [
+        {
+            name: DokumentNavn.HTMLFELT_REFERANSE,
+            type: SanityTyper.REFERENCE,
+            to: [{ type: DokumentNavn.HTMLFELT }],
+            validation: (Rule: Rule) => [Rule.required().error('Tomt felt')],
+        },
+    ],
+    preview: {
+        prepare: () => ({
+            media: AiOutlineUnorderedList,
+        }),
     },
-  ],
-  preview: {
-    prepare: () => ({
-      media: AiOutlineUnorderedList,
-    }),
-  },
 };

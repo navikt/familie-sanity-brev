@@ -1,50 +1,50 @@
-import { DokumentNavn, SanityTyper } from '../../util/typer';
-import NyttFelt from '../../komponenter/NyttFelt';
 import DelmalBlockComponent from '../../komponenter/DelmalBlockComponent';
+import NyttFelt from '../../komponenter/NyttFelt';
+import { DokumentNavn, SanityTyper } from '../../util/typer';
 
 export const delmalAvsnitt = (maalform: any) => ({
-  title: 'Delmal',
-  name: DokumentNavn.DELMAL,
-  type: SanityTyper.OBJECT,
-  fields: [
-    {
-      title: 'Referanse til delmal:',
-      name: DokumentNavn.DELMAL_REFERANSE,
-      type: SanityTyper.REFERENCE,
-      to: [{ type: DokumentNavn.DELMAL }],
-      validation: (Rule: any) => [Rule.required().error('Fyll inn en enkel delmal.')],
+    title: 'Delmal',
+    name: DokumentNavn.DELMAL,
+    type: SanityTyper.OBJECT,
+    fields: [
+        {
+            title: 'Referanse til delmal:',
+            name: DokumentNavn.DELMAL_REFERANSE,
+            type: SanityTyper.REFERENCE,
+            to: [{ type: DokumentNavn.DELMAL }],
+            validation: (Rule: any) => [Rule.required().error('Fyll inn en enkel delmal.')],
+        },
+        {
+            title: 'Delmalen skal alltid med',
+            name: DokumentNavn.SKAL_ALLTID_MED,
+            type: SanityTyper.BOOLEAN,
+            description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
+            validation: (Rule: any) => [Rule.required().error('Velg om delmalen alltid skal med.')],
+        },
+        {
+            title: 'Delmalen skal begynne på neste side',
+            name: DokumentNavn.SKAL_BEGYNNE_PÅ_NY_SIDE,
+            type: SanityTyper.BOOLEAN,
+            description: 'Dersom denne er på vil delmalen begynne på ny side',
+        },
+        {
+            name: 'lagNy',
+            type: SanityTyper.STRING,
+            description: 'En knapp for å lage ny delmal',
+            components: { input: (props: any) => NyttFelt(props, DokumentNavn.DELMAL) },
+        },
+    ],
+    validation: (Rule: any) => [Rule.required().error('Ingen delmal valgt')],
+    preview: {
+        select: {
+            delmalReferanse: `${DokumentNavn.DELMAL_REFERANSE}`,
+        },
     },
-    {
-      title: 'Delmalen skal alltid med',
-      name: DokumentNavn.SKAL_ALLTID_MED,
-      type: SanityTyper.BOOLEAN,
-      description: 'Dersom denne er på kan systemet kan validere at denne alltid er med ',
-      validation: (Rule: any) => [Rule.required().error('Velg om delmalen alltid skal med.')],
-    },
-    {
-      title: 'Delmalen skal begynne på neste side',
-      name: DokumentNavn.SKAL_BEGYNNE_PÅ_NY_SIDE,
-      type: SanityTyper.BOOLEAN,
-      description: 'Dersom denne er på vil delmalen begynne på ny side',
-    },
-    {
-      name: 'lagNy',
-      type: SanityTyper.STRING,
-      description: 'En knapp for å lage ny delmal',
-      components: { input: (props: any) => NyttFelt(props, DokumentNavn.DELMAL) },
-    },
-  ],
-  validation: (Rule: any) => [Rule.required().error('Ingen delmal valgt')],
-  preview: {
-    select: {
-      delmalReferanse: `${DokumentNavn.DELMAL_REFERANSE}`,
-    },
-  },
-  components: {
-    preview: (props: any) => {
-      const ref = props?.delmalReferanse?._ref;
+    components: {
+        preview: (props: any) => {
+            const ref = props?.delmalReferanse?._ref;
 
-      return DelmalBlockComponent(props, maalform, ref);
+            return DelmalBlockComponent(props, maalform, ref);
+        },
     },
-  },
 });

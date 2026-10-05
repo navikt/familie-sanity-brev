@@ -1,62 +1,61 @@
-import React from 'react';
-import editor from './avansertMalEditor';
+import { Badge } from '@sanity/ui';
+import type { Rule } from 'sanity';
 import HvorErDelmalenIBruk from '../../komponenter/HvorErDenIBruk/HvorErDelmalenIBruk';
 import { DokumentNavn, SanityTyper } from '../../util/typer';
 import { apiNavnValideringer } from '../../util/valideringer';
-import { Badge } from '@sanity/ui';
-import { Rule } from 'sanity';
+import editor from './avansertMalEditor';
 
 const TittelBadge = () => {
-  return <Badge tone="primary">Avansert delmal</Badge>;
+    return <Badge tone="primary">Avansert delmal</Badge>;
 };
 
 export default {
-  title: 'Innhold',
-  name: DokumentNavn.AVANSERT_DELMAL,
-  type: SanityTyper.DOCUMENT,
-  preview: {
-    select: {
-      title: DokumentNavn.VISNINGSNAVN,
+    title: 'Innhold',
+    name: DokumentNavn.AVANSERT_DELMAL,
+    type: SanityTyper.DOCUMENT,
+    preview: {
+        select: {
+            title: DokumentNavn.VISNINGSNAVN,
+        },
     },
-  },
-  fields: [
-    {
-      name: 'badgeTittel',
-      components: { input: TittelBadge },
-      type: 'string',
-      title: 'Dokumenttype',
-    },
-    {
-      title: 'Visningsnavn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.VISNINGSNAVN,
-      validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et visningsnavn')],
-    },
-    {
-      title: 'Api navn',
-      type: SanityTyper.STRING,
-      name: DokumentNavn.API_NAVN,
-      description: 'Teknisk navn. Eksempel innhenteOpplysninger',
-      validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DELMAL),
-    },
-    {
-      name: 'hvorDenBrukes',
-      type: SanityTyper.STRING,
-      components: { input: HvorErDelmalenIBruk },
-    },
-    {
-      title: 'Mappe',
-      name: DokumentNavn.MAPPE,
-      type: SanityTyper.ARRAY,
-      of: [{ type: 'string' }],
-    },
-    {
-      title: 'Mappe i saksbehandlingsløsning',
-      description: 'Hvilket visningsnavn denne delmalen skal grupperes under i brevmenyen.',
-      name: DokumentNavn.GRUPPE_VISNINGSNAVN,
-      type: SanityTyper.STRING,
-    },
-    editor(DokumentNavn.BOKMAAL, 'Bokmål'),
-    editor(DokumentNavn.NYNORSK, 'Nynorsk'),
-  ],
+    fields: [
+        {
+            name: 'badgeTittel',
+            components: { input: TittelBadge },
+            type: 'string',
+            title: 'Dokumenttype',
+        },
+        {
+            title: 'Visningsnavn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.VISNINGSNAVN,
+            validation: (rule: Rule) => [rule.required().error('Dokumentet må ha et visningsnavn')],
+        },
+        {
+            title: 'Api navn',
+            type: SanityTyper.STRING,
+            name: DokumentNavn.API_NAVN,
+            description: 'Teknisk navn. Eksempel innhenteOpplysninger',
+            validation: (rule: Rule) => apiNavnValideringer(rule, DokumentNavn.AVANSERT_DELMAL),
+        },
+        {
+            name: 'hvorDenBrukes',
+            type: SanityTyper.STRING,
+            components: { input: HvorErDelmalenIBruk },
+        },
+        {
+            title: 'Mappe',
+            name: DokumentNavn.MAPPE,
+            type: SanityTyper.ARRAY,
+            of: [{ type: 'string' }],
+        },
+        {
+            title: 'Mappe i saksbehandlingsløsning',
+            description: 'Hvilket visningsnavn denne delmalen skal grupperes under i brevmenyen.',
+            name: DokumentNavn.GRUPPE_VISNINGSNAVN,
+            type: SanityTyper.STRING,
+        },
+        editor(DokumentNavn.BOKMAAL, 'Bokmål'),
+        editor(DokumentNavn.NYNORSK, 'Nynorsk'),
+    ],
 };
