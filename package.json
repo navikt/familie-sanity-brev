@@ -33,7 +33,7 @@
     ],
     "dependencies": {
         "@portabletext/react": "8.0.0",
-        "@sanity/client": "8.6.2",
+        "@sanity/client": "8.7.0",
         "@sanity/vision": "6.16.0",
         "groq": "6.16.0",
         "react": "19.3.0",
