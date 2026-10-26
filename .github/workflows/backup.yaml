@@ -29,7 +29,7 @@ jobs:
         run: pnpm exec sanity dataset export ba-brev backups/ba-sak.tar.gz
 
       - name: Upload ba-sak.tar.gz
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ba
           path: backups/ba-sak.tar.gz
@@ -55,7 +55,7 @@ jobs:
         run: pnpm exec sanity dataset export ks-brev backups/ks-sak.tar.gz
 
       - name: Upload ks-sak.tar.gz
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ks
           path: backups/ks-sak.tar.gz
@@ -81,7 +81,7 @@ jobs:
         run: pnpm exec sanity dataset export ef-brev backups/ef-sak.tar.gz
 
       - name: Upload ef-sak.tar.gz
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # ratchet:actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # ratchet:actions/upload-artifact@v4
         with:
           name: backup-ef
           path: backups/ef-sak.tar.gz
