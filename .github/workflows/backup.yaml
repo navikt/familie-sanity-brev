@@ -20,7 +20,7 @@ jobs:
       - name: Set up node and install pnpm packages
         uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: '24'
+          node-version: '26'
           reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export ba dataset
@@ -46,7 +46,7 @@ jobs:
       - name: Set up node and install pnpm packages
         uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: '24'
+          node-version: '26'
           reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export ks dataset
@@ -72,7 +72,7 @@ jobs:
       - name: Set up node and install pnpm packages
         uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: '24'
+          node-version: '26'
           reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Export dataset

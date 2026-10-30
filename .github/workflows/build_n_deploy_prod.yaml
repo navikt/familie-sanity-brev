@@ -18,7 +18,7 @@ jobs:
       - name: ⎔ Setup node and install pnpm packages
         uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: '24'
+          node-version: '26'
           reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: Deploy sanity
