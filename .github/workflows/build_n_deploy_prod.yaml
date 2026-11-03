@@ -1,28 +1,28 @@
 name: Build and deploy prod
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - 'main'
+    workflow_dispatch:
+    push:
+        branches:
+            - "main"
 
 jobs:
-  sanity-deploy:
-    runs-on: ubuntu-latest
-    name: Deploy
-    permissions:
-      contents: read
-    steps:
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v4
+    sanity-deploy:
+        runs-on: ubuntu-latest
+        name: Deploy
+        permissions:
+            contents: read
+        steps:
+            - name: ⬇️ Checkout repo
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # ratchet:actions/checkout@v4
 
-      - name: ⎔ Setup node and install pnpm packages
-        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
-        with:
-          node-version: '24'
-          reader-token: ${{ secrets.READER_TOKEN }}
+            - name: ⎔ Setup node and install pnpm packages
+              uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
+              with:
+                  node-version: "24"
+                  reader-token: ${{ secrets.READER_TOKEN }}
 
-      - name: Deploy sanity
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
-        # 'pnpm deploy' er en innebygd pnpm-kommando, derfor 'pnpm run deploy'
-        run: pnpm run deploy
+            - name: Deploy sanity
+              env:
+                  SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+              # 'pnpm deploy' er en innebygd pnpm-kommando, derfor 'pnpm run deploy'
+              run: pnpm run deploy
