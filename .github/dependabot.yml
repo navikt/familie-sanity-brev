@@ -1,45 +1,45 @@
 version: 2
 
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: "sunday"
-    time: "04:00"
-  cooldown:
-    default-days: 7
-  open-pull-requests-limit: 10
-  groups:
-    sanity:
-      patterns:
-        - "@sanity/*"
-        - "sanity"
-        - "groq"
-    linting:
-      patterns:
-        - "@biomejs/biome"
-        - "husky"
-        - "lint-staged"
-    minor-and-patch-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "minor"
-        - "patch"
-  ignore:
-    - dependency-name: "*"
-      update-types: ["version-update:semver-patch"]
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: "sunday"
-    time: "04:00"
-  cooldown:
-    default-days: 7
-  open-pull-requests-limit: 10
-  groups:
-    workflows:
-      patterns:
-        - "*"
+    - package-ecosystem: npm
+      directory: "/"
+      schedule:
+          interval: weekly
+          day: "sunday"
+          time: "04:00"
+      cooldown:
+          default-days: 7
+      open-pull-requests-limit: 10
+      groups:
+          sanity:
+              patterns:
+                  - "@sanity/*"
+                  - "sanity"
+                  - "groq"
+          linting:
+              patterns:
+                  - "@biomejs/biome"
+                  - "husky"
+                  - "lint-staged"
+          minor-and-patch-dependencies:
+              patterns:
+                  - "*"
+              update-types:
+                  - "minor"
+                  - "patch"
+      ignore:
+          - dependency-name: "*"
+            update-types: ["version-update:semver-patch"]
+    - package-ecosystem: github-actions
+      directory: "/"
+      schedule:
+          interval: weekly
+          day: "sunday"
+          time: "04:00"
+      cooldown:
+          default-days: 7
+      open-pull-requests-limit: 10
+      groups:
+          workflows:
+              patterns:
+                  - "*"
