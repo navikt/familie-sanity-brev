@@ -12,9 +12,9 @@ saveExact: true
 # skriver en ugyldig placeholder inn i denne fila — erstatt den med
 # 'pakke: false' (eller 'true' for å tillate scriptet).
 allowBuilds:
-  esbuild: false
+    esbuild: false
 # Egne pakker fra GitHub Packages tas i bruk med en gang (pnpm venter ellers
 # minimumReleaseAge, som standard 1 dag, før nye versjoner installeres).
 minimumReleaseAgeExclude:
-  - '@navikt/*'
-  - '@nais/*'
+    - "@navikt/*"
+    - "@nais/*"
